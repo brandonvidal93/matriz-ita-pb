@@ -17,7 +17,7 @@ Al terminar, el sitio genera el **archivo oficial .xlsx** listo para enviar. Esc
 - **Importar** una matriz ya diligenciada (.xlsx). Se reutilizan sus respuestas y se extraen las URLs como evidencias.
 - **Verificación de enlaces**: comprueba que el servidor de cada URL responda.
 - **Notas internas** por ítem que no se exportan.
-- **Almacenamiento**: siempre en el navegador y, opcionalmente, en **Google Drive** (carpeta `Matriz ITA - Gestión TIC`). También se pueden descargar y restaurar respaldos .json.
+- **Almacenamiento local**: los datos se guardan en un **archivo JSON de tu equipo** y el navegador guarda una copia de respaldo. Todo funciona sin servidor ni base de datos.
 
 ## Requisitos
 
@@ -39,15 +39,17 @@ npm run build      # salida en dist/matriz-ita-pb/browser
 
 La app usa enrutamiento con `#` y `<base href="./">`. Por eso la carpeta `browser` se puede servir desde cualquier ruta (IIS, Apache, Nginx o una subcarpeta del servidor institucional) sin reglas de reescritura.
 
-## Conectar Google Drive
+## Dónde se guardan los datos
 
-1. En [Google Cloud Console](https://console.cloud.google.com/), con la cuenta institucional, crea o elige un proyecto.
-2. **APIs y servicios → Biblioteca**: habilita **Google Drive API**.
-3. **Pantalla de consentimiento OAuth**: tipo *Interno*, para que solo entren cuentas del dominio institucional. Agrega el permiso `.../auth/drive.file`.
-4. **Credenciales → Crear credenciales → ID de cliente de OAuth → Aplicación web**. En *Orígenes autorizados de JavaScript* agrega `http://localhost:4200` y la URL donde se publique el sitio.
-5. Copia el ID de cliente en `src/app/config.ts` → `googleClientId`.
+Todo es local:
 
-La app pide solo el permiso `drive.file`: únicamente ve los archivos que ella misma crea. Cada registro se guarda como `registro-<vigencia>-<id>.json`, y opcionalmente una copia de cada .xlsx exportado. No hay base de datos ni servidor propio.
+1. **Archivo de datos (recomendado).** En la cabecera, **Archivo de datos → Crear archivo de datos nuevo…** (o **Abrir…** si ya existe). Elige una ubicación, por ejemplo `D:\Develop\Matriz-ITA\datos\matriz-ita-datos.json`. Desde ese momento cada cambio se guarda solo en el archivo. Usa la *File System Access API*, que existe en **Chrome y Edge**.
+   - El vínculo se recuerda. Al volver a abrir la app aparece **Reconectar matriz-ita-datos.json**, porque el navegador pide confirmar el permiso en cada sesión.
+   - El archivo tiene todos los registros: `{ app, formato, guardado, registros: [...] }`.
+2. **Navegador.** Siempre se guarda una copia en `localStorage` como respaldo. Si el archivo y el navegador difieren, al abrir el archivo se queda, por registro, la versión más reciente.
+3. **Copias manuales.** **Descargar copia (.json)** y **Cargar copia (.json)** sirven para Firefox o para mover los datos a otro equipo.
+
+> La carpeta `datos/` y los archivos `matriz-ita-datos*.json` están en `.gitignore` para que las respuestas y las notas internas no se suban al repositorio público.
 
 ## Plantilla oficial y catálogo
 
@@ -66,12 +68,12 @@ El script trabaja directamente sobre el XML del .xlsx. Vacía F a I en las filas
 
 ```
 src/app/
-  config.ts              Configuración (Google, institución)
+  config.ts              Configuración (institución)
   core/
     modelos.ts           Tipos: Registro, Respuesta, Evidencia
     catalogo.ts          Catálogo, secciones, texto de columna I y reglas de calidad
-    almacen.service.ts   Estado (signals) y persistencia local + Drive
-    drive.service.ts     Google Identity Services + Drive API v3
+    almacen.service.ts   Estado (signals) y persistencia (archivo + navegador)
+    archivo.service.ts   Lectura/escritura del archivo JSON local (File System Access API)
     xlsx.service.ts      Importar y exportar la matriz oficial (JSZip)
     progreso.ts          Indicadores, descarga y verificación de URLs
   dialogos/              Diálogos de Material

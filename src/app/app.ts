@@ -8,7 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AlmacenService } from './core/almacen.service';
-import { DriveService } from './core/drive.service';
+import { descargar } from './core/progreso';
 import { CONFIG } from './config';
 
 @Component({
@@ -40,20 +40,37 @@ import { CONFIG } from './config';
         }
         <span class="flex-1"></span>
         <span class="sync" role="status" aria-live="polite">{{ textoSync() }}</span>
-        @if (drive.conectado()) {
-          <button mat-stroked-button class="!text-white !border-white/50" [matMenuTriggerFor]="menuDrive">
-            <mat-icon>cloud_done</mat-icon> {{ drive.usuario() || 'Google Drive' }}
-          </button>
-          <mat-menu #menuDrive="matMenu">
-            <button mat-menu-item (click)="almacen.sincronizarPendientes()"><mat-icon>sync</mat-icon>Sincronizar ahora</button>
-            <button mat-menu-item (click)="almacen.desconectarDrive()"><mat-icon>logout</mat-icon>Desconectar</button>
-          </mat-menu>
-        } @else {
-          <button mat-stroked-button class="!text-white !border-white/50" (click)="conectar()"
-            [matTooltip]="drive.configurado ? 'Guardar y traer los registros desde Google Drive' : 'Falta configurar el ID de cliente de Google (src/app/config.ts)'">
-            <mat-icon>add_to_drive</mat-icon> Conectar Drive
-          </button>
+        @switch (almacen.archivo.estado()) {
+          @case ('vinculado') {
+            <button mat-stroked-button class="!text-white !border-white/50" [matMenuTriggerFor]="menuArchivo" [matTooltip]="'Los cambios se guardan automáticamente en ' + almacen.archivo.nombre()">
+              <mat-icon>save</mat-icon> {{ almacen.archivo.nombre() }}
+            </button>
+          }
+          @case ('requiere-permiso') {
+            <button mat-flat-button class="!bg-[var(--pb-amarillo)] !text-black" (click)="accion(almacen.reconectarArchivo(), 'Archivo reconectado.')"
+              [matTooltip]="'El navegador pide confirmar el acceso a ' + almacen.archivo.nombre()">
+              <mat-icon>lock_open</mat-icon> Reconectar {{ almacen.archivo.nombre() }}
+            </button>
+          }
+          @default {
+            <button mat-stroked-button class="!text-white !border-white/50" [matMenuTriggerFor]="menuArchivo">
+              <mat-icon>folder_open</mat-icon> Archivo de datos
+            </button>
+          }
         }
+        <mat-menu #menuArchivo="matMenu">
+          @if (almacen.archivo.soportado) {
+            <button mat-menu-item (click)="accion(almacen.abrirArchivo(), 'Archivo abierto. Los cambios se guardarán en él.')"><mat-icon>file_open</mat-icon>Abrir archivo de datos…</button>
+            <button mat-menu-item (click)="accion(almacen.crearArchivo(), 'Archivo creado. Los cambios se guardarán en él.')"><mat-icon>note_add</mat-icon>Crear archivo de datos nuevo…</button>
+            @if (almacen.archivo.estado() === 'vinculado') {
+              <button mat-menu-item (click)="accion(almacen.guardarArchivo(), 'Guardado.')"><mat-icon>save</mat-icon>Guardar ahora</button>
+              <button mat-menu-item (click)="almacen.desvincularArchivo()"><mat-icon>link_off</mat-icon>Dejar de usar este archivo</button>
+            }
+          }
+          <button mat-menu-item (click)="descargarCopia()"><mat-icon>download</mat-icon>Descargar copia (.json)</button>
+          <button mat-menu-item (click)="cargar.click()"><mat-icon>upload</mat-icon>Cargar copia (.json)…</button>
+        </mat-menu>
+        <input #cargar type="file" accept=".json" hidden (change)="cargarCopia($event)" />
       </div>
     </header>
     <main id="contenido" tabindex="-1" class="outline-none">
@@ -63,7 +80,6 @@ import { CONFIG } from './config';
 })
 export class App {
   protected almacen = inject(AlmacenService);
-  protected drive = inject(DriveService);
   private snack = inject(MatSnackBar);
   private router = inject(Router);
   institucion = CONFIG.institucion;
@@ -73,25 +89,41 @@ export class App {
   activo = computed(() => (this.url().startsWith('/r/') ? this.almacen.activo() : null));
 
   textoSync = computed(() => {
+    const est = this.almacen.archivo.estado();
+    if (est === 'requiere-permiso') return 'Archivo sin confirmar · cambios solo en el navegador';
+    if (est === 'sin-archivo') return this.almacen.archivo.soportado ? 'Sin archivo · cambios solo en el navegador' : 'Guardado en este navegador';
     switch (this.almacen.estadoSync()) {
-      case 'local': return 'Guardado en este navegador';
-      case 'pendiente': return 'Cambios por subir…';
-      case 'sincronizando': return 'Sincronizando con Drive…';
-      case 'sincronizado': return 'Guardado en Drive';
-      case 'error': return 'Error al sincronizar';
+      case 'pendiente': return 'Cambios por guardar…';
+      case 'guardando': return 'Guardando…';
+      case 'error': return 'Error al guardar: ' + (this.almacen.errorSync() ?? '');
+      default: return 'Guardado en el archivo';
     }
   });
 
-  async conectar() {
-    if (!this.drive.configurado) {
-      this.snack.open('Configura googleClientId en src/app/config.ts para usar Google Drive.', 'Entendido', { duration: 8000 });
-      return;
-    }
+  async accion(p: Promise<unknown>, ok: string) {
     try {
-      await this.almacen.conectarDrive();
-      this.snack.open('Conectado a Google Drive. Registros sincronizados.', undefined, { duration: 4000 });
+      await p;
+      this.snack.open(ok, undefined, { duration: 3500 });
     } catch (e: any) {
-      this.snack.open('No se pudo conectar con Drive: ' + (e?.message ?? e), 'Cerrar', { duration: 10000 });
+      if (e?.name === 'AbortError') return; // el usuario cerró el selector
+      this.snack.open('No se pudo completar: ' + (e?.message ?? e), 'Cerrar', { duration: 8000 });
+    }
+  }
+
+  descargarCopia() {
+    descargar(this.almacen.copiaJson(), `matriz-ita-datos_${new Date().toISOString().slice(0, 10)}.json`);
+  }
+
+  async cargarCopia(ev: Event) {
+    const input = ev.target as HTMLInputElement;
+    const f = input.files?.[0];
+    input.value = '';
+    if (!f) return;
+    try {
+      const n = this.almacen.cargarJson(await f.text());
+      this.snack.open(`Se cargaron ${n} registro(s).`, undefined, { duration: 4000 });
+    } catch (e: any) {
+      this.snack.open('No se pudo cargar: ' + (e?.message ?? e), 'Cerrar', { duration: 8000 });
     }
   }
 

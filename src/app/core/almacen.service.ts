@@ -1,32 +1,53 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
+import { ArchivoDatos, ArchivoService, validar } from './archivo.service';
 import { CATALOGO } from './catalogo';
-import { DriveService } from './drive.service';
 import { Evidencia, Registro, Respuesta, TipoCorte, nuevoId, respuestaVacia } from './modelos';
 
 const CLAVE_LOCAL = 'matriz-ita:registros:v1';
 
-export type EstadoSync = 'local' | 'pendiente' | 'sincronizando' | 'sincronizado' | 'error';
+export type EstadoSync = 'local' | 'pendiente' | 'guardando' | 'guardado' | 'error';
 
 function normalizarUrl(u: string): string {
   return u.trim().replace(/[)\].,;]+$/, '');
 }
 
+/** Une dos listas de registros quedándose, por id, con la versión más reciente. */
+function unir(a: Registro[], b: Registro[]): Registro[] {
+  const mapa = new Map<string, Registro>();
+  for (const r of [...a, ...b]) {
+    const x = mapa.get(r.id);
+    if (!x || r.actualizado > x.actualizado) mapa.set(r.id, r);
+  }
+  return [...mapa.values()].sort((x, y) => y.actualizado.localeCompare(x.actualizado));
+}
+
 /**
- * Estado central de la aplicación. Persiste siempre en el navegador
- * (respaldo inmediato) y, si hay sesión de Google, en Drive.
+ * Estado central de la aplicación. Todo es local: se guarda en un archivo
+ * JSON del equipo (si está vinculado) y, como respaldo, en el navegador.
  */
 @Injectable({ providedIn: 'root' })
 export class AlmacenService {
-  private drive = inject(DriveService);
+  readonly archivo = inject(ArchivoService);
 
   readonly registros = signal<Registro[]>(this.leerLocal());
   readonly activoId = signal<string | null>(null);
   readonly activo = computed(() => this.registros().find((r) => r.id === this.activoId()) ?? null);
   readonly estadoSync = signal<EstadoSync>('local');
   readonly errorSync = signal<string | null>(null);
+  readonly ultimoGuardado = signal<string | null>(null);
 
-  private pendientes = new Set<string>();
-  private temporizador: ReturnType<typeof setTimeout> | null = null;
+  private tLocal: ReturnType<typeof setTimeout> | null = null;
+  private tArchivo: ReturnType<typeof setTimeout> | null = null;
+
+  constructor() {
+    addEventListener('beforeunload', (ev) => {
+      try {
+        localStorage.setItem(CLAVE_LOCAL, JSON.stringify(this.registros()));
+      } catch {}
+      if (this.estadoSync() === 'pendiente' || this.estadoSync() === 'guardando') ev.preventDefault();
+    });
+    this.archivo.restaurar().then((d) => d && this.aplicarArchivo(d));
+  }
 
   // ---------- persistencia ----------
   private leerLocal(): Registro[] {
@@ -38,8 +59,7 @@ export class AlmacenService {
     }
   }
 
-  private tLocal: ReturnType<typeof setTimeout> | null = null;
-  private escribirLocal(): void {
+  private persistir(): void {
     if (this.tLocal) clearTimeout(this.tLocal);
     this.tLocal = setTimeout(() => {
       try {
@@ -48,35 +68,24 @@ export class AlmacenService {
         /* almacenamiento no disponible: se conserva en memoria */
       }
     }, 250);
-  }
-
-  constructor() {
-    // Guardar antes de cerrar la pestaña si hay escritura pendiente.
-    addEventListener('beforeunload', () => {
-      try {
-        localStorage.setItem(CLAVE_LOCAL, JSON.stringify(this.registros()));
-      } catch {}
-    });
-  }
-
-  private programarSync(id: string): void {
-    if (!this.drive.conectado()) return;
-    this.pendientes.add(id);
+    if (this.archivo.estado() !== 'vinculado') return;
     this.estadoSync.set('pendiente');
-    if (this.temporizador) clearTimeout(this.temporizador);
-    this.temporizador = setTimeout(() => this.sincronizarPendientes(), 1500);
+    if (this.tArchivo) clearTimeout(this.tArchivo);
+    this.tArchivo = setTimeout(() => this.guardarArchivo(), 800);
   }
 
-  async sincronizarPendientes(): Promise<void> {
-    if (!this.drive.conectado() || !this.pendientes.size) return;
-    this.estadoSync.set('sincronizando');
+  private datos(): ArchivoDatos {
+    return { app: 'matriz-ita', formato: 1, guardado: new Date().toISOString(), registros: this.registros() };
+  }
+
+  async guardarArchivo(): Promise<void> {
+    if (this.archivo.estado() !== 'vinculado') return;
+    this.estadoSync.set('guardando');
     try {
-      for (const id of [...this.pendientes]) {
-        const reg = this.registros().find((r) => r.id === id);
-        if (reg) await this.drive.guardar(reg);
-        this.pendientes.delete(id);
-      }
-      this.estadoSync.set('sincronizado');
+      const d = this.datos();
+      await this.archivo.escribir(d);
+      this.ultimoGuardado.set(d.guardado);
+      this.estadoSync.set('guardado');
       this.errorSync.set(null);
     } catch (e: any) {
       this.estadoSync.set('error');
@@ -84,44 +93,54 @@ export class AlmacenService {
     }
   }
 
-  /** Une lo que hay en Drive con lo local, quedándose con la versión más reciente. */
-  async conectarDrive(): Promise<void> {
-    await this.drive.conectar();
-    this.estadoSync.set('sincronizando');
-    try {
-      const remotos = await this.drive.listar();
-      const locales = this.registros();
-      const mapa = new Map<string, Registro>();
-      for (const r of remotos) mapa.set(r.id, r);
-      for (const l of locales) {
-        const r = mapa.get(l.id);
-        if (!r || l.actualizado > r.actualizado) {
-          mapa.set(l.id, l);
-          this.pendientes.add(l.id);
-        }
-      }
-      this.registros.set([...mapa.values()].sort((a, b) => b.actualizado.localeCompare(a.actualizado)));
-      this.escribirLocal();
-      await this.sincronizarPendientes();
-      this.estadoSync.set('sincronizado');
-    } catch (e: any) {
-      this.estadoSync.set('error');
-      this.errorSync.set(e?.message ?? String(e));
-      throw e;
-    }
+  private async aplicarArchivo(d: ArchivoDatos): Promise<void> {
+    const antes = JSON.stringify(d.registros);
+    this.registros.set(unir(d.registros, this.registros()));
+    this.ultimoGuardado.set(d.guardado || null);
+    this.estadoSync.set('guardado');
+    // Si en el navegador había cambios más recientes, se escriben al archivo.
+    if (JSON.stringify(this.registros()) !== antes) await this.guardarArchivo();
+    this.persistir();
   }
 
-  desconectarDrive(): void {
-    this.drive.desconectar();
+  async abrirArchivo(): Promise<void> {
+    await this.aplicarArchivo(await this.archivo.abrir());
+  }
+
+  async crearArchivo(): Promise<void> {
+    await this.archivo.crear(this.datos());
+    this.estadoSync.set('guardado');
+    this.ultimoGuardado.set(new Date().toISOString());
+  }
+
+  async reconectarArchivo(): Promise<void> {
+    const d = await this.archivo.reconectar();
+    if (d) await this.aplicarArchivo(d);
+  }
+
+  async desvincularArchivo(): Promise<void> {
+    await this.archivo.desvincular();
     this.estadoSync.set('local');
+  }
+
+  /** Copia de todos los registros (alternativa si el navegador no soporta archivos). */
+  copiaJson(): Blob {
+    return new Blob([JSON.stringify(this.datos(), null, 1)], { type: 'application/json' });
+  }
+
+  /** Carga un JSON de datos o de respaldo y lo une con lo actual. Devuelve cuántos registros trajo. */
+  cargarJson(texto: string): number {
+    const d = validar(JSON.parse(texto));
+    this.registros.set(unir(this.registros(), d.registros));
+    this.persistir();
+    return d.registros.length;
   }
 
   private mutar(id: string, fn: (r: Registro) => Registro): void {
     this.registros.update((lista) =>
       lista.map((r) => (r.id === id ? { ...fn(r), actualizado: new Date().toISOString() } : r)),
     );
-    this.escribirLocal();
-    this.programarSync(id);
+    this.persistir();
   }
 
   private mutarActivo(fn: (r: Registro) => Registro): void {
@@ -154,8 +173,7 @@ export class AlmacenService {
 
   agregarRegistro(reg: Registro): void {
     this.registros.update((l) => [reg, ...l]);
-    this.escribirLocal();
-    this.programarSync(reg.id);
+    this.persistir();
   }
 
   renombrar(id: string, datos: Partial<Pick<Registro, 'nombre' | 'tipo' | 'vigencia' | 'periodo' | 'formatoEvidencias'>>): void {
@@ -164,8 +182,7 @@ export class AlmacenService {
 
   async eliminar(id: string): Promise<void> {
     this.registros.update((l) => l.filter((r) => r.id !== id));
-    this.escribirLocal();
-    if (this.drive.conectado()) await this.drive.eliminar(id);
+    this.persistir();
   }
 
   // ---------- respuestas ----------

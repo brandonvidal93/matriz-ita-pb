@@ -152,7 +152,7 @@ export class RegistrosPage {
         .open(ConfirmarDialog, {
           data: {
             titulo: 'Eliminar registro',
-            mensaje: `Se eliminará “${r.nombre}” de este navegador y, si estás conectado, se enviará a la papelera de Google Drive (recuperable).\n\nTe recomendamos descargar antes un respaldo.`,
+            mensaje: `Se eliminará “${r.nombre}” de la aplicación (y del archivo de datos, si está vinculado).\n\nTe recomendamos descargar antes un respaldo.`,
             accion: 'Eliminar',
           },
         })

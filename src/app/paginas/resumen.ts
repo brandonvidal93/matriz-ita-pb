@@ -2,18 +2,16 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlmacenService } from '../core/almacen.service';
-import { DriveService } from '../core/drive.service';
 import { SECCIONES, TEXTO_PROBLEMA, etiquetaCorta, problemas } from '../core/catalogo';
 import { descargar, nombreArchivo, progreso } from '../core/progreso';
 import { XlsxService } from '../core/xlsx.service';
 
 @Component({
-  imports: [FormsModule, RouterLink, MatButtonModule, MatCheckboxModule, MatIconModule, MatRadioModule],
+  imports: [FormsModule, RouterLink, MatButtonModule, MatIconModule, MatRadioModule],
   styles: `
     .cifra { font-size: 28px; font-weight: 700; line-height: 1.1; }
     table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -47,9 +45,6 @@ import { XlsxService } from '../core/xlsx.service';
               <mat-radio-button value="url">Solo URL</mat-radio-button>
               <mat-radio-button value="titulo-url">Título: URL</mat-radio-button>
             </mat-radio-group>
-            @if (drive.conectado()) {
-              <mat-checkbox [(ngModel)]="copiaDrive">Guardar también una copia en Drive</mat-checkbox>
-            }
           </div>
           @if (p.conProblemas) {
             <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal">
@@ -100,12 +95,10 @@ import { XlsxService } from '../core/xlsx.service';
 })
 export class ResumenPage {
   protected almacen = inject(AlmacenService);
-  protected drive = inject(DriveService);
   private xlsx = inject(XlsxService);
   private snack = inject(MatSnackBar);
   exportando = signal(false);
   limite = signal(50);
-  copiaDrive = true;
 
   total = computed(() => progreso(this.almacen.activo()!));
   porSeccion = computed(() => SECCIONES.map((s) => ({ ...s, p: progreso(this.almacen.activo()!, s.items) })));
@@ -126,10 +119,6 @@ export class ResumenPage {
       const blob = await this.xlsx.exportar(reg);
       const nombre = nombreArchivo(reg, 'xlsx');
       descargar(blob, nombre);
-      if (this.drive.conectado() && this.copiaDrive) {
-        await this.drive.guardarExportacion(nombre, blob);
-        this.snack.open('Archivo descargado y copia guardada en Drive.', undefined, { duration: 4000 });
-      }
     } catch (e: any) {
       this.snack.open('No se pudo generar el archivo: ' + (e?.message ?? e), 'Cerrar', { duration: 10000 });
     } finally {

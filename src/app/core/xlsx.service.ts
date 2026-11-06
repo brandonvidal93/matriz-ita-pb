@@ -227,7 +227,7 @@ export class XlsxService {
       const imgs = imagenesPorFila.get(it.fila);
       if (imgs)
         advertencias.push(
-          `Fila ${it.fila}: tenía ${imgs} imagen(es) pegada(s) como evidencia. Súbela(s) al portal o al Drive y agrégala(s) como enlace.`,
+          `Fila ${it.fila}: tenía ${imgs} imagen(es) pegada(s) como evidencia. Publícala(s) en el portal y agrégala(s) como enlace.`,
         );
     }
     return { respuestas, evidencias, advertencias, itemsLeidos };
