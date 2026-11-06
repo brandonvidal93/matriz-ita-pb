@@ -1,0 +1,2712 @@
+{
+ "version": "ITA 2023",
+ "hoja": "sheet1.xml",
+ "columnas": {
+  "si": "F",
+  "no": "G",
+  "na": "H",
+  "observacion": "I"
+ },
+ "items": [
+  {
+   "fila": 6,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "a. ¿Los elementos no textuales (p. ej. imágenes, diagramas, mapas, sonidos, vibraciones, etc.) que aparecen en el sitio web tienen texto alternativo?",
+   "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, criterio 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 7,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "b. ¿Los videos o elementos multimedia tienen subtítulos y audio descripción (cuando no tiene audio original), como también su respectivo guion en texto? (en los siguientes casos también deben tener lenguaje de señas: para las alocuciones presidenciales, información sobre desastres y emergencias, información sobre seguridad ciudadana, rendición de cuentas anual de los entes centrales de cada sector del Gobierno Nacional).",
+   "explicacion": "Proporcione los enlaces o URL donde estén ubicados los videos o elementos multimedia del sitio web, y donde se evidencie que estos tienen subtítulos, audio descripción (cuando no tienen audio original) y su respectivo guion de texto.\n\nPara las entidades públicas, en los siguientes casos proporcione los enlaces o URL donde aparezcan los videos o elementos multimedia con lengua de señas: i) alocuciones presidenciales, ii) información sobre desastres y emergencias, iii) información sobre seguridad ciudadana, iv) rendición de cuentas anual de entes centrales de cada sector del Gobierno Nacional",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, criterios 2 y 3.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 8,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "c. ¿El texto usado en el sitio web es de mínimo 12 puntos, con contraste de color que permita su visualización, y con posibilidad de ampliación hasta el 200% sin desconfiguración del contenido?",
+   "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, criterios 4 y 5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 9,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "d. ¿El código de programación y el contenido del sitio web está ordenado, con lenguaje de marcado bien utilizado y comprensible sin tener en cuenta el aspecto visual del sitio web, con una estructura organizada, identificación coherente y unificada de los enlaces (vínculos/botones), y con la posibilidad de una navegación lineal y continua con esos enlaces, incluyendo un buscador?",
+   "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, criterios 7, 8, 10, 11, 12, 13 y 14.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 10,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "e. ¿Los formularios o casillas de información tienen advertencias e instrucciones claras con varios canales sensoriales (p. ej. Campos con asterisco obligatorios, colores, ayuda sonora, mayúscula sostenida)?",
+   "explicacion": "Proporcione los enlaces o URL donde estén ubicados los formularios o casillas de información para que se verifique si tienen advertencias bien ubicadas y señaladas, que se puedan leer adecuadamente con un software o aplicativo de accesibilidad, y en colores diferentes.",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, criterio 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 11,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "f. ¿Al navegar el sitio web con tabulación se hace en orden adecuada y resaltando la información seleccionada?",
+   "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, criterios 16. 17 y 32.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 12,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "g. ¿Se permite control de contenidos con movimientos y parpadeo y de eventos temporizados?",
+   "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, criterios 19 y 20.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 13,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "h. ¿El lenguaje de los títulos, páginas, sección, enlaces, mensajes de error, campos de formularios, es en español claro y comprensible (siguiendo la guía de lenguaje claro del DAFP, en el caso de las entidades públicas, disponible en: https://www.portaltributariodecolombia.com/wp-content/uploads/2015/07/portaltributariodecolombia_guia-de-lenguaje-claro-para-servidores-publicos.pdf ).",
+   "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, criterios 23, 24, 25, 26, 27, 28.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 14,
+   "grupo": "ANEXO TÉCNICO 1. ACCESIBILIDAD",
+   "nivel1": "ANEXO TÉCNICO 1. ACCESIBILIDAD WEB.",
+   "nivel2": "Directrices de Accesibilidad Web.",
+   "item": "i. ¿Los documentos (Word, Excel, PDF, PowerPoint, etc.) cumplen con los criterios de accesibilidad establecidos en el Anexo 1 de la Resolución 1519 de 2020 para ser consultados fácilmente por cualquier persona?",
+   "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+   "normatividad": "Ley 1712 de 2014, artículo 8; Decreto 1081 de 2015, artículos 2.1.1.2.2.1 y siguientes; Resolución 1519 de 2020 MinTIC, Anexo 1, capítulo 3, accesibilidad en documentos digitales para publicación.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 17,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Top Bar(GOV.CO).",
+   "item": "a. Top Bar o barra en la parte superior del sitio web, que redireccione al Portal Único del Estado Colombiano GOV.CO.",
+   "explicacion": "Para entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y descentralizado por servicios o territorialmente (numeral 2.1.1 de la Resolución 1519 de 2020) : Deberán acondicionar una barra superior completa con acceso al Portal Único del Estado colombiano - GOV.CO, que estará ubicada en la parte superior, la cual deberá aparecer en todas sus páginas y vistas. La barra de GOV.CO contendrá su respectivo logotipo el cual deberá dirigir al sitio web https://www.gov.co y demás referencias que sean adoptadas en el lineamiento gráfico que expida el MinTIC.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 18,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "Los sujetos obligados deberán incluir un footer o pie de página que contenga los siguientes ítems:",
+   "explicacion": "Para las entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y las descentralizadas por servicios o territorialmente deberán cumplir con la totalidad de ítems de este subnivel. \n\nPara todos los demás sujetos obligados: sólo deberá cumplirse con los literales b, c, y d correspondientes a este subnivel, pudiendo adoptar autónomamente el diseño referido en los lineamientos para acondicionamiento gráfico de sitios web a GOV.CO.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 19,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "a. Imagen del Portal Único del Estado Colombiano y el logo de la marca paísCO - Colombia.",
+   "explicacion": "Para las entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y las descentralizadas por servicios o territorialmente: su publicación es obligatoria. De igual modo, para las entidades territoriales la paleta de colores podrá variar, conforme con los colores institucionales del respectivo sujeto obligado. \n\nPara todos los demás sujetos obligados: este ítem no es obligatorio",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 20,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "b .Nombre de la entidad.",
+   "explicacion": "Como mínimo, una dirección incluyendo del departamento (si aplica) y municipio o distrito.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020,",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 21,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "c. Vínculo a redes sociales, para ser redireccionado en los botones respectivos.",
+   "explicacion": "Para las entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y las descentralizadas por servicios o territorialmente: La autoridad deberá, en virtud del artículo 16 del Decreto 2106 de 2019, y del capítulo V del Decreto Nacional 1080 de 2014, y demás normas expedidas por el Archivo General de la Nación relacionadas, disponer de lo necesario para que la emisión, recepción y gestión de comunicaciones oficiales, a través de los diversos canales electrónicos, asegure un adecuado tratamiento archivístico y estar debidamente alineado con la gestión documental electrónica y de archivo digital.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 22,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "DATOS DE CONTACTO:",
+   "explicacion": "",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 23,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "a. Teléfono conmutador.",
+   "explicacion": "Todas las líneas telefónicas deberán incluir el prefijo de país +57, y el número significativo nacional (indicativo nacional) que determine la Comisión de Regulación de Comunicaciones.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 24,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "b.Línea gratuita o línea de servicio a la ciudadanía/usuario.",
+   "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 25,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "c. Línea anticorrupción.",
+   "explicacion": "Para las entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y las descentralizadas por servicios o territorialmente: la publicación es obligatoria.\n\nPara los demás sujetos obligados: solo debe hacerse si cuenta con la misma.\n\nTodas las líneas telefónicas deberán incluir el prefijo de país +57, y el número significativo nacional (indicativo nacional) que determine la Comisión de Regulación de Comunicaciones.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 26,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "d. Canales físicos y electrónicos para atención al público.",
+   "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 27,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "e. Correo de notificaciones judiciales.",
+   "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 28,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "f. Enlace para el mapa del sitio.",
+   "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 29,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Footer o pie de página.",
+   "item": "g. Enlace para vincular a las políticas que hace referencia en el numeral 2.3 ( Términos y condiciones, Política de privacidad y tratamiento de datos personales, Política de derechos de autor y/o autorización de uso sobre los contenidos y otras políticas que correspondan conforme con la normatividad vigente).",
+   "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 30,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Requisitos mínimos de políticas y cumplimiento legal.",
+   "item": "a. Términos y condiciones.",
+   "explicacion": "Todos los sujetos obligados deberán publicar los términos y condiciones para el uso de todos sus sitios web, plataformas, aplicaciones, trámites y servicios, servicios de pasarela de pago, consulta de acceso a información pública, otros procedimientos administrativos, entre otros. Como mínimo deberán incluir lo siguiente: condiciones, alcances y límites en el uso; derechos y deberes de los usuarios; alcance y límites de la responsabilidad de los sujetos obligados; contacto para asuntos relacionados con los términos y condiciones; referencia a la política de privacidad y tratamiento de datos personales; referencia a la política de derechos de autor.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 31,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Requisitos mínimos de políticas y cumplimiento legal.",
+   "item": "b. Política de privacidad y tratamiento de datos personales.",
+   "explicacion": "Todos los sujetos obligados deberán publicar su política de privacidad y tratamiento de datos personales, conforme las disposiciones de la Ley 1581 del 2012, y demás instrucciones o disposiciones relacionadas, o aquellas que las modifiquen, adicionen o deroguen.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 32,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Requisitos mínimos de políticas y cumplimiento legal.",
+   "item": "c. Política de derechos de autor y/o autorización de uso sobre los contenidos.",
+   "explicacion": "Los sujetos obligados deberán publicar su política de derechos de autor y/o autorización de uso de los datos y contenidos, en la cual, deberán incluir el alcance y limitaciones relacionados con el uso de datos, información, contenidos y códigos fuente producidos por los sujetos obligados.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 33,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Requisitos mínimos de políticas y cumplimiento legal.",
+   "item": "d. Otras políticas que correspondan conforme con la normativa vigente.",
+   "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 34,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Requisitos mínimos en menú destacado.",
+   "item": "a. Menú de Transparencia y Acceso a la Información Publica.",
+   "explicacion": "Los sujetos obligados tendrán que habilitar como mínimo tres menús destacados en el header o encabezado del sitio web (parte superior del sitio web), y en todo caso, en la parte inferior de la barra superior (top bar, o menú de opciones principal superior), incluyendo los ítems de: 1. Transparencia y Acceso a la Información Publica, 2. Atención y Servicios la Ciudadanía y 3. Participa.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 35,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Requisitos mínimos en menú destacado.",
+   "item": "b. Menú de Atención y servicios a la Ciudadanía.",
+   "explicacion": "Los sujetos obligados tendrán que habilitar como mínimo tres menús destacados en el header o encabezado del sitio web (parte superior del sitio web), y en todo caso, en la parte inferior de la barra superior (top bar, o menú de opciones principal superior), incluyendo los ítems de: 1. Transparencia y Acceso a la Información Publica, 2. Atención y Servicios la Ciudadanía y 3. Participa.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 36,
+   "grupo": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel1": "REQUISITOS SOBRE IDENTIDAD VISUAL Y ARTICULACIÓN CON PORTAL ÚNICO DEL ESTADO COLOMBIANO GOV.CO.",
+   "nivel2": "Requisitos mínimos en menú destacado.",
+   "item": "c. Menú \"Participa\".",
+   "explicacion": "Los sujetos obligados tendrán que habilitar como mínimo tres menús destacados en el header o encabezado del sitio web (parte superior del sitio web), y en todo caso, en la parte inferior de la barra superior (top bar, o menú de opciones principal superior), incluyendo los ítems de: 1. Transparencia y Acceso a la Información Publica, 2. Atención y Servicios la Ciudadanía y 3. Participa.",
+   "normatividad": "Anexo Técnico 2 de la Resolución 1519 de 2020",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 38,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.1. Misión, visión, funciones y deberes.",
+   "item": "1.1.a. Misión y visión.",
+   "explicacion": "De acuerdo con la normativa que le aplique y las definiciones internas, incluyendo norma de creación y sus modificaciones.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 14 Art. 42, Dec. 103, Núm.. 4.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 39,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.1. Misión, visión, funciones y deberes.",
+   "item": "1.1.b. Funciones y deberes.",
+   "explicacion": "De acuerdo con la normativa que le aplique y las definiciones internas, incluyendo norma de creación y sus modificaciones.",
+   "normatividad": "Art. 9, lit a), Ley 1712 de 2014.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 40,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.2 Estructura orgánica - organigrama.",
+   "item": "1.2.a. Organigrama.",
+   "explicacion": "Incluirá, de manera legible, la descripción de la estructura orgánica, y la información de las divisiones o dependencias, extensiones y al menos un correo electrónico de los mismos, informando los nombres, apellido y cargo de la persona que sea responsable de la respectiva área.",
+   "normatividad": "Art. 9, lit a), Ley 1712 de 2014.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 41,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.3 Mapas y cartas descriptivas de los procesos.",
+   "item": "1.3.a. Mapas y cartas descriptivas de los procesos.",
+   "explicacion": "Se deberán informar los procesos y procedimientos aplicables para la toma de decisiones conforme con sus competencias. Los mapas y cartas descriptivos pueden entenderse de igual modo como mapas de caracterización o flujogramas relacionados con los procesos propios de la gestión del sujeto obligado.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 42,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias.",
+   "item": "1..4.a. Información de contacto.",
+   "explicacion": "Se cumple con el requisito publicando la misma información de datos de contacto especificada en el numeral 2. 2. 1 , numeral 4 del Anexo 2 -Footer o pie de página-:a. Teléfono conmutador, b.Línea gratuita o línea de servicio a la ciudadanía/usuario, c. Línea anticorrupción (según la naturaleza del sujeto obligado), d. Canales físicos y electrónicos para atención al público, e. Correo de notificaciones judiciales, f. Enlace para el mapa del sitio, g. Enlace para vincular a las políticas que hace referencia en el numeral 2.3 ( Términos y condiciones, Política de privacidad y tratamiento de datos personales, Política de derechos de autor y/o autorización de uso sobre los contenidos y otras políticas que correspondan conforme con la normatividad vigente).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2014",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 43,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias.",
+   "item": "1.4.b. Ubicación física (nombre de la sede si aplica).",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2015.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2014.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 44,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias.",
+   "item": "1.4.c. Dirección (incluyendo el departamento si aplica) y municipio o distrito (en caso que aplique, se deberá indicar el nombre del corregimiento).",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2016.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2014",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 45,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias.",
+   "item": "1.4.d. Horarios y días de atención al público.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2017.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2014.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 46,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias.",
+   "item": "1.4.e. Datos de contacto específicos de las áreas de contacto o dependencias (en caso de que aplique).",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2018.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2014.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 47,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.1 . Nombres y apellidos completos.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 48,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.2 . País, Departamento y Ciudad de nacimiento.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 49,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.3. Formación académica.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 50,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.4. Experiencia laboral y profesional.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 51,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.5. Empleo, cargo o actividad que desempeña.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 52,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.6. Dependencia en la que presta sus servicios en la entidad o institución.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 53,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.7. Dirección de correo electrónico institucional.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 54,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.8. Teléfono Institucional.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 55,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.9. Escala salarial según las categorías para servidores públicos y/o empleados del sector privado.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 56,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.5 Directorio de servidores públicos, empleados o contratistas.",
+   "item": "1.5.10. Objeto, valor total de los honorarios, fecha de inicio y de terminación, cuando se trate contratos de prestación de servicios.",
+   "explicacion": "De conformidad con el Artículo 2.1.1.2.1.5. -Directorio de Información de servidores públicos, empleados y \ncontratistas- del Decreto 1081 de 2015, este requisito sólo es de obligatorio cumplimiento para las entidades de naturaleza pública; no obstante, su elaboración por los sujetos obligados señalados en los literales c, d, e y f será entendido como como una buena práctica de gestión pública.",
+   "normatividad": "Decreto 1081 de 2015, Artículo 2.1.1.2.1.5.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 57,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.6. Directorio de entidades.",
+   "item": "1.6.1. Listado de entidades que integran el sector/rama/organismo, con enlace al sitio Web de cada una de éstas, en el caso de existir.",
+   "explicacion": "Para partidos o movimientos políticos: se cumple con este ítem con la publicación del enlace web de las entidades que están directamente relacionadas con estas organizaciones, a saber: Consejo Nacional Electoral, Ministerio del Interior, Registraduría, etc.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 58,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.7. Directorio de agremiaciones, asociaciones y otros grupos de interés.",
+   "item": "1.7.1. Directorio de agremiaciones, asociaciones y otros grupos de interés.",
+   "explicacion": "El sujeto obligado deberá informar los gremios o asociaciones en las que participe como asociado, para lo cual, deberá publicar el enlace al sitio web.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 59,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.8 Servicio al público, normas, formularios y protocolos de atención.",
+   "item": "1.8.1. Servicio al público, normas, formularios y protocolos de atención.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 60,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.8 Servicio al público, normas, formularios y protocolos de atención.",
+   "item": "1.8.2. Normas.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 61,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.8 Servicio al público, normas, formularios y protocolos de atención.",
+   "item": "1.8.3. Formularios.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 62,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.8 Servicio al público, normas, formularios y protocolos de atención.",
+   "item": "1.8.4. Protocolos de Atención.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 63,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.9 Procedimientos que se siguen para tomar decisiones en las diferentes áreas.",
+   "item": "1.9.1 Procedimientos que se siguen para tomar decisiones en las diferentes áreas",
+   "explicacion": "El sujeto obligado debe publicar la descripción de los procesos y procedimientos para la toma de decisiones en las diferentes áreas. Para las entidades de naturaleza pública, se entenderá como cumplido el requisito con la publicación de los actos administrativos relacionados con la toma de decisiones en la entidad.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 64,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.10. Mecanismo de presentación directa de solicitudes, quejas y reclamos a disposición del público en relación con acciones u omisiones del sujeto obligado.",
+   "item": "1.10.1. Mecanismo de presentación directa de solicitudes, quejas y reclamos.",
+   "explicacion": "Para las entidades de naturaleza pública, se entenderá como cumplido este ítem con la publicación correspondiente de su canal de PQRSD.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 65,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.11. Calendario de actividades.",
+   "item": "1.11.1. Calendario de actividades.",
+   "explicacion": "El sujeto obligado habilita un calendario de eventos y fechas clave relacionadas con sus procesos misionales.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 66,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1 .12 Información sobre decisiones que pueden afectar al público.",
+   "item": "1.12.1. Información sobre decisiones que puede afectar al público.",
+   "explicacion": "Publicar el contenido de toda decisión y/o política que haya adoptado y afecte al público, junto con sus fundamentos e interpretación.",
+   "normatividad": "Art. 42, Dec. 103, Núm.. 4.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 67,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.13 Entes y autoridades que lo vigilan.",
+   "item": "1.13.1. Nombre de la entidad.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 68,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.13 Entes y autoridades que lo vigilan.",
+   "item": "1.13.2. Dirección.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 69,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.13 Entes y autoridades que lo vigilan.",
+   "item": "1.13.3. Teléfono.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 70,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.13 Entes y autoridades que lo vigilan.",
+   "item": "1.13.4. E-mail.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 71,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.13 Entes y autoridades que lo vigilan.",
+   "item": "1.13.5. Enlace al sitio web del ente o autoridad.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 72,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.13 Entes y autoridades que lo vigilan.",
+   "item": "1.13.6. Informar el tipo de control (fiscal, social, político, regulatorio, etc.).",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 73,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.13 Entes y autoridades que lo vigilan.",
+   "item": "1.13.7. Mecanismos internos de supervisión, notificación y vigilancia pertinente del sujeto obligado.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 74,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "1. INFORMACIÓN DE LA ENTIDAD.",
+   "nivel2": "1.14. Publicación de hojas de vida.",
+   "item": "1.14.1. Publicación de hojas de vida.",
+   "explicacion": "Publicar la hoja debida de aspirantes, junto con el email para presentar comentarios por parte de la ciudadanía. Para el caso\nde las entidades de orden nacional, el requisito se cumple mediante link al Portal de Aspirantes de la Presidencia de la República, disponible en: https://aspirantes.presidencia.gov.co.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 75,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.1. Leyes.",
+   "explicacion": "De acuerdo con las leyes que le apliquen.",
+   "normatividad": "Resolución 1519 de 2020, Anexo técnico 2, Pagina 19",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 76,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.2. Decreto Único Reglamentario.",
+   "explicacion": "De acuerdo con el decreto único reglamentario (si aplica).",
+   "normatividad": "Resolución 1519 de 2020, Anexo técnico 2, Pagina 19",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 77,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.3. Normativa aplicable.",
+   "explicacion": "Decretos, resoluciones, circulares, directivas presidenciales, actos \nadministrativos, autos o fallos judiciales que le apliquen (siempre que sea obligación su publicación) y que no se encuentren compilados, y demás normativa, incluyendo para entes territoriales las ordenanzas y los acuerdos municipales o distritales.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 78,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.4. Vínculo al Diario o Gaceta Oficial.",
+   "explicacion": "Todas las entidades de los niveles nacional, territorial y\nautónomos, deberán incluir el vínculo al Diario Oficial, y para el caso de entidades territoriales, se deberá incluir un link para consultar las gacetas oficiales que les aplique. hipervínculos que direccionen a estas normas específicas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19. Artículo 119 de la Ley 489 de 1998. Artículo 379 del Decreto Ley 1333 de 1986.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 79,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.5. Políticas, lineamientos y manuales.",
+   "explicacion": "Cada sujeto obligado deberá publicar sus políticas, lineamientos y manuales, , según le aplique.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 80,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.5.a. Políticas y lineamientos sectoriales.",
+   "explicacion": "Cada sujeto obligado deberá publicar sus políticas, lineamientos y manuales, , según le aplique.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 81,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.5.b. Manuales.",
+   "explicacion": "Cada sujeto obligado deberá publicar sus políticas, lineamientos y manuales, , según le aplique.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 82,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.5.c. Otros lineamientos y manuales que le aplique.",
+   "explicacion": "Cada sujeto obligado deberá publicar sus políticas, lineamientos y manuales, , según le aplique.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 83,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.1. Normativa de la entidad o autoridad.",
+   "item": "2.1.6. Agenda Regulatoria.",
+   "explicacion": "Incluir en orden cronológico la agenda regulatoria, identificando claramente si ha sido adicionada o modificada. De conformidad con lo establecido por el Decreto 1273 de 2020, la obligación de cumplir con la Agenda Regulatoria es exclusiva para los Ministerios y Departamentos Administrativos de la Rama Ejecutiva del Poder Público.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 84,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.2. Búsqueda de normas.",
+   "item": "2.2.1. Sistema Único de Información Normativa –\nSUIN.",
+   "explicacion": "Deberá habilitarse la funcionalidad de consulta localizada y el vínculo para acceder al SUIN del Ministerio de Justicia y del Derecho.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 85,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.2. Búsqueda de normas.",
+   "item": "2.2.2. Sistema de búsquedas de normas, propio de la\nentidad.",
+   "explicacion": "El sujeto obligado podrá publicar su propio mecanismo de búsqueda de normas para las normas que expida, sancione o revise en el marco de sus competencias.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 86,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.3. Proyectos de normas para comentarios.",
+   "item": "2.3.1 Proyectos normativos.",
+   "explicacion": "Publicar los proyectos normativos para comentarios, indicando los datos de contacto y plazo para que los interesados se pronuncien.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 87,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.3. Proyectos de normas para comentarios.",
+   "item": "2.3.2. Comentarios y documento de respuesta a\ncomentarios.",
+   "explicacion": "En cada proyecto normativo se deberá publicar copia de los comentarios allegados (protegiendo la información personal o sensible según disposiciones de ley, email y demás datos de contacto, información de carácter reservado allegada); así mismo, se publicará el documento de respuesta a los comentarios. Esta obligación podrá cumplirse a través del SUCOP, una vez entre en vigencia.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 88,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "2. NORMATIVA.",
+   "nivel2": "2.3. Proyectos de normas para comentarios.",
+   "item": "2.3.3. Participación ciudadana en la expedición de\nnormas a través el SUCOP.",
+   "explicacion": "Conforme los lineamientos que expida el Departamento Nacional de Planeación, las autoridades deberán publicar sus proyectos normativos.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 89,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.1. Plan Anual de Adquisiciones.",
+   "item": "3.1.1. Plan anual de adquisiciones de la entidad, junto con las modificaciones que se realicen.",
+   "explicacion": "Plan anual de adquisiciones de la entidad, junto con las \nmodificaciones que se realicen, para lo cual, deberá informar que la versión del documento ha sido ajustada, e indicar la fecha de la actualización. La publicación se puede surtir con el link que direccione a la información en el SECOP.",
+   "normatividad": "Art. 9, Lit. e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Dec. 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 90,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.2 Publicación de la información contractual.",
+   "item": "3.2.1. Información de gestión contractual en el SECOP.",
+   "explicacion": "Los sujetos obligados que contratan con cargo a recursos públicos o recursos públicos y privados, deben publicar la información de su gestión contractual en el SECOP, conforme lo disponen la Ley 1150 del 2007, y el Decreto Único Reglamentario 1082 del 2015. En la página web del sujeto obligado debe indicarse en link para redireccionar a las búsquedas de procesos contractuales en el SECOP I y SECOP II (según aplique).",
+   "normatividad": "Art.10, Ley 1712 de 2014 Arts. 8 y 9, Dec. 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 91,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.3. Publicación de la ejecución de los contratos.",
+   "item": "Publicar el estado de la ejecución de los contratos, indicando:",
+   "explicacion": "",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 92,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.3. Publicación de la ejecución de los contratos.",
+   "item": "3.3.1. Fecha de inicio y finalización.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 93,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.3. Publicación de la ejecución de los contratos.",
+   "item": "3.3.2. Valor del contrato.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 94,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.3. Publicación de la ejecución de los contratos.",
+   "item": "3.3.3. Porcentaje de ejecución.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 95,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.3. Publicación de la ejecución de los contratos.",
+   "item": "3.3.4. Recursos totales desembolsados o pagados.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 96,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.3. Publicación de la ejecución de los contratos.",
+   "item": "3.3.5. Recursos pendientes de ejecutar.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 97,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.3. Publicación de la ejecución de los contratos.",
+   "item": "3.3.6. Cantidad de otrosíes y adiciones realizadas (y sus montos).",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 98,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.4 Manual de contratación, adquisición y/o\ncompras.",
+   "item": "3.4.1. Manual de contratación, que contiene los procedimientos, lineamientos y políticas en materia de adquisición y compras.",
+   "explicacion": "Art.11, Lit g), Ley 1712 de 2014 Art .9, Dec. 103 de 2015.",
+   "normatividad": "Art.11, Lit g), Ley 1712 de 2014 Art .9, Dec. 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 99,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "3. CONTRATACIÓN.",
+   "nivel2": "3.5 Formatos o modelos de contratos o pliegos tipo.",
+   "item": "3.5.1. Publicar los formatos o modelos de contrato y pliegos tipo, en caso de que aplique.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 100,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.1. Presupuesto general de ingresos, gastos e inversión.",
+   "item": "4.1.1. Publicar el presupuesto general de ingresos, gastos e inversión de cada año fiscal, incluyendo sus modificaciones.",
+   "explicacion": "Para el efecto, deberá indicar que la versión del documento ha sido ajustada e indicar la fecha de la actualización. Se deberá incluir un anexo que indique las rentas o ingresos, tasas y frecuencias de cobro en formato abierto para consulta de los interesados.",
+   "normatividad": "Art. 9, lit b), Ley 1712 de 2014, Arts.74 y 77 Ley 1474 de 2011.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 101,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.2. Ejecución presupuestal.",
+   "item": "4.2.1.Publicar la información de la ejecución presupuestal aprobada y ejecutada de ingresos y gastos anuales.",
+   "explicacion": "Publicar la información de la ejecución presupuestal aprobada y ejecutada de ingresos y gastos anuales.",
+   "normatividad": "Art. 9, lit b), Ley 1712 de 2014, Arts.74 y 77 Ley 1474 de 2011.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 102,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "PLAN DE ACCIÓN:",
+   "explicacion": "",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 103,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "4.3.1. Objetivos.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.\n\nLos sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+   "normatividad": "Art. 9, lit e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Decreto 612 del 2019",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 104,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "4.3.2. Estrategias.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.\n\nLos sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+   "normatividad": "Art. 9, lit e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Decreto 612 del 2020",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 105,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "4.3.3. Proyectos.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.\n\nLos sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+   "normatividad": "Art. 9, lit e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Decreto 612 del 2021.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 106,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "4.3.4. Metas.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.\n\nLos sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+   "normatividad": "Art. 9, lit e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Decreto 612 del 2022.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 107,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "4.3.5. Responsables.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.\n\nLos sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+   "normatividad": "Art. 9, lit e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Decreto 612 del 2023.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 108,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "4.3.6. Planes generales de compras.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.\n\nLos sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+   "normatividad": "Art. 9, lit e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Decreto 612 del 2024",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 109,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "4.3.7. Distribución presupuestal de proyectos de inversión junto a los indicadores de gestión.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.\n\nLos sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+   "normatividad": "Art. 9, lit e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Decreto 612 del 2025",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 110,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.3. Plan de Acción.",
+   "item": "4.3.8. Presupuesto desagregado con modificaciones.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.\n\nLos sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+   "normatividad": "Art. 9, lit e), Ley 1712 de 2014 Art. 74, Ley 1474 de 2011 Decreto 612 del 2026.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 111,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.4. Proyectos de Inversión.",
+   "item": "4.4.1. Publicar cada proyecto de inversión, según la fecha de inscripción en el respectivo Banco de Programas y Proyectos de Inversión.",
+   "explicacion": "Publicar cada proyecto de inversión, según la fecha de inscripción en el respectivo Banco de Programas y Proyectos de Inversión, conforme lo dispone el artículo 77 de la Ley 1474 del 2011, así como cada tres (3) meses el avance de ejecución de dichos proyectos. Para el caso de las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.",
+   "normatividad": "Articulo 77 y parágrafo de La ley 1474 de 2011",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 112,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.5. Informes de empalme.",
+   "item": "4.5.1. Informe de empalme del representante legal y los ordenadores del gasto, cuando haya un cambio del o de los mismos.",
+   "explicacion": "Publicar el informe de empalme del representante legal, y los ordenadores del gasto, cuando se den cambios de los mismos.",
+   "normatividad": "Ley 951 de 2005, Res. 5674 de 2005 y Circular 11 de 2006 de la Contraloría General de la República",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 113,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.6. Información pública y/o relevante.",
+   "item": "4.6.1. Divulgar los informes o comunicados de información relevante.",
+   "explicacion": "Divulgar los informes o comunicados de información relevante que publiquen ante la Superintendencia Financiera, y/o la Superintendencia de Sociedades, cuando sea obligación de las empresas industriales y comerciales del Estado, o Sociedad de Economía Mixta.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, pág. 19.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 114,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.7 Informes de gestión, evaluación y auditoría.",
+   "item": "4.7.1. Informe de Gestión.",
+   "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, el informe de gestión a que hace referencia el artículo 74 de la Ley 1474 del 2011. \nConforme lo dispone el parágrafo del artículo 74 de \nla Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, pág. 20.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 115,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.7 Informes de gestión, evaluación y auditoría.",
+   "item": "4.7.2. Informe de rendición de cuentas ante la Contraloría General de la República, o a los organismos de Contraloría o Control territoriales.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2,",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, pág. 20.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 116,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.7 Informes de gestión, evaluación y auditoría.",
+   "item": "4.7.3. Informe de rendición de cuentas a la ciudadanía.",
+   "explicacion": "Publicar los informes de rendición de cuenta sobre resultados, avances de la gestión y garantía de derecho de rendición de cuentas, incluyendo un informe de respuesta a las solicitudes o inquietudes presentadas por los interesados (antes, durante y después del ejercicio de la rendición). En esta sección se debe incluir los informes de rendición de cuentas relacionados con la implementación del proceso de paz, y los demás que apliquen conforme con la normativa vigente, directrices presidenciales o conforme con los lineamientos de la Política de Gobierno Digital.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, pág. 20.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 117,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.7 Informes de gestión, evaluación y auditoría.",
+   "item": "4.7.4. Informes a organismos de inspección, vigilancia y control (si le aplica).",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, pág. 20",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 118,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.7 Informes de gestión, evaluación y auditoría.",
+   "item": "4.7.5. Planes de mejoramiento:",
+   "explicacion": "Publicar los Planes de Mejoramiento vigentes exigidos por los entes de control o auditoría externos o internos. De acuerdo con los hallazgos realizados por el respectivo organismo de control, los planes de mejoramiento se deben publicar de acuerdo con la periodicidad establecida por éste. Así mismo, el sujeto obligado debe contar con un enlace al organismo de control donde se encuentren los informes que éste ha elaborado en relación con el sujeto obligado. De igual forma debe publicar los planes de mejoramiento derivados de los ejercicios de rendición de cuentas ante la ciudadanía y grupos de valor.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2,",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 119,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.7 Informes de gestión, evaluación y auditoría.",
+   "item": "4.7.5.a. Publicar los Planes de Mejoramiento vigentes exigidos por los entes de control o auditoría externos o internos.",
+   "explicacion": "De acuerdo con los hallazgos realizados por el respectivo organismo de control, los planes de mejoramiento se deben publicar de acuerdo con la periodicidad establecida por éste.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, pág. 21.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 120,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.7 Informes de gestión, evaluación y auditoría.",
+   "item": "4.7.5.b. Enlace al organismo de control donde se encuentren los informes que éste ha elaborado en relación con el sujeto obligado.",
+   "explicacion": "Enlace al organismo de control donde se encuentren los informes que éste ha elaborado en relación con el sujeto obligado.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, pág. 21.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 121,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.7 Informes de gestión, evaluación y auditoría.",
+   "item": "4.7.5.c. Planes de mejoramiento derivados de los ejercicios de rendición de cuentas ante la ciudadanía y grupos de valor.",
+   "explicacion": "Planes de mejoramiento derivados de los ejercicios de rendición de cuentas ante la ciudadanía y grupos de valor.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, pág. 21.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 122,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.8 Informes de la Oficina de Control Interno.",
+   "item": "4.8.1. Informe pormenorizado.",
+   "explicacion": "Publicar el informe relacionado con el mecanismo de seguimiento al cumplimiento de las orientaciones y obligaciones contenidas en el Plan Anticorrupción y de Atención al Ciudadano, según los lineamientos del Departamento Administrativo de la Función Pública y demás autoridades competentes, al que hace referencia el artículo 9 de la Ley 1474 del 2011, y el artículo 5 del decreto reglamentario 2641 del 2012.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 123,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.8 Informes de la Oficina de Control Interno.",
+   "item": "4.8.2. Otros informes y/o consultas a bases de datos o sistemas de información, conforme le aplique.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 124,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.9 Informe sobre Defensa Pública y Prevención del Daño Antijurídico.",
+   "item": "4.9.1. Informe sobre Defensa Pública y Prevención del \nDaño Antijurídico.",
+   "explicacion": "El requisito se entenderá como cumplido con el \nredireccionamiento al sistema eKOGUI de la Agencia de \nDefensa Jurídica de la Nación, y sólo será de obligatorio cumplimiento para las entidades de naturaleza pública.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 125,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "4.10.1. Informe, en materia de seguimiento sobre las quejas y reclamos.",
+   "explicacion": "Conforme con lo establecido en el artículo 54 de la Ley 190 de 1995 y el decreto reglamentario 2641 del 2012.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 126,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "4.10.2. Informe sobre solicitudes de acceso a la \ninformación, el cual debe contener lo siguiente:",
+   "explicacion": "",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 127,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "4.10.2.a. Sección en el informe reportando la cantidad de solicitudes recibidas.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 128,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "Si en la pregunta anterior contesto la opción “SI”, responda esta pregunta seleccionando SIEMPRE la opción NO APLICA (N/A), y en el campo “JUSTIFICACIÓN LEGAL” proporcione la CANTIDAD A MODO DE VALOR NUMÉRICO de solicitudes de acceso a la información que fueron recibidas durante la última vigencia; de igual modo, en caso de no contar con la cifra señalada en el informe, seleccione la opción NO APLICA (N/A) y escriba N/A en el campo de Justificación Legal.",
+   "explicacion": "Registre en el campo \"justificación\" el NÚMERO de solicitudes recibidas, el cual deberá corresponder con lo consignado en el informe publicado.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 129,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "4.10.2.c. Sección en el informe reportando la cantidad de solicitudes que fueron trasladadas a otra entidad.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 130,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "Si en la pregunta anterior contesto la opción “SI”, responda esta pregunta seleccionando SIEMPRE la opción NO APLICA (N/A), y en el campo “JUSTIFICACIÓN LEGAL” proporcione la CANTIDAD A MODO DE VALOR NUMÉRICO de solicitudes de acceso a la información que fueron trasladadas a otra entidad durante la última vigencia; de igual modo, en caso de no contar con la cifra señalada en el informe, seleccione la opción NO APLICA (N/A) y escriba N/A en el campo de Justificación Legal.",
+   "explicacion": "Registre en el campo \"justificación\" el NÚMERO de solicitudes que fueron trasladadas a otra entidad, el cual deberá corresponder con lo consignado en el informe publicado.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 131,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "4.10.2.e. Sección en el informe reportando el tiempo de respuesta a cada solicitud.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 132,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "4.10.2.g. número de solicitudes en las que se negó el acceso a la información.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 133,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "4. PLANEACIÓN.\n\"Presupuesto e Informes\".",
+   "nivel2": "4.10 - Informes trimestrales sobre acceso a información, quejas y reclamos.",
+   "item": "Si en la pregunta anterior contesto la opción “SI”, responda esta pregunta seleccionando SIEMPRE la opción NO APLICA (N/A), y en el campo “JUSTIFICACIÓN LEGAL” proporcione la CANTIDAD A MODO DE VALOR NUMÉRICO de solicitudes de acceso a la información que fueron negadas para acceder a la información solicitada durante la última vigencia; de igual modo, en caso de no contar con la cifra señalada en el informe, seleccione la opción NO APLICA (N/A) y escriba N/A en el campo de Justificación Legal.",
+   "explicacion": "Registre en el campo \"justificación\" el NÚMERO de solicitudes en las que se negó el acceso a la información, el cual deberá corresponder con lo consignado en el informe publicado.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 134,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "5. TRÁMITES.",
+   "nivel2": "5.1. Trámites.",
+   "item": "TRÁMITES:",
+   "explicacion": "Esta sección vinculará con el menú de trámites, conforme con la estandarización que se indica en el lineamiento general y las guías de sede electrónica, trámites, otros procedimientos administrativos y consultas de acceso a información pública para integrarlas al Portal Único del Estado colombiano, expedidas por MinTIC. De igual forma, de conformidad con lo señalado por el MinTIC (miércoles 16 de mayo de 2021), se precisó que el nivel de trámites hace referencia a la información que reposa en el Sistema Único de Trámites -SUIT-, con lo cual se entenderá como cumplido este nivel con la publicación correspondiente del enlace del SUIT en el sitio web del sujeto obligado de naturaleza pública.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2,",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 135,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "5. TRÁMITES.",
+   "nivel2": "5.1. Trámites.",
+   "item": "5.1.1 .Normatividad que sustenta el trámite.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 136,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "5. TRÁMITES.",
+   "nivel2": "5.1. Trámites.",
+   "item": "5.1.2. Procesos.",
+   "explicacion": "Procesos para la realización del trámite.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 137,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "5. TRÁMITES.",
+   "nivel2": "5.1. Trámites.",
+   "item": "5.1.3.Costos asociados.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 138,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "5. TRÁMITES.",
+   "nivel2": "5.1. Trámites.",
+   "item": "5.1.4. Formatos y/o formularios asociados.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 139,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.1. Descripción General del Menú Participa.",
+   "explicacion": "Para cumplir con el requisito, el sujeto obligado deberá informar: a. ¿De qué se trata el Menú Participa? b. ¿Cuáles son las secciones que lo integran? c. ¿Cómo se puede participar?. Se entenderá como cumplido sólo si se publica la información completa de estos tres elementos.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 140,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.2. Publicar la información sobre los mecanismos, espacios o instancias del Menú Participa.",
+   "explicacion": "Publicar la información sobre los mecanismos, espacios o instancias del Menú Participa establecidos por la normatividad específica que obliga a la entidad y/o los que ofrece para la promoción de la participación en la descripción general del Menú Participa.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 141,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.3. Publicar la Estrategia de participación ciudadana.",
+   "explicacion": "Publicar la Estrategia de participación ciudadana o generar \nun enlace (hipervínculo) que redireccione a este documento, \nen el marco de las publicaciones del plan institucional que \nse disponen en el Menú de Transparencia y Acceso a la \nInformación para consulta general.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 142,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.4. Publicar la Estrategia anual de rendición de cuentas.",
+   "explicacion": "Publicar la Estrategia anual de rendición de cuentas o generar un enlace (hipervínculo) que redireccione a este documento, en el marco de las publicaciones del plan institucional que se disponen en el Menú de Transparencia y Acceso a la Información para consulta general.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 143,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.5. Publicar el Plan Anticorrupción y de Atención al Ciudadano (PAAC).",
+   "explicacion": "Publicar el Plan Anticorrupción y de Atención al Ciudadano (PAAC) o generar un enlace (hipervínculo) que redireccione a este documento, en el marco de las publicaciones del plan institucional que se disponen en el Menú de Transparencia y - DOCUMENTO OFICIAL - 1 8 Acceso a la Información para consulta general.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 144,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.6. Publicación de informes de rendición de cuentas generales.",
+   "explicacion": "Crear un enlace o hipervínculo que redireccione a la sección de Transparencia y Acceso a la Información en la cual estén publicados los informes de rendición de cuentas generales y, si le aplica, los informes de rendición de cuentas sobre la implementación del Plan Marco de Implementación (PMI) del Acuerdo de paz. Para conocer las responsabilidades de la entidad en este tema, consultar el micrositio del sistema de rendición de cuentas de la implementación del acuerdo de paz (SIRCAP) en: https://www.funcionpublica.gov.co/sircap",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 145,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.7. Convocatorias para la participación de la ciudadanía y grupos de valor en los espacios, instancias o acciones que ofrece la entidad.",
+   "explicacion": "Convocar a la participación de la ciudadanía y grupos de valor en los espacios, instancias o acciones que ofrece la entidad en el Menú Participa, es importante que su difusión se enfoque en la población objetivo que fue definida en la caracterización de usuarios. La convocatoria debe detallar el tema, objetivo, antecedentes, requisitos o reglas de participación, metodología, resultados esperados, plazos y etapas, etc.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 146,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.8.Calendario de la estrategia anual de participación ciudadana.",
+   "explicacion": "Incluir el calendario con las acciones y plazos propuestas en la estrategia anual de participación ciudadana.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 147,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.9. Formulario de inscripción ciudadana a procesos de participación, instancias o acciones que ofrece la entidad.",
+   "explicacion": "Disponer de un formulario de inscripción ciudadana a procesos de participación, instancias o acciones que ofrece la entidad en el Menú Participa. Para mayor información sobre el formulario, consulte el documento del Departamento Administrativo de la Función Pública \"Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública. Versión 1\", página 19, disponible en: \n\nhttps://www.funcionpublica.gov.co/documents/418548/34150781/Lineamientos+para+publicar+informaci%C3%B3n+en+el+Men%C3%BA+Participa+sobre+participaci%C3%B3n+ciudadana+en+la+gesti%C3%B3n+p%C3%BAblica+-+Versi%C3%B3n+1+-+Mayo+2021.pdf/38857fc0-f1aa-cfd6-d21d-6ddb9724da7f?t=1621028045675&download=true",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 148,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6. 1 Descripción General.",
+   "item": "6.1.10. Canal de interacción deliberatoria para la participación ciudadana.",
+   "explicacion": "Disponer del canal que los participantes usaran para interactuar fácilmente en las deliberaciones que se convoquen y llegar a los acuerdos sobre los temas objeto de la participación. Puede ser chat, foro virtual, blogs, encuestas, mensajes de texto, programas radiales, entre otros.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 149,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.1. Diagnóstico e identificación de problemas:",
+   "explicacion": "Vincular a ciudadanos e interesados en el proceso de recolección de información y análisis de la misma para identificar y explicar los problemas que les afectan.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 150,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.1.a. Publicación temas de interés.",
+   "explicacion": "Publicar los temas de interés sobre los cuales se adelantará el diagnóstico de necesidades e identificación de problemas con la participación de los ciudadanos y grupos de valor.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 151,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.1.b. Caja de herramientas.",
+   "explicacion": "Conjunto de estrategias y recursos que utiliza la entidad para apoyar pedagógicamente la apropiación de un tema particular.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 152,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.1.c. Herramienta de evaluación.",
+   "explicacion": "Facilitar a los participantes una herramienta de evaluación de las actividades de diagnóstico de necesidades e identificación de problemas que haya adelantado la entidad.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 153,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.1.d. Divulgar resultados.",
+   "explicacion": "Divulgar entre los participantes los resultados de los \nejercicios de diagnóstico de necesidades e identificación de \nproblemas desarrollados.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 154,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.2. Planeación y presupuesto participativo :",
+   "explicacion": "Planeación Participativa: Mecanismo mediante el cual la ciudadanía e interesados deciden el rumbo de las políticas, planes, programas, proyectos o trámites.\n\nPresupuesto Participativo: Proceso por medio del cual la ciudadanía con el gobierno, asignan un porcentaje de los recursos a programas y proyectos.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 155,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.2.a. Porcentaje del presupuesto para el proceso.",
+   "explicacion": "Publicar información sobre el porcentaje del presupuesto institucional definido para el proceso de participación, con base en el cual los ciudadanos y grupos de valor podrán priorizar los proyectos que respondan a sus necesidades.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 156,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.2.b. Habilitar canales de interacción y caja de herramientas.",
+   "explicacion": "Habilitar los canales virtuales para la interacción con la ciudadanía en las etapas definidas para la planeación o para el presupuesto participativo cuando aplique.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 157,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.2.c. Publicar la información sobre las decisiones.",
+   "explicacion": "Habilitar los canales virtuales para la interacción con la ciudadanía en las etapas definidas para la planeación o para el presupuesto participativo cuando aplique.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 158,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.2.d. Visibilizar avances de decisiones y su estado (semáforo).",
+   "explicacion": "Visibilizar reportes de avance de las decisiones tomadas e indicar el estado de estas (semáforo) y las frecuencias de participación.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 159,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.3. Consulta Ciudadana:",
+   "explicacion": "Mecanismo que busca conocer las opiniones, sugerencias o propuestas, comentarios y aportes de los usuarios, ciudadanos y grupos de interés con respecto a los proyectos, normas, políticas, programas o trámites adelantados por la entidad antes de la formulación de los mismos o la toma de decisiones.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 160,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.3.a. Tema de consulta (normas, políticas, programas o proyectos) y resumen del mismo.",
+   "explicacion": "Identificar y establecer qué asunto se someterá a consulta: normas, políticas, programas, proyectos o trámites, también, definir los objetivos, antecedentes, requisitos normados para que la ciudadanía y grupos de valor participen, así como el resultado esperado.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 161,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.3.b. Habilitar canales de consulta y caja de herramientas.",
+   "explicacion": "Habilitar los canales virtuales definidos para la consulta, y adicionalmente crear una caja de herramientas con los elementos establecidos en el documento del Departamento Administrativo de la Función Pública \"Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública. Versión 1\", disponible en: \n\nhttps://www.funcionpublica.gov.co/documents/418548/34150781/Lineamientos+para+publicar+informaci%C3%B3n+en+el+Men%C3%BA+Participa+sobre+participaci%C3%B3n+ciudadana+en+la+gesti%C3%B3n+p%C3%BAblica+-+Versi%C3%B3n+1+-+Mayo+2021.pdf/38857fc0-f1aa-cfd6-d21d-6ddb9724da7f?t=1621028045675&download=true",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 162,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.3.c. Publicar observaciones y comentarios y las respuestas de proyectos normativos.",
+   "explicacion": "Publicar las observaciones y comentarios de los ciudadanos y grupos de interés, así como las respuestas que la entidad les dio.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 163,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.3.d. Crear un enlace que redireccione a la Sección Normativa.",
+   "explicacion": "Crear un enlace o hipervínculo que redireccione a la Sección Normativa, donde se encuentra disponible el informe global de observaciones.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 164,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.3.e. Facilitar herramienta de evaluación.",
+   "explicacion": "Facilitar a los participantes una herramienta de evaluación de las actividades para facilitar la participación y consulta ciudadana a las normas, políticas o programas o proyectos adelantadas o sobre trámites.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 165,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.4.Colaboración e innovación:",
+   "explicacion": "La búsqueda de soluciones a problemáticas públicas con el conocimiento de los grupos de valor y así resolver los desafíos de las entidades y  abrir canales para recibir ideas y propuestas de solución.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 166,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.4.a. Disponer un espacio para consulta  sobre temas o problemáticas.",
+   "explicacion": "Disponer de un espacio para la consulta sobre temas o problemáticas para la ciudadana y los grupos de interés a través de canales electrónicos, esto con el fin de obtener aportes e ideas de ajuste, para ello puede usar herramientas interactivas que permitan priorizar y expresar preferencias. Algunos ejemplos de estas herramientas de priorización son: mapas de retos, cruce de variables, sombrillas de oportunidades, arañas, dianas o mapas de posicionamiento, entre otros. Al respecto, se puede consultar las publicaciones sobre innovación del Ministerio de las Tecnologías de la Información y las Comunicaciones (MinTIC)",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 167,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.4.b. Convocatoria con el reto.",
+   "explicacion": "Convocatoria para participar de un reto de cocreación, con una pregunta tipo: ¿cómo se imagina (…) en la entidad?",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 168,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.4.c. Informar retos vigentes y reporte con la frecuencia de votaciones de soluciones en cada reto.",
+   "explicacion": "Publicar los retos vigentes para el proceso de colaboración e innovación abierta, su estado de avance de acuerdo con el cronograma previsto y el plazo de vencimiento. Cada reto deberá contener un resumen del tema, sus plazos y las propuestas recibidas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 169,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.4.d. Publicar la propuesta elegida y los criterios para su selección.",
+   "explicacion": "Publicar la propuesta elegida y los criterios de análisis utilizados para su selección desde el punto de vista de pertinencia, viabilidad técnica y costos.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 170,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.4.e.Divulgar el plan de trabajo para implementar la solución diseñada.",
+   "explicacion": "Divulgar el plan de trabajo para implementar la solución diseñada frente al reto.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 171,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.4.f.Publicar la información sobre los desarrollos o prototipos.",
+   "explicacion": "Publicar la información sobre los desarrollos o prototipos de solución diseñados con base en el proceso de colaboración e innovación abierta con la participación ciudadana y de los grupos de interés.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 172,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5. Rendición de cuentas:",
+   "explicacion": "Obligación de las autoridades de la administración pública para informar y explicar y dar a conocer los resultados de su gestión a los ciudadanos.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 173,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5.a. Habilitar un espacio para que la ciudadanía postule temáticas.",
+   "explicacion": "Habilitar un espacio para que la ciudadanía postule temáticas para la rendición de cuentas y que incluya los requisitos para su presentación.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 174,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5.b. Estrategia de comunicación para la rendición de cuentas.",
+   "explicacion": "Revisar que la estrategia de rendición de cuentas esté registrada en el Plan Anticorrupción y de Atención al Ciudadano (PAAC) y que incluya la divulgación de información continua, el desarrollo constante de espacios de interacción y la publicación de compromisos.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 175,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5.c. Calendario eventos de diálogo.",
+   "explicacion": "Identificar las actividades de información, diálogo y responsabilidad de la estrategia de rendición de cuentas, así como los requisitos para participar y el resultado esperado con la participación de la ciudadanía. Es importante que los eventos de diálogo articulen las actividades de rendición de cuentas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 176,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5.d. Articular a los informes de rendición de cuentas en el Menú transparencia.",
+   "explicacion": "Verificar la publicación en el Menú de Transparencia y Acceso a la información de los informes de rendición de cuentas sobre avances, resultados de la gestión y garantía de derechos, así como los informes de rendición de cuentas sobre la implementación del acuerdo de paz, según la programación para su publicación.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 177,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5.e.Habilitar un canal para eventos de diálogo Articulación con sistema nacional de rendición de cuentas.",
+   "explicacion": "Definir las herramientas o canales electrónicos para los espacios o mecanismos que propone la entidad para implementar las acciones de información, diálogo y responsabilidad en la estrategia de rendición de cuentas como: conferencias masivas por plataformas electrónicas (Teams, Zoom, Meet, etc.), transmisiones por redes sociales (YouTube, Facebook, Instagram, etc.) o vía streaming, desarrollo de pautas o programas radiales (en coordinación con emisoras comunitarias), video-llamadas con grupos focalizados, etc. Estos pueden ser complementarios a eventos presenciales.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 178,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5.f. Preguntas y respuestas de eventos de diálogo.",
+   "explicacion": "Publicar las preguntas presentadas por los ciudadanos y grupos de interés en los eventos de diálogo para la rendición de cuentas y las respetivas respuestas dadas por la entidad a dichos los interrogantes.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 179,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5.g. Memorias de cada evento.",
+   "explicacion": "Publicar las memorias de cada evento de diálogo para la rendición de cuentas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 180,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.5.h. Acciones de mejora incorporadas.",
+   "explicacion": "Publicar reportes del estado de avance de todas las acciones de diálogo y responsabilidad para la rendición de cuentas de acuerdo con el cronograma previsto (semáforo), los temas tratados, número de asistentes, conclusiones y las acciones de mejora como resultado de la rendición de cuentas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 181,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.6. Control social:",
+   "explicacion": "Mecanismo de vigilancia de la gestión pública y sus resultados de acuerdo con lo establecido en la regulación aplicable y correcta utilización de los recursos y bienes públicos.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 182,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.6.a. Informar las modalidades de control social.",
+   "explicacion": "Publicar la información sobre las modalidades de control social que ofrece la entidad para la vigilancia de la gestión pública.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 183,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.6.b. Convocar  cuando inicie ejecución de programa, proyecto o  contratos.",
+   "explicacion": "Publicar la convocatoria a la ciudadanía cuando la entidad inicie la ejecución de un programa, proyecto, contrato o de la prestación de un servicio público para que la ciudadanía esté enterada y ejerza la vigilancia correspondiente.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 184,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.6.c. Resumen del tema objeto de vigilancia",
+   "explicacion": "Publicar información resumen de cada tema de interés ciudadano, para lo cual, debe indicar el tema objeto de vigilancia ciudadana, así como el avance de los indicadores de gestión asociados, los recursos asignados, la metodología de diálogo definida para interactuar con el grupo de control social, los plazos, las observaciones recibidas y las respuestas dadas por la entidad. Para esto, la entidad podrá diseñar su propio tablero de control.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 185,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.6.d. Informes del interventor o el supervisor",
+   "explicacion": "Si algún plan, programa o proyecto de la entidad es objeto de vigilancia por parte de una veeduría ciudadana, deberá publicar como mínimo los dos informes que el interventor o el supervisor hace frente al grupo de auditoría ciudadana, según lo establecido en el artículo 72 de la Ley 1757 de 2015.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 186,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.6.e. Facilitar herramienta de evaluación de las actividades.",
+   "explicacion": "Facilitar a los participantes una herramienta de evaluación de las actividades y espacios de control social adelantadas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 187,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.6.f. Publicar el registro de las observaciones de las veedurías.",
+   "explicacion": "Publicar información, datos e indicadores que sirvan de insumos para el análisis de resultados y avances de la gestión en las acciones de participación para el control social y las veedurías ciudadanas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 188,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "6. CONTENIDO DEL MENÚ PARTICIPA.",
+   "nivel2": "6.2 Estructura y Secciones del menú \"PARTICIPA\".",
+   "item": "6.2.6.g. Acciones de mejora.",
+   "explicacion": "Publicar la información sobre las acciones de mejora y correctivos incorporados en la planeación institucional que se tomaron con base en las acciones de control social y veedurías ciudadanas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública Versión 1.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 189,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1 Instrumentos de gestión de la información:",
+   "explicacion": "Los sujetos obligados deberán publicar la información que le corresponda, así: 7.1 Instrumentos de gestión de la información\nPublicar la información sobre gestión documental. Incluyendo lo siguiente: registros de activos de información, índice de información clasificada y reservada, esquema de publicación de la información, tipos de datos o información clasificada o reservada (indicando fecha de levantamiento de la reserva), programa de gestión documental, tablas de retención documental. \n\nLa anterior información deberá publicarse conforme con los lineamientos del Archivo General de la Nación. Si el sujeto obligado cuenta con la información registrada en el portal de\ndatos.gov.co, deberá vincularse la información allí publicada.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2020",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 190,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.1 Registros de activos de información:",
+   "explicacion": "De conformidad a lo establecido en el Decreto 103 de 2015, el Registro de Activos de Información y el índice de Información Clasificada y reservada deben estar publicados en el portal de datos abiertos del Estado Colombiano www.datos.gov.co",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 191,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.1.a. Nombre o título de la categoría de la información.",
+   "explicacion": "Término con que se da a conocer el nombre o asunto de la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 192,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.1.b. Descripción del contenido la categoría de información.",
+   "explicacion": "Define brevemente de qué se trata la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 193,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.1.c. Idioma.",
+   "explicacion": "Establece el Idioma, lengua o dialecto en que se encuentra la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 194,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.1.d. Medio de conservación y/o soporte.",
+   "explicacion": "Establece el soporte en el que se encuentra la información: documento físico, medio electrónico o por algún otro tipo de formato audio visual entre otros (físico, análogo o digital- electrónico).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 195,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.1.e. Formato.",
+   "explicacion": "Identifica la forma, tamaño o modo en la que se presenta la información o se permite su visualización o consulta, tales como: hoja de cálculo, imagen, audio, video, documento de texto, etc.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 196,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.1.f. Información publicada o disponible.",
+   "explicacion": "Indica si la información está publicada o disponible para ser solicitada, señalando dónde está publicada y/o dónde se puede consultar o solicitar.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 197,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.1.g. Enlace a www.datos.gov.co.",
+   "explicacion": "Parágrafo del artículo 2.1.1.2.1.4 del Decreto 1081 del 2020: El Portal de Datos Abiertos del Estado Colombiano, como mecanismo de difusión, no cuenta con la naturaleza jurídica de ser un archivo digital, por lo que las entidades y sujetos obligados continúan con sus obligaciones en materia de tablas de retención documental y la gestión documental o de archivo que les aplique conforme con la normativa vigente.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 198,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2 Índice de información clasificada y reservada:",
+   "explicacion": "De conformidad a lo establecido en el Decreto 103 de 2015, el Registro de Activos de Información y el índice de Información Clasificada y reservada deben estar publicados en el portal de datos abiertos del Estado Colombiano www.datos.gov.co.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2022",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 199,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.a. Nombre o título de la categoría de información.",
+   "explicacion": "Término con que se da a conocer el nombre o asunto de la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 200,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.b. Nombre o título de la información.",
+   "explicacion": "Palabra o frase con que se da a conocer el nombre o asunto de la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 201,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.c. Idioma.",
+   "explicacion": "Establece el Idioma, lengua o dialecto en que se encuentra la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 202,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.d. Medio de conservación y/o soporte.",
+   "explicacion": "Establece el soporte en el que se encuentra la información: documento físico, medio electrónico o por algún otro tipo de formato audio visual entre otros, (físico- análogo o digital- electrónico).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 203,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.e. Fecha de generación de la información.",
+   "explicacion": "Identifica el momento de la creación de la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 204,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.f. Nombre del responsable de la producción de la información.",
+   "explicacion": "Corresponde al nombre del área, dependencia o unidad interna, o al nombre de la entidad externa que creó la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 205,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.g. Nombre del responsable de la información.",
+   "explicacion": "Corresponde al nombre del área, dependencia o unidad encargada de la custodia o control de la información para efectos de permitir su acceso.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 206,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.h. Objetivo legítimo de la excepción.",
+   "explicacion": "La identificación de la excepción que, dentro de las previstas en los artículos 18 y 19 de la Ley 1712 de 2014, cobija la calificación de información reservada o clasificada.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 207,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.i. Fundamento constitucional o legal.",
+   "explicacion": "El fundamento constitucional o legal que justifican la clasificación o la reserva, señalando expresamente la norma, artículo, inciso o párrafo que la ampara.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 208,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.j. Fundamento jurídico de la excepción.",
+   "explicacion": "El fundamento constitucional o legal que justifican la clasificación o la reserva, señalando expresamente la norma, artículo, inciso o párrafo que la ampara.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 209,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.k. Excepción total o parcial.",
+   "explicacion": "Según sea integral o parcial la calificación, las partes o secciones clasificadas o reservadas.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 210,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.l. Plazo de la clasificación o reserva.",
+   "explicacion": "El tiempo que cobija la clasificación o reserva.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 211,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.2.m. Enlace a www.datos.gov.co.",
+   "explicacion": "Parágrafo del artículo 2.1.1.2.1.4 del Decreto 1081 del 2020: El Portal de Datos Abiertos del Estado Colombiano, como mecanismo de difusión, no cuenta con la naturaleza jurídica de ser un archivo digital, por lo que las entidades y sujetos obligados continúan con sus obligaciones en materia de tablas de retención documental y la gestión documental o de archivo que les aplique conforme con la normativa vigente.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2021, artículo 2.1.1.2.1.4 del Decreto 1081 del 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 212,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3. Esquema de publicación de la información:",
+   "explicacion": "",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 213,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3.a. Nombre o título de la información.",
+   "explicacion": "Palabra o frase con que se da a conocer el nombre o asunto de la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 214,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3. b. Idioma.",
+   "explicacion": "Establece el Idioma, lengua o dialecto en que se encuentra la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 215,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3.c. Medio de conservación y/o soporte",
+   "explicacion": "Establece el soporte en el que se encuentra la información: documento físico, medio electrónico o por algún otro tipo de formato audio visual entre otros, (físico- análogo o digital- electrónico).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 216,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3.d. Formato",
+   "explicacion": "Identifica la forma, tamaño o modo en la que se presenta la información o se permite su visualización o consulta, tales como: hoja de cálculo, imagen, audio, video, documento de texto, etc.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 217,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3.e. Fecha de generación de la información",
+   "explicacion": "Identifica el momento de la creación de la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 218,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3.f. Frecuencia de actualización.",
+   "explicacion": "Identifica la periodicidad o el segmento de tiempo en el que se debe actualizar la información, de acuerdo a su naturaleza y a la normativa aplicable.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 219,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3.g. Lugar de consulta.",
+   "explicacion": "Indica el lugar donde se encuentra publicado o puede ser consultado el documento, tales como lugar en el sitio web y otro medio en donde se puede descargar y/o acceder a la información cuyo contenido se describe.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 220,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3.h. Nombre del responsable de la producción de la información.",
+   "explicacion": "Corresponde al nombre del área, dependencia o unidad interna, o al nombre de la entidad externa que creó la información.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 221,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.3.i. Nombre del responsable de la información.",
+   "explicacion": "Corresponde al nombre del área, dependencia o unidad encargada de la custodia o control de la información para efectos de permitir su acceso",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 41 y 42 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 222,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.4 Programa de gestión documental:",
+   "explicacion": "Los sujetos obligados de naturaleza privada que no están cobijados por el Decreto 2609 de 2012, o el que lo complemente o sustituya, deben cumplir, en la elaboración del programa de Gestión Documental, como mínimo con lo siguiente: 1. Política de Gestión Documental. 2. Tablas de Retención Documental. 3. Archivo Institucional. 4. Políticas para la gestión de documentos electrónicos (Preservación y custodia digital). 5. Integrarse al Sistema Nacional de Archivos.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2020, Decreto 2609 de 2012",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 223,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.4.a. Plan para facilitar la identificación, gestión, clasificación, organización, conservación y disposición de la información pública, elaborado según lineamientos del Decreto 2609 de 2012, o las normas que lo sustituyan o modifiquen.\n\nLos sujetos obligados de naturaleza privada que no están cobijados por el Decreto 2609 de 2012, o el que lo complemente o sustituya, deben cumplir, en la elaboración del programa de Gestión Documental, como mínimo con lo siguiente: 1. Política de Gestión Documental. 2. Tablas de Retención Documental. 3. Archivo Institucional. 4. Políticas para la gestión de documentos electrónicos (Preservación y custodia digital). 5. Integrarse al Sistema Nacional de Archivos.",
+   "explicacion": "Los sujetos obligados de naturaleza privada que no están cobijados por el Decreto 2609 de 2012, o el que lo complemente o sustituya, deben cumplir, en la elaboración del programa de Gestión Documental, como mínimo con lo siguiente: 1. Política de Gestión Documental. 2. Tablas de Retención Documental. 3. Archivo Institucional. 4. Políticas para la gestión de documentos electrónicos (Preservación y custodia digital). 5. Integrarse al Sistema Nacional de Archivos.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2020, Decreto 2609 de 2013.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 224,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.4.b. Aprobación por parte del Comité de Desarrollo Administrativo (entidades del orden nacional) o la aprobación del Comité Interno de Archivo (entidades del orden territorial).",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2015, Decreto 2609 de 2014",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2020, Decreto 2609 de 2013.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 225,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.5. Tablas de retención documental:",
+   "explicacion": "Lista de series documentales con sus correspondientes tipos de documentos, a los cuales se les asigna el tiempo de permanencia en cada etapa del ciclo vital de los documentos.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 226,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.5.a. Listado de series, con sus correspondientes tipos documentales, a las cuales se asigna el tiempo de permanencia en cada etapa del ciclo vital de los documentos.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2015, Acuerdo 004 de 2013 del Archivo General de la Nación.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2015, Acuerdo 004 de 2013 del Archivo General de la Nación.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 227,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.1 Instrumentos de gestión de la información.",
+   "item": "7.1.5.b. Adoptadas y actualizadas por medio de acto administrativo o documento equivalente de acuerdo con el régimen legal al sujeto obligado, de conformidad con lo establecido por el acuerdo No. 004 de 2013 del Archivo General de la Nación.",
+   "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2015, Acuerdo 004 de 2013 del Archivo General de la Nación.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2015, Acuerdo 004 de 2013 del Archivo General de la Nación.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 228,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "7. DATOS ABIERTOS.",
+   "nivel2": "7.2. Sección de Datos Abiertos.",
+   "item": "7.2.1. Habilitar una vista de sus datos en el Portal de Datos Abiertos (datos.gov.co).",
+   "explicacion": "Habilitar una vista de sus datos en el Portal de Datos Abiertos\n(datos.gov.co).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 229,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "8. INFORMACIÓN ESPECÍFICA\nPARA GRUPOS DE INTERÉS.",
+   "nivel2": "8.1. Información para Grupos Específicos.",
+   "item": "8.1.1. Información para niños, niñas y adolescentes.",
+   "explicacion": "Cada entidad deberá identificar la información específica para grupos de interés, conforme con su caracterización, y como mínimo la siguiente: -Información para niños, niñas y adolescentes, Información para Mujeres-.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 230,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "8. INFORMACIÓN ESPECÍFICA\nPARA GRUPOS DE INTERÉS.",
+   "nivel2": "8.1. Información para Grupos Específicos.",
+   "item": "8.1.2. Información para Mujeres.",
+   "explicacion": "Cada entidad deberá identificar la información específica para grupos de interés, conforme con su caracterización, y como mínimo la siguiente: -Información para niños, niñas y adolescentes, Información para Mujeres-",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 231,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "8. INFORMACIÓN ESPECÍFICA\nPARA GRUPOS DE INTERÉS.",
+   "nivel2": "8.1. Información para Grupos Específicos.",
+   "item": "8.1.3. Otros de grupos de interés.",
+   "explicacion": "Cada entidad deberá identificar la información específica para grupos de interés, conforme con su caracterización, y como mínimo la siguiente: -Información para niños, niñas y adolescentes, Información para Mujeres-",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 232,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "9. OBLIGACIÓN DE REPORTE DE INFORMACIÓN ESPECÍFICA POR PARTE DE LA ENTIDAD.",
+   "nivel2": "9.1. Normatividad Especial.",
+   "item": "9.1.1. Cada sujeto obligado según su naturaleza jurídica reportara en este ítem normatividad especial que les aplique.",
+   "explicacion": "El sujeto obligado deberá publicar la información, documentos, reportes o datos a los que está obligado por normativa especial, diferente a la referida en otras secciones.",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 233,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.1 Procesos de recaudo de rentas locales.",
+   "item": "10.1.1. Publicación de los procesos recaudo de rentas locales, incluyendo: flujogramas, procedimientos y manuales aplicables:",
+   "explicacion": "Procesos de recaudo de rentas locales. Los Municipios y Distritos publicarán el proceso de recaudo de rentas locales, incluyendo flujogramas, procedimientos y manuales aplicables. Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2,",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 234,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.1 Procesos de recaudo de rentas locales.",
+   "item": "10.1.1.a. Flujogramas.",
+   "explicacion": "Procesos de recaudo de rentas locales. Los Municipios y Distritos publicarán el proceso de recaudo de rentas locales, incluyendo flujogramas, procedimientos y manuales aplicables. Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 235,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.1 Procesos de recaudo de rentas locales.",
+   "item": "10.1.1.b. Procedimientos.",
+   "explicacion": "Procesos de recaudo de rentas locales. Los Municipios y Distritos publicarán el proceso de recaudo de rentas locales, incluyendo flujogramas, procedimientos y manuales aplicables. Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 236,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.1 Procesos de recaudo de rentas locales.",
+   "item": "10.1.1.c. Manuales aplicables.",
+   "explicacion": "Procesos de recaudo de rentas locales. Los Municipios y Distritos publicarán el proceso de recaudo de rentas locales, incluyendo flujogramas, procedimientos y manuales aplicables. Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 237,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1. Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA), indicando como mínimo lo siguiente:",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 238,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1.a. Acuerdo Municipal/Distrital por el medio del cual se aprueba el impuesto y su tarifa, y demás normativa específica aplicable.",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 239,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1.b. Sujeto activo.",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 240,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1.c. Sujeto pasivo.",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 241,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1.d. Hecho generador.",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 242,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1.e. Hecho imponible.",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 243,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1.f. Causación.",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 244,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1.g. Base gravable.",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 245,
+   "grupo": "ÍTEMS DEL MENU DE TRANSPARENCIA Y ACCESO A LA INFORMACIÓN",
+   "nivel1": "10. INFORMACIÓN TRIBUTARIA EN ENTIDADES TERRITORIALES LOCALES.\n\n*Esta sección solo aplica para entidades del nivel territorial (Municipios y Distritos) en el que se encontrará información tributaria relevante.",
+   "nivel2": "10.2. Tarifas de liquidación del Impuesto de Industria y Comercio (ICA).",
+   "item": "10.2.1.h. Tarifa.",
+   "explicacion": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+   "normatividad": "Resolución 1519 de 2020,Anexo técnico 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 247,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "1. Trámites, Otros Procedimientos Administrativos y consultas de acceso a información pública.",
+   "item": "1.1. Trámites, Otros Procedimientos Administrativos y consultas de acceso a información pública.",
+   "explicacion": "Los sujetos obligados que tengan el carácter de autoridad, entendidas como los organismos y entidades de la Administración Pública conformada por la Rama Ejecutiva del Poder Público en el orden nacional y territorial y por todos los demás organismos y entidades de naturaleza pública que de manera permanente tienen a su cargo el ejercicio de las actividades y funciones administrativas o la prestación de servicios públicos del Estado colombiano que están señalados en el artículo 2 del Decreto 2106 de 2019, en el artículo 2.2.9.1.1.2 y 2.2.17.1.2 del Decreto 1078 de 2015 por medio del cual se expide el Decreto Único Reglamentario del Sector de Tecnologías de la Información y las Comunicaciones y en particular el Titulo 9, Capítulo 1, sección 1, y del artículo 2 de la Ley 1437 de 2011; deberán adoptar el lineamiento general y guías de sede electrónica, trámites, otros procedimientos administrativos y consultas de acceso a información pública para integrarlas al Portal Único del Estado colombiano aplicando lo señalado en los artículos 60 de la Ley 1437 de 2011, 14 y 15 del Decreto 2106 del 22 de noviembre de 2019 y el artículo 2.2.17.6.1. del título 17 de la parte 2 del libro 2",
+   "normatividad": "Artículo 2 del Decreto 2106 de 2019, artículo 2.2.9.1.1.2 y 2.2.17.1.2 del Decreto 1078 de 2015, Titulo 9, Capítulo 1, sección 1, y del artículo 2 de la Ley 1437 de 2011, artículos 60 de la Ley 1437 de 2011, 14 y 15 del Decreto 2106 del 22 de noviembre de 2019, artículo 2.2.17.6.1. del título 17 de la parte 2 del libro 2.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 248,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "2. Canales de atención y pida una cita.",
+   "item": "2.1. Los sujetos obligados deberán incluir en su respectiva sede electrónica la información y contenidos relacionados con los canales habilitados para la atención a la ciudadanía y demás grupos caracterizados, con la finalidad de identificar y dar a conocer los canales digitales oficiales de recepción de solicitudes, peticiones e información, de conformidad con el artículo 14 del Decreto 2106 de 2019.",
+   "explicacion": "Artículo 14 del Decreto 2106 de 2019.",
+   "normatividad": "Artículo 14 del Decreto 2106 de 2019.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 249,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "2. Canales de atención y pida una cita.",
+   "item": "2.2.. Mecanismo para que el usuario pueda agendar una cita para atención presencial, e indicar los horarios de atención en sedes físicas.",
+   "explicacion": "De conformidad a lo establecido por la Resolución 2893 de 2020, la obligación de habilitar un mecanismo para agendar cita de atención presencial y de indicar los horarios de atención en sedes físicas es de las entidades de naturaleza pública. Las entidades de naturaleza privada podrán habilitar sus propios canales de atención como parte de una buena práctica de gestión pública.",
+   "normatividad": "Resolución 2893 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 250,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1. Condiciones técnicas:",
+   "explicacion": "Los sujetos obligados que, por su regulación específica en la prestación de un servicio público, le apliquen formularios específicos para la atención de sus usuarios, dicho formulario servirá igualmente para atender las solicitudes de información pública y recibir quejas o denuncias. En todo caso, se deberá permitir la recepción de quejas o denuncias anónimas en los términos del formulario referido anteriormente.\nLos sujetos obligados podrán implementar, además, nuevas tecnologías de comunicación, habilitando canales de chatbot automatizado y con asistencia humana, así como canales vía mensajería instantánea.",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 251,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1. 1. Acuse de recibo.",
+   "explicacion": "Al momento de enviar el formulario, por parte del usuario, el sistema debe generar un mensaje de confirmación de recibido, indicando la fecha y hora de recepción, informando que por tardar antes de las siguientes 24 horas hábiles se remitirá el número de registro o radicación. Al respecto se sugiere revisar las pautas del Archivo General de la Nación contenidas en el Acuerdo 060 del 2001, o el que lo modifique, subrogue, derogue o adicione.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 252,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1.2. Validación de campos.",
+   "explicacion": "El formulario deberá contar con una validación de campos que permita indicar al ciudadano si existen errores en el diligenciamiento o si le hace falta incluir alguna información. El aviso de error debe ser visible y accesible para todos los usuarios.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 253,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1.3. Mecanismos para evitar SPAM.",
+   "explicacion": "El sujeto obligado debe desarrollar mecanismos para evitar la recepción de correos electrónicos enviados de manera automática puedan ser categorizados como no deseados.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 254,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1.4. Mecanismo de seguimiento en línea.",
+   "explicacion": "El sujeto obligado debe habilitar un mecanismo de seguimiento en línea para verificar el estado de la respuesta de la PQRSD.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 255,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1.4. Mensaje de falla en el sistema.",
+   "explicacion": "En caso de existir una falla del sistema durante el proceso de diligenciamiento o envío del formulario, el sujeto debe habilitar un mecanismo para generar un mensaje de falla en el proceso. El mensaje debe indicar el motivo de la falla y la opción que cuenta el usuario para hacer nuevamente su solicitud",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 256,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1.5. Integración con el sistema de PQRSD de la entidad.",
+   "explicacion": "Las solicitudes de información púbica deben estar vinculados como tipología dentro del sistema de PQRSD del sujeto obligado, a fin de gestionar y hacer seguimiento integral a las solicitudes que reciba.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 257,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1.6. Disponibilidad del formulario a través de dispositivos móviles.",
+   "explicacion": "El formulario debe estar disponible para su diligenciamiento y envío a través de dispositivos móviles.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 258,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.1.7. Seguridad Digital.",
+   "explicacion": "Los sujetos deberán aplicar las medidas de seguridad digital y de la información referidas en anexo 3 de la presente Resolución.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 259,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2. Condiciones del formulario:",
+   "explicacion": "",
+   "normatividad": "",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 260,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.1 Selección de opción de la PQRSD (Petición, Queja/Reclamo, Solicitud de Información, Denuncia, Sugerencia/ Propuesta).",
+   "explicacion": "Incluir una sección de ayuda, con ejemplos, para que el usuario pueda distinguir cada una de las tipologías de PQRSD.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 261,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.2. Nombre y Apellidos o Razón Social de la Empresa o posibilidad de presentar queja/denuncia anónima.",
+   "explicacion": "O posibilidad de presentar queja/denuncia anónima. Indicar la posibilidad de presentar quejas anónimas, para lo cual, se deben indicar las condiciones para aceptarlas conforme con la siguiente normativa: artículo 38 de la Ley 190 de 1995; artículo 69; de la Ley 734 de 2002 y artículo 81 de la Ley 962 de 2005.",
+   "normatividad": "Resolución 1519 de 2021, artículo 38 de la Ley 190 de 1995; artículo 69; de la Ley 734 de 2002 y artículo 81 de la Ley 962 de 2005.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 262,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.3. Tipo de documento de identidad o el de la empresa ( Cédula de Ciudadanía, NUIP -Número Único de Identificación Personal, Cédula de Extranjería, NIT -Número de Identificación Tributaria-, Pasaporte ).",
+   "explicacion": "Si es anónima no requiere identificación.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020- , Acuerdo 060 del 2001.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 263,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.4 Número de documento de identidad o NIT de la empresa.",
+   "explicacion": "Si es anónima no requiere identificación.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 264,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.5. Modalidad de recepción de la respuesta ( correo electrónico, dirección de correspondencia).",
+   "explicacion": "Indicar si desea recibir la respuesta por correo electrónico o en la dirección de correspondencia. Si es anónima no requiere la información.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 265,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.6. Correo electrónico.",
+   "explicacion": "Si es anónima no requiere la información.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 266,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.7. Dirección de correspondencia (Dirección, Barrio/ Vereda / Corregimiento, Municipio/ Distrito, País - en caso que sea diferente al de Colombia).",
+   "explicacion": "Si es anónima no requiere la información.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 267,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.8. Número de contacto.",
+   "explicacion": "Campo numérico. Si es anónima no requiere la información.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 268,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.9. Objeto de la PQRSD.",
+   "explicacion": "Texto, no se requiere justificación",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 269,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.10. Adjuntar documentos o anexos.",
+   "explicacion": "Opción adjuntar documentos",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 270,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.11. Aviso de aceptación de condiciones.",
+   "explicacion": "Se deberá colocar la siguiente leyenda explicativa justo antes del botón \"enviar\"\n\n\"Al hacer clic el botón enviar, usted acepta la remisión de la PQRS a la entidad (NOMBRE ENTIDAD). Sus datos serán recolectados y tratados conforme con la Política de Tratamiento de Datos. En la opción consulta de PQRSD podrá verificar el estado de la respuesta.\n\nEn caso que la solicitud de información sea de naturaleza de identidad reservada, deberá efectuar el respectivo trámite ante la Procuraduría General de la Nación, haciendo clic en el siguiente link: https://www.procuraduria.gov.co/portal/solicitud_informacion_identificacion_reservada.page\n\nSe deberá indicar los términos que aplican en la presentación de quejas anónimas, para lo cual, se deben indicar las condiciones para aceptarlas conforme con la siguiente normativa: artículo 38 de la Ley 190 de 1995; artículo 69; de la Ley 734 de 2002 y artículo 81 de la Ley 962 de 2005\".",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 271,
+   "grupo": "ÍTEMS DEL MENÚ ATENCIÓN Y SERVICIOS A LA CIUDADANÍA",
+   "nivel1": "MENÚ \"ATENCIÓN Y SERVICIOS A LA CIUDADANÍA.\"",
+   "nivel2": "3. PQRSD.",
+   "item": "3.2.12. Botón \"Enviar\".",
+   "explicacion": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 273,
+   "grupo": "SECCIÓN DE NOTICIAS",
+   "nivel1": "SECCIÓN DE NOTICIAS.",
+   "nivel2": "12.1. Sección de Noticias.",
+   "item": "12.1.1. Sección de noticias.",
+   "explicacion": "En la página principal, el sujeto obligado publicará las noticias más relevantes para la ciudadanía y los grupos de valor. La información deberá publicarse de acuerdo a las pautas o lineamientos en materia de lenguaje claro, accesibilidad y usabilidad.",
+   "normatividad": "Anexo técnico 2 -Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 275,
+   "grupo": "ANEXO 3.CONDICIONES MÍNIMAS TÉCNICAS Y DE SEGURIDAD DIGITAL",
+   "nivel1": "ANEXO 3. CONDICIONES TÉCNICAS MÍNIMAS Y DE SEGURIDAD DIGITAL WEB.",
+   "nivel2": "Anexo 3. Condiciones de seguridad digital.",
+   "item": "a. ¿La entidad ha implementado una política de seguridad digital y de seguridad de la información, de conformidad con el artículo 6 y el Anexo 3 de la Resolución MinTIC 1519 de 2020?",
+   "explicacion": "Proporcione únicamente para la Procuraduría General de la Nación el enlace o URL correspondiente a la carpeta (repositorio virtual tipo drive) donde se encuentre alojada la política de seguridad digital y de seguridad de la información de su entidad. La obligación de cumplir con el anexo 3 de seguridad aplica a todos los sujetos obligados referidos en el artículo 5 de la Ley 1712 de 2014.",
+   "normatividad": "Anexo técnico 3 - Resolución 1519 de 2020-, Ley 1581 de 2012, Decreto 1074 de 2015 Artículos 2.1.1.1.2 y 2.1.1.3.1.1",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 276,
+   "grupo": "ANEXO 3.CONDICIONES MÍNIMAS TÉCNICAS Y DE SEGURIDAD DIGITAL",
+   "nivel1": "ANEXO 3. CONDICIONES TÉCNICAS MÍNIMAS Y DE SEGURIDAD DIGITAL WEB.",
+   "nivel2": "Anexo 3. Condiciones de seguridad digital.",
+   "item": "b. ¿La entidad ha adoptado el Modelo de Seguridad y Privacidad de la Información (MSPI), recomendado por la Dirección de Gobierno Digital del Ministerio de Tecnologías de la Información y las Comunicaciones?",
+   "explicacion": "Proporcione el enlace o URL correspondiente donde se pueda verificar evidencia de la implementación del MSPI. La obligación de cumplir con el anexo 3 de seguridad aplica a todos los sujetos obligados referidos en el artículo 5 de la Ley 1712 de 2014.",
+   "normatividad": "Anexo técnico 3 - Resolución 1519 de 2020.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 277,
+   "grupo": "ANEXO 3.CONDICIONES MÍNIMAS TÉCNICAS Y DE SEGURIDAD DIGITAL",
+   "nivel1": "ANEXO 3. CONDICIONES TÉCNICAS MÍNIMAS Y DE SEGURIDAD DIGITAL WEB.",
+   "nivel2": "Anexo 3. Condiciones de seguridad digital.",
+   "item": "c. En caso de que la entidad haya sufrido algún incidente de seguridad de la información en el último año ¿esta ha comunicado los incidentes a la Superintendencia de Industria y Comercio, y en caso de ser graves o muy graves al Grupo de Respuestas a Incidentes de Seguridad Informática del Gobierno Nacional (CSIRT)?*\n\n(En caso de no haber sufrido incidentes, seleccione la opción \"no aplica\")",
+   "explicacion": "En caso de haber sufrido un incidente de seguridad de la información, proporcione el enlace o URL correspondiente donde se pueda verificar evidencia de la comunicación correspondiente La obligación de cumplir con el anexo 3 de seguridad aplica a todos los sujetos obligados referidos en el artículo 5 de la Ley 1712 de 2014.",
+   "normatividad": "Anexo técnico 3 - Resolución 1519 de 2020-, Ley 1581 de 2012, Decreto 1074 de 2015.",
+   "tipo": "cumplimiento"
+  },
+  {
+   "fila": 279,
+   "grupo": "INFORMACION ADICIONAL SOLICITUDES DE INFORMACION",
+   "nivel1": "Informes de solicitudes de acceso a información.",
+   "nivel2": "Informes de solicitudes de acceso a información.",
+   "item": "El número de solicitudes recibidas",
+   "explicacion": "Escribir el numero de cada una de las solicitudes recibidas, trasladadas, negadas y tiempo de respuesta",
+   "normatividad": "De conformidad con lo establecido en el literal h) del artículo 11 de la Ley 1712 de 2014, los sujetos obligados deberán publicar los informes de todas las solicitudes, denuncias y los tiempos de respuesta. Respecto de las solicitudes de acceso a información pública, el informe debe discriminar la siguiente información mínima:",
+   "tipo": "numero"
+  },
+  {
+   "fila": 280,
+   "grupo": "INFORMACION ADICIONAL SOLICITUDES DE INFORMACION",
+   "nivel1": "Informes de solicitudes de acceso a información.",
+   "nivel2": "Informes de solicitudes de acceso a información.",
+   "item": "El número de solicitudes que fueron trasladadas a otra institución.",
+   "explicacion": "Escribir el numero de cada una de las solicitudes recibidas, trasladadas, negadas y tiempo de respuesta",
+   "normatividad": "De conformidad con lo establecido en el literal h) del artículo 11 de la Ley 1712 de 2014, los sujetos obligados deberán publicar los informes de todas las solicitudes, denuncias y los tiempos de respuesta. Respecto de las solicitudes de acceso a información pública, el informe debe discriminar la siguiente información mínima:",
+   "tipo": "numero"
+  },
+  {
+   "fila": 281,
+   "grupo": "INFORMACION ADICIONAL SOLICITUDES DE INFORMACION",
+   "nivel1": "Informes de solicitudes de acceso a información.",
+   "nivel2": "Informes de solicitudes de acceso a información.",
+   "item": "El tiempo de respuesta a cada solicitud.",
+   "explicacion": "Escribir el numero de cada una de las solicitudes recibidas, trasladadas, negadas y tiempo de respuesta",
+   "normatividad": "De conformidad con lo establecido en el literal h) del artículo 11 de la Ley 1712 de 2014, los sujetos obligados deberán publicar los informes de todas las solicitudes, denuncias y los tiempos de respuesta. Respecto de las solicitudes de acceso a información pública, el informe debe discriminar la siguiente información mínima:",
+   "tipo": "numero"
+  },
+  {
+   "fila": 282,
+   "grupo": "INFORMACION ADICIONAL SOLICITUDES DE INFORMACION",
+   "nivel1": "Informes de solicitudes de acceso a información.",
+   "nivel2": "Informes de solicitudes de acceso a información.",
+   "item": "El número de solicitudes en las que se negó el acceso a la información",
+   "explicacion": "Escribir el numero de cada una de las solicitudes recibidas, trasladadas, negadas y tiempo de respuesta",
+   "normatividad": "De conformidad con lo establecido en el literal h) del artículo 11 de la Ley 1712 de 2014, los sujetos obligados deberán publicar los informes de todas las solicitudes, denuncias y los tiempos de respuesta. Respecto de las solicitudes de acceso a información pública, el informe debe discriminar la siguiente información mínima:",
+   "tipo": "numero"
+  }
+ ]
+}

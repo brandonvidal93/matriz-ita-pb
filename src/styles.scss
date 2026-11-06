@@ -1,0 +1,72 @@
+@use '@angular/material' as mat;
+
+html {
+  color-scheme: light;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$yellow-palette,
+      ),
+      typography: (plain-family: 'Roboto, "Segoe UI", Arial, sans-serif', brand-family: 'Roboto, "Segoe UI", Arial, sans-serif'),
+      density: 0,
+    )
+  );
+}
+
+:root {
+  --pb-azul: #0b2d5b;
+  --pb-amarillo: #f2b705;
+  --ok: #1b7f3b;
+  --no: #b3261e;
+  --na: #5f6368;
+  --borde: #d7dce3;
+  --fondo: #f5f7fa;
+  --texto-suave: #4a5565;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: #1b1f24;
+  font: var(--mat-sys-body-medium);
+  font-family: Roboto, 'Segoe UI', Arial, sans-serif;
+}
+
+a { color: #0b57d0; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--pb-amarillo); outline-offset: 2px; }
+
+.saltar {
+  position: absolute; left: -999px; top: 0; z-index: 1000;
+  background: var(--pb-azul); color: #fff; padding: 8px 16px;
+  &:focus { left: 8px; top: 8px; }
+}
+
+.tarjeta {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+}
+
+.chip-estado {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; line-height: 20px;
+  &.SI { background: #e3f4e8; color: var(--ok); }
+  &.NO { background: #fde7e5; color: var(--no); }
+  &.NA { background: #eceff1; color: var(--na); }
+  &.pendiente { background: #fff4d6; color: #7a5a00; }
+}
+
+.texto-suave { color: var(--texto-suave); }
+.preline { white-space: pre-line; }
+.mono { font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+
+.barra-progreso {
+  height: 6px; background: #e6e9ee; border-radius: 99px; overflow: hidden;
+  > span { display: block; height: 100%; background: var(--ok); }
+}
+
+mat-form-field.sin-pie .mat-mdc-form-field-subscript-wrapper { display: none; }
