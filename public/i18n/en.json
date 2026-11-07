@@ -1,0 +1,40 @@
+{
+  "app": {
+    "tituloDocumento": "ITA Matrix · ICT Management",
+    "saltarContenido": "Skip to content",
+    "nombre": "ITA Matrix",
+    "nav": {
+      "etiqueta": "Record sections",
+      "diligenciar": "Fill in",
+      "evidencias": "Evidence ({{ n }})",
+      "resumen": "Review and export"
+    },
+    "idioma": {
+      "etiqueta": "Language",
+      "cambiar": "Change language"
+    },
+    "menu": {
+      "usuarios": "Users",
+      "descargarRespaldo": "Download full backup (.json)",
+      "restaurarRespaldo": "Restore or migrate backup (.json)…",
+      "salir": "Sign out"
+    },
+    "sync": {
+      "soloLectura": "Read only",
+      "pendiente": "Unsaved changes…",
+      "guardando": "Saving…",
+      "error": "The last change was not saved: {{ error }}",
+      "guardado": "Changes saved"
+    },
+    "avisos": {
+      "errorGuardado": "The change was not saved: {{ error }}. The server version was reloaded.",
+      "errorDescarga": "Could not download: {{ error }}",
+      "cargados": "{{ n }} record(s) loaded.",
+      "omitidos": "{{ n }} were already loaded.",
+      "errorCarga": "Could not load: {{ error }}"
+    }
+  },
+  "comun": {
+    "cerrar": "Close"
+  }
+}

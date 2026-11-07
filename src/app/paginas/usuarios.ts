@@ -1,5 +1,5 @@
-import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { FechaPipe } from '../core/idioma';
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -79,7 +79,7 @@ export class UsuarioDialog {
 }
 
 @Component({
-  imports: [DatePipe, MatButtonModule, MatIconModule, MatMenuModule],
+  imports: [FechaPipe, MatButtonModule, MatIconModule, MatMenuModule],
   styles: `
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; font-size: 12px; color: var(--texto-suave); padding: 10px 12px; border-bottom: 1px solid var(--borde); }
@@ -110,7 +110,7 @@ export class UsuarioDialog {
                 </td>
                 <td class="mono">{{ u.usuario }}</td>
                 <td>{{ nombreRol[u.rol] }}</td>
-                <td class="text-sm">{{ u.ultimoIngreso ? (u.ultimoIngreso | date: 'd MMM y, h:mm a') : '—' }}</td>
+                <td class="text-sm">{{ u.ultimoIngreso ? (u.ultimoIngreso | fecha: 'd MMM y, h:mm a') : '—' }}</td>
                 <td class="text-right whitespace-nowrap">
                   <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'Acciones para ' + u.nombre"><mat-icon>more_vert</mat-icon></button>
                   <mat-menu #m="matMenu">

@@ -1,0 +1,40 @@
+{
+  "app": {
+    "tituloDocumento": "Matriz ITA · Gestión TIC",
+    "saltarContenido": "Saltar al contenido",
+    "nombre": "Matriz ITA",
+    "nav": {
+      "etiqueta": "Secciones del registro",
+      "diligenciar": "Diligenciar",
+      "evidencias": "Evidencias ({{ n }})",
+      "resumen": "Revisar y exportar"
+    },
+    "idioma": {
+      "etiqueta": "Idioma",
+      "cambiar": "Cambiar idioma"
+    },
+    "menu": {
+      "usuarios": "Usuarios",
+      "descargarRespaldo": "Descargar respaldo completo (.json)",
+      "restaurarRespaldo": "Restaurar o migrar respaldo (.json)…",
+      "salir": "Salir"
+    },
+    "sync": {
+      "soloLectura": "Solo lectura",
+      "pendiente": "Cambios por guardar…",
+      "guardando": "Guardando…",
+      "error": "No se guardó el último cambio: {{ error }}",
+      "guardado": "Cambios guardados"
+    },
+    "avisos": {
+      "errorGuardado": "No se guardó el cambio: {{ error }}. Se recargó la versión del servidor.",
+      "errorDescarga": "No se pudo descargar: {{ error }}",
+      "cargados": "Se cargaron {{ n }} registro(s).",
+      "omitidos": "{{ n }} ya estaban cargados.",
+      "errorCarga": "No se pudo cargar: {{ error }}"
+    }
+  },
+  "comun": {
+    "cerrar": "Cerrar"
+  }
+}

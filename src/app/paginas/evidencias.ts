@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { FechaPipe } from '../core/idioma';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +18,7 @@ import { verificarUrl } from '../core/progreso';
 import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dialogos';
 
 @Component({
-  imports: [DatePipe, FormsModule, RouterLink, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatTooltipModule],
+  imports: [FechaPipe, FormsModule, RouterLink, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatTooltipModule],
   styles: `
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; color: var(--texto-suave); padding: 10px 12px; border-bottom: 1px solid var(--borde); background: #f7f9fc; }
@@ -84,7 +84,7 @@ import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dia
                       @case ('error') { <span class="chip-estado NO">Sin respuesta</span> }
                       @default { <span class="texto-suave">—</span> }
                     }
-                    @if (e.verificacion) { <div class="text-xs texto-suave mt-1">{{ e.verificacion.fecha | date: 'd MMM, h:mm a' }}</div> }
+                    @if (e.verificacion) { <div class="text-xs texto-suave mt-1">{{ e.verificacion.fecha | fecha: 'd MMM, h:mm a' }}</div> }
                   </td>
                   <td class="whitespace-nowrap text-right">
                     @if (!almacen.soloLectura()) {

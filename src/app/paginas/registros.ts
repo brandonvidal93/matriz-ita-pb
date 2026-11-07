@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { FechaPipe } from '../core/idioma';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,7 +17,7 @@ import { XlsxService } from '../core/xlsx.service';
 import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dialogos';
 
 @Component({
-  imports: [DatePipe, MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule],
+  imports: [FechaPipe, MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule],
   template: `
     <div class="max-w-[1100px] mx-auto px-4 py-6">
       <div class="flex items-end gap-3 flex-wrap mb-2">
@@ -84,7 +84,7 @@ import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dial
               </div>
               <div class="texto-suave text-sm mt-1">
                 Vigencia {{ r.vigencia }}{{ r.periodo ? ' · ' + r.periodo : '' }} · {{ r.evidencias.length }} evidencias ·
-                actualizado {{ r.actualizado | date: 'd MMM y, h:mm a' }}
+                actualizado {{ r.actualizado | fecha: 'd MMM y, h:mm a' }}
               </div>
               <div class="flex items-center gap-3 mt-2">
                 <div class="barra-progreso flex-1 max-w-[360px]" role="progressbar" [attr.aria-valuenow]="p.porcentaje" aria-valuemin="0" aria-valuemax="100" [attr.aria-label]="'Avance ' + p.porcentaje + '%'">
