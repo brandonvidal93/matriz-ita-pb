@@ -11,7 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { AlmacenService } from './core/almacen.service';
 import { AuthService, mensajeError } from './core/auth.service';
-import { NOMBRE_ROL } from './core/modelos';
+import { claveRol } from './core/modelos';
 import { IdiomaService } from './core/idioma';
 import { descargar } from './core/progreso';
 import { CONFIG } from './config';
@@ -61,7 +61,7 @@ import { CONFIG } from './config';
             <mat-icon>account_circle</mat-icon> {{ u.nombre }}
           </button>
           <mat-menu #menuUsuario="matMenu">
-            <div class="px-4 py-2 text-sm texto-suave">{{ u.usuario }} · {{ nombreRol[u.rol] }}</div>
+            <div class="px-4 py-2 text-sm texto-suave">{{ u.usuario }} · {{ claveRol(u.rol) | transloco }}</div>
             @if (auth.esAdmin()) {
               <a mat-menu-item routerLink="/usuarios"><mat-icon>group</mat-icon>{{ 'app.menu.usuarios' | transloco }}</a>
             }
@@ -93,7 +93,7 @@ export class App {
   private url = toSignal(this.router.events.pipe(filter((e) => e instanceof NavigationEnd), map(() => this.router.url)), { initialValue: '' });
   activo = computed(() => (this.url().startsWith('/r/') ? this.almacen.activo() : null));
 
-  nombreRol = NOMBRE_ROL;
+  claveRol = claveRol;
 
   textoSync = computed(() => {
     this.idioma.actual(); // recalcula al cambiar de idioma

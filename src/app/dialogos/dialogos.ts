@@ -8,11 +8,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { AlmacenService } from '../core/almacen.service';
 import { SECCIONES, etiquetaCorta } from '../core/catalogo';
 import { Evidencia, Registro, TipoCorte } from '../core/modelos';
 
-const BASE = [MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, FormsModule];
+const BASE = [MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, FormsModule, TranslocoPipe];
 
 // ---------------------------------------------------------------- Confirmar
 @Component({
@@ -21,8 +22,8 @@ const BASE = [MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModu
     <h2 mat-dialog-title>{{ d.titulo }}</h2>
     <mat-dialog-content><p class="preline">{{ d.mensaje }}</p></mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancelar</button>
-      <button mat-flat-button [mat-dialog-close]="true">{{ d.accion || 'Aceptar' }}</button>
+      <button mat-button mat-dialog-close>{{ 'comun.cancelar' | transloco }}</button>
+      <button mat-flat-button [mat-dialog-close]="true">{{ d.accion || ('comun.aceptar' | transloco) }}</button>
     </mat-dialog-actions>
   `,
 })
@@ -46,44 +47,44 @@ export interface DatosRegistro {
     <mat-dialog-content>
       <form id="f-registro" class="flex flex-col gap-1 pt-2 min-w-[min(480px,80vw)]" (ngSubmit)="guardar()">
         <mat-form-field>
-          <mat-label>Nombre del corte</mat-label>
+          <mat-label>{{ 'dialogos.registro.nombre' | transloco }}</mat-label>
           <input matInput name="nombre" [(ngModel)]="m.nombre" required cdkFocusInitial />
-          <mat-hint>Ej.: ITA 2027 – Reporte Procuraduría</mat-hint>
+          <mat-hint>{{ 'dialogos.registro.ejemplo' | transloco }}</mat-hint>
         </mat-form-field>
         <div class="flex gap-3 flex-wrap">
           <mat-form-field class="flex-1 min-w-[180px]">
-            <mat-label>Tipo</mat-label>
+            <mat-label>{{ 'dialogos.registro.tipo' | transloco }}</mat-label>
             <mat-select name="tipo" [(ngModel)]="m.tipo">
-              <mat-option value="procuraduria">Reporte a la Procuraduría</mat-option>
-              <mat-option value="seguimiento">Seguimiento interno</mat-option>
+              <mat-option value="procuraduria">{{ 'dialogos.registro.tipoProcuraduria' | transloco }}</mat-option>
+              <mat-option value="seguimiento">{{ 'registros.tipo.seguimiento' | transloco }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field class="w-32">
-            <mat-label>Vigencia</mat-label>
+            <mat-label>{{ 'dialogos.registro.vigencia' | transloco }}</mat-label>
             <input matInput type="number" name="vigencia" [(ngModel)]="m.vigencia" required />
           </mat-form-field>
           <mat-form-field class="flex-1 min-w-[160px]">
-            <mat-label>Periodo (opcional)</mat-label>
-            <input matInput name="periodo" [(ngModel)]="m.periodo" placeholder="1.er semestre" />
+            <mat-label>{{ 'dialogos.registro.periodo' | transloco }}</mat-label>
+            <input matInput name="periodo" [(ngModel)]="m.periodo" [placeholder]="'dialogos.registro.periodoEjemplo' | transloco" />
           </mat-form-field>
         </div>
         @if (d.permitirBase && d.registros.length) {
           <mat-form-field>
-            <mat-label>Partir de</mat-label>
+            <mat-label>{{ 'dialogos.registro.partirDe' | transloco }}</mat-label>
             <mat-select name="base" [(ngModel)]="m.baseId">
-              <mat-option [value]="null">Matriz en blanco</mat-option>
+              <mat-option [value]="null">{{ 'dialogos.registro.enBlanco' | transloco }}</mat-option>
               @for (r of d.registros; track r.id) {
-                <mat-option [value]="r.id">Copia de: {{ r.nombre }}</mat-option>
+                <mat-option [value]="r.id">{{ 'dialogos.registro.copiaDe' | transloco: { nombre: r.nombre } }}</mat-option>
               }
             </mat-select>
-            <mat-hint>Copiar un corte anterior trae respuestas y evidencias para solo actualizarlas.</mat-hint>
+            <mat-hint>{{ 'dialogos.registro.pistaBase' | transloco }}</mat-hint>
           </mat-form-field>
         }
       </form>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close type="button">Cancelar</button>
-      <button mat-flat-button type="submit" form="f-registro" [disabled]="!m.nombre.trim() || !m.vigencia">Guardar</button>
+      <button mat-button mat-dialog-close type="button">{{ 'comun.cancelar' | transloco }}</button>
+      <button mat-flat-button type="submit" form="f-registro" [disabled]="!m.nombre.trim() || !m.vigencia">{{ 'comun.guardar' | transloco }}</button>
     </mat-dialog-actions>
   `,
 })
@@ -107,27 +108,27 @@ export class RegistroDialog {
 @Component({
   imports: BASE,
   template: `
-    <h2 mat-dialog-title>{{ d.evidencia ? 'Editar evidencia' : 'Nueva evidencia' }}</h2>
+    <h2 mat-dialog-title>{{ (d.evidencia ? 'dialogos.evidencia.editar' : 'evidencias.nueva') | transloco }}</h2>
     <mat-dialog-content>
       <form id="f-ev" class="flex flex-col gap-1 pt-2 min-w-[min(520px,80vw)]" (ngSubmit)="guardar()">
         <mat-form-field>
-          <mat-label>URL</mat-label>
+          <mat-label>{{ 'dialogos.evidencia.url' | transloco }}</mat-label>
           <input matInput name="url" type="url" [(ngModel)]="m.url" required placeholder="https://pascualbravo.edu.co/…" (blur)="sugerirTitulo()" />
-          @if (m.url && !valida()) { <mat-error>Debe iniciar con http:// o https://</mat-error> }
+          @if (m.url && !valida()) { <mat-error>{{ 'dialogos.evidencia.urlInvalida' | transloco }}</mat-error> }
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Título</mat-label>
-          <input matInput name="titulo" [(ngModel)]="m.titulo" placeholder="Certificado de accesibilidad 2026" />
+          <mat-label>{{ 'dialogos.evidencia.titulo' | transloco }}</mat-label>
+          <input matInput name="titulo" [(ngModel)]="m.titulo" [placeholder]="'dialogos.evidencia.tituloEjemplo' | transloco" />
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Descripción (uso interno)</mat-label>
+          <mat-label>{{ 'dialogos.evidencia.descripcion' | transloco }}</mat-label>
           <textarea matInput name="desc" rows="2" [(ngModel)]="m.descripcion"></textarea>
         </mat-form-field>
       </form>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close type="button">Cancelar</button>
-      <button mat-flat-button type="submit" form="f-ev" [disabled]="!valida()">Guardar</button>
+      <button mat-button mat-dialog-close type="button">{{ 'comun.cancelar' | transloco }}</button>
+      <button mat-flat-button type="submit" form="f-ev" [disabled]="!valida()">{{ 'comun.guardar' | transloco }}</button>
     </mat-dialog-actions>
   `,
 })
@@ -154,11 +155,11 @@ export class EvidenciaDialog {
 @Component({
   imports: [...BASE, MatAutocompleteModule],
   template: `
-    <h2 mat-dialog-title>Agregar evidencia {{ d.filas.length > 1 ? 'a ' + d.filas.length + ' ítems' : '' }}</h2>
+    <h2 mat-dialog-title>{{ d.filas.length > 1 ? ('dialogos.elegir.tituloVarios' | transloco: { n: d.filas.length }) : ('dialogos.elegir.titulo' | transloco) }}</h2>
     <mat-dialog-content>
       <div class="min-w-[min(560px,80vw)] pt-2">
         <mat-form-field class="w-full">
-          <mat-label>Buscar en la biblioteca o pegar una URL nueva</mat-label>
+          <mat-label>{{ 'dialogos.elegir.buscar' | transloco }}</mat-label>
           <input matInput [(ngModel)]="q" [matAutocomplete]="auto" cdkFocusInitial />
           <mat-autocomplete #auto="matAutocomplete" (optionSelected)="elegir($event.option.value)">
             @for (e of filtradas(); track e.id) {
@@ -173,16 +174,16 @@ export class EvidenciaDialog {
         </mat-form-field>
         @if (esUrlNueva()) {
           <mat-form-field class="w-full">
-            <mat-label>Título para la nueva evidencia</mat-label>
+            <mat-label>{{ 'dialogos.elegir.tituloNueva' | transloco }}</mat-label>
             <input matInput [(ngModel)]="titulo" />
           </mat-form-field>
         }
-        <p class="texto-suave text-sm">La biblioteca tiene {{ total() }} evidencias. Una misma evidencia puede respaldar varios ítems.</p>
+        <p class="texto-suave text-sm">{{ 'dialogos.elegir.biblioteca' | transloco: { n: total() } }}</p>
       </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancelar</button>
-      <button mat-flat-button [disabled]="!esUrlNueva()" (click)="crear()">Crear y agregar</button>
+      <button mat-button mat-dialog-close>{{ 'comun.cancelar' | transloco }}</button>
+      <button mat-flat-button [disabled]="!esUrlNueva()" (click)="crear()">{{ 'dialogos.elegir.crear' | transloco }}</button>
     </mat-dialog-actions>
   `,
 })
@@ -222,28 +223,28 @@ export class ElegirEvidenciaDialog {
     summary { cursor: pointer; padding: 8px 12px; background: #f0f3f7; position: sticky; top: 0; z-index: 1; }
   `,
   template: `
-    <h2 mat-dialog-title>Asignar evidencia a ítems</h2>
+    <h2 mat-dialog-title>{{ 'dialogos.asignar.titulo' | transloco }}</h2>
     <mat-dialog-content>
       <div class="min-w-[min(760px,85vw)]">
         <p class="m-0 mb-2"><strong>{{ d.evidencia.titulo }}</strong><br /><span class="mono texto-suave">{{ d.evidencia.url }}</span></p>
         <mat-form-field class="w-full sin-pie">
-          <mat-label>Filtrar ítems</mat-label>
-          <input matInput [ngModel]="filtro()" (ngModelChange)="filtro.set($event)" placeholder="Ej.: accesibilidad, presupuesto, 4.2" />
+          <mat-label>{{ 'dialogos.asignar.filtrar' | transloco }}</mat-label>
+          <input matInput [ngModel]="filtro()" (ngModelChange)="filtro.set($event)" [placeholder]="'dialogos.asignar.ejemplo' | transloco" />
         </mat-form-field>
-        <p class="text-sm texto-suave my-2">{{ seleccion().size }} ítem(s) seleccionados</p>
+        <p class="text-sm texto-suave my-2">{{ 'dialogos.asignar.seleccionados' | transloco: { n: seleccion().size } }}</p>
         <div class="lista">
           @for (s of secciones(); track s.clave) {
             <details [open]="!!filtro() || s.marcados > 0">
               <summary>
                 <mat-checkbox [checked]="s.marcados === s.items.length" [indeterminate]="s.marcados > 0 && s.marcados < s.items.length" (change)="alternarSeccion(s.items, $event.checked)" (click)="$event.stopPropagation()">
-                  {{ s.titulo }} <span class="texto-suave">({{ s.marcados }}/{{ s.items.length }})</span>
+                  <span lang="es">{{ s.titulo }}</span> <span class="texto-suave">({{ s.marcados }}/{{ s.items.length }})</span>
                 </mat-checkbox>
               </summary>
               @for (it of s.items; track it.fila) {
                 <div class="px-3 py-1 border-t border-gray-100">
                   <mat-checkbox [checked]="seleccion().has(it.fila)" (change)="alternar(it.fila, $event.checked)">
-                    <span class="text-sm">{{ corta(it) }}</span>
-                    <span class="texto-suave mono"> · fila {{ it.fila }}</span>
+                    <span class="text-sm" lang="es">{{ corta(it) }}</span>
+                    <span class="texto-suave mono"> · {{ 'dialogos.asignar.fila' | transloco: { fila: it.fila } }}</span>
                   </mat-checkbox>
                 </div>
               }
@@ -253,8 +254,8 @@ export class ElegirEvidenciaDialog {
       </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancelar</button>
-      <button mat-flat-button (click)="guardar()">Aplicar</button>
+      <button mat-button mat-dialog-close>{{ 'comun.cancelar' | transloco }}</button>
+      <button mat-flat-button (click)="guardar()">{{ 'comun.aplicar' | transloco }}</button>
     </mat-dialog-actions>
   `,
 })
@@ -302,19 +303,19 @@ export class AsignarDialog {
 @Component({
   imports: BASE,
   template: `
-    <h2 mat-dialog-title>Observación para {{ d.filas.length }} ítem(s)</h2>
+    <h2 mat-dialog-title>{{ 'dialogos.masivo.titulo' | transloco: { n: d.filas.length } }}</h2>
     <mat-dialog-content>
       <div class="min-w-[min(560px,80vw)] pt-2">
         <mat-form-field class="w-full">
-          <mat-label>Observación / justificación</mat-label>
+          <mat-label>{{ 'item.observacion' | transloco }}</mat-label>
           <textarea matInput rows="5" [(ngModel)]="texto" cdkFocusInitial></textarea>
-          <mat-hint>Reemplaza la observación actual de los ítems seleccionados.</mat-hint>
+          <mat-hint>{{ 'dialogos.masivo.pista' | transloco }}</mat-hint>
         </mat-form-field>
       </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancelar</button>
-      <button mat-flat-button [mat-dialog-close]="texto">Aplicar</button>
+      <button mat-button mat-dialog-close>{{ 'comun.cancelar' | transloco }}</button>
+      <button mat-flat-button [mat-dialog-close]="texto">{{ 'comun.aplicar' | transloco }}</button>
     </mat-dialog-actions>
   `,
 })

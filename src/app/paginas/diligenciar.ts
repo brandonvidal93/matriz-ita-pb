@@ -8,10 +8,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
 import { AlmacenService } from '../core/almacen.service';
 import { SECCIONES, Seccion, problemas } from '../core/catalogo';
 import { EstadoCumplimiento, ItemCatalogo } from '../core/modelos';
+import { IDIOMA_PREDETERMINADO, IdiomaService } from '../core/idioma';
 import { progreso } from '../core/progreso';
 import { ElegirEvidenciaDialog, TextoMasivoDialog } from '../dialogos/dialogos';
 import { ItemCard } from './item-card';
@@ -19,7 +21,7 @@ import { ItemCard } from './item-card';
 type Filtro = 'todos' | 'pendientes' | 'problemas';
 
 @Component({
-  imports: [FormsModule, MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, ItemCard],
+  imports: [FormsModule, MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, ItemCard, TranslocoPipe],
   styles: `
     .lateral { max-height: 40vh; overflow: auto; }
     @media (min-width: 1024px) { .lateral { position: sticky; top: 72px; max-height: calc(100vh - 88px); } }
@@ -33,11 +35,11 @@ type Filtro = 'todos' | 'pendientes' | 'problemas';
   template: `
     @if (almacen.activo(); as reg) {
       <div class="max-w-[1400px] mx-auto px-4 py-4 grid gap-4 grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)]">
-        <aside class="lateral tarjeta p-2 min-w-0" aria-label="Secciones de la matriz">
+        <aside class="lateral tarjeta p-2 min-w-0" [attr.aria-label]="'diligenciar.secciones' | transloco">
           @for (s of seccionesConAvance(); track s.clave; let i = $index) {
-            @if (i === 0 || s.grupo !== seccionesConAvance()[i - 1].grupo) { <div class="grupo">{{ s.grupo }}</div> }
+            @if (i === 0 || s.grupo !== seccionesConAvance()[i - 1].grupo) { <div class="grupo" lang="es">{{ s.grupo }}</div> }
             <button [attr.aria-current]="s.clave === seccionActual().clave && !busqueda()" (click)="irA(s)">
-              <div class="text-sm leading-snug">{{ s.titulo }}</div>
+              <div class="text-sm leading-snug" lang="es">{{ s.titulo }}</div>
               <div class="flex items-center gap-2 mt-1">
                 <div class="barra-progreso flex-1"><span [style.width.%]="s.p.porcentaje"></span></div>
                 <span class="text-xs texto-suave">{{ s.p.diligenciados }}/{{ s.p.total }}</span>
@@ -49,29 +51,33 @@ type Filtro = 'todos' | 'pendientes' | 'problemas';
         <section aria-labelledby="t-seccion" class="min-w-0">
           <div class="flex gap-3 items-center flex-wrap mb-3">
             <h1 id="t-seccion" class="text-xl font-semibold m-0 flex-1 min-w-[240px]">
-              {{ busqueda() ? 'Resultados para “' + busqueda() + '”' : seccionActual().titulo }}
+              @if (busqueda()) { {{ 'diligenciar.resultados' | transloco: { q: busqueda() } }} } @else { <span lang="es">{{ seccionActual().titulo }}</span> }
             </h1>
             <mat-form-field class="sin-pie w-full sm:w-[280px]" subscriptSizing="dynamic">
               <mat-icon matPrefix>search</mat-icon>
-              <mat-label>Buscar en toda la matriz</mat-label>
+              <mat-label>{{ 'diligenciar.buscar' | transloco }}</mat-label>
               <input matInput [ngModel]="busqueda()" (ngModelChange)="busqueda.set($event)" />
             </mat-form-field>
-            <mat-button-toggle-group [value]="filtro()" (change)="filtro.set($event.value)" aria-label="Filtrar ítems" hideSingleSelectionIndicator>
-              <mat-button-toggle value="todos">Todos</mat-button-toggle>
-              <mat-button-toggle value="pendientes">Pendientes</mat-button-toggle>
-              <mat-button-toggle value="problemas">Por revisar</mat-button-toggle>
+            <mat-button-toggle-group [value]="filtro()" (change)="filtro.set($event.value)" [attr.aria-label]="'diligenciar.filtrar' | transloco" hideSingleSelectionIndicator>
+              <mat-button-toggle value="todos">{{ 'diligenciar.filtro.todos' | transloco }}</mat-button-toggle>
+              <mat-button-toggle value="pendientes">{{ 'diligenciar.filtro.pendientes' | transloco }}</mat-button-toggle>
+              <mat-button-toggle value="problemas">{{ 'diligenciar.filtro.problemas' | transloco }}</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
 
+          @if (idioma.actual() !== idiomaCatalogo) {
+            <p class="text-xs texto-suave mt-0 mb-3 flex items-center gap-1"><mat-icon class="!w-4 !h-4 !text-base">info</mat-icon>{{ 'comun.textoOficial' | transloco }}</p>
+          }
+
           @if (!almacen.soloLectura()) {
           <div class="flex items-center gap-2 mb-3 text-sm">
-            <button mat-button (click)="seleccionarVisibles()"><mat-icon>select_all</mat-icon>Seleccionar visibles ({{ visibles().length }})</button>
-            @if (seleccion().size) { <button mat-button (click)="limpiarSeleccion()">Quitar selección</button> }
+            <button mat-button (click)="seleccionarVisibles()"><mat-icon>select_all</mat-icon>{{ 'diligenciar.seleccionarVisibles' | transloco: { n: visibles().length } }}</button>
+            @if (seleccion().size) { <button mat-button (click)="limpiarSeleccion()">{{ 'diligenciar.quitarSeleccion' | transloco }}</button> }
           </div>
           }
 
           @if (!visibles().length) {
-            <p class="tarjeta p-6 texto-suave">No hay ítems con este filtro en la sección.</p>
+            <p class="tarjeta p-6 texto-suave">{{ 'diligenciar.sinItems' | transloco }}</p>
           }
           <div class="grid gap-3 grid-cols-1">
             @for (it of visibles(); track it.fila) {
@@ -87,15 +93,15 @@ type Filtro = 'todos' | 'pendientes' | 'problemas';
           </div>
 
           @if (seleccion().size && !almacen.soloLectura()) {
-            <div class="acciones mt-4 rounded-xl shadow-lg px-4 py-2 flex items-center gap-2 flex-wrap" role="region" aria-label="Acciones sobre la selección">
-              <strong class="mr-2">{{ seleccion().size }} seleccionados</strong>
-              <button mat-button class="!text-white" (click)="marcar('SI')">Marcar SI</button>
-              <button mat-button class="!text-white" (click)="marcar('NO')">NO</button>
-              <button mat-button class="!text-white" (click)="marcar('NA')">N/A</button>
-              <button mat-button class="!text-white" (click)="agregarEvidencia([...seleccion()])"><mat-icon>add_link</mat-icon>Asignar evidencia</button>
-              <button mat-button class="!text-white" (click)="observacionMasiva()"><mat-icon>notes</mat-icon>Observación</button>
+            <div class="acciones mt-4 rounded-xl shadow-lg px-4 py-2 flex items-center gap-2 flex-wrap" role="region" [attr.aria-label]="'diligenciar.accionesSeleccion' | transloco">
+              <strong class="mr-2">{{ 'diligenciar.seleccionados' | transloco: { n: seleccion().size } }}</strong>
+              <button mat-button class="!text-white" (click)="marcar('SI')">{{ 'diligenciar.marcarSi' | transloco }}</button>
+              <button mat-button class="!text-white" (click)="marcar('NO')">{{ 'estado.NO' | transloco }}</button>
+              <button mat-button class="!text-white" (click)="marcar('NA')">{{ 'estado.NA' | transloco }}</button>
+              <button mat-button class="!text-white" (click)="agregarEvidencia([...seleccion()])"><mat-icon>add_link</mat-icon>{{ 'diligenciar.asignarEvidencia' | transloco }}</button>
+              <button mat-button class="!text-white" (click)="observacionMasiva()"><mat-icon>notes</mat-icon>{{ 'diligenciar.observacion' | transloco }}</button>
               <span class="flex-1"></span>
-              <button mat-icon-button class="!text-white" aria-label="Cerrar selección" (click)="limpiarSeleccion()"><mat-icon>close</mat-icon></button>
+              <button mat-icon-button class="!text-white" [attr.aria-label]="'diligenciar.cerrarSeleccion' | transloco" (click)="limpiarSeleccion()"><mat-icon>close</mat-icon></button>
             </div>
           }
         </section>
@@ -109,6 +115,9 @@ export class DiligenciarPage {
   fila = input<string>();
 
   protected almacen = inject(AlmacenService);
+  protected idioma = inject(IdiomaService);
+  /** El catálogo oficial siempre está en español. */
+  idiomaCatalogo = IDIOMA_PREDETERMINADO;
   private dialog = inject(MatDialog);
   private router = inject(Router);
   limpiarSeleccion() { this.seleccion.set(new Set()); }

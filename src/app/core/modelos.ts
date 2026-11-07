@@ -93,4 +93,5 @@ export interface Usuario {
   debeCambiarClave: boolean;
 }
 
-export const NOMBRE_ROL: Record<Rol, string> = { admin: 'Administrador', editor: 'Editor', lector: 'Lector' };
+/** Clave de traducción del nombre de cada rol (`rol.*` en public/i18n). */
+export const claveRol = (r: Rol) => `rol.${r}`;

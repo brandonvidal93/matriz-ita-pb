@@ -35,6 +35,283 @@
     }
   },
   "comun": {
-    "cerrar": "Cerrar"
+    "cerrar": "Cerrar",
+    "cancelar": "Cancelar",
+    "guardar": "Guardar",
+    "aceptar": "Aceptar",
+    "aplicar": "Aplicar",
+    "eliminar": "Eliminar",
+    "editar": "Editar",
+    "salir": "Salir",
+    "reintentar": "Reintentar",
+    "verMas": "Ver más",
+    "masAcciones": "Más acciones para {{ nombre }}",
+    "textoOficial": "Texto oficial de la matriz, en español"
+  },
+  "estado": {
+    "SI": "SI",
+    "NO": "NO",
+    "NA": "N/A"
+  },
+  "rol": {
+    "admin": "Administrador",
+    "editor": "Editor",
+    "lector": "Lector"
+  },
+  "problema": {
+    "sin-estado": "Sin diligenciar",
+    "sin-soporte": "Cumple (SI) sin evidencia ni observación",
+    "na-sin-justificacion": "N/A sin justificación jurídica",
+    "no-sin-justificacion": "NO sin observación"
+  },
+  "clave": {
+    "corta": "Debe tener al menos 10 caracteres.",
+    "letrasNumeros": "Debe combinar letras y números."
+  },
+  "ingresar": {
+    "titulo": "Ingresar a la Matriz ITA",
+    "sesionVencida": "Tu sesión terminó. Vuelve a ingresar.",
+    "usuario": "Usuario",
+    "clave": "Contraseña",
+    "ingresando": "Ingresando…",
+    "ingresar": "Ingresar",
+    "cambiar": {
+      "titulo": "Cambia tu contraseña",
+      "explicacion": "{{ nombre }}, por seguridad debes definir una contraseña personal antes de continuar.",
+      "actual": "Contraseña actual",
+      "nueva": "Nueva contraseña",
+      "pista": "Mínimo 10 caracteres, con letras y números.",
+      "repetir": "Repite la nueva contraseña",
+      "guardando": "Guardando…",
+      "guardar": "Guardar y continuar",
+      "noCoinciden": "Las contraseñas nuevas no coinciden."
+    }
+  },
+  "registros": {
+    "titulo": "Registros de diligenciamiento",
+    "descripcion": "Cada registro es un corte de la Matriz ITA ({{ version }}, {{ total }} ítems): el reporte anual a la Procuraduría o un seguimiento interno.",
+    "importarXlsx": "Importar matriz .xlsx",
+    "restaurarRespaldo": "Restaurar respaldo",
+    "nuevo": "Nuevo registro",
+    "resultadoImportacion": "Resultado de la importación",
+    "cerrarAviso": "Cerrar aviso",
+    "errorCarga": "No se pudieron cargar los registros: {{ error }}",
+    "vacio": {
+      "titulo": "Aún no hay registros",
+      "lector": "Cuando un editor cree un registro aparecerá aquí.",
+      "editor": "Crea un registro en blanco o importa la matriz que ya diligenciaste (por ejemplo, la del año anterior) para reutilizar sus respuestas y evidencias."
+    },
+    "lista": "Registros",
+    "tipo": {
+      "procuraduria": "Procuraduría",
+      "seguimiento": "Seguimiento interno"
+    },
+    "vigencia": "Vigencia {{ v }}",
+    "nEvidencias": "{{ n }} evidencias",
+    "actualizado": "actualizado {{ fecha }}",
+    "avance": "Avance {{ n }}%",
+    "abrir": "Abrir",
+    "menu": {
+      "editar": "Editar datos",
+      "duplicar": "Nuevo corte a partir de este",
+      "respaldo": "Descargar respaldo (.json)"
+    },
+    "dialogo": {
+      "nuevo": "Nuevo registro",
+      "nombreDefecto": "ITA {{ anio }} – Reporte Procuraduría",
+      "duplicar": "Nuevo corte a partir de {{ nombre }}",
+      "copia": "{{ nombre }} (copia)",
+      "editar": "Editar registro",
+      "importar": "Importar “{{ archivo }}”",
+      "nombreImportado": "Importado – {{ archivo }}"
+    },
+    "eliminar": {
+      "titulo": "Eliminar registro",
+      "mensaje": "Se eliminará “{{ nombre }}” para todos los usuarios.\n\nTe recomendamos descargar antes un respaldo."
+    },
+    "error": {
+      "crear": "No se pudo crear el registro: {{ error }}",
+      "crearCorte": "No se pudo crear el corte: {{ error }}",
+      "eliminar": "No se pudo eliminar: {{ error }}",
+      "restaurar": "No se pudo restaurar: {{ error }}",
+      "importar": "No se pudo importar: {{ error }}"
+    },
+    "restaurado": "Restaurado: {{ nombres }}.",
+    "ningunoCreado": "No se creó ningún registro.",
+    "omitido": "“{{ nombre }}”: {{ motivo }}.",
+    "leidos": "Se leyeron {{ items }} ítems diligenciados y {{ evidencias }} evidencias únicas (URLs)."
+  },
+  "importacion": {
+    "textoNoCoincide": "Fila {{ fila }}: el texto del ítem no coincide con la plantilla; se omitió.",
+    "imagenes": "Fila {{ fila }}: tenía {{ n }} imagen(es) pegada(s) como evidencia. Publícala(s) en el portal y agrégala(s) como enlace."
+  },
+  "diligenciar": {
+    "secciones": "Secciones de la matriz",
+    "resultados": "Resultados para “{{ q }}”",
+    "buscar": "Buscar en toda la matriz",
+    "filtrar": "Filtrar ítems",
+    "filtro": {
+      "todos": "Todos",
+      "pendientes": "Pendientes",
+      "problemas": "Por revisar"
+    },
+    "seleccionarVisibles": "Seleccionar visibles ({{ n }})",
+    "quitarSeleccion": "Quitar selección",
+    "sinItems": "No hay ítems con este filtro en la sección.",
+    "accionesSeleccion": "Acciones sobre la selección",
+    "seleccionados": "{{ n }} seleccionados",
+    "marcarSi": "Marcar SI",
+    "asignarEvidencia": "Asignar evidencia",
+    "observacion": "Observación",
+    "cerrarSeleccion": "Cerrar selección"
+  },
+  "item": {
+    "seleccionar": "Seleccionar ítem fila {{ fila }}",
+    "quePide": "Qué se pide y normatividad · fila {{ fila }}",
+    "normatividad": "Normatividad:",
+    "cumplimiento": "Cumplimiento del ítem fila {{ fila }}",
+    "valor": "Valor a reportar",
+    "justificacionNa": "Justificación jurídica del N/A",
+    "observacion": "Observación / justificación",
+    "evidenciasDe": "Evidencias del ítem fila {{ fila }}",
+    "quitarEvidencia": "Quitar evidencia {{ titulo }}",
+    "evidencia": "Evidencia",
+    "notaInterna": "Nota interna",
+    "notaInternaCampo": "Nota interna (no se exporta)",
+    "vistaColumna": "Así quedará en la columna I"
+  },
+  "evidencias": {
+    "titulo": "Biblioteca de evidencias",
+    "descripcion": "Registra cada URL una sola vez y asígnala a todos los ítems que respalda.",
+    "buscar": "Buscar evidencia",
+    "verificarEnlaces": "Verificar enlaces",
+    "nueva": "Nueva evidencia",
+    "notaVerificacion": "La verificación comprueba que el servidor responda; por seguridad del navegador no puede distinguir una página 404. Abre las dudosas para confirmar.",
+    "caption": "Evidencias del registro {{ nombre }}",
+    "col": {
+      "evidencia": "Evidencia",
+      "items": "Ítems",
+      "verificacion": "Verificación",
+      "acciones": "Acciones"
+    },
+    "items": {
+      "uno": "1 ítem",
+      "otros": "{{ n }} ítems"
+    },
+    "responde": "Responde",
+    "sinRespuesta": "Sin respuesta",
+    "asignar": "Asignar a ítems",
+    "verificar": "Verificar",
+    "vacio": "No hay evidencias todavía.",
+    "sinCoincidencias": "No hay evidencias que coincidan.",
+    "fila": "Fila {{ fila }}",
+    "eliminar": {
+      "titulo": "Eliminar evidencia",
+      "mensaje": "“{{ titulo }}” se quitará de {{ n }} ítem(s)."
+    }
+  },
+  "resumen": {
+    "titulo": "Revisar y exportar",
+    "indicadores": "Indicadores",
+    "diligenciados": "{{ n }} de {{ total }} diligenciados",
+    "cumple": "Cumple (SI)",
+    "noCumple": "No cumple (NO)",
+    "noAplica": "No aplica (N/A)",
+    "porRevisar": "Ítems por revisar",
+    "exportar": {
+      "titulo": "Generar archivo oficial",
+      "descripcion": "Se llena la plantilla oficial de la Procuraduría (Matriz ITA 2023) marcando SI/NO/N/A con “X” y escribiendo la observación y las URLs en la columna I. Estructura, estilos e instrucciones no se modifican.",
+      "formato": "Evidencias en columna I:",
+      "formatoEtiqueta": "Formato de evidencias",
+      "soloUrl": "Solo URL",
+      "tituloUrl": "Título: URL",
+      "aviso": "Hay {{ n }} ítems sin diligenciar o con soporte incompleto. Puedes exportar igual, pero conviene revisarlos.",
+      "generando": "Generando…",
+      "descargar": "Descargar matriz diligenciada (.xlsx)",
+      "error": "No se pudo generar el archivo: {{ error }}"
+    },
+    "avance": "Avance por sección",
+    "col": {
+      "seccion": "Sección",
+      "items": "Ítems",
+      "porRevisar": "Por revisar",
+      "avance": "Avance"
+    },
+    "pendientes": "Ítems por revisar ({{ n }})"
+  },
+  "usuarios": {
+    "titulo": "Usuarios",
+    "descripcion": "Quién puede ingresar a la Matriz ITA y qué puede hacer.",
+    "nuevo": "Nuevo usuario",
+    "col": {
+      "nombre": "Nombre",
+      "usuario": "Usuario",
+      "rol": "Rol",
+      "ultimoIngreso": "Último ingreso",
+      "acciones": "Acciones"
+    },
+    "inactivo": "Inactivo",
+    "claveTemporal": "Clave temporal",
+    "acciones": "Acciones para {{ nombre }}",
+    "editar": "Editar o restablecer contraseña",
+    "desactivar": "Desactivar",
+    "activar": "Activar",
+    "creado": "Usuario creado. Entrégale la contraseña temporal por un canal seguro.",
+    "actualizado": "Usuario actualizado.",
+    "dialogo": {
+      "editar": "Editar {{ usuario }}",
+      "ejemplo": "p. ej. jperez",
+      "nombre": "Nombre completo",
+      "rolLector": "Lector: solo consulta y exporta",
+      "rolEditor": "Editor: diligencia la matriz",
+      "rolAdmin": "Administrador: además gestiona usuarios y elimina registros",
+      "claveNueva": "Nueva contraseña temporal (opcional)",
+      "claveTemporal": "Contraseña temporal",
+      "pista": "La persona deberá cambiarla al ingresar. Mínimo 10 caracteres, letras y números.",
+      "errorUsuario": "El usuario debe tener de 3 a 60 caracteres: letras, números, punto, guion o guion bajo.",
+      "errorNombre": "Escribe el nombre."
+    }
+  },
+  "dialogos": {
+    "registro": {
+      "nombre": "Nombre del corte",
+      "ejemplo": "Ej.: ITA 2027 – Reporte Procuraduría",
+      "tipo": "Tipo",
+      "tipoProcuraduria": "Reporte a la Procuraduría",
+      "vigencia": "Vigencia",
+      "periodo": "Periodo (opcional)",
+      "periodoEjemplo": "1.er semestre",
+      "partirDe": "Partir de",
+      "enBlanco": "Matriz en blanco",
+      "copiaDe": "Copia de: {{ nombre }}",
+      "pistaBase": "Copiar un corte anterior trae respuestas y evidencias para solo actualizarlas."
+    },
+    "evidencia": {
+      "editar": "Editar evidencia",
+      "url": "URL",
+      "urlInvalida": "Debe iniciar con http:// o https://",
+      "titulo": "Título",
+      "tituloEjemplo": "Certificado de accesibilidad 2026",
+      "descripcion": "Descripción (uso interno)"
+    },
+    "elegir": {
+      "titulo": "Agregar evidencia",
+      "tituloVarios": "Agregar evidencia a {{ n }} ítems",
+      "buscar": "Buscar en la biblioteca o pegar una URL nueva",
+      "tituloNueva": "Título para la nueva evidencia",
+      "biblioteca": "La biblioteca tiene {{ n }} evidencias. Una misma evidencia puede respaldar varios ítems.",
+      "crear": "Crear y agregar"
+    },
+    "asignar": {
+      "titulo": "Asignar evidencia a ítems",
+      "filtrar": "Filtrar ítems",
+      "ejemplo": "Ej.: accesibilidad, presupuesto, 4.2",
+      "seleccionados": "{{ n }} ítem(s) seleccionados",
+      "fila": "fila {{ fila }}"
+    },
+    "masivo": {
+      "titulo": "Observación para {{ n }} ítem(s)",
+      "pista": "Reemplaza la observación actual de los ítems seleccionados."
+    }
   }
 }

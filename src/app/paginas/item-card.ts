@@ -9,13 +9,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslocoPipe } from '@jsverse/transloco';
 import { AlmacenService } from '../core/almacen.service';
-import { TEXTO_PROBLEMA, problemas, textoObservacion } from '../core/catalogo';
+import { claveProblema, problemas, textoObservacion } from '../core/catalogo';
 import { EstadoCumplimiento, Evidencia, ItemCatalogo, Registro, respuestaVacia } from '../core/modelos';
 
 @Component({
   selector: 'app-item-card',
-  imports: [FormsModule, TextFieldModule, MatButtonModule, MatButtonToggleModule, MatCheckboxModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTooltipModule],
+  imports: [FormsModule, TextFieldModule, MatButtonModule, MatButtonToggleModule, MatCheckboxModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTooltipModule, TranslocoPipe],
   styles: `
     :host { display: block; min-width: 0; scroll-margin-top: 140px; }
     mat-chip { max-width: 100%; }
@@ -36,22 +37,22 @@ import { EstadoCumplimiento, Evidencia, ItemCatalogo, Registro, respuestaVacia }
     <article class="tarjeta p-4" [class]="r.estado ?? ''" [class.resaltado]="resaltado()" [attr.aria-labelledby]="'it-' + item().fila">
       <div class="flex gap-3 items-start flex-wrap">
         @if (!soloLectura()) {
-        <mat-checkbox class="-mt-2 -ml-2" [checked]="seleccionado()" (change)="alternarSeleccion.emit($event.checked)" [aria-label]="'Seleccionar ítem fila ' + item().fila" />
+        <mat-checkbox class="-mt-2 -ml-2" [checked]="seleccionado()" (change)="alternarSeleccion.emit($event.checked)" [aria-label]="'item.seleccionar' | transloco: { fila: item().fila }" />
         }
         <div class="flex-1 min-w-0">
-          @if (item().nivel2) { <div class="text-xs uppercase tracking-wide texto-suave font-semibold">{{ item().nivel2 }}</div> }
-          <h3 [id]="'it-' + item().fila" class="text-[15px] font-medium leading-snug m-0 mt-1">{{ item().item }}</h3>
+          @if (item().nivel2) { <div lang="es" class="text-xs uppercase tracking-wide texto-suave font-semibold">{{ item().nivel2 }}</div> }
+          <h3 lang="es" [id]="'it-' + item().fila" class="text-[15px] font-medium leading-snug m-0 mt-1">{{ item().item }}</h3>
           <details class="mt-1">
-            <summary>Qué se pide y normatividad · fila {{ item().fila }}</summary>
-            <p class="text-sm my-2 preline">{{ item().explicacion }}</p>
-            <p class="text-xs texto-suave m-0"><strong>Normatividad:</strong> {{ item().normatividad }}</p>
+            <summary>{{ 'item.quePide' | transloco: { fila: item().fila } }}</summary>
+            <p lang="es" class="text-sm my-2 preline">{{ item().explicacion }}</p>
+            <p class="text-xs texto-suave m-0"><strong>{{ 'item.normatividad' | transloco }}</strong> <span lang="es">{{ item().normatividad }}</span></p>
           </details>
         </div>
         @if (item().tipo === 'cumplimiento') {
-          <mat-button-toggle-group [value]="r.estado" [disabled]="soloLectura()" (change)="estado($event.value)" [attr.aria-label]="'Cumplimiento del ítem fila ' + item().fila" hideSingleSelectionIndicator>
-            <mat-button-toggle value="SI" class="t-SI">SI</mat-button-toggle>
-            <mat-button-toggle value="NO" class="t-NO">NO</mat-button-toggle>
-            <mat-button-toggle value="NA" class="t-NA">N/A</mat-button-toggle>
+          <mat-button-toggle-group [value]="r.estado" [disabled]="soloLectura()" (change)="estado($event.value)" [attr.aria-label]="'item.cumplimiento' | transloco: { fila: item().fila }" hideSingleSelectionIndicator>
+            <mat-button-toggle value="SI" class="t-SI">{{ 'estado.SI' | transloco }}</mat-button-toggle>
+            <mat-button-toggle value="NO" class="t-NO">{{ 'estado.NO' | transloco }}</mat-button-toggle>
+            <mat-button-toggle value="NA" class="t-NA">{{ 'estado.NA' | transloco }}</mat-button-toggle>
           </mat-button-toggle-group>
         }
       </div>
@@ -59,39 +60,39 @@ import { EstadoCumplimiento, Evidencia, ItemCatalogo, Registro, respuestaVacia }
       <div class="mt-3 grid gap-3 md:grid-cols-[1fr_minmax(260px,38%)]">
         <div>
           <mat-form-field class="w-full sin-pie">
-            <mat-label>{{ item().tipo === 'numero' ? 'Valor a reportar' : r.estado === 'NA' ? 'Justificación jurídica del N/A' : 'Observación / justificación' }}</mat-label>
+            <mat-label>{{ (item().tipo === 'numero' ? 'item.valor' : r.estado === 'NA' ? 'item.justificacionNa' : 'item.observacion') | transloco }}</mat-label>
             <textarea matInput rows="2" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="r.observacion" (ngModelChange)="texto($event)"></textarea>
           </mat-form-field>
           <div class="mt-2 flex flex-wrap gap-2 items-center">
-            <mat-chip-set [attr.aria-label]="'Evidencias del ítem fila ' + item().fila">
+            <mat-chip-set [attr.aria-label]="'item.evidenciasDe' | transloco: { fila: item().fila }">
               @for (e of evidencias(); track e.id) {
                 <mat-chip (removed)="quitar(e)" [matTooltip]="e.url" [removable]="!soloLectura()">
                   <mat-icon matChipAvatar>link</mat-icon>{{ e.titulo }}
                   @if (!soloLectura()) {
-                    <button matChipRemove [attr.aria-label]="'Quitar evidencia ' + e.titulo"><mat-icon>cancel</mat-icon></button>
+                    <button matChipRemove [attr.aria-label]="'item.quitarEvidencia' | transloco: { titulo: e.titulo }"><mat-icon>cancel</mat-icon></button>
                   }
                 </mat-chip>
               }
             </mat-chip-set>
             @if (!soloLectura()) {
-              <button mat-stroked-button (click)="agregarEvidencia.emit()"><mat-icon>add_link</mat-icon>Evidencia</button>
+              <button mat-stroked-button (click)="agregarEvidencia.emit()"><mat-icon>add_link</mat-icon>{{ 'item.evidencia' | transloco }}</button>
             }
             @if (!soloLectura() && !mostrarNota && !r.notaInterna) {
-              <button mat-button (click)="mostrarNota = true"><mat-icon>sticky_note_2</mat-icon>Nota interna</button>
+              <button mat-button (click)="mostrarNota = true"><mat-icon>sticky_note_2</mat-icon>{{ 'item.notaInterna' | transloco }}</button>
             }
           </div>
           @if (mostrarNota || r.notaInterna) {
             <mat-form-field class="w-full sin-pie mt-2">
-              <mat-label>Nota interna (no se exporta)</mat-label>
+              <mat-label>{{ 'item.notaInternaCampo' | transloco }}</mat-label>
               <textarea matInput rows="1" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="r.notaInterna" (ngModelChange)="nota($event)"></textarea>
             </mat-form-field>
           }
         </div>
         <div>
-          <div class="text-xs font-semibold texto-suave mb-1">Así quedará en la columna I</div>
+          <div class="text-xs font-semibold texto-suave mb-1">{{ 'item.vistaColumna' | transloco }}</div>
           <div class="vista preline break-words">{{ vista() || '—' }}</div>
           @for (p of probs(); track p) {
-            <div class="chip-estado pendiente mt-2"><mat-icon class="!w-4 !h-4 !text-base">warning</mat-icon>{{ textoProblema[p] }}</div>
+            <div class="chip-estado pendiente mt-2"><mat-icon class="!w-4 !h-4 !text-base">warning</mat-icon>{{ claveProblema(p) | transloco }}</div>
           }
         </div>
       </div>
@@ -109,7 +110,7 @@ export class ItemCard {
   private almacen = inject(AlmacenService);
   soloLectura = this.almacen.soloLectura;
   mostrarNota = false;
-  textoProblema = TEXTO_PROBLEMA;
+  claveProblema = claveProblema;
 
   resp = computed(() => this.registro().respuestas[this.item().fila] ?? respuestaVacia());
   evidencias = computed(() =>

@@ -79,8 +79,8 @@ describe('guardias y sesión', () => {
 
 describe('problemaClave', () => {
   it.each([
-    ['corta1', 'Debe tener al menos 10 caracteres.'],
-    ['solo-letras-largas', 'Debe combinar letras y números.'],
+    ['corta1', 'clave.corta'],
+    ['solo-letras-largas', 'clave.letrasNumeros'],
     ['clave-segura-2026', null],
   ])('%s', (c, esperado) => expect(problemaClave(c)).toBe(esperado));
 });
