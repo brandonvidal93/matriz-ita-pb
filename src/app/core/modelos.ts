@@ -75,3 +75,22 @@ export function respuestaVacia(): Respuesta {
 export function nuevoId(): string {
   return (crypto.randomUUID?.() ?? Math.random().toString(36).slice(2) + Date.now().toString(36)).slice(0, 12);
 }
+
+/** Normaliza una URL de evidencia para detectar duplicados (quita espacios y puntuación final). */
+export function normalizarUrl(u: string): string {
+  return u.trim().replace(/[)\].,;]+$/, '');
+}
+
+/** Usuario autenticado tal como lo devuelve la API. */
+export type Rol = 'admin' | 'editor' | 'lector';
+
+export interface Usuario {
+  id: number;
+  usuario: string;
+  nombre: string;
+  rol: Rol;
+  activo: boolean;
+  debeCambiarClave: boolean;
+}
+
+export const NOMBRE_ROL: Record<Rol, string> = { admin: 'Administrador', editor: 'Editor', lector: 'Lector' };

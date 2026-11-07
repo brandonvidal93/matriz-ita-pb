@@ -9,8 +9,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { firstValueFrom } from 'rxjs';
 import { AlmacenService } from '../core/almacen.service';
+import { AuthService, mensajeError } from '../core/auth.service';
 import { CATALOGO } from '../core/catalogo';
-import { Registro, nuevoId } from '../core/modelos';
+import { Registro } from '../core/modelos';
 import { descargar, nombreArchivo, progreso } from '../core/progreso';
 import { XlsxService } from '../core/xlsx.service';
 import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dialogos';
@@ -26,9 +27,13 @@ import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dial
             Cada registro es un corte de la Matriz ITA ({{ version }}, {{ totalItems }} ítems): el reporte anual a la Procuraduría o un seguimiento interno.
           </p>
         </div>
-        <button mat-stroked-button (click)="archivoXlsx.click()"><mat-icon>upload_file</mat-icon>Importar matriz .xlsx</button>
-        <button mat-stroked-button (click)="archivoJson.click()"><mat-icon>settings_backup_restore</mat-icon>Restaurar respaldo</button>
-        <button mat-flat-button (click)="nuevo()"><mat-icon>add</mat-icon>Nuevo registro</button>
+        @if (!almacen.soloLectura()) {
+          <button mat-stroked-button (click)="archivoXlsx.click()"><mat-icon>upload_file</mat-icon>Importar matriz .xlsx</button>
+          @if (auth.esAdmin()) {
+            <button mat-stroked-button (click)="archivoJson.click()"><mat-icon>settings_backup_restore</mat-icon>Restaurar respaldo</button>
+          }
+          <button mat-flat-button (click)="nuevo()"><mat-icon>add</mat-icon>Nuevo registro</button>
+        }
         <input #archivoXlsx type="file" accept=".xlsx" hidden (change)="importarXlsx($event)" />
         <input #archivoJson type="file" accept=".json" hidden (change)="restaurar($event)" />
       </div>
@@ -47,13 +52,19 @@ import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dial
         </section>
       }
 
-      @if (!almacen.registros().length) {
+      @if (cargando()) { <mat-progress-bar mode="indeterminate" class="my-3" /> }
+      @if (error()) {
+        <p class="tarjeta p-4 mt-4" role="alert">No se pudieron cargar los registros: {{ error() }} <button mat-button (click)="recargar()">Reintentar</button></p>
+      }
+
+      @if (almacen.cargado() && !almacen.registros().length) {
         <section class="tarjeta p-8 mt-6 text-center">
           <mat-icon class="!w-12 !h-12 !text-5xl texto-suave">fact_check</mat-icon>
           <h2 class="text-lg font-semibold mt-2">Aún no hay registros</h2>
           <p class="texto-suave max-w-[560px] mx-auto">
+            @if (almacen.soloLectura()) { Cuando un editor cree un registro aparecerá aquí. } @else {
             Crea un registro en blanco o importa la matriz que ya diligenciaste (por ejemplo, la del año anterior) para
-            reutilizar sus respuestas y evidencias.
+            reutilizar sus respuestas y evidencias. }
           </p>
         </section>
       }
@@ -88,10 +99,14 @@ import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dial
             <button mat-flat-button (click)="abrir(r)">Abrir</button>
             <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'Más acciones para ' + r.nombre"><mat-icon>more_vert</mat-icon></button>
             <mat-menu #m="matMenu">
-              <button mat-menu-item (click)="editar(r)"><mat-icon>edit</mat-icon>Editar datos</button>
-              <button mat-menu-item (click)="duplicar(r)"><mat-icon>content_copy</mat-icon>Nuevo corte a partir de este</button>
+              @if (!almacen.soloLectura()) {
+                <button mat-menu-item (click)="editar(r)"><mat-icon>edit</mat-icon>Editar datos</button>
+                <button mat-menu-item (click)="duplicar(r)"><mat-icon>content_copy</mat-icon>Nuevo corte a partir de este</button>
+              }
               <button mat-menu-item (click)="respaldo(r)"><mat-icon>download</mat-icon>Descargar respaldo (.json)</button>
-              <button mat-menu-item (click)="eliminar(r)"><mat-icon>delete</mat-icon>Eliminar</button>
+              @if (auth.esAdmin()) {
+                <button mat-menu-item (click)="eliminar(r)"><mat-icon>delete</mat-icon>Eliminar</button>
+              }
             </mat-menu>
           </li>
         }
@@ -101,6 +116,7 @@ import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dial
 })
 export class RegistrosPage {
   protected almacen = inject(AlmacenService);
+  protected auth = inject(AuthService);
   private dialog = inject(MatDialog);
   private router = inject(Router);
   private snack = inject(MatSnackBar);
@@ -111,6 +127,29 @@ export class RegistrosPage {
   importando = signal(false);
   advertencias = signal<string[]>([]);
   prog = (r: Registro) => progreso(r);
+  cargando = signal(false);
+  error = signal<string | null>(null);
+
+  constructor() {
+    this.recargar();
+  }
+
+  /** Siempre se muestra la versión más reciente del servidor. */
+  async recargar() {
+    this.cargando.set(true);
+    this.error.set(null);
+    try {
+      await this.almacen.cargar();
+    } catch (e) {
+      this.error.set(mensajeError(e));
+    } finally {
+      this.cargando.set(false);
+    }
+  }
+
+  private fallo(accion: string, e: unknown) {
+    this.snack.open(`No se pudo ${accion}: ${mensajeError(e)}`, 'Cerrar', { duration: 8000 });
+  }
 
   abrir(r: Registro, ev?: Event) {
     ev?.preventDefault();
@@ -126,9 +165,12 @@ export class RegistrosPage {
     const año = new Date().getFullYear();
     const d = await this.pedirDatos('Nuevo registro', { nombre: `ITA ${año} – Reporte Procuraduría`, vigencia: año }, true);
     if (!d) return;
-    const base = this.almacen.registros().find((r) => r.id === d.baseId);
-    const reg = this.almacen.crear(d, base);
-    this.router.navigate(['/r', reg.id]);
+    try {
+      const reg = await this.almacen.crear(datosDe(d), d.baseId ? { baseId: d.baseId } : {});
+      this.router.navigate(['/r', reg.id]);
+    } catch (e) {
+      this.fallo('crear el registro', e);
+    }
   }
 
   async duplicar(r: Registro) {
@@ -138,7 +180,12 @@ export class RegistrosPage {
       vigencia: r.vigencia,
       periodo: r.periodo,
     });
-    if (d) this.almacen.crear(d, r);
+    if (!d) return;
+    try {
+      await this.almacen.crear(datosDe(d), { baseId: r.id });
+    } catch (e) {
+      this.fallo('crear el corte', e);
+    }
   }
 
   async editar(r: Registro) {
@@ -152,13 +199,18 @@ export class RegistrosPage {
         .open(ConfirmarDialog, {
           data: {
             titulo: 'Eliminar registro',
-            mensaje: `Se eliminará “${r.nombre}” de la aplicación (y del archivo de datos, si está vinculado).\n\nTe recomendamos descargar antes un respaldo.`,
+            mensaje: `Se eliminará “${r.nombre}” para todos los usuarios.\n\nTe recomendamos descargar antes un respaldo.`,
             accion: 'Eliminar',
           },
         })
         .afterClosed(),
     );
-    if (ok) await this.almacen.eliminar(r.id);
+    if (!ok) return;
+    try {
+      await this.almacen.eliminar(r.id);
+    } catch (e) {
+      this.fallo('eliminar', e);
+    }
   }
 
   respaldo(r: Registro) {
@@ -171,14 +223,14 @@ export class RegistrosPage {
     input.value = '';
     if (!f) return;
     try {
-      const reg = JSON.parse(await f.text()) as Registro;
-      if (!reg.respuestas || !Array.isArray(reg.evidencias)) throw new Error('No es un respaldo de la Matriz ITA');
-      if (this.almacen.registros().some((x) => x.id === reg.id)) reg.id = nuevoId();
-      reg.actualizado = new Date().toISOString();
-      this.almacen.agregarRegistro(reg);
-      this.snack.open(`Respaldo “${reg.nombre}” restaurado.`, undefined, { duration: 4000 });
-    } catch (e: any) {
-      this.snack.open('No se pudo restaurar: ' + (e?.message ?? e), 'Cerrar', { duration: 8000 });
+      const r = await this.almacen.restaurar(await f.text());
+      const partes = [
+        r.creados.length ? `Restaurado: ${r.creados.map((x) => x.nombre).join(', ')}.` : 'No se creó ningún registro.',
+        ...r.omitidos.map((x) => `“${x.nombre}”: ${x.motivo}.`),
+      ];
+      this.snack.open(partes.join(' '), 'Cerrar', { duration: 10000 });
+    } catch (e) {
+      this.fallo('restaurar', e);
     }
   }
 
@@ -193,15 +245,20 @@ export class RegistrosPage {
       const año = new Date().getFullYear();
       const d = await this.pedirDatos(`Importar “${f.name}”`, { nombre: `Importado – ${f.name.replace(/\.xlsx$/i, '')}`, vigencia: año });
       if (!d) return;
-      this.almacen.crear(d, { respuestas: res.respuestas, evidencias: res.evidencias });
+      await this.almacen.crear(datosDe(d), { contenido: { respuestas: res.respuestas, evidencias: res.evidencias } });
       this.advertencias.set([
         `Se leyeron ${res.itemsLeidos} ítems diligenciados y ${res.evidencias.length} evidencias únicas (URLs).`,
         ...res.advertencias,
       ]);
-    } catch (e: any) {
-      this.snack.open('No se pudo importar: ' + (e?.message ?? e), 'Cerrar', { duration: 8000 });
+    } catch (e) {
+      this.fallo('importar', e);
     } finally {
       this.importando.set(false);
     }
   }
+}
+
+/** Solo los datos del registro (sin el id de base del diálogo). */
+function datosDe(d: DatosRegistro) {
+  return { nombre: d.nombre, tipo: d.tipo, vigencia: d.vigencia, periodo: d.periodo ?? undefined };
 }

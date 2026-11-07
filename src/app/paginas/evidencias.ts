@@ -38,8 +38,10 @@ import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dia
             <mat-label>Buscar evidencia</mat-label>
             <input matInput [ngModel]="q()" (ngModelChange)="q.set($event)" />
           </mat-form-field>
-          <button mat-stroked-button (click)="verificarTodas()" [disabled]="verificando()"><mat-icon>network_check</mat-icon>Verificar enlaces</button>
-          <button mat-flat-button (click)="nueva()"><mat-icon>add_link</mat-icon>Nueva evidencia</button>
+          @if (!almacen.soloLectura()) {
+            <button mat-stroked-button (click)="verificarTodas()" [disabled]="verificando()"><mat-icon>network_check</mat-icon>Verificar enlaces</button>
+            <button mat-flat-button (click)="nueva()"><mat-icon>add_link</mat-icon>Nueva evidencia</button>
+          }
         </div>
         @if (verificando()) {
           <mat-progress-bar mode="determinate" [value]="avance()" class="mb-2" />
@@ -85,6 +87,7 @@ import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dia
                     @if (e.verificacion) { <div class="text-xs texto-suave mt-1">{{ e.verificacion.fecha | date: 'd MMM, h:mm a' }}</div> }
                   </td>
                   <td class="whitespace-nowrap text-right">
+                    @if (!almacen.soloLectura()) {
                     <button mat-stroked-button (click)="asignar(e, usos)">Asignar a ítems</button>
                     <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'Más acciones para ' + e.titulo"><mat-icon>more_vert</mat-icon></button>
                     <mat-menu #m="matMenu">
@@ -92,6 +95,7 @@ import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dia
                       <button mat-menu-item (click)="verificar(e)"><mat-icon>network_check</mat-icon>Verificar</button>
                       <button mat-menu-item (click)="eliminar(e, usos.length)"><mat-icon>delete</mat-icon>Eliminar</button>
                     </mat-menu>
+                    }
                   </td>
                 </tr>
               } @empty {

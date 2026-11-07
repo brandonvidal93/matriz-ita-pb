@@ -63,10 +63,12 @@ type Filtro = 'todos' | 'pendientes' | 'problemas';
             </mat-button-toggle-group>
           </div>
 
+          @if (!almacen.soloLectura()) {
           <div class="flex items-center gap-2 mb-3 text-sm">
             <button mat-button (click)="seleccionarVisibles()"><mat-icon>select_all</mat-icon>Seleccionar visibles ({{ visibles().length }})</button>
             @if (seleccion().size) { <button mat-button (click)="limpiarSeleccion()">Quitar selección</button> }
           </div>
+          }
 
           @if (!visibles().length) {
             <p class="tarjeta p-6 texto-suave">No hay ítems con este filtro en la sección.</p>
@@ -84,7 +86,7 @@ type Filtro = 'todos' | 'pendientes' | 'problemas';
             }
           </div>
 
-          @if (seleccion().size) {
+          @if (seleccion().size && !almacen.soloLectura()) {
             <div class="acciones mt-4 rounded-xl shadow-lg px-4 py-2 flex items-center gap-2 flex-wrap" role="region" aria-label="Acciones sobre la selección">
               <strong class="mr-2">{{ seleccion().size }} seleccionados</strong>
               <button mat-button class="!text-white" (click)="marcar('SI')">Marcar SI</button>

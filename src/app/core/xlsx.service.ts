@@ -107,8 +107,8 @@ export class XlsxService {
       rels = rels.replace('</Relationships>', relItems + '</Relationships>');
     }
 
-    zip.file(HOJA, hoja);
-    zip.file(RELS_HOJA, rels);
+    zip.file(HOJA, hoja, { createFolders: false });
+    zip.file(RELS_HOJA, rels, { createFolders: false });
     return zip.generateAsync({
       type: 'blob',
       compression: 'DEFLATE',

@@ -40,7 +40,7 @@ import { XlsxService } from '../core/xlsx.service';
             observación y las URLs en la columna I. Estructura, estilos e instrucciones no se modifican.
           </p>
           <div class="flex flex-wrap gap-6 items-center my-3">
-            <mat-radio-group [ngModel]="reg.formatoEvidencias" (ngModelChange)="almacen.renombrar(reg.id, { formatoEvidencias: $event })" aria-label="Formato de evidencias">
+            <mat-radio-group [ngModel]="reg.formatoEvidencias" [disabled]="almacen.soloLectura()" (ngModelChange)="almacen.renombrar(reg.id, { formatoEvidencias: $event })" aria-label="Formato de evidencias">
               <span class="text-sm mr-2">Evidencias en columna I:</span>
               <mat-radio-button value="url">Solo URL</mat-radio-button>
               <mat-radio-button value="titulo-url">Título: URL</mat-radio-button>

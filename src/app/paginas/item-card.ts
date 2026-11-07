@@ -35,7 +35,9 @@ import { EstadoCumplimiento, Evidencia, ItemCatalogo, Registro, respuestaVacia }
     @let r = resp();
     <article class="tarjeta p-4" [class]="r.estado ?? ''" [class.resaltado]="resaltado()" [attr.aria-labelledby]="'it-' + item().fila">
       <div class="flex gap-3 items-start flex-wrap">
+        @if (!soloLectura()) {
         <mat-checkbox class="-mt-2 -ml-2" [checked]="seleccionado()" (change)="alternarSeleccion.emit($event.checked)" [aria-label]="'Seleccionar ítem fila ' + item().fila" />
+        }
         <div class="flex-1 min-w-0">
           @if (item().nivel2) { <div class="text-xs uppercase tracking-wide texto-suave font-semibold">{{ item().nivel2 }}</div> }
           <h3 [id]="'it-' + item().fila" class="text-[15px] font-medium leading-snug m-0 mt-1">{{ item().item }}</h3>
@@ -46,7 +48,7 @@ import { EstadoCumplimiento, Evidencia, ItemCatalogo, Registro, respuestaVacia }
           </details>
         </div>
         @if (item().tipo === 'cumplimiento') {
-          <mat-button-toggle-group [value]="r.estado" (change)="estado($event.value)" [attr.aria-label]="'Cumplimiento del ítem fila ' + item().fila" hideSingleSelectionIndicator>
+          <mat-button-toggle-group [value]="r.estado" [disabled]="soloLectura()" (change)="estado($event.value)" [attr.aria-label]="'Cumplimiento del ítem fila ' + item().fila" hideSingleSelectionIndicator>
             <mat-button-toggle value="SI" class="t-SI">SI</mat-button-toggle>
             <mat-button-toggle value="NO" class="t-NO">NO</mat-button-toggle>
             <mat-button-toggle value="NA" class="t-NA">N/A</mat-button-toggle>
@@ -58,26 +60,30 @@ import { EstadoCumplimiento, Evidencia, ItemCatalogo, Registro, respuestaVacia }
         <div>
           <mat-form-field class="w-full sin-pie">
             <mat-label>{{ item().tipo === 'numero' ? 'Valor a reportar' : r.estado === 'NA' ? 'Justificación jurídica del N/A' : 'Observación / justificación' }}</mat-label>
-            <textarea matInput rows="2" cdkTextareaAutosize [ngModel]="r.observacion" (ngModelChange)="texto($event)"></textarea>
+            <textarea matInput rows="2" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="r.observacion" (ngModelChange)="texto($event)"></textarea>
           </mat-form-field>
           <div class="mt-2 flex flex-wrap gap-2 items-center">
             <mat-chip-set [attr.aria-label]="'Evidencias del ítem fila ' + item().fila">
               @for (e of evidencias(); track e.id) {
-                <mat-chip (removed)="quitar(e)" [matTooltip]="e.url">
+                <mat-chip (removed)="quitar(e)" [matTooltip]="e.url" [removable]="!soloLectura()">
                   <mat-icon matChipAvatar>link</mat-icon>{{ e.titulo }}
-                  <button matChipRemove [attr.aria-label]="'Quitar evidencia ' + e.titulo"><mat-icon>cancel</mat-icon></button>
+                  @if (!soloLectura()) {
+                    <button matChipRemove [attr.aria-label]="'Quitar evidencia ' + e.titulo"><mat-icon>cancel</mat-icon></button>
+                  }
                 </mat-chip>
               }
             </mat-chip-set>
-            <button mat-stroked-button (click)="agregarEvidencia.emit()"><mat-icon>add_link</mat-icon>Evidencia</button>
-            @if (!mostrarNota && !r.notaInterna) {
+            @if (!soloLectura()) {
+              <button mat-stroked-button (click)="agregarEvidencia.emit()"><mat-icon>add_link</mat-icon>Evidencia</button>
+            }
+            @if (!soloLectura() && !mostrarNota && !r.notaInterna) {
               <button mat-button (click)="mostrarNota = true"><mat-icon>sticky_note_2</mat-icon>Nota interna</button>
             }
           </div>
           @if (mostrarNota || r.notaInterna) {
             <mat-form-field class="w-full sin-pie mt-2">
               <mat-label>Nota interna (no se exporta)</mat-label>
-              <textarea matInput rows="1" cdkTextareaAutosize [ngModel]="r.notaInterna" (ngModelChange)="nota($event)"></textarea>
+              <textarea matInput rows="1" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="r.notaInterna" (ngModelChange)="nota($event)"></textarea>
             </mat-form-field>
           }
         </div>
@@ -101,6 +107,7 @@ export class ItemCard {
   agregarEvidencia = output<void>();
 
   private almacen = inject(AlmacenService);
+  soloLectura = this.almacen.soloLectura;
   mostrarNota = false;
   textoProblema = TEXTO_PROBLEMA;
 
