@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
+import { RouterStateSnapshot } from '@angular/router';
 import { TranslocoService, TranslocoTestingModule } from '@jsverse/transloco';
 import es from '../../../public/i18n/es.json';
 import en from '../../../public/i18n/en.json';
-import { FechaPipe, IDIOMAS, IdiomaService } from './idioma';
+import { FechaPipe, IDIOMAS, IdiomaService, TituloTraducido } from './idioma';
 
 /** Rutas de todas las claves hoja de un objeto de traducciones. */
 function claves(obj: object, prefijo = ''): string[] {
@@ -81,6 +82,18 @@ describe('IdiomaService y FechaPipe', () => {
     expect(pipe.transform(f, 'd MMM y')).toBe('7 nov 2026');
     await idioma.cambiar('en');
     expect(pipe.transform(f, 'd MMM y')).toBe('7 Nov 2026');
+  });
+
+  it('traduce el título de la ruta según el idioma activo y usa el general si no tiene', async () => {
+    const titulos = TestBed.inject(TituloTraducido);
+    const titulo = TestBed.inject(Title);
+    const buildTitle = vi.spyOn(titulos, 'buildTitle').mockReturnValue('titulos.mapa');
+    await idioma.cambiar('en');
+    titulos.updateTitle({} as RouterStateSnapshot);
+    expect(titulo.getTitle()).toBe(`${en.titulos.mapa} · ${en.app.nombre}`);
+    buildTitle.mockReturnValue(undefined);
+    titulos.updateTitle({} as RouterStateSnapshot);
+    expect(titulo.getTitle()).toBe(en.app.tituloDocumento);
   });
 
   it('devuelve vacío sin fecha', () => {

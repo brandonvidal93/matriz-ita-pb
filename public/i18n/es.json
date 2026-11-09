@@ -44,9 +44,10 @@
     "editar": "Editar",
     "salir": "Salir",
     "reintentar": "Reintentar",
-    "verMas": "Ver más",
     "masAcciones": "Más acciones para {{ nombre }}",
-    "textoOficial": "Texto oficial de la matriz, en español"
+    "textoOficial": "Texto oficial de la matriz, en español",
+    "campoObligatorio": "Este campo es obligatorio.",
+    "cargando": "Cargando…"
   },
   "estado": {
     "SI": "SI",
@@ -139,7 +140,8 @@
     "restaurado": "Restaurado: {{ nombres }}.",
     "ningunoCreado": "No se creó ningún registro.",
     "omitido": "“{{ nombre }}”: {{ motivo }}.",
-    "leidos": "Se leyeron {{ items }} ítems diligenciados y {{ evidencias }} evidencias únicas (URLs)."
+    "leidos": "Se leyeron {{ items }} ítems diligenciados y {{ evidencias }} evidencias únicas (URLs).",
+    "abrirNombre": "Abrir {{ nombre }}"
   },
   "importacion": {
     "textoNoCoincide": "Fila {{ fila }}: el texto del ítem no coincide con la plantilla; se omitió.",
@@ -163,7 +165,8 @@
     "marcarSi": "Marcar SI",
     "asignarEvidencia": "Asignar evidencia",
     "observacion": "Observación",
-    "cerrarSeleccion": "Cerrar selección"
+    "cerrarSeleccion": "Cerrar selección",
+    "anuncio": "{{ n }} ítems visibles"
   },
   "item": {
     "seleccionar": "Seleccionar ítem fila {{ fila }}",
@@ -178,7 +181,9 @@
     "evidencia": "Evidencia",
     "notaInterna": "Nota interna",
     "notaInternaCampo": "Nota interna (no se exporta)",
-    "vistaColumna": "Así quedará en la columna I"
+    "vistaColumna": "Así quedará en la columna I",
+    "evidenciaDe": "Evidencia, ítem fila {{ fila }}",
+    "notaInternaDe": "Nota interna, ítem fila {{ fila }}"
   },
   "evidencias": {
     "titulo": "Biblioteca de evidencias",
@@ -208,7 +213,10 @@
     "eliminar": {
       "titulo": "Eliminar evidencia",
       "mensaje": "“{{ titulo }}” se quitará de {{ n }} ítem(s)."
-    }
+    },
+    "anuncio": "{{ n }} evidencias visibles",
+    "asignarDe": "Asignar a ítems: {{ titulo }}",
+    "verificando": "Verificando enlaces"
   },
   "resumen": {
     "titulo": "Revisar y exportar",
@@ -237,7 +245,8 @@
       "porRevisar": "Por revisar",
       "avance": "Avance"
     },
-    "pendientes": "Ítems por revisar ({{ n }})"
+    "pendientes": "Ítems por revisar ({{ n }})",
+    "verMasPendientes": "Ver más ítems por revisar"
   },
   "usuarios": {
     "titulo": "Usuarios",
@@ -307,11 +316,25 @@
       "filtrar": "Filtrar ítems",
       "ejemplo": "Ej.: accesibilidad, presupuesto, 4.2",
       "seleccionados": "{{ n }} ítem(s) seleccionados",
-      "fila": "fila {{ fila }}"
+      "fila": "fila {{ fila }}",
+      "todaSeccion": "Seleccionar toda la sección"
     },
     "masivo": {
       "titulo": "Observación para {{ n }} ítem(s)",
       "pista": "Reemplaza la observación actual de los ítems seleccionados."
     }
+  },
+  "titulos": {
+    "ingresar": "Ingresar",
+    "registros": "Registros",
+    "usuarios": "Usuarios",
+    "diligenciar": "Diligenciar",
+    "evidencias": "Evidencias",
+    "resumen": "Revisar y exportar",
+    "mapa": "Mapa del sitio"
+  },
+  "mapa": {
+    "titulo": "Mapa del sitio",
+    "descripcion": "Todas las páginas a las que puedes entrar con tu rol."
   }
 }

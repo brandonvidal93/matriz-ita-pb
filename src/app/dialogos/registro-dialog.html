@@ -3,8 +3,9 @@
   <form id="f-registro" class="flex flex-col gap-1 pt-2 min-w-[min(480px,80vw)]" (ngSubmit)="guardar()">
     <mat-form-field>
       <mat-label>{{ 'dialogos.registro.nombre' | transloco }}</mat-label>
-      <input matInput name="nombre" [(ngModel)]="m.nombre" required cdkFocusInitial />
+      <input matInput name="nombre" [(ngModel)]="m.nombre" required pattern=".*\S.*" cdkFocusInitial />
       <mat-hint>{{ 'dialogos.registro.ejemplo' | transloco }}</mat-hint>
+      <mat-error>{{ 'comun.campoObligatorio' | transloco }}</mat-error>
     </mat-form-field>
     <div class="flex gap-3 flex-wrap">
       <mat-form-field class="flex-1 min-w-[180px]">
@@ -14,9 +15,10 @@
           <mat-option value="seguimiento">{{ 'registros.tipo.seguimiento' | transloco }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="w-32">
+      <mat-form-field class="w-32" subscriptSizing="dynamic">
         <mat-label>{{ 'dialogos.registro.vigencia' | transloco }}</mat-label>
         <input matInput type="number" name="vigencia" [(ngModel)]="m.vigencia" required />
+        <mat-error>{{ 'comun.campoObligatorio' | transloco }}</mat-error>
       </mat-form-field>
       <mat-form-field class="flex-1 min-w-[160px]">
         <mat-label>{{ 'dialogos.registro.periodo' | transloco }}</mat-label>
@@ -39,5 +41,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close type="button">{{ 'comun.cancelar' | transloco }}</button>
-  <button mat-flat-button type="submit" form="f-registro" [disabled]="!m.nombre.trim() || !m.vigencia">{{ 'comun.guardar' | transloco }}</button>
+  <button mat-flat-button type="submit" form="f-registro">{{ 'comun.guardar' | transloco }}</button>
 </mat-dialog-actions>

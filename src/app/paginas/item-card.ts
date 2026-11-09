@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, output } from '@angular/core';
+import { Component, ElementRef, Injector, afterNextRender, computed, inject, input, output, viewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -43,6 +43,9 @@ export class ItemCard {
   agregarEvidencia = output<void>();
 
   private almacen = inject(AlmacenService);
+  private injector = inject(Injector);
+  private campoNota = viewChild<ElementRef<HTMLElement>>('campoNota');
+  private botonEvidencia = viewChild('botonEvidencia', { read: ElementRef });
   soloLectura = this.almacen.soloLectura;
   mostrarNota = false;
   claveProblema = claveProblema;
@@ -56,6 +59,11 @@ export class ItemCard {
   vista = computed(() => textoObservacion(this.resp(), this.registro()));
   probs = computed(() => problemas(this.item(), this.resp()).filter((p) => p !== 'sin-estado'));
 
+  /** El botón desaparece al pulsarlo: el foco pasa al campo que abre. */
+  abrirNota() {
+    this.mostrarNota = true;
+    afterNextRender(() => this.campoNota()?.nativeElement.focus(), { injector: this.injector });
+  }
   estado(v: EstadoCumplimiento | null) {
     this.almacen.actualizarRespuesta(this.item().fila, { estado: v });
   }
@@ -67,5 +75,7 @@ export class ItemCard {
   }
   quitar(e: Evidencia) {
     this.almacen.quitarEvidencia(e.id, [this.item().fila]);
+    // El botón de quitar desaparece con su evidencia.
+    this.botonEvidencia()?.nativeElement.focus();
   }
 }

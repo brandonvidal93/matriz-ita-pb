@@ -20,25 +20,26 @@ export const activarRegistro: CanActivateFn = async (ruta: ActivatedRouteSnapsho
 };
 
 export const routes: Routes = [
-  { path: 'ingresar', title: 'Ingresar · Matriz ITA', loadComponent: () => import('./paginas/ingresar').then((m) => m.IngresarPage) },
+  { path: 'ingresar', title: 'titulos.ingresar', loadComponent: () => import('./paginas/ingresar').then((m) => m.IngresarPage) },
   {
     path: '',
     canActivate: [conSesion],
     children: [
-      { path: '', title: 'Registros · Matriz ITA', loadComponent: () => import('./paginas/registros').then((m) => m.RegistrosPage) },
+      { path: '', title: 'titulos.registros', loadComponent: () => import('./paginas/registros').then((m) => m.RegistrosPage) },
+      { path: 'mapa', title: 'titulos.mapa', loadComponent: () => import('./paginas/mapa').then((m) => m.MapaPage) },
       {
         path: 'usuarios',
         canActivate: [soloAdmin],
-        title: 'Usuarios · Matriz ITA',
+        title: 'titulos.usuarios',
         loadComponent: () => import('./paginas/usuarios').then((m) => m.UsuariosPage),
       },
       {
         path: 'r/:id',
         canActivate: [activarRegistro],
         children: [
-          { path: '', title: 'Diligenciar · Matriz ITA', loadComponent: () => import('./paginas/diligenciar').then((m) => m.DiligenciarPage) },
-          { path: 'evidencias', title: 'Evidencias · Matriz ITA', loadComponent: () => import('./paginas/evidencias').then((m) => m.EvidenciasPage) },
-          { path: 'resumen', title: 'Revisión y exportación · Matriz ITA', loadComponent: () => import('./paginas/resumen').then((m) => m.ResumenPage) },
+          { path: '', title: 'titulos.diligenciar', loadComponent: () => import('./paginas/diligenciar').then((m) => m.DiligenciarPage) },
+          { path: 'evidencias', title: 'titulos.evidencias', loadComponent: () => import('./paginas/evidencias').then((m) => m.EvidenciasPage) },
+          { path: 'resumen', title: 'titulos.resumen', loadComponent: () => import('./paginas/resumen').then((m) => m.ResumenPage) },
         ],
       },
     ],

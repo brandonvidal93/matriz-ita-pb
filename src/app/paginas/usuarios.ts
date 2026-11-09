@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
 import { AuthService, mensajeError } from '../core/auth.service';
+import { errorSi } from '../core/foco';
 import { Rol, Usuario, claveRol } from '../core/modelos';
 import { problemaClave } from './ingresar';
 
@@ -33,14 +34,24 @@ export class UsuarioDialog {
   private t = inject(TranslocoService);
   m = { usuario: '', nombre: this.d.usuario?.nombre ?? '', rol: (this.d.usuario?.rol ?? 'editor') as Rol, clave: '' };
   error = signal<string | null>(null);
+  private campoError = signal<string | null>(null);
+  errUsuario = errorSi(() => this.campoError() === 'usuario');
+  errNombre = errorSi(() => this.campoError() === 'nombre');
+  errClave = errorSi(() => this.campoError() === 'clave');
+
+  private fallo(campo: string, clave: string) {
+    this.error.set(this.t.translate(clave));
+    this.campoError.set(campo);
+    document.querySelector<HTMLElement>(`mat-dialog-container input[name=${campo}]`)?.focus();
+  }
 
   guardar() {
     if (!this.d.usuario && !/^[a-zA-Z0-9._-]{3,60}$/.test(this.m.usuario.trim()))
-      return this.error.set(this.t.translate('usuarios.dialogo.errorUsuario'));
-    if (!this.m.nombre.trim()) return this.error.set(this.t.translate('usuarios.dialogo.errorNombre'));
+      return this.fallo('usuario', 'usuarios.dialogo.errorUsuario');
+    if (!this.m.nombre.trim()) return this.fallo('nombre', 'usuarios.dialogo.errorNombre');
     if (this.m.clave || !this.d.usuario) {
       const p = problemaClave(this.m.clave);
-      if (p) return this.error.set(this.t.translate(p));
+      if (p) return this.fallo('clave', p);
     }
     this.ref.close(this.m);
   }
@@ -82,7 +93,7 @@ export class UsuariosPage {
     if (!m) return;
     try {
       await firstValueFrom(this.http.post('/api/usuarios', { ...m, usuario: m.usuario.trim() }));
-      this.snack.open(this.t.translate('usuarios.creado'), undefined, { duration: 6000 });
+      this.snack.open(this.t.translate('usuarios.creado'), this.t.translate('comun.cerrar'));
       await this.cargar();
     } catch (e) {
       this.aviso(e);
@@ -98,7 +109,7 @@ export class UsuariosPage {
   async cambiar(u: UsuarioLista, cambios: object) {
     try {
       await firstValueFrom(this.http.patch(`/api/usuarios/${u.id}`, cambios));
-      this.snack.open(this.t.translate('usuarios.actualizado'), undefined, { duration: 3000 });
+      this.snack.open(this.t.translate('usuarios.actualizado'), this.t.translate('comun.cerrar'));
       await this.cargar();
     } catch (e) {
       this.aviso(e);
@@ -106,6 +117,6 @@ export class UsuariosPage {
   }
 
   private aviso(e: unknown) {
-    this.snack.open(mensajeError(e), this.t.translate('comun.cerrar'), { duration: 8000 });
+    this.snack.open(mensajeError(e), this.t.translate('comun.cerrar'));
   }
 }

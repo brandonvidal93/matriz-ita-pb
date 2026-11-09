@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { AuthService, mensajeError } from '../core/auth.service';
 import { AlmacenService } from '../core/almacen.service';
+import { enfocarInvalido, errorSi } from '../core/foco';
 import { CONFIG } from '../config';
 
 /** Política de contraseñas (la misma que valida el servidor). Devuelve la clave de traducción del problema. */
@@ -39,6 +40,11 @@ export class IngresarPage {
   nueva = '';
   nueva2 = '';
   error = signal<string | null>(null);
+  /** Campo al que corresponde `error`; sin campo, el error es general y se muestra aparte. */
+  campoError = signal<string | null>(null);
+  errActual = errorSi(() => this.campoError() === 'actual');
+  errNueva = errorSi(() => this.campoError() === 'nueva');
+  errRepetir = errorSi(() => this.campoError() === 'nueva2');
   enviando = signal(false);
   cambiando = computed(() => !!this.auth.usuario()?.debeCambiarClave);
 
@@ -48,7 +54,15 @@ export class IngresarPage {
     });
   }
 
+  private fallo(campo: string, mensaje: string) {
+    this.error.set(mensaje);
+    this.campoError.set(campo);
+    document.querySelector<HTMLElement>(`input[name=${campo}]`)?.focus();
+  }
+
   async ingresar() {
+    if (this.enviando()) return;
+    if (!this.usuario || !this.clave) return enfocarInvalido();
     this.error.set(null);
     this.enviando.set(true);
     try {
@@ -65,10 +79,13 @@ export class IngresarPage {
   }
 
   async cambiar() {
+    if (this.enviando()) return;
+    if (!this.actual) return this.fallo('actual', this.t.translate('comun.campoObligatorio'));
     const p = problemaClave(this.nueva);
-    if (p) return this.error.set(this.t.translate(p));
-    if (this.nueva !== this.nueva2) return this.error.set(this.t.translate('ingresar.cambiar.noCoinciden'));
+    if (p) return this.fallo('nueva', this.t.translate(p));
+    if (this.nueva !== this.nueva2) return this.fallo('nueva2', this.t.translate('ingresar.cambiar.noCoinciden'));
     this.error.set(null);
+    this.campoError.set(null);
     this.enviando.set(true);
     try {
       await this.auth.cambiarClave(this.actual, this.nueva);

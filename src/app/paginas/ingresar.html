@@ -5,16 +5,18 @@
       <h1 id="t-ingreso" class="text-2xl font-semibold mt-1 mb-4">{{ 'ingresar.titulo' | transloco }}</h1>
       @if (vencida()) { <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal" role="status">{{ 'ingresar.sesionVencida' | transloco }}</p> }
       <form (ngSubmit)="ingresar()" class="grid gap-3">
-        <mat-form-field class="sin-pie">
+        <mat-form-field subscriptSizing="dynamic">
           <mat-label>{{ 'ingresar.usuario' | transloco }}</mat-label>
           <input matInput name="usuario" autocomplete="username" [(ngModel)]="usuario" required autofocus />
+          <mat-error>{{ 'comun.campoObligatorio' | transloco }}</mat-error>
         </mat-form-field>
-        <mat-form-field class="sin-pie">
+        <mat-form-field subscriptSizing="dynamic">
           <mat-label>{{ 'ingresar.clave' | transloco }}</mat-label>
           <input matInput name="clave" type="password" autocomplete="current-password" [(ngModel)]="clave" required />
+          <mat-error>{{ 'comun.campoObligatorio' | transloco }}</mat-error>
         </mat-form-field>
         @if (error()) { <p class="text-sm m-0" style="color: var(--no)" role="alert">{{ error() }}</p> }
-        <button mat-flat-button type="submit" [disabled]="enviando() || !usuario || !clave">{{ (enviando() ? 'ingresar.ingresando' : 'ingresar.ingresar') | transloco }}</button>
+        <button mat-flat-button type="submit">{{ (enviando() ? 'ingresar.ingresando' : 'ingresar.ingresar') | transloco }}</button>
       </form>
     } @else {
       <h1 id="t-ingreso" class="text-2xl font-semibold mt-1 mb-1">{{ 'ingresar.cambiar.titulo' | transloco }}</h1>
@@ -22,21 +24,24 @@
         {{ 'ingresar.cambiar.explicacion' | transloco: { nombre: auth.usuario()?.nombre } }}
       </p>
       <form (ngSubmit)="cambiar()" class="grid gap-3">
-        <mat-form-field class="sin-pie">
+        <mat-form-field subscriptSizing="dynamic">
           <mat-label>{{ 'ingresar.cambiar.actual' | transloco }}</mat-label>
-          <input matInput name="actual" type="password" autocomplete="current-password" [(ngModel)]="actual" required />
+          <input matInput name="actual" type="password" autocomplete="current-password" [(ngModel)]="actual" [errorStateMatcher]="errActual" required />
+          <mat-error>{{ error() }}</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{ 'ingresar.cambiar.nueva' | transloco }}</mat-label>
-          <input matInput name="nueva" type="password" autocomplete="new-password" [(ngModel)]="nueva" required />
+          <input matInput name="nueva" type="password" autocomplete="new-password" [(ngModel)]="nueva" [errorStateMatcher]="errNueva" required />
           <mat-hint>{{ 'ingresar.cambiar.pista' | transloco }}</mat-hint>
+          <mat-error>{{ error() }}</mat-error>
         </mat-form-field>
-        <mat-form-field class="sin-pie">
+        <mat-form-field subscriptSizing="dynamic">
           <mat-label>{{ 'ingresar.cambiar.repetir' | transloco }}</mat-label>
-          <input matInput name="nueva2" type="password" autocomplete="new-password" [(ngModel)]="nueva2" required />
+          <input matInput name="nueva2" type="password" autocomplete="new-password" [(ngModel)]="nueva2" [errorStateMatcher]="errRepetir" required />
+          <mat-error>{{ error() }}</mat-error>
         </mat-form-field>
-        @if (error()) { <p class="text-sm m-0" style="color: var(--no)" role="alert">{{ error() }}</p> }
-        <button mat-flat-button type="submit" [disabled]="enviando()">{{ (enviando() ? 'ingresar.cambiar.guardando' : 'ingresar.cambiar.guardar') | transloco }}</button>
+        @if (error() && !campoError()) { <p class="text-sm m-0" style="color: var(--no)" role="alert">{{ error() }}</p> }
+        <button mat-flat-button type="submit">{{ (enviando() ? 'ingresar.cambiar.guardando' : 'ingresar.cambiar.guardar') | transloco }}</button>
         <button mat-button type="button" (click)="salir()">{{ 'comun.salir' | transloco }}</button>
       </form>
     }

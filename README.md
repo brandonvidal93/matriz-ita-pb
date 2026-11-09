@@ -113,7 +113,7 @@ src/app/
     xlsx.service.ts      Importar y exportar la matriz oficial (JSZip)
     progreso.ts          Indicadores, descarga y verificación de URLs
   dialogos/              Diálogos de Material
-  paginas/               Ingresar, Registros, Diligenciar, Evidencias, Revisar y exportar, Usuarios
+  paginas/               Ingresar, Registros, Diligenciar, Evidencias, Revisar y exportar, Usuarios, Mapa del sitio
 api/
   src/
     app.ts               Servidor Fastify: seguridad, errores, rutas y sitio estático

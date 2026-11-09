@@ -1,6 +1,6 @@
 import { UpperCasePipe } from '@angular/common';
-import { Component, computed, effect, inject, untracked } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, Injector, afterNextRender, computed, effect, inject, untracked } from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet, TitleStrategy } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +13,7 @@ import { AlmacenService } from './core/almacen.service';
 import { AuthService, mensajeError } from './core/auth.service';
 import { claveRol } from './core/modelos';
 import { IdiomaService } from './core/idioma';
+import { enfocarTitulo } from './core/foco';
 import { descargar } from './core/progreso';
 import { CONFIG } from './config';
 
@@ -20,12 +21,13 @@ import { CONFIG } from './config';
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatMenuModule, MatSnackBarModule, MatTooltipModule, TranslocoPipe, UpperCasePipe],
   styles: `
-    header { background: var(--pb-azul); color: #fff; }
+    header { background: var(--pb-azul); color: #fff; --foco: var(--pb-amarillo); }
     .marca { border-left: 4px solid var(--pb-amarillo); padding-left: 12px; color: #fff; text-decoration: none; }
     nav a { color: #dfe7f3; text-decoration: none; padding: 8px 12px; border-radius: 8px; font-weight: 500; }
     nav a:hover { background: rgb(255 255 255 / .08); }
-    nav a.activo { background: rgb(255 255 255 / .16); color: #fff; }
+    nav a.activo { background: rgb(255 255 255 / .16); color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
     .sync { font-size: 12px; color: #dfe7f3; }
+    footer { border-top: 1px solid var(--borde); margin-top: 24px; }
   `,
   templateUrl: './app.html',
 })
@@ -34,6 +36,8 @@ export class App {
   protected auth = inject(AuthService);
   private snack = inject(MatSnackBar);
   private router = inject(Router);
+  private injector = inject(Injector);
+  private titulos = inject(TitleStrategy);
   private t = inject(TranslocoService);
   protected idioma = inject(IdiomaService);
   institucion = CONFIG.institucion;
@@ -56,10 +60,23 @@ export class App {
   });
 
   constructor() {
+    // Al cambiar de página, el foco va al título nuevo: el elemento pulsado ya no existe. Con ?fila= lo pone Diligenciar.
+    let rutaAnterior = '';
+    effect(() => {
+      const url = this.url();
+      const ruta = url.split('?')[0];
+      if (rutaAnterior && ruta !== rutaAnterior && !url.includes('fila=')) afterNextRender(() => enfocarTitulo(), { injector: this.injector });
+      if (url) rutaAnterior = ruta;
+    });
+    // IdiomaService pone el título general; aquí se reemplaza por el de la página, ya traducido.
+    effect(() => {
+      this.idioma.actual();
+      untracked(() => this.titulos.updateTitle(this.router.routerState.snapshot));
+    });
     // Los errores de guardado también se avisan con un mensaje visible.
     effect(() => {
       const e = this.almacen.errorSync();
-      if (e) untracked(() => this.snack.open(this.t.translate('app.avisos.errorGuardado', { error: e }), this.t.translate('comun.cerrar'), { duration: 10000 }));
+      if (e) untracked(() => this.snack.open(this.t.translate('app.avisos.errorGuardado', { error: e }), this.t.translate('comun.cerrar')));
     });
   }
 
@@ -67,7 +84,7 @@ export class App {
     try {
       descargar(await this.almacen.respaldoCompleto(), `matriz-ita-datos_${new Date().toISOString().slice(0, 10)}.json`);
     } catch (e) {
-      this.snack.open(this.t.translate('app.avisos.errorDescarga', { error: mensajeError(e) }), this.t.translate('comun.cerrar'), { duration: 8000 });
+      this.snack.open(this.t.translate('app.avisos.errorDescarga', { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
     }
   }
 
@@ -86,9 +103,9 @@ export class App {
     try {
       const r = await this.almacen.restaurar(await f.text());
       const omitidos = r.omitidos.length ? ' ' + this.t.translate('app.avisos.omitidos', { n: r.omitidos.length }) : '';
-      this.snack.open(this.t.translate('app.avisos.cargados', { n: r.creados.length }) + omitidos, this.t.translate('comun.cerrar'), { duration: 8000 });
+      this.snack.open(this.t.translate('app.avisos.cargados', { n: r.creados.length }) + omitidos, this.t.translate('comun.cerrar'));
     } catch (e) {
-      this.snack.open(this.t.translate('app.avisos.errorCarga', { error: mensajeError(e) }), this.t.translate('comun.cerrar'), { duration: 10000 });
+      this.snack.open(this.t.translate('app.avisos.errorCarga', { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
     }
   }
 

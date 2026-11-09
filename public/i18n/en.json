@@ -44,9 +44,10 @@
     "editar": "Edit",
     "salir": "Sign out",
     "reintentar": "Retry",
-    "verMas": "Show more",
     "masAcciones": "More actions for {{ nombre }}",
-    "textoOficial": "Official matrix text, in Spanish"
+    "textoOficial": "Official matrix text, in Spanish",
+    "campoObligatorio": "This field is required.",
+    "cargando": "Loading…"
   },
   "estado": {
     "SI": "YES",
@@ -139,7 +140,8 @@
     "restaurado": "Restored: {{ nombres }}.",
     "ningunoCreado": "No record was created.",
     "omitido": "“{{ nombre }}”: {{ motivo }}.",
-    "leidos": "Read {{ items }} filled-in items and {{ evidencias }} unique evidence items (URLs)."
+    "leidos": "Read {{ items }} filled-in items and {{ evidencias }} unique evidence items (URLs).",
+    "abrirNombre": "Open {{ nombre }}"
   },
   "importacion": {
     "textoNoCoincide": "Row {{ fila }}: the item text does not match the template; it was skipped.",
@@ -163,7 +165,8 @@
     "marcarSi": "Mark YES",
     "asignarEvidencia": "Assign evidence",
     "observacion": "Remarks",
-    "cerrarSeleccion": "Close selection"
+    "cerrarSeleccion": "Close selection",
+    "anuncio": "{{ n }} items shown"
   },
   "item": {
     "seleccionar": "Select item in row {{ fila }}",
@@ -178,7 +181,9 @@
     "evidencia": "Evidence",
     "notaInterna": "Internal note",
     "notaInternaCampo": "Internal note (not exported)",
-    "vistaColumna": "How it will look in column I"
+    "vistaColumna": "How it will look in column I",
+    "evidenciaDe": "Evidence, item in row {{ fila }}",
+    "notaInternaDe": "Internal note, item in row {{ fila }}"
   },
   "evidencias": {
     "titulo": "Evidence library",
@@ -208,7 +213,10 @@
     "eliminar": {
       "titulo": "Delete evidence",
       "mensaje": "“{{ titulo }}” will be removed from {{ n }} item(s)."
-    }
+    },
+    "anuncio": "{{ n }} evidence items shown",
+    "asignarDe": "Assign to items: {{ titulo }}",
+    "verificando": "Checking links"
   },
   "resumen": {
     "titulo": "Review and export",
@@ -237,7 +245,8 @@
       "porRevisar": "To review",
       "avance": "Progress"
     },
-    "pendientes": "Items to review ({{ n }})"
+    "pendientes": "Items to review ({{ n }})",
+    "verMasPendientes": "Show more items to review"
   },
   "usuarios": {
     "titulo": "Users",
@@ -307,11 +316,25 @@
       "filtrar": "Filter items",
       "ejemplo": "E.g.: accesibilidad, presupuesto, 4.2",
       "seleccionados": "{{ n }} item(s) selected",
-      "fila": "row {{ fila }}"
+      "fila": "row {{ fila }}",
+      "todaSeccion": "Select the whole section"
     },
     "masivo": {
       "titulo": "Remarks for {{ n }} item(s)",
       "pista": "Replaces the current remarks of the selected items."
     }
+  },
+  "titulos": {
+    "ingresar": "Sign in",
+    "registros": "Records",
+    "usuarios": "Users",
+    "diligenciar": "Fill in",
+    "evidencias": "Evidence",
+    "resumen": "Review and export",
+    "mapa": "Site map"
+  },
+  "mapa": {
+    "titulo": "Site map",
+    "descripcion": "All the pages you can open with your role."
   }
 }

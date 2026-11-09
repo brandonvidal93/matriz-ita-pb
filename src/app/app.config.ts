@@ -1,11 +1,11 @@
 import { ApplicationConfig, LOCALE_ID, inject, isDevMode, provideAppInitializer, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
-import { provideRouter, withComponentInputBinding, withHashLocation } from '@angular/router';
+import { TitleStrategy, provideRouter, withComponentInputBinding, withHashLocation } from '@angular/router';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideTransloco } from '@jsverse/transloco';
 import { routes } from './app.routes';
 import { interceptorSesion } from './core/guardias';
-import { CargadorTraducciones, IDIOMAS, IDIOMA_PREDETERMINADO, IdiomaService } from './core/idioma';
+import { CargadorTraducciones, IDIOMAS, IDIOMA_PREDETERMINADO, IdiomaService, TituloTraducido } from './core/idioma';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptors([interceptorSesion])),
     // Hash para poder publicarlo como sitio estático en cualquier servidor.
     provideRouter(routes, withComponentInputBinding(), withHashLocation()),
+    { provide: TitleStrategy, useExisting: TituloTraducido },
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
     provideTransloco({
       config: {

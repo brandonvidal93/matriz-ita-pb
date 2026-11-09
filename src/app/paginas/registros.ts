@@ -13,6 +13,7 @@ import { AlmacenService } from '../core/almacen.service';
 import { AuthService, mensajeError } from '../core/auth.service';
 import { CATALOGO } from '../core/catalogo';
 import { Registro } from '../core/modelos';
+import { enfocarTitulo } from '../core/foco';
 import { descargar, nombreArchivo, progreso } from '../core/progreso';
 import { AvisoImportacion, XlsxService } from '../core/xlsx.service';
 import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dialogos';
@@ -57,7 +58,12 @@ export class RegistrosPage {
 
   /** `clave` es una de `registros.error.*`. */
   private fallo(clave: string, e: unknown) {
-    this.snack.open(this.t.translate(clave, { error: mensajeError(e) }), this.t.translate('comun.cerrar'), { duration: 8000 });
+    this.snack.open(this.t.translate(clave, { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
+  }
+
+  cerrarAdvertencias() {
+    this.advertencias.set([]);
+    enfocarTitulo();
   }
 
   abrir(r: Registro, ev?: Event) {
@@ -121,6 +127,7 @@ export class RegistrosPage {
     if (!ok) return;
     try {
       await this.almacen.eliminar(r.id);
+      enfocarTitulo(); // El menú desde el que se eliminó ya no existe.
     } catch (e) {
       this.fallo('registros.error.eliminar', e);
     }
@@ -143,7 +150,7 @@ export class RegistrosPage {
           : this.t.translate('registros.ningunoCreado'),
         ...r.omitidos.map((x) => this.t.translate('registros.omitido', { nombre: x.nombre, motivo: x.motivo })),
       ];
-      this.snack.open(partes.join(' '), this.t.translate('comun.cerrar'), { duration: 10000 });
+      this.snack.open(partes.join(' '), this.t.translate('comun.cerrar'));
     } catch (e) {
       this.fallo('registros.error.restaurar', e);
     }

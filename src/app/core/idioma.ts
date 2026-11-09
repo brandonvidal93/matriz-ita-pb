@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Pipe, PipeTransform, computed, inject, signal } from '@angular/core';
 import localeEsCO from '@angular/common/locales/es-CO';
 import { Title } from '@angular/platform-browser';
+import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
 import { Translation, TranslocoLoader, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
 
@@ -79,6 +80,18 @@ export class IdiomaService {
         // La preferencia es solo una comodidad.
       }
     }
+  }
+}
+
+/** Título de cada página: la ruta declara una clave de traducción, para que siga el idioma activo. */
+@Injectable({ providedIn: 'root' })
+export class TituloTraducido extends TitleStrategy {
+  private t = inject(TranslocoService);
+  private titulo = inject(Title);
+
+  override updateTitle(estado: RouterStateSnapshot): void {
+    const clave = this.buildTitle(estado);
+    this.titulo.setTitle(clave ? `${this.t.translate(clave)} · ${this.t.translate('app.nombre')}` : this.t.translate('app.tituloDocumento'));
   }
 }
 

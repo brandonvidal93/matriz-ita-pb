@@ -4,9 +4,9 @@
     @if (!soloLectura()) {
     <mat-checkbox class="-mt-2 -ml-2" [checked]="seleccionado()" (change)="alternarSeleccion.emit($event.checked)" [aria-label]="'item.seleccionar' | transloco: { fila: item().fila }" />
     }
-    <div class="flex-1 min-w-0">
+    <div class="flex-1 min-w-[180px] [overflow-wrap:anywhere]">
       @if (item().nivel2) { <div lang="es" class="text-xs uppercase tracking-wide texto-suave font-semibold">{{ item().nivel2 }}</div> }
-      <h3 lang="es" [id]="'it-' + item().fila" class="text-[15px] font-medium leading-snug m-0 mt-1">{{ item().item }}</h3>
+      <h2 lang="es" tabindex="-1" [id]="'it-' + item().fila" class="text-[15px] font-medium leading-snug m-0 mt-1">{{ item().item }}</h2>
       <details class="mt-1">
         <summary>{{ 'item.quePide' | transloco: { fila: item().fila } }}</summary>
         <p lang="es" class="text-sm my-2 preline">{{ item().explicacion }}</p>
@@ -14,7 +14,7 @@
       </details>
     </div>
     @if (item().tipo === 'cumplimiento') {
-      <mat-button-toggle-group [value]="r.estado" [disabled]="soloLectura()" (change)="estado($event.value)" [attr.aria-label]="'item.cumplimiento' | transloco: { fila: item().fila }" hideSingleSelectionIndicator>
+      <mat-button-toggle-group [value]="r.estado" [disabled]="soloLectura()" (change)="estado($event.value)" [attr.aria-label]="'item.cumplimiento' | transloco: { fila: item().fila }">
         <mat-button-toggle value="SI" class="t-SI">{{ 'estado.SI' | transloco }}</mat-button-toggle>
         <mat-button-toggle value="NO" class="t-NO">{{ 'estado.NO' | transloco }}</mat-button-toggle>
         <mat-button-toggle value="NA" class="t-NA">{{ 'estado.NA' | transloco }}</mat-button-toggle>
@@ -25,11 +25,12 @@
   <div class="mt-3 grid gap-3 md:grid-cols-[1fr_minmax(260px,38%)]">
     <div>
       <mat-form-field class="w-full sin-pie">
-        <mat-label>{{ (item().tipo === 'numero' ? 'item.valor' : r.estado === 'NA' ? 'item.justificacionNa' : 'item.observacion') | transloco }}</mat-label>
+        <mat-label>{{ (item().tipo === 'numero' ? 'item.valor' : r.estado === 'NA' ? 'item.justificacionNa' : 'item.observacion') | transloco }}<span class="sr-only"> · {{ 'evidencias.fila' | transloco: { fila: item().fila } }}</span></mat-label>
         <textarea matInput rows="2" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="r.observacion" (ngModelChange)="texto($event)"></textarea>
       </mat-form-field>
       <div class="mt-2 flex flex-wrap gap-2 items-center">
-        <mat-chip-set [attr.aria-label]="'item.evidenciasDe' | transloco: { fila: item().fila }">
+        <div role="group" class="contents" [attr.aria-label]="'item.evidenciasDe' | transloco: { fila: item().fila }">
+        <mat-chip-set>
           @for (e of evidencias(); track e.id) {
             <mat-chip (removed)="quitar(e)" [matTooltip]="e.url" [removable]="!soloLectura()">
               <mat-icon matChipAvatar>link</mat-icon>{{ e.titulo }}
@@ -39,17 +40,18 @@
             </mat-chip>
           }
         </mat-chip-set>
+        </div>
         @if (!soloLectura()) {
-          <button mat-stroked-button (click)="agregarEvidencia.emit()"><mat-icon>add_link</mat-icon>{{ 'item.evidencia' | transloco }}</button>
+          <button mat-stroked-button #botonEvidencia [attr.aria-label]="'item.evidenciaDe' | transloco: { fila: item().fila }" (click)="agregarEvidencia.emit()"><mat-icon>add_link</mat-icon>{{ 'item.evidencia' | transloco }}</button>
         }
         @if (!soloLectura() && !mostrarNota && !r.notaInterna) {
-          <button mat-button (click)="mostrarNota = true"><mat-icon>sticky_note_2</mat-icon>{{ 'item.notaInterna' | transloco }}</button>
+          <button mat-button [attr.aria-label]="'item.notaInternaDe' | transloco: { fila: item().fila }" (click)="abrirNota()"><mat-icon>sticky_note_2</mat-icon>{{ 'item.notaInterna' | transloco }}</button>
         }
       </div>
       @if (mostrarNota || r.notaInterna) {
         <mat-form-field class="w-full sin-pie mt-2">
-          <mat-label>{{ 'item.notaInternaCampo' | transloco }}</mat-label>
-          <textarea matInput rows="1" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="r.notaInterna" (ngModelChange)="nota($event)"></textarea>
+          <mat-label>{{ 'item.notaInternaCampo' | transloco }}<span class="sr-only"> · {{ 'evidencias.fila' | transloco: { fila: item().fila } }}</span></mat-label>
+          <textarea #campoNota matInput rows="1" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="r.notaInterna" (ngModelChange)="nota($event)"></textarea>
         </mat-form-field>
       }
     </div>

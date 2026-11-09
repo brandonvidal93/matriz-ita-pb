@@ -43,6 +43,7 @@ export class ResumenPage {
   });
 
   async exportar() {
+    if (this.exportando()) return;
     const reg = this.almacen.activo()!;
     this.exportando.set(true);
     try {
@@ -50,7 +51,7 @@ export class ResumenPage {
       const nombre = nombreArchivo(reg, 'xlsx');
       descargar(blob, nombre);
     } catch (e: any) {
-      this.snack.open(this.t.translate('resumen.exportar.error', { error: e?.message ?? e }), this.t.translate('comun.cerrar'), { duration: 10000 });
+      this.snack.open(this.t.translate('resumen.exportar.error', { error: e?.message ?? e }), this.t.translate('comun.cerrar'));
     } finally {
       this.exportando.set(false);
     }

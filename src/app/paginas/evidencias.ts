@@ -15,6 +15,7 @@ import { firstValueFrom } from 'rxjs';
 import { AlmacenService } from '../core/almacen.service';
 import { ITEM_POR_FILA, etiquetaCorta } from '../core/catalogo';
 import { Evidencia } from '../core/modelos';
+import { enfocarTitulo } from '../core/foco';
 import { verificarUrl } from '../core/progreso';
 import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dialogos';
 
@@ -76,7 +77,10 @@ export class EvidenciasPage {
         })
         .afterClosed(),
     );
-    if (ok) this.almacen.eliminarEvidencia(e.id);
+    if (ok) {
+      this.almacen.eliminarEvidencia(e.id);
+      enfocarTitulo(); // El menú desde el que se eliminó ya no existe.
+    }
   }
 
   async verificar(e: Evidencia) {
@@ -85,6 +89,7 @@ export class EvidenciasPage {
   }
 
   async verificarTodas() {
+    if (this.verificando()) return;
     const evs = this.almacen.activo()?.evidencias ?? [];
     this.verificando.set(true);
     let hechas = 0;

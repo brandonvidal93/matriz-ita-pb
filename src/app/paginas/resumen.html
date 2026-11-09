@@ -29,7 +29,7 @@
           {{ 'resumen.exportar.aviso' | transloco: { n: p.conProblemas } }}
         </p>
       }
-      <button mat-flat-button (click)="exportar()" [disabled]="exportando()">
+      <button mat-flat-button disabledInteractive (click)="exportar()" [disabled]="exportando()">
         <mat-icon>download</mat-icon>{{ (exportando() ? 'resumen.exportar.generando' : 'resumen.exportar.descargar') | transloco }}
       </button>
     </section>
@@ -43,7 +43,7 @@
             <tr>
               <td><a [routerLink]="['/r', reg.id]" [queryParams]="{ seccion: s.clave }" lang="es">{{ s.titulo }}</a></td>
               <td class="n">{{ s.p.total }}</td><td class="n">{{ s.p.si }}</td><td class="n">{{ s.p.no }}</td><td class="n">{{ s.p.na }}</td><td class="n">{{ s.p.conProblemas }}</td>
-              <td class="min-w-[140px]"><div class="barra-progreso"><span [style.width.%]="s.p.porcentaje"></span></div></td>
+              <td class="min-w-[140px]"><div class="flex items-center gap-2"><div class="barra-progreso flex-1"><span [style.width.%]="s.p.porcentaje"></span></div><span class="n">{{ s.p.porcentaje }}%</span></div></td>
             </tr>
           }
         </tbody>
@@ -62,7 +62,7 @@
           }
         </ul>
         @if (pendientes().length > limite()) {
-          <button mat-button class="mt-2" (click)="limite.set(limite() + 50)">{{ 'comun.verMas' | transloco }}</button>
+          <button mat-button class="mt-2" (click)="limite.set(limite() + 50)">{{ 'resumen.verMasPendientes' | transloco }}</button>
         }
       </section>
     }

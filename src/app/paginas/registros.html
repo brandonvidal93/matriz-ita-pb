@@ -17,21 +17,23 @@
     <input #archivoJson type="file" accept=".json" hidden (change)="restaurar($event)" />
   </div>
 
-  @if (importando()) { <mat-progress-bar mode="indeterminate" class="my-3" /> }
+  @if (importando()) { <mat-progress-bar mode="indeterminate" class="my-3" [attr.aria-label]="'comun.cargando' | transloco" /> }
 
+  <div role="status">
   @if (advertencias().length) {
     <section class="tarjeta p-4 my-4 border-amber-300 bg-amber-50" aria-labelledby="t-adv">
       <div class="flex items-center gap-2">
         <h2 id="t-adv" class="text-base font-semibold m-0 flex-1">{{ 'registros.resultadoImportacion' | transloco }}</h2>
-        <button mat-icon-button [attr.aria-label]="'registros.cerrarAviso' | transloco" (click)="advertencias.set([])"><mat-icon>close</mat-icon></button>
+        <button mat-icon-button [attr.aria-label]="'registros.cerrarAviso' | transloco" (click)="cerrarAdvertencias()"><mat-icon>close</mat-icon></button>
       </div>
       <ul class="m-0 pl-5 text-sm max-h-60 overflow-auto">
         @for (a of advertencias(); track $index) { <li>{{ a.clave | transloco: a.params }}</li> }
       </ul>
     </section>
   }
+  </div>
 
-  @if (cargando()) { <mat-progress-bar mode="indeterminate" class="my-3" /> }
+  @if (cargando()) { <mat-progress-bar mode="indeterminate" class="my-3" [attr.aria-label]="'comun.cargando' | transloco" /> }
   @if (error()) {
     <p class="tarjeta p-4 mt-4" role="alert">{{ 'registros.errorCarga' | transloco: { error: error() } }} <button mat-button (click)="recargar()">{{ 'comun.reintentar' | transloco }}</button></p>
   }
@@ -74,7 +76,7 @@
             <span class="chip-estado NA">{{ 'estado.NA' | transloco }} {{ p.na }}</span>
           </div>
         </div>
-        <button mat-flat-button (click)="abrir(r)">{{ 'registros.abrir' | transloco }}</button>
+        <button mat-flat-button [attr.aria-label]="'registros.abrirNombre' | transloco: { nombre: r.nombre }" (click)="abrir(r)">{{ 'registros.abrir' | transloco }}</button>
         <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'comun.masAcciones' | transloco: { nombre: r.nombre }"><mat-icon>more_vert</mat-icon></button>
         <mat-menu #m="matMenu">
           @if (!almacen.soloLectura()) {

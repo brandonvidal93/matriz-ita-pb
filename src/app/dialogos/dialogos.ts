@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { AlmacenService } from '../core/almacen.service';
 import { SECCIONES, etiquetaCorta } from '../core/catalogo';
+import { enfocarInvalido } from '../core/foco';
 import { Evidencia, Registro, TipoCorte } from '../core/modelos';
 
 const BASE = [MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, FormsModule, TranslocoPipe];
@@ -50,6 +51,7 @@ export class RegistroDialog {
   };
   guardar() {
     if (this.m.nombre.trim() && this.m.vigencia) this.ref.close({ ...this.m, nombre: this.m.nombre.trim() });
+    else enfocarInvalido();
   }
 }
 
@@ -73,6 +75,7 @@ export class EvidenciaDialog {
   }
   guardar() {
     if (this.valida()) this.ref.close({ ...this.m, url: this.m.url.trim(), titulo: this.m.titulo.trim() || this.m.url.trim() });
+    else enfocarInvalido();
   }
 }
 
