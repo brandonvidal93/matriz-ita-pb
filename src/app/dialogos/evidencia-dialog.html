@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{ (d.evidencia ? 'dialogos.evidencia.editar' : 'evidencias.nueva') | transloco }}</h2>
 <mat-dialog-content>
-  <form id="f-ev" class="flex flex-col gap-1 pt-2 min-w-[min(520px,80vw)]" (ngSubmit)="guardar()">
+  <form id="f-ev" class="flex flex-col gap-1 pt-2 w-[512px] max-w-full" (ngSubmit)="guardar()">
     <mat-form-field>
       <mat-label>{{ 'dialogos.evidencia.url' | transloco }}</mat-label>
       <input matInput name="url" type="url" [(ngModel)]="m.url" required pattern="\s*[Hh][Tt][Tt][Pp][Ss]?://\S+\s*" placeholder="https://pascualbravo.edu.co/…" (blur)="sugerirTitulo()" />

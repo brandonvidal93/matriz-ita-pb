@@ -1,15 +1,17 @@
 <h2 mat-dialog-title>{{ d.filas.length > 1 ? ('dialogos.elegir.tituloVarios' | transloco: { n: d.filas.length }) : ('dialogos.elegir.titulo' | transloco) }}</h2>
 <mat-dialog-content>
-  <div class="min-w-[min(560px,80vw)] pt-2">
-    <mat-form-field class="w-full">
-      <mat-label>{{ 'dialogos.elegir.buscar' | transloco }}</mat-label>
+  <div class="w-[512px] max-w-full pt-2">
+    <!-- Etiqueta corta: Material no parte la etiqueta en líneas y desbordaría en pantallas angostas. -->
+    <mat-form-field class="w-full" subscriptSizing="dynamic">
+      <mat-label>{{ 'evidencias.buscar' | transloco }}</mat-label>
+      <mat-hint>{{ 'dialogos.elegir.buscar' | transloco }}</mat-hint>
       <input matInput [(ngModel)]="q" [matAutocomplete]="auto" cdkFocusInitial />
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="elegir($event.option.value)">
         @for (e of filtradas(); track e.id) {
           <mat-option [value]="e">
             <div class="leading-tight py-1">
               <div>{{ e.titulo }}</div>
-              <div class="mono texto-suave truncate">{{ e.url }}</div>
+              <div class="mono texto-suave break-all">{{ e.url }}</div>
             </div>
           </mat-option>
         }
