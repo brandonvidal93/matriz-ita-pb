@@ -42,7 +42,7 @@
         <button mat-menu-item (click)="salir()"><mat-icon>logout</mat-icon>{{ 'app.menu.salir' | transloco }}</button>
       </mat-menu>
     }
-    <input #cargar type="file" accept=".json" hidden (change)="cargarCopia($event)" />
+    <input #cargar type="file" accept=".json" hidden [attr.aria-label]="'app.menu.restaurarRespaldo' | transloco" (change)="cargarCopia($event)" />
   </div>
 </header>
 <main id="contenido" tabindex="-1" class="outline-none">

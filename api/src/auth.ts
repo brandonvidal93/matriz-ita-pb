@@ -3,14 +3,25 @@ import bcrypt from 'bcryptjs';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import type { RowDataPacket } from 'mysql2/promise';
 import type { Rol, Usuario } from '../../src/app/core/modelos';
+import type { Config } from './config';
 import type { Conexion } from './db';
 
 export const COOKIE_SESION = 'ita_sesion';
+/** Le dice al navegador por cuántos minutos más vale la sesión, para que avise antes de que venza. */
+export const CABECERA_SESION = 'X-Sesion-Minutos';
 const COSTO_BCRYPT = 12;
 // Hash de relleno para que un usuario inexistente tarde lo mismo que uno real.
 const HASH_FALSO = bcrypt.hashSync('clave-de-relleno-no-valida', COSTO_BCRYPT);
 
 export const hashClave = (clave: string) => bcrypt.hash(clave, COSTO_BCRYPT);
+
+export const opcionesCookie = (config: Config) => ({
+  path: '/',
+  httpOnly: true,
+  sameSite: 'strict' as const,
+  secure: config.cookieSegura,
+  maxAge: config.sesionMinutos * 60,
+});
 
 const hashToken = (token: string) => createHash('sha256').update(token).digest('hex');
 

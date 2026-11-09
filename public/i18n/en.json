@@ -336,5 +336,13 @@
   "mapa": {
     "titulo": "Site map",
     "descripcion": "All the pages you can open with your role."
+  },
+  "sesion": {
+    "aviso": {
+      "titulo": "Your session is about to end",
+      "mensaje": "Because of inactivity, at {{ hora }} your session will end.",
+      "seguir": "Stay signed in",
+      "salir": "Sign out"
+    }
   }
 }

@@ -3,20 +3,12 @@ import type { FastifyInstance } from 'fastify';
 import type { RowDataPacket } from 'mysql2/promise';
 import { auditar } from '../auditoria';
 import {
-  COOKIE_SESION, cerrarSesion, cerrarSesionesDe, crearSesion, hashClave, requiere, verificarCredenciales,
+  CABECERA_SESION, COOKIE_SESION, cerrarSesion, cerrarSesionesDe, crearSesion, hashClave, opcionesCookie, requiere, verificarCredenciales,
 } from '../auth';
 import type { Contexto } from '../app';
 import { CambioClave, Credenciales } from '../esquemas';
 
 export async function rutasAuth(app: FastifyInstance, { db, config }: Contexto) {
-  const opcionesCookie = {
-    path: '/',
-    httpOnly: true,
-    sameSite: 'strict' as const,
-    secure: config.cookieSegura,
-    maxAge: config.sesionMinutos * 60,
-  };
-
   app.post(
     '/api/auth/ingresar',
     { config: { rateLimit: { max: 10, timeWindow: '5 minutes' } } },
@@ -30,7 +22,8 @@ export async function rutasAuth(app: FastifyInstance, { db, config }: Contexto) 
       const token = await crearSesion(db, u.id, config.sesionMinutos);
       await db.query('UPDATE usuarios SET ultimo_ingreso = ? WHERE id = ?', [new Date(), u.id]);
       await auditar(db, u, 'ingreso', null, { ip: req.ip });
-      reply.setCookie(COOKIE_SESION, token, opcionesCookie);
+      reply.setCookie(COOKIE_SESION, token, opcionesCookie(config));
+      reply.header(CABECERA_SESION, config.sesionMinutos);
       return u;
     },
   );

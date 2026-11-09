@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>{{ 'sesion.aviso.titulo' | transloco }}</h2>
+<mat-dialog-content>
+  <p id="aviso-sesion-mensaje" class="m-0">{{ 'sesion.aviso.mensaje' | transloco: { hora: (d.vence | fecha: 'h:mm a') } }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close="salir">{{ 'sesion.aviso.salir' | transloco }}</button>
+  <button mat-flat-button mat-dialog-close="seguir" cdkFocusInitial>{{ 'sesion.aviso.seguir' | transloco }}</button>
+</mat-dialog-actions>

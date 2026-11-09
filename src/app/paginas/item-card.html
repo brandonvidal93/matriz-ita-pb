@@ -2,7 +2,7 @@
 <article class="tarjeta p-4" [class]="r.estado ?? ''" [class.resaltado]="resaltado()" [attr.aria-labelledby]="'it-' + item().fila">
   <div class="flex gap-3 items-start flex-wrap">
     @if (!soloLectura()) {
-    <mat-checkbox class="-mt-2 -ml-2" [checked]="seleccionado()" (change)="alternarSeleccion.emit($event.checked)" [aria-label]="'item.seleccionar' | transloco: { fila: item().fila }" />
+    <mat-checkbox class="-mt-2 -ml-2" [checked]="seleccionado()" (change)="alternarSeleccion.emit($event.checked)"><span class="sr-only">{{ 'item.seleccionar' | transloco: { fila: item().fila } }}</span></mat-checkbox>
     }
     <div class="flex-1 min-w-[180px] [overflow-wrap:anywhere]">
       @if (item().nivel2) { <div lang="es" class="text-xs uppercase tracking-wide texto-suave font-semibold">{{ item().nivel2 }}</div> }

@@ -44,8 +44,20 @@ conBase('autenticación y usuarios (MySQL)', () => {
   it('cerrar sesión invalida la cookie en el servidor', async () => {
     const cookie = await ingresar(e.app, 'lector');
     expect((await pedir('GET', '/api/auth/yo', cookie)).statusCode).toBe(200);
-    await pedir('POST', '/api/auth/salir', cookie);
+    const fuera = await pedir('POST', '/api/auth/salir', cookie);
+    // La renovación de la cookie al entrar a la ruta no debe impedir que se borre.
+    expect(fuera.cookies.filter((x) => x.name === 'ita_sesion').map((x) => x.value)).toEqual(['']);
     expect((await pedir('GET', '/api/auth/yo', cookie)).statusCode).toBe(401);
+  });
+
+  it('cada petición renueva la cookie e informa la duración', async () => {
+    const r = await pedir('GET', '/api/auth/yo', e.cookies.lector);
+    const c = r.cookies.find((x) => x.name === 'ita_sesion')!;
+    expect(`ita_sesion=${c.value}`).toBe(e.cookies.lector);
+    expect(c.maxAge).toBe(480 * 60);
+    expect(c.httpOnly).toBe(true);
+    expect(r.headers['x-sesion-minutos']).toBe('480');
+    expect((await pedir('GET', '/api/auth/yo', 'ita_sesion=inventada')).headers['x-sesion-minutos']).toBeUndefined();
   });
 
   it('solo el administrador gestiona usuarios', async () => {

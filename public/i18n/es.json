@@ -336,5 +336,13 @@
   "mapa": {
     "titulo": "Mapa del sitio",
     "descripcion": "Todas las páginas a las que puedes entrar con tu rol."
+  },
+  "sesion": {
+    "aviso": {
+      "titulo": "Tu sesión está por terminar",
+      "mensaje": "Por inactividad, a las {{ hora }} se cerrará tu sesión.",
+      "seguir": "Seguir conectado",
+      "salir": "Cerrar sesión"
+    }
   }
 }

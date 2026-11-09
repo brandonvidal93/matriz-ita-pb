@@ -13,8 +13,8 @@
       }
       <button mat-flat-button (click)="nuevo()"><mat-icon>add</mat-icon>{{ 'registros.nuevo' | transloco }}</button>
     }
-    <input #archivoXlsx type="file" accept=".xlsx" hidden (change)="importarXlsx($event)" />
-    <input #archivoJson type="file" accept=".json" hidden (change)="restaurar($event)" />
+    <input #archivoXlsx type="file" accept=".xlsx" hidden [attr.aria-label]="'registros.importarXlsx' | transloco" (change)="importarXlsx($event)" />
+    <input #archivoJson type="file" accept=".json" hidden [attr.aria-label]="'registros.restaurarRespaldo' | transloco" (change)="restaurar($event)" />
   </div>
 
   @if (importando()) { <mat-progress-bar mode="indeterminate" class="my-3" [attr.aria-label]="'comun.cargando' | transloco" /> }

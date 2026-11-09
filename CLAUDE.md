@@ -11,6 +11,7 @@ Todo desarrollo debe cumplir **WCAG 2.1 nivel AA** y las directrices de accesibi
 - **Teclado:** todo se puede operar sin ratón, con un orden lógico, foco visible y sin trampas de foco, también en los diálogos (2.1.1, 2.1.2, 2.4.3, 2.4.7).
 - **Semántica:** encabezados, regiones y controles nativos correctos; todo control tiene un nombre accesible (1.3.1, 2.4.6, 4.1.2).
 - **Formularios:** cada campo tiene su etiqueta, y los errores se identifican en texto y se asocian al campo (3.3.1, 3.3.2).
+- **Errores de WAVE en formularios:** *Missing form label* (un control sin etiqueta) y *Empty form label* (una etiqueta sin contenido) penalizan el puntaje en WAVE, así que no deben quedar. Incluye los `<input hidden>`, que WAVE marca aunque no estén expuestos a los lectores de pantalla, y los controles de Material sin texto propio: un `mat-checkbox` con solo `aria-label` genera un `<label>` sin texto.
 - **Mensajes de estado:** los avisos dinámicos, como el estado de guardado, se anuncian sin mover el foco (4.1.3).
 - **Contraste y color:** 4.5:1 en texto, 3:1 en texto grande y en componentes de interfaz; el color nunca es la única señal, como en los estados SI, NO y N/A (1.4.1, 1.4.3, 1.4.11).
 - **Adaptación:** funciona con zoom al 200 % y a 320 px de ancho sin desplazamiento horizontal (1.4.4, 1.4.10).

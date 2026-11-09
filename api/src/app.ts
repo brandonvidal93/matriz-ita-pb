@@ -4,7 +4,7 @@ import rateLimit from '@fastify/rate-limit';
 import fastifyStatic from '@fastify/static';
 import Fastify, { FastifyInstance } from 'fastify';
 import { ZodError } from 'zod';
-import { COOKIE_SESION, usuarioDeSesion } from './auth';
+import { CABECERA_SESION, COOKIE_SESION, opcionesCookie, usuarioDeSesion } from './auth';
 import type { Config } from './config';
 import type { Db } from './db';
 import { NoEncontrado } from './errores';
@@ -55,6 +55,11 @@ export async function construirApp(ctx: Contexto, opciones: { logger?: boolean }
     }
     const token = req.cookies[COOKIE_SESION];
     if (token) req.usuario = await usuarioDeSesion(db, token, config.sesionMinutos);
+    if (token && req.usuario) {
+      // La sesión es deslizante en el servidor: la cookie debe durar lo mismo o vencería contando desde el ingreso.
+      reply.setCookie(COOKIE_SESION, token, opcionesCookie(config));
+      reply.header(CABECERA_SESION, config.sesionMinutos);
+    }
   });
 
   app.setErrorHandler((err: any, req, reply) => {

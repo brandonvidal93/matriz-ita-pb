@@ -81,7 +81,7 @@ Si usabas la versión anterior (archivo `matriz-ita-datos.json` o *Descargar cop
 ## Seguridad
 
 - Contraseñas con bcrypt (costo 12) y una política mínima de 10 caracteres con letras y números.
-- La sesión va en una cookie `httpOnly` + `SameSite=Strict` (y `Secure` en producción). En la base solo se guarda el hash del token. Al cambiar la contraseña, desactivar al usuario o cambiar su rol, se cierran sus sesiones.
+- La sesión va en una cookie `httpOnly` + `SameSite=Strict` (y `Secure` en producción). En la base solo se guarda el hash del token. Al cambiar la contraseña, desactivar al usuario o cambiar su rol, se cierran sus sesiones. La sesión vence tras `ITA_SESION_MINUTOS` de inactividad, y el sitio avisa 5 minutos antes para poder extenderla.
 - Límite de intentos de ingreso y verificación de `Origin` en las peticiones que modifican datos.
 - Los permisos por rol se validan **en el servidor**. La interfaz solo oculta lo que el rol no puede hacer.
 - Siempre queda al menos un administrador activo.
