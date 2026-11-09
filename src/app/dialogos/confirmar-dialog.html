@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>{{ d.titulo }}</h2>
+<mat-dialog-content><p class="preline">{{ d.mensaje }}</p></mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>{{ 'comun.cancelar' | transloco }}</button>
+  <button mat-flat-button [mat-dialog-close]="true">{{ d.accion || ('comun.aceptar' | transloco) }}</button>
+</mat-dialog-actions>

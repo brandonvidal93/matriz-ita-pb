@@ -25,41 +25,7 @@ interface DatosUsuarioDialog {
 
 @Component({
   imports: [FormsModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, TranslocoPipe],
-  template: `
-    <h2 mat-dialog-title>{{ d.usuario ? ('usuarios.dialogo.editar' | transloco: { usuario: d.usuario.usuario }) : ('usuarios.nuevo' | transloco) }}</h2>
-    <form (ngSubmit)="guardar()">
-      <mat-dialog-content class="grid gap-3 !pt-2 min-w-[min(420px,80vw)]">
-        @if (!d.usuario) {
-          <mat-form-field class="sin-pie">
-            <mat-label>{{ 'usuarios.col.usuario' | transloco }}</mat-label>
-            <input matInput name="usuario" [(ngModel)]="m.usuario" required autocomplete="off" [placeholder]="'usuarios.dialogo.ejemplo' | transloco" />
-          </mat-form-field>
-        }
-        <mat-form-field class="sin-pie">
-          <mat-label>{{ 'usuarios.dialogo.nombre' | transloco }}</mat-label>
-          <input matInput name="nombre" [(ngModel)]="m.nombre" required />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>{{ 'usuarios.col.rol' | transloco }}</mat-label>
-          <mat-select name="rol" [(ngModel)]="m.rol">
-            <mat-option value="lector">{{ 'usuarios.dialogo.rolLector' | transloco }}</mat-option>
-            <mat-option value="editor">{{ 'usuarios.dialogo.rolEditor' | transloco }}</mat-option>
-            <mat-option value="admin">{{ 'usuarios.dialogo.rolAdmin' | transloco }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>{{ (d.usuario ? 'usuarios.dialogo.claveNueva' : 'usuarios.dialogo.claveTemporal') | transloco }}</mat-label>
-          <input matInput name="clave" type="password" autocomplete="new-password" [(ngModel)]="m.clave" [required]="!d.usuario" />
-          <mat-hint>{{ 'usuarios.dialogo.pista' | transloco }}</mat-hint>
-        </mat-form-field>
-        @if (error()) { <p class="text-sm m-0" style="color: var(--no)" role="alert">{{ error() }}</p> }
-      </mat-dialog-content>
-      <mat-dialog-actions align="end">
-        <button mat-button type="button" mat-dialog-close>{{ 'comun.cancelar' | transloco }}</button>
-        <button mat-flat-button type="submit">{{ 'comun.guardar' | transloco }}</button>
-      </mat-dialog-actions>
-    </form>
-  `,
+  templateUrl: './usuario-dialog.html',
 })
 export class UsuarioDialog {
   d = inject<DatosUsuarioDialog>(MAT_DIALOG_DATA);
@@ -88,49 +54,7 @@ export class UsuarioDialog {
     td { padding: 10px 12px; border-bottom: 1px solid #edf0f4; }
     tr.inactivo td { color: var(--texto-suave); }
   `,
-  template: `
-    <div class="max-w-[1100px] mx-auto px-4 py-5">
-      <div class="flex items-end gap-3 flex-wrap mb-3">
-        <div class="flex-1 min-w-[260px]">
-          <h1 class="text-2xl font-semibold m-0">{{ 'usuarios.titulo' | transloco }}</h1>
-          <p class="texto-suave m-0 mt-1">{{ 'usuarios.descripcion' | transloco }}</p>
-        </div>
-        <button mat-flat-button (click)="nuevo()"><mat-icon>person_add</mat-icon>{{ 'usuarios.nuevo' | transloco }}</button>
-      </div>
-      <div class="tarjeta overflow-x-auto">
-        <table>
-          <thead>
-            <tr><th scope="col">{{ 'usuarios.col.nombre' | transloco }}</th><th scope="col">{{ 'usuarios.col.usuario' | transloco }}</th><th scope="col">{{ 'usuarios.col.rol' | transloco }}</th><th scope="col">{{ 'usuarios.col.ultimoIngreso' | transloco }}</th><th scope="col"><span class="sr-only">{{ 'usuarios.col.acciones' | transloco }}</span></th></tr>
-          </thead>
-          <tbody>
-            @for (u of usuarios(); track u.id) {
-              <tr [class.inactivo]="!u.activo">
-                <td>
-                  {{ u.nombre }}
-                  @if (!u.activo) { <span class="chip-estado NA ml-2">{{ 'usuarios.inactivo' | transloco }}</span> }
-                  @if (u.activo && u.debeCambiarClave) { <span class="chip-estado pendiente ml-2">{{ 'usuarios.claveTemporal' | transloco }}</span> }
-                </td>
-                <td class="mono">{{ u.usuario }}</td>
-                <td>{{ claveRol(u.rol) | transloco }}</td>
-                <td class="text-sm">{{ u.ultimoIngreso ? (u.ultimoIngreso | fecha: 'd MMM y, h:mm a') : '—' }}</td>
-                <td class="text-right whitespace-nowrap">
-                  <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'usuarios.acciones' | transloco: { nombre: u.nombre }"><mat-icon>more_vert</mat-icon></button>
-                  <mat-menu #m="matMenu">
-                    <button mat-menu-item (click)="editar(u)"><mat-icon>edit</mat-icon>{{ 'usuarios.editar' | transloco }}</button>
-                    @if (u.id !== auth.usuario()?.id) {
-                      <button mat-menu-item (click)="cambiar(u, { activo: !u.activo })">
-                        <mat-icon>{{ u.activo ? 'person_off' : 'person' }}</mat-icon>{{ (u.activo ? 'usuarios.desactivar' : 'usuarios.activar') | transloco }}
-                      </button>
-                    }
-                  </mat-menu>
-                </td>
-              </tr>
-            }
-          </tbody>
-        </table>
-      </div>
-    </div>
-  `,
+  templateUrl: './usuarios.html',
 })
 export class UsuariosPage {
   protected auth = inject(AuthService);

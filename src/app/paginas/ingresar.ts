@@ -19,52 +19,7 @@ export function problemaClave(c: string): string | null {
 
 @Component({
   imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, TranslocoPipe],
-  template: `
-    <div class="min-h-[70vh] grid place-items-center px-4 py-10">
-      <section class="tarjeta p-6 w-full max-w-[420px]" aria-labelledby="t-ingreso">
-        <div class="text-xs texto-suave">{{ institucion }} · {{ dependencia }}</div>
-        @if (!cambiando()) {
-          <h1 id="t-ingreso" class="text-2xl font-semibold mt-1 mb-4">{{ 'ingresar.titulo' | transloco }}</h1>
-          @if (vencida()) { <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal" role="status">{{ 'ingresar.sesionVencida' | transloco }}</p> }
-          <form (ngSubmit)="ingresar()" class="grid gap-3">
-            <mat-form-field class="sin-pie">
-              <mat-label>{{ 'ingresar.usuario' | transloco }}</mat-label>
-              <input matInput name="usuario" autocomplete="username" [(ngModel)]="usuario" required autofocus />
-            </mat-form-field>
-            <mat-form-field class="sin-pie">
-              <mat-label>{{ 'ingresar.clave' | transloco }}</mat-label>
-              <input matInput name="clave" type="password" autocomplete="current-password" [(ngModel)]="clave" required />
-            </mat-form-field>
-            @if (error()) { <p class="text-sm m-0" style="color: var(--no)" role="alert">{{ error() }}</p> }
-            <button mat-flat-button type="submit" [disabled]="enviando() || !usuario || !clave">{{ (enviando() ? 'ingresar.ingresando' : 'ingresar.ingresar') | transloco }}</button>
-          </form>
-        } @else {
-          <h1 id="t-ingreso" class="text-2xl font-semibold mt-1 mb-1">{{ 'ingresar.cambiar.titulo' | transloco }}</h1>
-          <p class="texto-suave text-sm mt-0 mb-4">
-            {{ 'ingresar.cambiar.explicacion' | transloco: { nombre: auth.usuario()?.nombre } }}
-          </p>
-          <form (ngSubmit)="cambiar()" class="grid gap-3">
-            <mat-form-field class="sin-pie">
-              <mat-label>{{ 'ingresar.cambiar.actual' | transloco }}</mat-label>
-              <input matInput name="actual" type="password" autocomplete="current-password" [(ngModel)]="actual" required />
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>{{ 'ingresar.cambiar.nueva' | transloco }}</mat-label>
-              <input matInput name="nueva" type="password" autocomplete="new-password" [(ngModel)]="nueva" required />
-              <mat-hint>{{ 'ingresar.cambiar.pista' | transloco }}</mat-hint>
-            </mat-form-field>
-            <mat-form-field class="sin-pie">
-              <mat-label>{{ 'ingresar.cambiar.repetir' | transloco }}</mat-label>
-              <input matInput name="nueva2" type="password" autocomplete="new-password" [(ngModel)]="nueva2" required />
-            </mat-form-field>
-            @if (error()) { <p class="text-sm m-0" style="color: var(--no)" role="alert">{{ error() }}</p> }
-            <button mat-flat-button type="submit" [disabled]="enviando()">{{ (enviando() ? 'ingresar.cambiar.guardando' : 'ingresar.cambiar.guardar') | transloco }}</button>
-            <button mat-button type="button" (click)="salir()">{{ 'comun.salir' | transloco }}</button>
-          </form>
-        }
-      </section>
-    </div>
-  `,
+  templateUrl: './ingresar.html',
 })
 export class IngresarPage {
   /** Parámetros de consulta. */
