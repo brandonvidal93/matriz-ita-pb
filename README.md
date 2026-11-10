@@ -43,6 +43,7 @@ npm run db                        # MySQL 8.4 en Docker (puerto 3307), con base 
 cp api/.env.example api/.env      # ajusta si hace falta
 npm --prefix api run crear-admin -- admin "Nombre Apellido"   # primer administrador
 npm run api                       # API en http://localhost:3000 (aplica migraciones)
+                                  # con ITA_DOCS=true: Swagger en http://localhost:3000/api/docs (no en producción)
 npm start                         # Angular en http://localhost:4200 (redirige /api a :3000)
 ```
 

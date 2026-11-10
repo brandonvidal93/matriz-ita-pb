@@ -13,6 +13,8 @@ export interface Config {
   /** Orígenes aceptados en peticiones que modifican datos (además del propio host). */
   origenes: string[];
   confiarProxy: boolean;
+  /** Swagger en /api/docs. Solo fuera de producción. */
+  docs: boolean;
 }
 
 export function leerConfig(env: NodeJS.ProcessEnv = process.env): Config {
@@ -29,5 +31,6 @@ export function leerConfig(env: NodeJS.ProcessEnv = process.env): Config {
     sesionMinutos: Number(env['ITA_SESION_MINUTOS'] ?? 480),
     origenes: (env['ITA_ORIGENES'] ?? '').split(',').map((s) => s.trim()).filter(Boolean),
     confiarProxy: env['ITA_CONFIAR_PROXY'] === 'true',
+    docs: !prod && env['ITA_DOCS'] === 'true',
   };
 }

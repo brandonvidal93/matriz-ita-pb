@@ -7,6 +7,7 @@ import { ZodError } from 'zod';
 import { CABECERA_SESION, COOKIE_SESION, opcionesCookie, usuarioDeSesion } from './auth';
 import type { Config } from './config';
 import type { Db } from './db';
+import { registrarDocs } from './docs';
 import { NoEncontrado } from './errores';
 import { rutasAuth } from './rutas/auth';
 import { rutasRegistros } from './rutas/registros';
@@ -72,6 +73,8 @@ export async function construirApp(ctx: Contexto, opciones: { logger?: boolean }
     req.log.error(err);
     return reply.code(500).send({ error: 'Error interno del servidor.' });
   });
+
+  if (config.docs) await registrarDocs(app);
 
   app.get('/api/salud', async () => {
     await db.query('SELECT 1');
