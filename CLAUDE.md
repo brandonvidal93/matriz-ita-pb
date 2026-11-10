@@ -2,7 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Gestor para diligenciar la Matriz ITA 2023 (Ley 1712 de 2014) y generar el `.xlsx` oficial. El código, los comentarios y los commits van en español. Requiere Node 22+ y npm 10+.
+Gestor para diligenciar la Matriz ITA 2023 (Ley 1712 de 2014) y generar el `.xlsx` oficial. El código, los comentarios y los commits van en español.
+
+## Requisitos
+
+Node.js 22+ y npm 10+, Docker Desktop (MySQL de desarrollo), k6 (pruebas de carga), Git y Python 3 (solo para `tools/preparar_plantilla.py`, sin paquetes extra). El README tiene los comandos de instalación para macOS (Homebrew) y Windows (winget). Los scripts npm deben funcionar en los dos sistemas: nada de `cp`, `rm` u otros comandos de Unix; si hace falta copiar o borrar, usa `node -e` con `fs`.
 
 ## Accesibilidad (obligatorio)
 
@@ -18,6 +22,18 @@ Todo desarrollo debe cumplir **WCAG 2.1 nivel AA** y las directrices de accesibi
 - **Idioma:** `<html lang>` sigue el idioma activo, y los textos accesibles (`aria-label`, `alt`) también son claves de i18n en `es.json` y `en.json` (3.1.1).
 
 Al cerrar la tarea, indica qué criterios se validaron, cómo y cuáles no se pudieron comprobar. Una prueba automática no basta para dar por cumplido el nivel AA: el teclado y el lector de pantalla requieren revisión manual.
+
+## Carga y estrés (obligatorio)
+
+Para asegurar la disponibilidad, todo cambio que pueda afectar el rendimiento se valida con la prueba de carga `tools/k6/estres.js` antes de darlo por terminado: rutas o consultas de la API, migraciones e índices, el pool de MySQL (`api/src/db.ts`), el manejo de sesiones, el servidor de estáticos y cualquier versión que vaya a desplegarse.
+
+- Se ejecuta contra el **build de producción** (`npm run build && npm --prefix api run build`), no contra `ng serve` ni `tsx watch`.
+- Solo con una **base desechable**, como `matriz_ita_test`. La prueba crea registros `k6-…` y los borra al final; nunca se apunta a la base de producción ni a datos reales. El script se niega a correr contra un servidor que no sea local salvo con `ITA_PERMITIR_REMOTO=1`.
+- La carga normal (`ITA_ESCALA=1`) debe cumplir todos los umbrales del script: menos de 1 % de errores; p95 de 200 ms en estáticos, de 500 ms en lectura y edición y de 1 s en guardados concurrentes sobre el mismo registro. No se relajan los umbrales para que una prueba pase: se corrige la causa o se acuerda el cambio con el equipo.
+- Para buscar el límite se repite con `ITA_ESCALA=5`. Ahí se reporta dónde se degrada, aunque no tenga que pasar.
+- Al cerrar la tarea se informan las cifras (p95 por escenario, tasa de errores, peticiones por segundo), la escala usada y si k6 corrió en el mismo equipo que el servidor, porque eso empeora los resultados.
+
+Referencia (10-nov-2026, k6 y servidor en el mismo equipo): con ×1, p95 de 64 a 108 ms y 0 % de errores; con ×5, 0 % de errores pero p95 de 5 a 8 s en las rutas con base de datos, probablemente por el pool de 10 conexiones.
 
 ## Comandos
 
@@ -36,6 +52,7 @@ npm --prefix api run typecheck
 npm test                  # frontend
 npm run test:api          # API
 npm run test:todo         # ambos
+k6 run -e ITA_URL=http://127.0.0.1:3001 -e ITA_USUARIO=admin -e ITA_CLAVE=... tools/k6/estres.js   # carga y estrés
 
 # Una sola prueba
 npx ng test --watch=false --include src/app/core/idioma.spec.ts
