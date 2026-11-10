@@ -75,3 +75,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 }
 
 mat-form-field.sin-pie .mat-mdc-form-field-subscript-wrapper { display: none; }
+
+/* Bloque gris animado de los marcadores de carga (app-esqueleto). */
+.esqueleto {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e6e9ee 25%, #f1f3f6 50%, #e6e9ee 75%) 0 0 / 200% 100%;
+  animation: brillo 1.4s linear infinite;
+}
+@keyframes brillo { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .esqueleto { animation: none; } }

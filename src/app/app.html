@@ -46,7 +46,8 @@
   </div>
 </header>
 <main id="contenido" tabindex="-1" class="outline-none">
-  <router-outlet />
+  @if (navegandoLento()) { <app-esqueleto class="block max-w-[1100px] mx-auto px-4 py-6" style="--espera: 0s" /> }
+  <div [hidden]="navegandoLento()"><router-outlet /></div>
 </main>
 @if (auth.usuario() && !auth.usuario()!.debeCambiarClave) {
   <footer>

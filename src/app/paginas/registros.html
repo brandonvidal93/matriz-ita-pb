@@ -33,7 +33,10 @@
   }
   </div>
 
-  @if (cargando()) { <mat-progress-bar mode="indeterminate" class="my-3" [attr.aria-label]="'comun.cargando' | transloco" /> }
+  @if (cargando()) {
+    @if (almacen.cargado()) { <mat-progress-bar mode="indeterminate" class="my-3" [attr.aria-label]="'comun.cargando' | transloco" /> }
+    @else { <app-esqueleto /> }
+  }
   @if (error()) {
     <p class="tarjeta p-4 mt-4" role="alert">{{ 'registros.errorCarga' | transloco: { error: error() } }} <button mat-button (click)="recargar()">{{ 'comun.reintentar' | transloco }}</button></p>
   }

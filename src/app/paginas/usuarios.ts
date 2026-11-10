@@ -14,6 +14,7 @@ import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
 import { AuthService, mensajeError } from '../core/auth.service';
 import { errorSi } from '../core/foco';
+import { Esqueleto } from '../core/esqueleto';
 import { Rol, Usuario, claveRol } from '../core/modelos';
 import { problemaClave } from './ingresar';
 
@@ -58,7 +59,7 @@ export class UsuarioDialog {
 }
 
 @Component({
-  imports: [FechaPipe, MatButtonModule, MatIconModule, MatMenuModule, TranslocoPipe],
+  imports: [Esqueleto, FechaPipe, MatButtonModule, MatIconModule, MatMenuModule, TranslocoPipe],
   styles: `
     table { width: 100%; border-collapse: collapse; }
     th { text-align: left; font-size: 12px; color: var(--texto-suave); padding: 10px 12px; border-bottom: 1px solid var(--borde); }
@@ -73,7 +74,7 @@ export class UsuariosPage {
   private dialog = inject(MatDialog);
   private snack = inject(MatSnackBar);
   private t = inject(TranslocoService);
-  usuarios = signal<UsuarioLista[]>([]);
+  usuarios = signal<UsuarioLista[] | null>(null);
   claveRol = claveRol;
 
   constructor() {
@@ -85,6 +86,7 @@ export class UsuariosPage {
       this.usuarios.set(await firstValueFrom(this.http.get<UsuarioLista[]>('/api/usuarios')));
     } catch (e) {
       this.aviso(e);
+      this.usuarios.update((u) => u ?? []); // sin datos, se muestra la tabla vacía en lugar del esqueleto
     }
   }
 

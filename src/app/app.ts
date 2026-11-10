@@ -1,5 +1,5 @@
 import { UpperCasePipe } from '@angular/common';
-import { Component, Injector, afterNextRender, computed, effect, inject, untracked } from '@angular/core';
+import { Component, Injector, afterNextRender, computed, effect, inject, signal, untracked } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet, TitleStrategy } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
@@ -14,12 +14,13 @@ import { AuthService, mensajeError } from './core/auth.service';
 import { claveRol } from './core/modelos';
 import { IdiomaService } from './core/idioma';
 import { enfocarTitulo } from './core/foco';
+import { Esqueleto } from './core/esqueleto';
 import { descargar } from './core/progreso';
 import { CONFIG } from './config';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatMenuModule, MatSnackBarModule, MatTooltipModule, TranslocoPipe, UpperCasePipe],
+  imports: [Esqueleto, RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatMenuModule, MatSnackBarModule, MatTooltipModule, TranslocoPipe, UpperCasePipe],
   styles: `
     header { background: var(--pb-azul); color: #fff; --foco: var(--pb-amarillo); }
     .marca { border-left: 4px solid var(--pb-amarillo); padding-left: 12px; color: #fff; text-decoration: none; }
@@ -47,6 +48,8 @@ export class App {
   activo = computed(() => (this.url().startsWith('/r/') ? this.almacen.activo() : null));
 
   claveRol = claveRol;
+  /** La página anterior se oculta solo si la navegación (guardias, carga diferida) tarda; así no parpadea. */
+  navegandoLento = signal(false);
 
   textoSync = computed(() => {
     this.idioma.actual(); // recalcula al cambiar de idioma
@@ -60,6 +63,11 @@ export class App {
   });
 
   constructor() {
+    effect((alLimpiar) => {
+      if (!this.router.currentNavigation()) return this.navegandoLento.set(false);
+      const t = setTimeout(() => this.navegandoLento.set(true), 300);
+      alLimpiar(() => clearTimeout(t));
+    });
     // Al cambiar de página, el foco va al título nuevo: el elemento pulsado ya no existe. Con ?fila= lo pone Diligenciar.
     let rutaAnterior = '';
     effect(() => {

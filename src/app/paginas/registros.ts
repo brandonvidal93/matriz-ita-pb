@@ -14,12 +14,13 @@ import { AuthService, mensajeError } from '../core/auth.service';
 import { CATALOGO } from '../core/catalogo';
 import { Registro } from '../core/modelos';
 import { enfocarTitulo } from '../core/foco';
+import { Esqueleto } from '../core/esqueleto';
 import { descargar, nombreArchivo, progreso } from '../core/progreso';
 import { AvisoImportacion, XlsxService } from '../core/xlsx.service';
 import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dialogos';
 
 @Component({
-  imports: [FechaPipe, MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule, TranslocoPipe],
+  imports: [Esqueleto, FechaPipe, MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule, TranslocoPipe],
   templateUrl: './registros.html',
 })
 export class RegistrosPage {
