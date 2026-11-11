@@ -46,3 +46,8 @@ Thumbs.db
 # Datos locales de la Matriz ITA (no publicar)
 /datos/
 matriz-ita-datos*.json
+
+# API
+api/node_modules/
+api/dist/
+api/.env

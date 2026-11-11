@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{ 'dialogos.asignar.titulo' | transloco }}</h2>
+<mat-dialog-content>
+  <div class="w-[760px] max-w-full">
+    <p class="m-0 mb-2"><strong>{{ d.evidencia.titulo }}</strong><br /><span class="mono texto-suave">{{ d.evidencia.url }}</span></p>
+    <mat-form-field class="w-full sin-pie">
+      <mat-label>{{ 'dialogos.asignar.filtrar' | transloco }}</mat-label>
+      <input matInput [ngModel]="filtro()" (ngModelChange)="filtro.set($event)" [placeholder]="'dialogos.asignar.ejemplo' | transloco" />
+    </mat-form-field>
+    <p class="text-sm texto-suave my-2" role="status">{{ 'dialogos.asignar.seleccionados' | transloco: { n: seleccion().size } }}</p>
+    <div class="lista">
+      @for (s of secciones(); track s.clave) {
+        <details [open]="!!filtro() || s.marcados > 0">
+          <summary><span lang="es">{{ s.titulo }}</span> <span class="texto-suave">({{ s.marcados }}/{{ s.items.length }})</span></summary>
+          <div class="px-3 py-1 border-t border-gray-100">
+            <mat-checkbox [checked]="s.marcados === s.items.length" [indeterminate]="s.marcados > 0 && s.marcados < s.items.length" (change)="alternarSeccion(s.items, $event.checked)">
+              <strong class="text-sm">{{ 'dialogos.asignar.todaSeccion' | transloco }}</strong>
+            </mat-checkbox>
+          </div>
+          @for (it of s.items; track it.fila) {
+            <div class="px-3 py-1 border-t border-gray-100">
+              <mat-checkbox [checked]="seleccion().has(it.fila)" (change)="alternar(it.fila, $event.checked)">
+                <span class="text-sm" lang="es">{{ corta(it) }}</span>
+                <span class="texto-suave mono"> · {{ 'dialogos.asignar.fila' | transloco: { fila: it.fila } }}</span>
+              </mat-checkbox>
+            </div>
+          }
+        </details>
+      }
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>{{ 'comun.cancelar' | transloco }}</button>
+  <button mat-flat-button (click)="guardar()">{{ 'comun.aplicar' | transloco }}</button>
+</mat-dialog-actions>

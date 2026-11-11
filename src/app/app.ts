@@ -1,5 +1,6 @@
-import { Component, computed, inject } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { UpperCasePipe } from '@angular/common';
+import { Component, Injector, afterNextRender, computed, effect, inject, signal, untracked } from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet, TitleStrategy } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,111 +8,99 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { AlmacenService } from './core/almacen.service';
+import { AuthService, mensajeError } from './core/auth.service';
+import { claveRol } from './core/modelos';
+import { IdiomaService } from './core/idioma';
+import { enfocarTitulo } from './core/foco';
+import { Esqueleto } from './core/esqueleto';
 import { descargar } from './core/progreso';
 import { CONFIG } from './config';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatMenuModule, MatSnackBarModule, MatTooltipModule],
+  imports: [Esqueleto, RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatMenuModule, MatSnackBarModule, MatTooltipModule, TranslocoPipe, UpperCasePipe],
   styles: `
-    header { background: var(--pb-azul); color: #fff; }
+    header { background: var(--pb-azul); color: #fff; --foco: var(--pb-amarillo); }
     .marca { border-left: 4px solid var(--pb-amarillo); padding-left: 12px; color: #fff; text-decoration: none; }
     nav a { color: #dfe7f3; text-decoration: none; padding: 8px 12px; border-radius: 8px; font-weight: 500; }
     nav a:hover { background: rgb(255 255 255 / .08); }
-    nav a.activo { background: rgb(255 255 255 / .16); color: #fff; }
+    nav a.activo { background: rgb(255 255 255 / .16); color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
     .sync { font-size: 12px; color: #dfe7f3; }
+    footer { border-top: 1px solid var(--borde); margin-top: 24px; }
   `,
-  template: `
-    <a class="saltar" href="#contenido" (click)="saltar($event)">Saltar al contenido</a>
-    <header class="sticky top-0 z-20 shadow">
-      <div class="max-w-[1400px] mx-auto flex items-center gap-4 px-4 py-2 flex-wrap">
-        <a routerLink="/" class="marca no-underline text-white">
-          <div class="text-base font-semibold leading-tight">Matriz ITA</div>
-          <div class="text-xs opacity-80 leading-tight">{{ institucion }} · {{ dependencia }}</div>
-        </a>
-        @if (activo(); as r) {
-          <nav aria-label="Secciones del registro" class="flex gap-1 flex-wrap">
-            <a [routerLink]="['/r', r.id]" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Diligenciar</a>
-            <a [routerLink]="['/r', r.id, 'evidencias']" routerLinkActive="activo">Evidencias ({{ r.evidencias.length }})</a>
-            <a [routerLink]="['/r', r.id, 'resumen']" routerLinkActive="activo">Revisar y exportar</a>
-          </nav>
-          <span class="text-sm opacity-90 truncate max-w-[280px]" [title]="r.nombre">· {{ r.nombre }}</span>
-        }
-        <span class="flex-1"></span>
-        <span class="sync" role="status" aria-live="polite">{{ textoSync() }}</span>
-        @switch (almacen.archivo.estado()) {
-          @case ('vinculado') {
-            <button mat-stroked-button class="!text-white !border-white/50" [matMenuTriggerFor]="menuArchivo" [matTooltip]="'Los cambios se guardan automáticamente en ' + almacen.archivo.nombre()">
-              <mat-icon>save</mat-icon> {{ almacen.archivo.nombre() }}
-            </button>
-          }
-          @case ('requiere-permiso') {
-            <button mat-flat-button class="!bg-[var(--pb-amarillo)] !text-black" (click)="accion(almacen.reconectarArchivo(), 'Archivo reconectado.')"
-              [matTooltip]="'El navegador pide confirmar el acceso a ' + almacen.archivo.nombre()">
-              <mat-icon>lock_open</mat-icon> Reconectar {{ almacen.archivo.nombre() }}
-            </button>
-          }
-          @default {
-            <button mat-stroked-button class="!text-white !border-white/50" [matMenuTriggerFor]="menuArchivo">
-              <mat-icon>folder_open</mat-icon> Archivo de datos
-            </button>
-          }
-        }
-        <mat-menu #menuArchivo="matMenu">
-          @if (almacen.archivo.soportado) {
-            <button mat-menu-item (click)="accion(almacen.abrirArchivo(), 'Archivo abierto. Los cambios se guardarán en él.')"><mat-icon>file_open</mat-icon>Abrir archivo de datos…</button>
-            <button mat-menu-item (click)="accion(almacen.crearArchivo(), 'Archivo creado. Los cambios se guardarán en él.')"><mat-icon>note_add</mat-icon>Crear archivo de datos nuevo…</button>
-            @if (almacen.archivo.estado() === 'vinculado') {
-              <button mat-menu-item (click)="accion(almacen.guardarArchivo(), 'Guardado.')"><mat-icon>save</mat-icon>Guardar ahora</button>
-              <button mat-menu-item (click)="almacen.desvincularArchivo()"><mat-icon>link_off</mat-icon>Dejar de usar este archivo</button>
-            }
-          }
-          <button mat-menu-item (click)="descargarCopia()"><mat-icon>download</mat-icon>Descargar copia (.json)</button>
-          <button mat-menu-item (click)="cargar.click()"><mat-icon>upload</mat-icon>Cargar copia (.json)…</button>
-        </mat-menu>
-        <input #cargar type="file" accept=".json" hidden (change)="cargarCopia($event)" />
-      </div>
-    </header>
-    <main id="contenido" tabindex="-1" class="outline-none">
-      <router-outlet />
-    </main>
-  `,
+  templateUrl: './app.html',
 })
 export class App {
   protected almacen = inject(AlmacenService);
+  protected auth = inject(AuthService);
   private snack = inject(MatSnackBar);
   private router = inject(Router);
+  private injector = inject(Injector);
+  private titulos = inject(TitleStrategy);
+  private t = inject(TranslocoService);
+  protected idioma = inject(IdiomaService);
   institucion = CONFIG.institucion;
   dependencia = CONFIG.dependencia;
 
   private url = toSignal(this.router.events.pipe(filter((e) => e instanceof NavigationEnd), map(() => this.router.url)), { initialValue: '' });
   activo = computed(() => (this.url().startsWith('/r/') ? this.almacen.activo() : null));
 
+  claveRol = claveRol;
+  /** La página anterior se oculta solo si la navegación (guardias, carga diferida) tarda; así no parpadea. */
+  navegandoLento = signal(false);
+
   textoSync = computed(() => {
-    const est = this.almacen.archivo.estado();
-    if (est === 'requiere-permiso') return 'Archivo sin confirmar · cambios solo en el navegador';
-    if (est === 'sin-archivo') return this.almacen.archivo.soportado ? 'Sin archivo · cambios solo en el navegador' : 'Guardado en este navegador';
+    this.idioma.actual(); // recalcula al cambiar de idioma
+    if (this.almacen.soloLectura()) return this.t.translate('app.sync.soloLectura');
     switch (this.almacen.estadoSync()) {
-      case 'pendiente': return 'Cambios por guardar…';
-      case 'guardando': return 'Guardando…';
-      case 'error': return 'Error al guardar: ' + (this.almacen.errorSync() ?? '');
-      default: return 'Guardado en el archivo';
+      case 'pendiente': return this.t.translate('app.sync.pendiente');
+      case 'guardando': return this.t.translate('app.sync.guardando');
+      case 'error': return this.t.translate('app.sync.error', { error: this.almacen.errorSync() ?? '' });
+      default: return this.almacen.ultimoGuardado() ? this.t.translate('app.sync.guardado') : '';
     }
   });
 
-  async accion(p: Promise<unknown>, ok: string) {
+  constructor() {
+    effect((alLimpiar) => {
+      if (!this.router.currentNavigation()) return this.navegandoLento.set(false);
+      const t = setTimeout(() => this.navegandoLento.set(true), 300);
+      alLimpiar(() => clearTimeout(t));
+    });
+    // Al cambiar de página, el foco va al título nuevo: el elemento pulsado ya no existe. Con ?fila= lo pone Diligenciar.
+    let rutaAnterior = '';
+    effect(() => {
+      const url = this.url();
+      const ruta = url.split('?')[0];
+      if (rutaAnterior && ruta !== rutaAnterior && !url.includes('fila=')) afterNextRender(() => enfocarTitulo(), { injector: this.injector });
+      if (url) rutaAnterior = ruta;
+    });
+    // IdiomaService pone el título general; aquí se reemplaza por el de la página, ya traducido.
+    effect(() => {
+      this.idioma.actual();
+      untracked(() => this.titulos.updateTitle(this.router.routerState.snapshot));
+    });
+    // Los errores de guardado también se avisan con un mensaje visible.
+    effect(() => {
+      const e = this.almacen.errorSync();
+      if (e) untracked(() => this.snack.open(this.t.translate('app.avisos.errorGuardado', { error: e }), this.t.translate('comun.cerrar')));
+    });
+  }
+
+  async descargarCopia() {
     try {
-      await p;
-      this.snack.open(ok, undefined, { duration: 3500 });
-    } catch (e: any) {
-      if (e?.name === 'AbortError') return; // el usuario cerró el selector
-      this.snack.open('No se pudo completar: ' + (e?.message ?? e), 'Cerrar', { duration: 8000 });
+      descargar(await this.almacen.respaldoCompleto(), `matriz-ita-datos_${new Date().toISOString().slice(0, 10)}.json`);
+    } catch (e) {
+      this.snack.open(this.t.translate('app.avisos.errorDescarga', { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
     }
   }
 
-  descargarCopia() {
-    descargar(this.almacen.copiaJson(), `matriz-ita-datos_${new Date().toISOString().slice(0, 10)}.json`);
+  async salir() {
+    if (this.almacen.hayPendientes()) await this.almacen.vaciar();
+    await this.auth.salir();
+    this.almacen.limpiar();
+    this.router.navigate(['/ingresar']);
   }
 
   async cargarCopia(ev: Event) {
@@ -120,10 +109,11 @@ export class App {
     input.value = '';
     if (!f) return;
     try {
-      const n = this.almacen.cargarJson(await f.text());
-      this.snack.open(`Se cargaron ${n} registro(s).`, undefined, { duration: 4000 });
-    } catch (e: any) {
-      this.snack.open('No se pudo cargar: ' + (e?.message ?? e), 'Cerrar', { duration: 8000 });
+      const r = await this.almacen.restaurar(await f.text());
+      const omitidos = r.omitidos.length ? ' ' + this.t.translate('app.avisos.omitidos', { n: r.omitidos.length }) : '';
+      this.snack.open(this.t.translate('app.avisos.cargados', { n: r.creados.length }) + omitidos, this.t.translate('comun.cerrar'));
+    } catch (e) {
+      this.snack.open(this.t.translate('app.avisos.errorCarga', { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
     }
   }
 

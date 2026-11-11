@@ -1,0 +1,97 @@
+<div class="max-w-[1100px] mx-auto px-4 py-6">
+  <div class="flex items-end gap-3 flex-wrap mb-2">
+    <div class="flex-1 min-w-[260px]">
+      <h1 class="text-2xl font-semibold m-0">{{ 'registros.titulo' | transloco }}</h1>
+      <p class="texto-suave m-0 mt-1">
+        {{ 'registros.descripcion' | transloco: { version, total: totalItems } }}
+      </p>
+    </div>
+    @if (!almacen.soloLectura()) {
+      <button mat-stroked-button (click)="archivoXlsx.click()"><mat-icon>upload_file</mat-icon>{{ 'registros.importarXlsx' | transloco }}</button>
+      @if (auth.esAdmin()) {
+        <button mat-stroked-button (click)="archivoJson.click()"><mat-icon>settings_backup_restore</mat-icon>{{ 'registros.restaurarRespaldo' | transloco }}</button>
+      }
+      <button mat-flat-button (click)="nuevo()"><mat-icon>add</mat-icon>{{ 'registros.nuevo' | transloco }}</button>
+    }
+    <input #archivoXlsx type="file" accept=".xlsx" hidden [attr.aria-label]="'registros.importarXlsx' | transloco" (change)="importarXlsx($event)" />
+    <input #archivoJson type="file" accept=".json" hidden [attr.aria-label]="'registros.restaurarRespaldo' | transloco" (change)="restaurar($event)" />
+  </div>
+
+  @if (importando()) { <mat-progress-bar mode="indeterminate" class="my-3" [attr.aria-label]="'comun.cargando' | transloco" /> }
+
+  <div role="status">
+  @if (advertencias().length) {
+    <section class="tarjeta p-4 my-4 border-amber-300 bg-amber-50" aria-labelledby="t-adv">
+      <div class="flex items-center gap-2">
+        <h2 id="t-adv" class="text-base font-semibold m-0 flex-1">{{ 'registros.resultadoImportacion' | transloco }}</h2>
+        <button mat-icon-button [attr.aria-label]="'registros.cerrarAviso' | transloco" (click)="cerrarAdvertencias()"><mat-icon>close</mat-icon></button>
+      </div>
+      <ul class="m-0 pl-5 text-sm max-h-60 overflow-auto">
+        @for (a of advertencias(); track $index) { <li>{{ a.clave | transloco: a.params }}</li> }
+      </ul>
+    </section>
+  }
+  </div>
+
+  @if (cargando()) {
+    @if (almacen.cargado()) { <mat-progress-bar mode="indeterminate" class="my-3" [attr.aria-label]="'comun.cargando' | transloco" /> }
+    @else { <app-esqueleto /> }
+  }
+  @if (error()) {
+    <p class="tarjeta p-4 mt-4" role="alert">{{ 'registros.errorCarga' | transloco: { error: error() } }} <button mat-button (click)="recargar()">{{ 'comun.reintentar' | transloco }}</button></p>
+  }
+
+  @if (almacen.cargado() && !almacen.registros().length) {
+    <section class="tarjeta p-8 mt-6 text-center">
+      <mat-icon class="!w-12 !h-12 !text-5xl texto-suave">fact_check</mat-icon>
+      <h2 class="text-lg font-semibold mt-2">{{ 'registros.vacio.titulo' | transloco }}</h2>
+      <p class="texto-suave max-w-[560px] mx-auto">
+        {{ (almacen.soloLectura() ? 'registros.vacio.lector' : 'registros.vacio.editor') | transloco }}
+      </p>
+    </section>
+  }
+
+  <ul class="list-none p-0 grid gap-3 mt-4" [attr.aria-label]="'registros.lista' | transloco">
+    @for (r of almacen.registros(); track r.id) {
+      @let p = prog(r);
+      <li class="tarjeta p-4 flex gap-4 items-center flex-wrap">
+        <div class="flex-1 min-w-[260px]">
+          <div class="flex items-center gap-2 flex-wrap">
+            <h2 class="text-lg font-semibold m-0">
+              <a class="no-underline text-inherit hover:underline" href="" (click)="abrir(r, $event)">{{ r.nombre }}</a>
+            </h2>
+            <span class="chip-estado" [class.SI]="r.tipo === 'procuraduria'" [class.NA]="r.tipo !== 'procuraduria'">
+              {{ (r.tipo === 'procuraduria' ? 'registros.tipo.procuraduria' : 'registros.tipo.seguimiento') | transloco }}
+            </span>
+          </div>
+          <div class="texto-suave text-sm mt-1">
+            {{ 'registros.vigencia' | transloco: { v: r.vigencia } }}{{ r.periodo ? ' · ' + r.periodo : '' }} ·
+            {{ 'registros.nEvidencias' | transloco: { n: r.evidencias.length } }} ·
+            {{ 'registros.actualizado' | transloco: { fecha: (r.actualizado | fecha: 'd MMM y, h:mm a') } }}
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <div class="barra-progreso flex-1 max-w-[360px]" role="progressbar" [attr.aria-valuenow]="p.porcentaje" aria-valuemin="0" aria-valuemax="100" [attr.aria-label]="'registros.avance' | transloco: { n: p.porcentaje }">
+              <span [style.width.%]="p.porcentaje"></span>
+            </div>
+            <span class="text-sm">{{ p.diligenciados }}/{{ p.total }} ({{ p.porcentaje }}%)</span>
+            <span class="chip-estado SI">{{ 'estado.SI' | transloco }} {{ p.si }}</span>
+            <span class="chip-estado NO">{{ 'estado.NO' | transloco }} {{ p.no }}</span>
+            <span class="chip-estado NA">{{ 'estado.NA' | transloco }} {{ p.na }}</span>
+          </div>
+        </div>
+        <button mat-flat-button [attr.aria-label]="'registros.abrirNombre' | transloco: { nombre: r.nombre }" (click)="abrir(r)">{{ 'registros.abrir' | transloco }}</button>
+        <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'comun.masAcciones' | transloco: { nombre: r.nombre }"><mat-icon>more_vert</mat-icon></button>
+        <mat-menu #m="matMenu">
+          @if (!almacen.soloLectura()) {
+            <button mat-menu-item (click)="editar(r)"><mat-icon>edit</mat-icon>{{ 'registros.menu.editar' | transloco }}</button>
+            <button mat-menu-item (click)="duplicar(r)"><mat-icon>content_copy</mat-icon>{{ 'registros.menu.duplicar' | transloco }}</button>
+          }
+          <button mat-menu-item (click)="respaldo(r)"><mat-icon>download</mat-icon>{{ 'registros.menu.respaldo' | transloco }}</button>
+          @if (auth.esAdmin()) {
+            <button mat-menu-item (click)="eliminar(r)"><mat-icon>delete</mat-icon>{{ 'comun.eliminar' | transloco }}</button>
+          }
+        </mat-menu>
+      </li>
+    }
+  </ul>
+</div>

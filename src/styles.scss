@@ -17,12 +17,13 @@ html {
 :root {
   --pb-azul: #0b2d5b;
   --pb-amarillo: #f2b705;
-  --ok: #1b7f3b;
+  --ok: #1a7a39;
   --no: #b3261e;
   --na: #5f6368;
   --borde: #d7dce3;
   --fondo: #f5f7fa;
   --texto-suave: #4a5565;
+  --foco: var(--pb-azul);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -37,7 +38,11 @@ body {
 }
 
 a { color: #0b57d0; }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--pb-amarillo); outline-offset: 2px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
+/* Sobre fondos oscuros el foco azul no se vería. */
+.saltar, .mat-mdc-snack-bar-container { --foco: var(--pb-amarillo); }
+/* Foco puesto por código en títulos: no es un control que se opere. */
+[tabindex='-1']:focus { outline: none; }
 
 .saltar {
   position: absolute; left: -999px; top: 0; z-index: 1000;
@@ -70,3 +75,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--pb-amarillo); o
 }
 
 mat-form-field.sin-pie .mat-mdc-form-field-subscript-wrapper { display: none; }
+
+/* Bloque gris animado de los marcadores de carga (app-esqueleto). */
+.esqueleto {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e6e9ee 25%, #f1f3f6 50%, #e6e9ee 75%) 0 0 / 200% 100%;
+  animation: brillo 1.4s linear infinite;
+}
+@keyframes brillo { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .esqueleto { animation: none; } }

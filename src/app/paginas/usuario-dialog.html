@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>{{ d.usuario ? ('usuarios.dialogo.editar' | transloco: { usuario: d.usuario.usuario }) : ('usuarios.nuevo' | transloco) }}</h2>
+<form (ngSubmit)="guardar()">
+  <mat-dialog-content>
+    <!-- Material fija display:block en mat-dialog-content: el diseño va en un div propio. -->
+    <div class="flex flex-col gap-4 pt-2 w-[420px] max-w-full">
+    @if (!d.usuario) {
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>{{ 'usuarios.col.usuario' | transloco }}</mat-label>
+        <input matInput name="usuario" [(ngModel)]="m.usuario" [errorStateMatcher]="errUsuario" required autocomplete="off" [placeholder]="'usuarios.dialogo.ejemplo' | transloco" />
+        <mat-error>{{ error() }}</mat-error>
+      </mat-form-field>
+    }
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>{{ 'usuarios.dialogo.nombre' | transloco }}</mat-label>
+      <input matInput name="nombre" [(ngModel)]="m.nombre" [errorStateMatcher]="errNombre" required />
+      <mat-error>{{ error() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>{{ 'usuarios.col.rol' | transloco }}</mat-label>
+      <mat-select name="rol" [(ngModel)]="m.rol">
+        <mat-option value="lector">{{ 'usuarios.dialogo.rolLector' | transloco }}</mat-option>
+        <mat-option value="editor">{{ 'usuarios.dialogo.rolEditor' | transloco }}</mat-option>
+        <mat-option value="admin">{{ 'usuarios.dialogo.rolAdmin' | transloco }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>{{ (d.usuario ? 'usuarios.dialogo.claveNueva' : 'usuarios.dialogo.claveTemporal') | transloco }}</mat-label>
+      <input matInput name="clave" type="password" autocomplete="new-password" [(ngModel)]="m.clave" [errorStateMatcher]="errClave" [required]="!d.usuario" />
+      <mat-hint>{{ 'usuarios.dialogo.pista' | transloco }}</mat-hint>
+      <mat-error>{{ error() }}</mat-error>
+    </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" mat-dialog-close>{{ 'comun.cancelar' | transloco }}</button>
+    <button mat-flat-button type="submit">{{ 'comun.guardar' | transloco }}</button>
+  </mat-dialog-actions>
+</form>

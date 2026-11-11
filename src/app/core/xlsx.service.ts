@@ -8,10 +8,16 @@ const RELS_HOJA = 'xl/worksheets/_rels/sheet1.xml.rels';
 const NS_MAIN = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main';
 const URL_RE = /https?:\/\/[^\s"'<>;,]+[^\s"'<>;,.)\]]/gi;
 
+export interface AvisoImportacion {
+  clave: string;
+  params?: Record<string, string | number>;
+}
+
 export interface ResultadoImportacion {
   respuestas: Record<number, Respuesta>;
   evidencias: Evidencia[];
-  advertencias: string[];
+  /** Avisos para el usuario como clave de traducción + parámetros. */
+  advertencias: AvisoImportacion[];
   itemsLeidos: number;
 }
 
@@ -107,8 +113,8 @@ export class XlsxService {
       rels = rels.replace('</Relationships>', relItems + '</Relationships>');
     }
 
-    zip.file(HOJA, hoja);
-    zip.file(RELS_HOJA, rels);
+    zip.file(HOJA, hoja, { createFolders: false });
+    zip.file(RELS_HOJA, rels, { createFolders: false });
     return zip.generateAsync({
       type: 'blob',
       compression: 'DEFLATE',
@@ -187,14 +193,14 @@ export class XlsxService {
     const evidencias: Evidencia[] = [];
     const porUrl = new Map<string, Evidencia>();
     const respuestas: Record<number, Respuesta> = {};
-    const advertencias: string[] = [];
+    const advertencias: AvisoImportacion[] = [];
     let itemsLeidos = 0;
 
     const norm = (s: string) => s.toLowerCase().replace(/\s+/g, ' ').trim().slice(0, 60);
     for (const it of CATALOGO.items) {
       const textoC = celdas.get(`C${it.fila}`) ?? '';
       if (norm(textoC) !== norm(it.item)) {
-        advertencias.push(`Fila ${it.fila}: el texto del ítem no coincide con la plantilla; se omitió.`);
+        advertencias.push({ clave: 'importacion.textoNoCoincide', params: { fila: it.fila } });
         continue;
       }
       let estado: EstadoCumplimiento | null = null;
@@ -226,9 +232,7 @@ export class XlsxService {
       }
       const imgs = imagenesPorFila.get(it.fila);
       if (imgs)
-        advertencias.push(
-          `Fila ${it.fila}: tenía ${imgs} imagen(es) pegada(s) como evidencia. Publícala(s) en el portal y agrégala(s) como enlace.`,
-        );
+        advertencias.push({ clave: 'importacion.imagenes', params: { fila: it.fila, n: imgs } });
     }
     return { respuestas, evidencias, advertencias, itemsLeidos };
   }

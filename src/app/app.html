@@ -1,0 +1,59 @@
+<a class="saltar" href="#contenido" (click)="saltar($event)">{{ 'app.saltarContenido' | transloco }}</a>
+<header class="sticky top-0 z-20 shadow">
+  <div class="max-w-[1400px] mx-auto flex items-center gap-4 px-4 py-2 flex-wrap">
+    <a routerLink="/" class="marca no-underline text-white">
+      <div class="text-base font-semibold leading-tight">{{ 'app.nombre' | transloco }}</div>
+      <div class="text-xs opacity-80 leading-tight">{{ institucion }} · {{ dependencia }}</div>
+    </a>
+    @if (auth.usuario() && activo(); as r) {
+      <nav [attr.aria-label]="'app.nav.etiqueta' | transloco" class="flex gap-1 flex-wrap">
+        <a [routerLink]="['/r', r.id]" routerLinkActive="activo" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">{{ 'app.nav.diligenciar' | transloco }}</a>
+        <a [routerLink]="['/r', r.id, 'evidencias']" routerLinkActive="activo" ariaCurrentWhenActive="page">{{ 'app.nav.evidencias' | transloco: { n: r.evidencias.length } }}</a>
+        <a [routerLink]="['/r', r.id, 'resumen']" routerLinkActive="activo" ariaCurrentWhenActive="page">{{ 'app.nav.resumen' | transloco }}</a>
+      </nav>
+      <span class="text-sm opacity-90 truncate max-w-[280px]" [title]="r.nombre">· {{ r.nombre }}</span>
+    }
+    <span class="flex-1"></span>
+    <button mat-button class="!text-white" [matMenuTriggerFor]="menuIdioma" [attr.aria-label]="(idioma.actual() | uppercase) + ' – ' + ('app.idioma.cambiar' | transloco)" [matTooltip]="'app.idioma.cambiar' | transloco">
+      <mat-icon>translate</mat-icon> {{ idioma.actual() | uppercase }}
+    </button>
+    <mat-menu #menuIdioma="matMenu">
+      <div class="px-4 py-2 text-sm texto-suave">{{ 'app.idioma.etiqueta' | transloco }}</div>
+      @for (i of idioma.idiomas; track i.codigo) {
+        <button mat-menu-item role="menuitemradio" [attr.aria-checked]="i.codigo === idioma.actual()" [attr.lang]="i.locale" (click)="idioma.cambiar(i.codigo)">
+          <mat-icon>{{ i.codigo === idioma.actual() ? 'check' : '' }}</mat-icon>{{ i.nombre }}
+        </button>
+      }
+    </mat-menu>
+    @if (auth.usuario(); as u) {
+      <span class="sync" role="status" aria-live="polite">{{ textoSync() }}</span>
+      <button mat-stroked-button class="!text-white !border-white/50" [matMenuTriggerFor]="menuUsuario">
+        <mat-icon>account_circle</mat-icon> {{ u.nombre }}
+      </button>
+      <mat-menu #menuUsuario="matMenu">
+        <div class="px-4 py-2 text-sm texto-suave">{{ u.usuario }} · {{ claveRol(u.rol) | transloco }}</div>
+        @if (auth.esAdmin()) {
+          <a mat-menu-item routerLink="/usuarios"><mat-icon>group</mat-icon>{{ 'app.menu.usuarios' | transloco }}</a>
+        }
+        <button mat-menu-item (click)="descargarCopia()"><mat-icon>download</mat-icon>{{ 'app.menu.descargarRespaldo' | transloco }}</button>
+        @if (auth.esAdmin()) {
+          <button mat-menu-item (click)="cargar.click()"><mat-icon>upload</mat-icon>{{ 'app.menu.restaurarRespaldo' | transloco }}</button>
+        }
+        <button mat-menu-item (click)="salir()"><mat-icon>logout</mat-icon>{{ 'app.menu.salir' | transloco }}</button>
+      </mat-menu>
+    }
+    <input #cargar type="file" accept=".json" hidden [attr.aria-label]="'app.menu.restaurarRespaldo' | transloco" (change)="cargarCopia($event)" />
+  </div>
+</header>
+<main id="contenido" tabindex="-1" class="outline-none">
+  @if (navegandoLento()) { <app-esqueleto class="block max-w-[1100px] mx-auto px-4 py-6" style="--espera: 0s" /> }
+  <div [hidden]="navegandoLento()"><router-outlet /></div>
+</main>
+@if (auth.usuario() && !auth.usuario()!.debeCambiarClave) {
+  <footer>
+    <div class="max-w-[1400px] mx-auto px-4 py-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+      <a routerLink="/mapa">{{ 'titulos.mapa' | transloco }}</a>
+      <span class="texto-suave">{{ institucion }} · {{ dependencia }}</span>
+    </div>
+  </footer>
+}

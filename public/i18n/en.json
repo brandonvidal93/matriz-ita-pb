@@ -1,0 +1,348 @@
+{
+  "app": {
+    "tituloDocumento": "ITA Matrix · ICT Management",
+    "saltarContenido": "Skip to content",
+    "nombre": "ITA Matrix",
+    "nav": {
+      "etiqueta": "Record sections",
+      "diligenciar": "Fill in",
+      "evidencias": "Evidence ({{ n }})",
+      "resumen": "Review and export"
+    },
+    "idioma": {
+      "etiqueta": "Language",
+      "cambiar": "Change language"
+    },
+    "menu": {
+      "usuarios": "Users",
+      "descargarRespaldo": "Download full backup (.json)",
+      "restaurarRespaldo": "Restore or migrate backup (.json)…",
+      "salir": "Sign out"
+    },
+    "sync": {
+      "soloLectura": "Read only",
+      "pendiente": "Unsaved changes…",
+      "guardando": "Saving…",
+      "error": "The last change was not saved: {{ error }}",
+      "guardado": "Changes saved"
+    },
+    "avisos": {
+      "errorGuardado": "The change was not saved: {{ error }}. The server version was reloaded.",
+      "errorDescarga": "Could not download: {{ error }}",
+      "cargados": "{{ n }} record(s) loaded.",
+      "omitidos": "{{ n }} were already loaded.",
+      "errorCarga": "Could not load: {{ error }}"
+    }
+  },
+  "comun": {
+    "cerrar": "Close",
+    "cancelar": "Cancel",
+    "guardar": "Save",
+    "aceptar": "OK",
+    "aplicar": "Apply",
+    "eliminar": "Delete",
+    "editar": "Edit",
+    "salir": "Sign out",
+    "reintentar": "Retry",
+    "masAcciones": "More actions for {{ nombre }}",
+    "textoOficial": "Official matrix text, in Spanish",
+    "campoObligatorio": "This field is required.",
+    "cargando": "Loading…"
+  },
+  "estado": {
+    "SI": "YES",
+    "NO": "NO",
+    "NA": "N/A"
+  },
+  "rol": {
+    "admin": "Administrator",
+    "editor": "Editor",
+    "lector": "Reader"
+  },
+  "problema": {
+    "sin-estado": "Not filled in",
+    "sin-soporte": "Compliant (YES) without evidence or remarks",
+    "na-sin-justificacion": "N/A without legal justification",
+    "no-sin-justificacion": "NO without remarks"
+  },
+  "clave": {
+    "corta": "Must be at least 10 characters long.",
+    "letrasNumeros": "Must combine letters and numbers."
+  },
+  "ingresar": {
+    "titulo": "Sign in to the ITA Matrix",
+    "sesionVencida": "Your session has ended. Please sign in again.",
+    "usuario": "Username",
+    "clave": "Password",
+    "ingresando": "Signing in…",
+    "ingresar": "Sign in",
+    "cambiar": {
+      "titulo": "Change your password",
+      "explicacion": "{{ nombre }}, for security you must set a personal password before continuing.",
+      "actual": "Current password",
+      "nueva": "New password",
+      "pista": "At least 10 characters, with letters and numbers.",
+      "repetir": "Repeat the new password",
+      "guardando": "Saving…",
+      "guardar": "Save and continue",
+      "noCoinciden": "The new passwords do not match."
+    }
+  },
+  "registros": {
+    "titulo": "Fill-in records",
+    "descripcion": "Each record is a snapshot of the ITA Matrix ({{ version }}, {{ total }} items): the annual report to the Procuraduría or an internal follow-up.",
+    "importarXlsx": "Import .xlsx matrix",
+    "restaurarRespaldo": "Restore backup",
+    "nuevo": "New record",
+    "resultadoImportacion": "Import result",
+    "cerrarAviso": "Dismiss notice",
+    "errorCarga": "Could not load the records: {{ error }}",
+    "vacio": {
+      "titulo": "No records yet",
+      "lector": "When an editor creates a record it will appear here.",
+      "editor": "Create a blank record or import a matrix you already filled in (for example, last year's) to reuse its answers and evidence."
+    },
+    "lista": "Records",
+    "tipo": {
+      "procuraduria": "Procuraduría",
+      "seguimiento": "Internal follow-up"
+    },
+    "vigencia": "Year {{ v }}",
+    "nEvidencias": "{{ n }} evidence items",
+    "actualizado": "updated {{ fecha }}",
+    "avance": "Progress {{ n }}%",
+    "abrir": "Open",
+    "menu": {
+      "editar": "Edit details",
+      "duplicar": "New snapshot from this one",
+      "respaldo": "Download backup (.json)"
+    },
+    "dialogo": {
+      "nuevo": "New record",
+      "nombreDefecto": "ITA {{ anio }} – Procuraduría report",
+      "duplicar": "New snapshot from {{ nombre }}",
+      "copia": "{{ nombre }} (copy)",
+      "editar": "Edit record",
+      "importar": "Import “{{ archivo }}”",
+      "nombreImportado": "Imported – {{ archivo }}"
+    },
+    "eliminar": {
+      "titulo": "Delete record",
+      "mensaje": "“{{ nombre }}” will be deleted for all users.\n\nWe recommend downloading a backup first."
+    },
+    "error": {
+      "crear": "Could not create the record: {{ error }}",
+      "crearCorte": "Could not create the snapshot: {{ error }}",
+      "eliminar": "Could not delete: {{ error }}",
+      "restaurar": "Could not restore: {{ error }}",
+      "importar": "Could not import: {{ error }}"
+    },
+    "restaurado": "Restored: {{ nombres }}.",
+    "ningunoCreado": "No record was created.",
+    "omitido": "“{{ nombre }}”: {{ motivo }}.",
+    "leidos": "Read {{ items }} filled-in items and {{ evidencias }} unique evidence items (URLs).",
+    "abrirNombre": "Open {{ nombre }}"
+  },
+  "importacion": {
+    "textoNoCoincide": "Row {{ fila }}: the item text does not match the template; it was skipped.",
+    "imagenes": "Row {{ fila }}: it had {{ n }} image(s) pasted as evidence. Publish them on the portal and add them as links."
+  },
+  "diligenciar": {
+    "secciones": "Matrix sections",
+    "resultados": "Results for “{{ q }}”",
+    "buscar": "Search the whole matrix",
+    "filtrar": "Filter items",
+    "filtro": {
+      "todos": "All",
+      "pendientes": "Pending",
+      "problemas": "To review"
+    },
+    "seleccionarVisibles": "Select visible ({{ n }})",
+    "quitarSeleccion": "Clear selection",
+    "sinItems": "No items match this filter in the section.",
+    "accionesSeleccion": "Actions on the selection",
+    "seleccionados": "{{ n }} selected",
+    "marcarSi": "Mark YES",
+    "asignarEvidencia": "Assign evidence",
+    "observacion": "Remarks",
+    "cerrarSeleccion": "Close selection",
+    "anuncio": "{{ n }} items shown"
+  },
+  "item": {
+    "seleccionar": "Select item in row {{ fila }}",
+    "quePide": "Requirement and regulations · row {{ fila }}",
+    "normatividad": "Regulations:",
+    "cumplimiento": "Compliance for item in row {{ fila }}",
+    "valor": "Value to report",
+    "justificacionNa": "Legal justification for N/A",
+    "observacion": "Remarks / justification",
+    "evidenciasDe": "Evidence for item in row {{ fila }}",
+    "quitarEvidencia": "Remove evidence {{ titulo }}",
+    "evidencia": "Evidence",
+    "notaInterna": "Internal note",
+    "notaInternaCampo": "Internal note (not exported)",
+    "vistaColumna": "How it will look in column I",
+    "evidenciaDe": "Evidence, item in row {{ fila }}",
+    "notaInternaDe": "Internal note, item in row {{ fila }}"
+  },
+  "evidencias": {
+    "titulo": "Evidence library",
+    "descripcion": "Register each URL once and assign it to every item it supports.",
+    "buscar": "Search evidence",
+    "verificarEnlaces": "Check links",
+    "nueva": "New evidence",
+    "notaVerificacion": "The check confirms the server responds; for browser security reasons it cannot detect a 404 page. Open doubtful ones to confirm.",
+    "caption": "Evidence for record {{ nombre }}",
+    "col": {
+      "evidencia": "Evidence",
+      "items": "Items",
+      "verificacion": "Check",
+      "acciones": "Actions"
+    },
+    "items": {
+      "uno": "1 item",
+      "otros": "{{ n }} items"
+    },
+    "responde": "Responds",
+    "sinRespuesta": "No response",
+    "asignar": "Assign to items",
+    "verificar": "Check",
+    "vacio": "No evidence yet.",
+    "sinCoincidencias": "No matching evidence.",
+    "fila": "Row {{ fila }}",
+    "eliminar": {
+      "titulo": "Delete evidence",
+      "mensaje": "“{{ titulo }}” will be removed from {{ n }} item(s)."
+    },
+    "anuncio": "{{ n }} evidence items shown",
+    "asignarDe": "Assign to items: {{ titulo }}",
+    "verificando": "Checking links"
+  },
+  "resumen": {
+    "titulo": "Review and export",
+    "indicadores": "Indicators",
+    "diligenciados": "{{ n }} of {{ total }} filled in",
+    "cumple": "Compliant (YES)",
+    "noCumple": "Not compliant (NO)",
+    "noAplica": "Not applicable (N/A)",
+    "porRevisar": "Items to review",
+    "exportar": {
+      "titulo": "Generate official file",
+      "descripcion": "The official Procuraduría template (ITA Matrix 2023) is filled in by marking SI/NO/N/A with an “X” and writing the remarks and URLs in column I. The file stays in Spanish; structure, styles and instructions are not modified.",
+      "formato": "Evidence in column I:",
+      "formatoEtiqueta": "Evidence format",
+      "soloUrl": "URL only",
+      "tituloUrl": "Title: URL",
+      "aviso": "There are {{ n }} items not filled in or with incomplete support. You can export anyway, but you should review them.",
+      "generando": "Generating…",
+      "descargar": "Download filled-in matrix (.xlsx)",
+      "error": "Could not generate the file: {{ error }}"
+    },
+    "avance": "Progress by section",
+    "col": {
+      "seccion": "Section",
+      "items": "Items",
+      "porRevisar": "To review",
+      "avance": "Progress"
+    },
+    "pendientes": "Items to review ({{ n }})",
+    "verMasPendientes": "Show more items to review"
+  },
+  "usuarios": {
+    "titulo": "Users",
+    "descripcion": "Who can sign in to the ITA Matrix and what they can do.",
+    "nuevo": "New user",
+    "col": {
+      "nombre": "Name",
+      "usuario": "Username",
+      "rol": "Role",
+      "ultimoIngreso": "Last sign-in",
+      "acciones": "Actions"
+    },
+    "inactivo": "Inactive",
+    "claveTemporal": "Temporary password",
+    "acciones": "Actions for {{ nombre }}",
+    "editar": "Edit or reset password",
+    "desactivar": "Deactivate",
+    "activar": "Activate",
+    "creado": "User created. Give them the temporary password through a secure channel.",
+    "actualizado": "User updated.",
+    "dialogo": {
+      "editar": "Edit {{ usuario }}",
+      "ejemplo": "e.g. jperez",
+      "nombre": "Full name",
+      "rolLector": "Reader: view and export only",
+      "rolEditor": "Editor: fills in the matrix",
+      "rolAdmin": "Administrator: also manages users and deletes records",
+      "claveNueva": "New temporary password (optional)",
+      "claveTemporal": "Temporary password",
+      "pista": "They will have to change it when signing in. At least 10 characters, letters and numbers.",
+      "errorUsuario": "The username must be 3 to 60 characters: letters, numbers, dot, hyphen or underscore.",
+      "errorNombre": "Enter the name."
+    }
+  },
+  "dialogos": {
+    "registro": {
+      "nombre": "Snapshot name",
+      "ejemplo": "E.g.: ITA 2027 – Procuraduría report",
+      "tipo": "Type",
+      "tipoProcuraduria": "Report to the Procuraduría",
+      "vigencia": "Year",
+      "periodo": "Period (optional)",
+      "periodoEjemplo": "1st half",
+      "partirDe": "Start from",
+      "enBlanco": "Blank matrix",
+      "copiaDe": "Copy of: {{ nombre }}",
+      "pistaBase": "Copying an earlier snapshot brings its answers and evidence so you only need to update them."
+    },
+    "evidencia": {
+      "editar": "Edit evidence",
+      "url": "URL",
+      "urlInvalida": "Must start with http:// or https://",
+      "titulo": "Title",
+      "tituloEjemplo": "Accessibility certificate 2026",
+      "descripcion": "Description (internal use)"
+    },
+    "elegir": {
+      "titulo": "Add evidence",
+      "tituloVarios": "Add evidence to {{ n }} items",
+      "buscar": "Search the library or paste a new URL",
+      "tituloNueva": "Title for the new evidence",
+      "biblioteca": "The library has {{ n }} evidence items. One evidence item can support several items.",
+      "crear": "Create and add"
+    },
+    "asignar": {
+      "titulo": "Assign evidence to items",
+      "filtrar": "Filter items",
+      "ejemplo": "E.g.: accesibilidad, presupuesto, 4.2",
+      "seleccionados": "{{ n }} item(s) selected",
+      "fila": "row {{ fila }}",
+      "todaSeccion": "Select the whole section"
+    },
+    "masivo": {
+      "titulo": "Remarks for {{ n }} item(s)",
+      "pista": "Replaces the current remarks of the selected items."
+    }
+  },
+  "titulos": {
+    "ingresar": "Sign in",
+    "registros": "Records",
+    "usuarios": "Users",
+    "diligenciar": "Fill in",
+    "evidencias": "Evidence",
+    "resumen": "Review and export",
+    "mapa": "Site map"
+  },
+  "mapa": {
+    "titulo": "Site map",
+    "descripcion": "All the pages you can open with your role."
+  },
+  "sesion": {
+    "aviso": {
+      "titulo": "Your session is about to end",
+      "mensaje": "Because of inactivity, at {{ hora }} your session will end.",
+      "seguir": "Stay signed in",
+      "salir": "Sign out"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>{{ d.titulo }}</h2>
+<mat-dialog-content>
+  <form id="f-registro" class="flex flex-col gap-4 pt-2 w-[480px] max-w-full" (ngSubmit)="guardar()">
+    <mat-form-field subscriptSizing="dynamic">
+      <mat-label>{{ 'dialogos.registro.nombre' | transloco }}</mat-label>
+      <input matInput name="nombre" [(ngModel)]="m.nombre" required pattern=".*\S.*" cdkFocusInitial />
+      <mat-hint>{{ 'dialogos.registro.ejemplo' | transloco }}</mat-hint>
+      <mat-error>{{ 'comun.campoObligatorio' | transloco }}</mat-error>
+    </mat-form-field>
+    <!-- En pantallas angostas, un campo por fila: Material anula los anchos mínimos de Tailwind en mat-form-field. -->
+    <div class="grid gap-x-3 gap-y-4 sm:grid-cols-[1fr_7rem_1fr]">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>{{ 'dialogos.registro.tipo' | transloco }}</mat-label>
+        <mat-select name="tipo" [(ngModel)]="m.tipo">
+          <mat-option value="procuraduria">{{ 'dialogos.registro.tipoProcuraduria' | transloco }}</mat-option>
+          <mat-option value="seguimiento">{{ 'registros.tipo.seguimiento' | transloco }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>{{ 'dialogos.registro.vigencia' | transloco }}</mat-label>
+        <input matInput type="number" name="vigencia" [(ngModel)]="m.vigencia" required />
+        <mat-error>{{ 'comun.campoObligatorio' | transloco }}</mat-error>
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>{{ 'dialogos.registro.periodo' | transloco }}</mat-label>
+        <input matInput name="periodo" [(ngModel)]="m.periodo" [placeholder]="'dialogos.registro.periodoEjemplo' | transloco" />
+      </mat-form-field>
+    </div>
+    @if (d.permitirBase && d.registros.length) {
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>{{ 'dialogos.registro.partirDe' | transloco }}</mat-label>
+        <mat-select name="base" [(ngModel)]="m.baseId">
+          <mat-option [value]="null">{{ 'dialogos.registro.enBlanco' | transloco }}</mat-option>
+          @for (r of d.registros; track r.id) {
+            <mat-option [value]="r.id">{{ 'dialogos.registro.copiaDe' | transloco: { nombre: r.nombre } }}</mat-option>
+          }
+        </mat-select>
+        <mat-hint>{{ 'dialogos.registro.pistaBase' | transloco }}</mat-hint>
+      </mat-form-field>
+    }
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close type="button">{{ 'comun.cancelar' | transloco }}</button>
+  <button mat-flat-button type="submit" form="f-registro">{{ 'comun.guardar' | transloco }}</button>
+</mat-dialog-actions>

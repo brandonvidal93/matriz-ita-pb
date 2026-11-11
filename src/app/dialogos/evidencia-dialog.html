@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>{{ (d.evidencia ? 'dialogos.evidencia.editar' : 'evidencias.nueva') | transloco }}</h2>
+<mat-dialog-content>
+  <form id="f-ev" class="flex flex-col gap-1 pt-2 w-[512px] max-w-full" (ngSubmit)="guardar()">
+    <mat-form-field>
+      <mat-label>{{ 'dialogos.evidencia.url' | transloco }}</mat-label>
+      <input matInput name="url" type="url" [(ngModel)]="m.url" required pattern="\s*[Hh][Tt][Tt][Pp][Ss]?://\S+\s*" placeholder="https://pascualbravo.edu.co/…" (blur)="sugerirTitulo()" />
+      <mat-error>{{ 'dialogos.evidencia.urlInvalida' | transloco }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'dialogos.evidencia.titulo' | transloco }}</mat-label>
+      <input matInput name="titulo" [(ngModel)]="m.titulo" [placeholder]="'dialogos.evidencia.tituloEjemplo' | transloco" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'dialogos.evidencia.descripcion' | transloco }}</mat-label>
+      <textarea matInput name="desc" rows="2" [(ngModel)]="m.descripcion"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close type="button">{{ 'comun.cancelar' | transloco }}</button>
+  <button mat-flat-button type="submit" form="f-ev">{{ 'comun.guardar' | transloco }}</button>
+</mat-dialog-actions>

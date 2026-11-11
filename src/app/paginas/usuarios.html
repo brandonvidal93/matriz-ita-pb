@@ -1,0 +1,43 @@
+<div class="max-w-[1100px] mx-auto px-4 py-5">
+  <div class="flex items-end gap-3 flex-wrap mb-3">
+    <div class="flex-1 min-w-[260px]">
+      <h1 class="text-2xl font-semibold m-0">{{ 'usuarios.titulo' | transloco }}</h1>
+      <p class="texto-suave m-0 mt-1">{{ 'usuarios.descripcion' | transloco }}</p>
+    </div>
+    <button mat-flat-button (click)="nuevo()"><mat-icon>person_add</mat-icon>{{ 'usuarios.nuevo' | transloco }}</button>
+  </div>
+  @if (!usuarios()) { <app-esqueleto [filas]="4" /> } @else {
+  <div class="tarjeta overflow-x-auto relative">
+    <table>
+      <thead>
+        <tr><th scope="col">{{ 'usuarios.col.nombre' | transloco }}</th><th scope="col">{{ 'usuarios.col.usuario' | transloco }}</th><th scope="col">{{ 'usuarios.col.rol' | transloco }}</th><th scope="col">{{ 'usuarios.col.ultimoIngreso' | transloco }}</th><th scope="col"><span class="sr-only">{{ 'usuarios.col.acciones' | transloco }}</span></th></tr>
+      </thead>
+      <tbody>
+        @for (u of usuarios()!; track u.id) {
+          <tr [class.inactivo]="!u.activo">
+            <td>
+              {{ u.nombre }}
+              @if (!u.activo) { <span class="chip-estado NA ml-2">{{ 'usuarios.inactivo' | transloco }}</span> }
+              @if (u.activo && u.debeCambiarClave) { <span class="chip-estado pendiente ml-2">{{ 'usuarios.claveTemporal' | transloco }}</span> }
+            </td>
+            <td class="mono">{{ u.usuario }}</td>
+            <td>{{ claveRol(u.rol) | transloco }}</td>
+            <td class="text-sm">{{ u.ultimoIngreso ? (u.ultimoIngreso | fecha: 'd MMM y, h:mm a') : '—' }}</td>
+            <td class="text-right whitespace-nowrap">
+              <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'usuarios.acciones' | transloco: { nombre: u.nombre }"><mat-icon>more_vert</mat-icon></button>
+              <mat-menu #m="matMenu">
+                <button mat-menu-item (click)="editar(u)"><mat-icon>edit</mat-icon>{{ 'usuarios.editar' | transloco }}</button>
+                @if (u.id !== auth.usuario()?.id) {
+                  <button mat-menu-item (click)="cambiar(u, { activo: !u.activo })">
+                    <mat-icon>{{ u.activo ? 'person_off' : 'person' }}</mat-icon>{{ (u.activo ? 'usuarios.desactivar' : 'usuarios.activar') | transloco }}
+                  </button>
+                }
+              </mat-menu>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  }
+</div>

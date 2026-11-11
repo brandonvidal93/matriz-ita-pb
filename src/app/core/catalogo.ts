@@ -67,9 +67,5 @@ export function problemas(it: ItemCatalogo, r: Respuesta | undefined): ProblemaI
   return p;
 }
 
-export const TEXTO_PROBLEMA: Record<ProblemaItem, string> = {
-  'sin-estado': 'Sin diligenciar',
-  'sin-soporte': 'Cumple (SI) sin evidencia ni observación',
-  'na-sin-justificacion': 'N/A sin justificación jurídica',
-  'no-sin-justificacion': 'NO sin observación',
-};
+/** Clave de traducción del texto de cada problema (`problema.*` en public/i18n). */
+export const claveProblema = (p: ProblemaItem) => `problema.${p}`;
