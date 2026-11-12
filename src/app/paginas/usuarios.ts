@@ -15,7 +15,7 @@ import { firstValueFrom } from 'rxjs';
 import { AuthService, mensajeError } from '../core/auth.service';
 import { errorSi } from '../core/foco';
 import { Esqueleto } from '../core/esqueleto';
-import { Rol, Usuario, claveRol } from '../core/modelos';
+import { FORMATOS, Permiso, Rol, Usuario, claveRol } from '../core/modelos';
 import { problemaClave } from './ingresar';
 
 type UsuarioLista = Usuario & { creado?: string; ultimoIngreso?: string | null };
@@ -33,7 +33,15 @@ export class UsuarioDialog {
   d = inject<DatosUsuarioDialog>(MAT_DIALOG_DATA);
   private ref = inject(MatDialogRef);
   private t = inject(TranslocoService);
-  m = { usuario: '', nombre: this.d.usuario?.nombre ?? '', rol: (this.d.usuario?.rol ?? 'editor') as Rol, clave: '' };
+  formatos = FORMATOS;
+  m = {
+    usuario: '',
+    nombre: this.d.usuario?.nombre ?? '',
+    rol: (this.d.usuario?.rol ?? 'editor') as Rol,
+    clave: '',
+    // '' es «sin acceso» en el select.
+    formatos: Object.fromEntries(FORMATOS.map((f) => [f, this.d.usuario?.formatos[f] ?? ''])) as Record<string, Permiso | ''>,
+  };
   error = signal<string | null>(null);
   private campoError = signal<string | null>(null);
   errUsuario = errorSi(() => this.campoError() === 'usuario');
@@ -54,7 +62,11 @@ export class UsuarioDialog {
       const p = problemaClave(this.m.clave);
       if (p) return this.fallo('clave', p);
     }
-    this.ref.close(this.m);
+    // Se envían solo los formatos con acceso; el lector nunca edita.
+    const formatos = Object.fromEntries(
+      Object.entries(this.m.formatos).flatMap(([f, p]) => (p ? [[f, this.m.rol === 'lector' ? 'ver' : p]] : [])),
+    );
+    this.ref.close({ ...this.m, formatos });
   }
 }
 
@@ -76,6 +88,8 @@ export class UsuariosPage {
   private t = inject(TranslocoService);
   usuarios = signal<UsuarioLista[] | null>(null);
   claveRol = claveRol;
+  formatos = FORMATOS;
+  tieneFormatos = (u: Usuario) => Object.keys(u.formatos).length > 0;
 
   constructor() {
     this.cargar();
@@ -105,7 +119,7 @@ export class UsuariosPage {
   async editar(u: UsuarioLista) {
     const m = await firstValueFrom(this.dialog.open(UsuarioDialog, { data: { usuario: u } }).afterClosed());
     if (!m) return;
-    await this.cambiar(u, { nombre: m.nombre, rol: m.rol, ...(m.clave ? { clave: m.clave } : {}) });
+    await this.cambiar(u, { nombre: m.nombre, rol: m.rol, formatos: m.formatos, ...(m.clave ? { clave: m.clave } : {}) });
   }
 
   async cambiar(u: UsuarioLista, cambios: object) {

@@ -1,8 +1,8 @@
 {
   "app": {
-    "tituloDocumento": "Matriz ITA · Gestión TIC",
+    "tituloDocumento": "Gestor de formatos · Gestión TIC",
     "saltarContenido": "Saltar al contenido",
-    "nombre": "Matriz ITA",
+    "nombre": "Gestor de formatos",
     "nav": {
       "etiqueta": "Secciones del registro",
       "diligenciar": "Diligenciar",
@@ -250,14 +250,15 @@
   },
   "usuarios": {
     "titulo": "Usuarios",
-    "descripcion": "Quién puede ingresar a la Matriz ITA y qué puede hacer.",
+    "descripcion": "Quién puede ingresar y a qué formatos.",
     "nuevo": "Nuevo usuario",
     "col": {
       "nombre": "Nombre",
       "usuario": "Usuario",
       "rol": "Rol",
       "ultimoIngreso": "Último ingreso",
-      "acciones": "Acciones"
+      "acciones": "Acciones",
+      "formatos": "Formatos"
     },
     "inactivo": "Inactivo",
     "claveTemporal": "Clave temporal",
@@ -272,13 +273,21 @@
       "ejemplo": "p. ej. jperez",
       "nombre": "Nombre completo",
       "rolLector": "Lector: solo consulta y exporta",
-      "rolEditor": "Editor: diligencia la matriz",
+      "rolEditor": "Editor: diligencia los formatos asignados",
       "rolAdmin": "Administrador: además gestiona usuarios y elimina registros",
       "claveNueva": "Nueva contraseña temporal (opcional)",
       "claveTemporal": "Contraseña temporal",
       "pista": "La persona deberá cambiarla al ingresar. Mínimo 10 caracteres, letras y números.",
       "errorUsuario": "El usuario debe tener de 3 a 60 caracteres: letras, números, punto, guion o guion bajo.",
-      "errorNombre": "Escribe el nombre."
+      "errorNombre": "Escribe el nombre.",
+      "formatos": "Acceso a formatos",
+      "formatosAdmin": "El administrador accede a todos los formatos.",
+      "formatosLector": "El lector solo puede consultar."
+    },
+    "permiso": {
+      "ninguno": "Sin acceso",
+      "ver": "Consulta",
+      "editar": "Edición"
     }
   },
   "dialogos": {
@@ -331,7 +340,8 @@
     "diligenciar": "Diligenciar",
     "evidencias": "Evidencias",
     "resumen": "Revisar y exportar",
-    "mapa": "Mapa del sitio"
+    "mapa": "Mapa del sitio",
+    "panel": "Inicio"
   },
   "mapa": {
     "titulo": "Mapa del sitio",
@@ -343,6 +353,19 @@
       "mensaje": "Por inactividad, a las {{ hora }} se cerrará tu sesión.",
       "seguir": "Seguir conectado",
       "salir": "Cerrar sesión"
+    }
+  },
+  "panel": {
+    "titulo": "Formatos",
+    "descripcion": "Elige el formato con el que vas a trabajar.",
+    "permisoEditar": "Puedes diligenciarlo.",
+    "permisoVer": "Solo consulta.",
+    "sinFormatos": "Todavía no tienes formatos asignados. Pídele acceso a un administrador."
+  },
+  "formatos": {
+    "ita": {
+      "nombre": "Matriz ITA",
+      "descripcion": "Índice de Transparencia y Acceso a la Información (Ley 1712 de 2014), versión 2023."
     }
   }
 }

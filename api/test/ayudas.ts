@@ -35,6 +35,7 @@ export async function prepararEntorno(): Promise<Entorno> {
     await db.query('INSERT INTO usuarios (usuario, nombre, rol, clave_hash, debe_cambiar_clave) VALUES (?, ?, ?, ?, 0)', [
       rol, `Usuario ${rol}`, rol, hash,
     ]);
+  await db.query("INSERT INTO usuario_formatos SELECT id, 'ita', IF(rol = 'lector', 'ver', 'editar') FROM usuarios WHERE rol <> 'admin'");
 
   const config = { ...leerConfig({ ITA_DB_URL: URL_TEST, ITA_WEB_DIR: '' }), cookieSegura: false };
   const app = await construirApp({ db, config });

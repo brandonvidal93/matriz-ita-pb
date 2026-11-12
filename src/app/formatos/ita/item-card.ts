@@ -10,9 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { AlmacenService } from '../core/almacen.service';
-import { claveProblema, problemas, textoObservacion } from '../core/catalogo';
-import { EstadoCumplimiento, Evidencia, ItemCatalogo, Registro, respuestaVacia } from '../core/modelos';
+import { AlmacenService } from '../../core/almacen.service';
+import { claveProblema, problemas, textoObservacion } from '../../core/catalogo';
+import { EstadoCumplimiento, Evidencia, ItemCatalogo, Registro, respuestaVacia } from '../../core/modelos';
 
 @Component({
   selector: 'app-item-card',

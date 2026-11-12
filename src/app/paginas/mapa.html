@@ -9,19 +9,26 @@
   <nav class="tarjeta p-4" [attr.aria-label]="'mapa.titulo' | transloco">
     <ul class="m-0 pl-5 grid gap-2">
       <li>
-        <a routerLink="/">{{ 'titulos.registros' | transloco }}</a>
-        @if (almacen.registros().length) {
+        <a routerLink="/">{{ 'titulos.panel' | transloco }}</a>
+        @if (auth.puede('ita', 'ver')) {
           <ul class="mt-2 pl-5 grid gap-2">
-            @for (r of almacen.registros(); track r.id) {
-              <li>
-                {{ r.nombre }}
-                <ul class="mt-1 pl-5 grid gap-1">
-                  <li><a [routerLink]="['/r', r.id]">{{ 'titulos.diligenciar' | transloco }}</a></li>
-                  <li><a [routerLink]="['/r', r.id, 'evidencias']">{{ 'titulos.evidencias' | transloco }}</a></li>
-                  <li><a [routerLink]="['/r', r.id, 'resumen']">{{ 'titulos.resumen' | transloco }}</a></li>
+            <li>
+              <a routerLink="/ita">{{ 'formatos.ita.nombre' | transloco }}: {{ 'titulos.registros' | transloco }}</a>
+              @if (almacen.registros().length) {
+                <ul class="mt-2 pl-5 grid gap-2">
+                  @for (r of almacen.registros(); track r.id) {
+                    <li>
+                      {{ r.nombre }}
+                      <ul class="mt-1 pl-5 grid gap-1">
+                        <li><a [routerLink]="['/ita/r', r.id]">{{ 'titulos.diligenciar' | transloco }}</a></li>
+                        <li><a [routerLink]="['/ita/r', r.id, 'evidencias']">{{ 'titulos.evidencias' | transloco }}</a></li>
+                        <li><a [routerLink]="['/ita/r', r.id, 'resumen']">{{ 'titulos.resumen' | transloco }}</a></li>
+                      </ul>
+                    </li>
+                  }
                 </ul>
-              </li>
-            }
+              }
+            </li>
           </ul>
         }
       </li>

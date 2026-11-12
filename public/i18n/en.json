@@ -1,8 +1,8 @@
 {
   "app": {
-    "tituloDocumento": "ITA Matrix · ICT Management",
+    "tituloDocumento": "Forms manager · ICT Management",
     "saltarContenido": "Skip to content",
-    "nombre": "ITA Matrix",
+    "nombre": "Forms manager",
     "nav": {
       "etiqueta": "Record sections",
       "diligenciar": "Fill in",
@@ -250,14 +250,15 @@
   },
   "usuarios": {
     "titulo": "Users",
-    "descripcion": "Who can sign in to the ITA Matrix and what they can do.",
+    "descripcion": "Who can sign in and to which forms.",
     "nuevo": "New user",
     "col": {
       "nombre": "Name",
       "usuario": "Username",
       "rol": "Role",
       "ultimoIngreso": "Last sign-in",
-      "acciones": "Actions"
+      "acciones": "Actions",
+      "formatos": "Forms"
     },
     "inactivo": "Inactive",
     "claveTemporal": "Temporary password",
@@ -272,13 +273,21 @@
       "ejemplo": "e.g. jperez",
       "nombre": "Full name",
       "rolLector": "Reader: view and export only",
-      "rolEditor": "Editor: fills in the matrix",
+      "rolEditor": "Editor: fills in the assigned forms",
       "rolAdmin": "Administrator: also manages users and deletes records",
       "claveNueva": "New temporary password (optional)",
       "claveTemporal": "Temporary password",
       "pista": "They will have to change it when signing in. At least 10 characters, letters and numbers.",
       "errorUsuario": "The username must be 3 to 60 characters: letters, numbers, dot, hyphen or underscore.",
-      "errorNombre": "Enter the name."
+      "errorNombre": "Enter the name.",
+      "formatos": "Form access",
+      "formatosAdmin": "Administrators have access to all forms.",
+      "formatosLector": "Readers can only view."
+    },
+    "permiso": {
+      "ninguno": "No access",
+      "ver": "View",
+      "editar": "Edit"
     }
   },
   "dialogos": {
@@ -331,7 +340,8 @@
     "diligenciar": "Fill in",
     "evidencias": "Evidence",
     "resumen": "Review and export",
-    "mapa": "Site map"
+    "mapa": "Site map",
+    "panel": "Home"
   },
   "mapa": {
     "titulo": "Site map",
@@ -343,6 +353,19 @@
       "mensaje": "Because of inactivity, at {{ hora }} your session will end.",
       "seguir": "Stay signed in",
       "salir": "Sign out"
+    }
+  },
+  "panel": {
+    "titulo": "Forms",
+    "descripcion": "Choose the form you want to work on.",
+    "permisoEditar": "You can fill it in.",
+    "permisoVer": "View only.",
+    "sinFormatos": "You have no forms assigned yet. Ask an administrator for access."
+  },
+  "formatos": {
+    "ita": {
+      "nombre": "ITA Matrix",
+      "descripcion": "Transparency and Access to Information Index (Law 1712 of 2014), 2023 version."
     }
   }
 }

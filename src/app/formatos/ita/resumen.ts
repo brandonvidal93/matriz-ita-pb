@@ -6,10 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
-import { AlmacenService } from '../core/almacen.service';
-import { SECCIONES, claveProblema, etiquetaCorta, problemas } from '../core/catalogo';
-import { descargar, nombreArchivo, progreso } from '../core/progreso';
-import { XlsxService } from '../core/xlsx.service';
+import { AlmacenService } from '../../core/almacen.service';
+import { SECCIONES, claveProblema, etiquetaCorta, problemas } from '../../core/catalogo';
+import { descargar, nombreArchivo, progreso } from '../../core/progreso';
+import { XlsxService } from '../../core/xlsx.service';
 
 @Component({
   imports: [FormsModule, RouterLink, MatButtonModule, MatIconModule, MatRadioModule, TranslocoPipe],

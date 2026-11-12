@@ -45,7 +45,7 @@ export class App {
   dependencia = CONFIG.dependencia;
 
   private url = toSignal(this.router.events.pipe(filter((e) => e instanceof NavigationEnd), map(() => this.router.url)), { initialValue: '' });
-  activo = computed(() => (this.url().startsWith('/r/') ? this.almacen.activo() : null));
+  activo = computed(() => (this.url().startsWith('/ita/r/') ? this.almacen.activo() : null));
 
   claveRol = claveRol;
   /** La página anterior se oculta solo si la navegación (guardias, carga diferida) tarda; así no parpadea. */

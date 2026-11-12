@@ -21,6 +21,7 @@ export class MapaPage {
 
   async cargar() {
     this.error.set(null);
+    if (!this.auth.puede('ita', 'ver')) return;
     try {
       await this.almacen.asegurarCargado();
     } catch (e) {

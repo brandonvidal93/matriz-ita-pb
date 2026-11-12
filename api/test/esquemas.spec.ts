@@ -1,4 +1,5 @@
-import { CambioRespuestas, Clave, ContenidoRegistro, EvidenciaEntrada, FILAS_VALIDAS, NuevoUsuario, Respaldo } from '../src/esquemas';
+import { Clave, NuevoUsuario } from '../src/esquemas';
+import { CambioRespuestas, ContenidoRegistro, EvidenciaEntrada, FILAS_VALIDAS, Respaldo } from '../src/formatos/ita/esquemas';
 
 const fila = [...FILAS_VALIDAS][0]!;
 

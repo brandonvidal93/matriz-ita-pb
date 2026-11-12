@@ -23,6 +23,24 @@
         <mat-option value="admin">{{ 'usuarios.dialogo.rolAdmin' | transloco }}</mat-option>
       </mat-select>
     </mat-form-field>
+    <fieldset class="border border-[var(--borde)] rounded-lg px-4 pb-1 pt-2 m-0">
+      <legend class="px-1 text-sm font-medium">{{ 'usuarios.dialogo.formatos' | transloco }}</legend>
+      @if (m.rol === 'admin') {
+        <p class="text-sm texto-suave m-0 mb-3">{{ 'usuarios.dialogo.formatosAdmin' | transloco }}</p>
+      } @else {
+        @for (f of formatos; track f) {
+          <mat-form-field subscriptSizing="dynamic" class="w-full mb-3">
+            <mat-label>{{ 'formatos.' + f + '.nombre' | transloco }}</mat-label>
+            <mat-select [name]="'formato-' + f" [(ngModel)]="m.formatos[f]">
+              <mat-option value="">{{ 'usuarios.permiso.ninguno' | transloco }}</mat-option>
+              <mat-option value="ver">{{ 'usuarios.permiso.ver' | transloco }}</mat-option>
+              <mat-option value="editar" [disabled]="m.rol === 'lector'">{{ 'usuarios.permiso.editar' | transloco }}</mat-option>
+            </mat-select>
+            @if (m.rol === 'lector') { <mat-hint>{{ 'usuarios.dialogo.formatosLector' | transloco }}</mat-hint> }
+          </mat-form-field>
+        }
+      }
+    </fieldset>
     <mat-form-field subscriptSizing="dynamic">
       <mat-label>{{ (d.usuario ? 'usuarios.dialogo.claveNueva' : 'usuarios.dialogo.claveTemporal') | transloco }}</mat-label>
       <input matInput name="clave" type="password" autocomplete="new-password" [(ngModel)]="m.clave" [errorStateMatcher]="errClave" [required]="!d.usuario" />

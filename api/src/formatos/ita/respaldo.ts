@@ -1,12 +1,12 @@
 import type { FastifyInstance } from 'fastify';
 import type { RowDataPacket } from 'mysql2/promise';
-import { nuevoId } from '../../../src/app/core/modelos';
-import { auditar } from '../auditoria';
-import { requiere } from '../auth';
-import type { Contexto } from '../app';
-import { enTransaccion } from '../db';
-import { Respaldo } from '../esquemas';
-import { cargarRegistros, insertarRegistro } from '../repositorio';
+import { nuevoId } from '../../../../src/app/core/modelos';
+import { auditar } from '../../auditoria';
+import { requiere, requiereFormato } from '../../auth';
+import type { Contexto } from '../../app';
+import { enTransaccion } from '../../db';
+import { Respaldo } from './esquemas';
+import { cargarRegistros, insertarRegistro } from './repositorio';
 
 export interface ResultadoRestauracion {
   creados: { id: string; nombre: string }[];
@@ -15,7 +15,7 @@ export interface ResultadoRestauracion {
 
 export async function rutasRespaldo(app: FastifyInstance, { db }: Contexto) {
   /** Todos los registros en el mismo formato del antiguo archivo de datos. */
-  app.get('/api/respaldo', { preHandler: requiere() }, async (req, reply) => {
+  app.get('/api/respaldo', { preHandler: requiereFormato('ita', 'ver') }, async (req, reply) => {
     const fecha = new Date().toISOString();
     await auditar(db, req.usuario, 'respaldo-descargado', null);
     reply.header('Content-Disposition', `attachment; filename="matriz-ita-datos_${fecha.slice(0, 10)}.json"`);

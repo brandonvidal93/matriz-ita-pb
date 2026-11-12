@@ -10,7 +10,7 @@
   <div class="tarjeta overflow-x-auto relative">
     <table>
       <thead>
-        <tr><th scope="col">{{ 'usuarios.col.nombre' | transloco }}</th><th scope="col">{{ 'usuarios.col.usuario' | transloco }}</th><th scope="col">{{ 'usuarios.col.rol' | transloco }}</th><th scope="col">{{ 'usuarios.col.ultimoIngreso' | transloco }}</th><th scope="col"><span class="sr-only">{{ 'usuarios.col.acciones' | transloco }}</span></th></tr>
+        <tr><th scope="col">{{ 'usuarios.col.nombre' | transloco }}</th><th scope="col">{{ 'usuarios.col.usuario' | transloco }}</th><th scope="col">{{ 'usuarios.col.rol' | transloco }}</th><th scope="col">{{ 'usuarios.col.formatos' | transloco }}</th><th scope="col">{{ 'usuarios.col.ultimoIngreso' | transloco }}</th><th scope="col"><span class="sr-only">{{ 'usuarios.col.acciones' | transloco }}</span></th></tr>
       </thead>
       <tbody>
         @for (u of usuarios()!; track u.id) {
@@ -22,6 +22,12 @@
             </td>
             <td class="mono">{{ u.usuario }}</td>
             <td>{{ claveRol(u.rol) | transloco }}</td>
+            <td class="text-sm">
+              @for (f of formatos; track f) {
+                @if (u.formatos[f]; as p) { <div>{{ 'formatos.' + f + '.nombre' | transloco }}: {{ 'usuarios.permiso.' + p | transloco }}</div> }
+              }
+              @if (!tieneFormatos(u)) { {{ 'usuarios.permiso.ninguno' | transloco }} }
+            </td>
             <td class="text-sm">{{ u.ultimoIngreso ? (u.ultimoIngreso | fecha: 'd MMM y, h:mm a') : '—' }}</td>
             <td class="text-right whitespace-nowrap">
               <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'usuarios.acciones' | transloco: { nombre: u.nombre }"><mat-icon>more_vert</mat-icon></button>

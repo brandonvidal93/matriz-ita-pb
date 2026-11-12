@@ -10,8 +10,8 @@ import type { Db } from './db';
 import { registrarDocs } from './docs';
 import { NoEncontrado } from './errores';
 import { rutasAuth } from './rutas/auth';
-import { rutasRegistros } from './rutas/registros';
-import { rutasRespaldo } from './rutas/respaldo';
+import { rutasRegistros } from './formatos/ita/rutas';
+import { rutasRespaldo } from './formatos/ita/respaldo';
 import { rutasUsuarios } from './rutas/usuarios';
 
 export interface Contexto {

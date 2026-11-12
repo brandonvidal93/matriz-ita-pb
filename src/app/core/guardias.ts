@@ -3,6 +3,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { catchError, tap, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Formato } from './modelos';
 import { SesionService } from './sesion.service';
 
 /** Exige sesión iniciada; si el usuario debe cambiar su contraseña, lo lleva a hacerlo. */
@@ -22,6 +23,16 @@ export const soloAdmin: CanActivateFn = async () => {
   await auth.asegurarSesion();
   return auth.esAdmin() || router.createUrlTree(['/']);
 };
+
+/** Exige acceso al formato; sin él, vuelve al panel. */
+export const conFormato =
+  (formato: Formato): CanActivateFn =>
+  async () => {
+    const auth = inject(AuthService);
+    const router = inject(Router);
+    await auth.asegurarSesion();
+    return auth.puede(formato, 'ver') || router.createUrlTree(['/']);
+  };
 
 /** Lleva la cuenta de la sesión y, si la API responde 401 (sesión vencida), vuelve a la pantalla de ingreso. */
 export const interceptorSesion: HttpInterceptorFn = (req, next) => {

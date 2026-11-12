@@ -1,25 +1,25 @@
 import type { FastifyInstance, FastifyReply } from 'fastify';
 import type { RowDataPacket } from 'mysql2/promise';
-import { nuevoId, normalizarUrl } from '../../../src/app/core/modelos';
-import { auditar } from '../auditoria';
-import { EDITORES, requiere } from '../auth';
-import type { Contexto } from '../app';
-import { enTransaccion } from '../db';
-import { NoEncontrado } from '../errores';
+import { nuevoId, normalizarUrl } from '../../../../src/app/core/modelos';
+import { auditar } from '../../auditoria';
+import { requiere, requiereFormato } from '../../auth';
+import type { Contexto } from '../../app';
+import { enTransaccion } from '../../db';
+import { NoEncontrado } from '../../errores';
 import {
   CambioEvidencia, CambioRegistro, CambioRespuestas, EvidenciaEntrada, Filas, NuevoRegistro,
-} from '../esquemas';
+} from './esquemas';
 import {
   asegurarRespuestas, bloquearRegistro, cargarRegistro, cargarRegistros, insertarRegistro, tocarRegistro,
-} from '../repositorio';
+} from './repositorio';
 
 type P = { Params: { id: string; evId: string } };
 
 const noEncontrado = (reply: FastifyReply) => reply.code(404).send({ error: 'El registro no existe o fue eliminado.' });
 
 export async function rutasRegistros(app: FastifyInstance, { db }: Contexto) {
-  const lectura = { preHandler: requiere() };
-  const edicion = { preHandler: requiere(...EDITORES) };
+  const lectura = { preHandler: requiereFormato('ita', 'ver') };
+  const edicion = { preHandler: requiereFormato('ita', 'editar') };
 
   /**
    * Ejecuta un cambio sobre un registro en una transacción: lo bloquea,

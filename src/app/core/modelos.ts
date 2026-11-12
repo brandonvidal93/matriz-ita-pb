@@ -91,7 +91,14 @@ export interface Usuario {
   rol: Rol;
   activo: boolean;
   debeCambiarClave: boolean;
+  /** Permiso efectivo en cada formato al que tiene acceso (el administrador los tiene todos). */
+  formatos: Partial<Record<Formato, Permiso>>;
 }
+
+/** Formatos que se diligencian en la aplicación. El id se guarda en `registros.formato`. */
+export const FORMATOS = ['ita'] as const;
+export type Formato = (typeof FORMATOS)[number];
+export type Permiso = 'ver' | 'editar';
 
 /** Clave de traducción del nombre de cada rol (`rol.*` en public/i18n). */
 export const claveRol = (r: Rol) => `rol.${r}`;

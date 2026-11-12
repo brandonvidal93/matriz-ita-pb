@@ -1,5 +1,5 @@
 import type { Registro } from '../../src/app/core/modelos';
-import { FILAS_VALIDAS } from '../src/esquemas';
+import { FILAS_VALIDAS } from '../src/formatos/ita/esquemas';
 import { Entorno, conBase, prepararEntorno } from './ayudas';
 
 const [f1, f2, f3] = [...FILAS_VALIDAS];

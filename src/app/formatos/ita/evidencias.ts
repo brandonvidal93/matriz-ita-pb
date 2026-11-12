@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { FechaPipe } from '../core/idioma';
+import { FechaPipe } from '../../core/idioma';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,12 +12,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
-import { AlmacenService } from '../core/almacen.service';
-import { ITEM_POR_FILA, etiquetaCorta } from '../core/catalogo';
-import { Evidencia } from '../core/modelos';
-import { enfocarTitulo } from '../core/foco';
-import { verificarUrl } from '../core/progreso';
-import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dialogos';
+import { AlmacenService } from '../../core/almacen.service';
+import { ITEM_POR_FILA, etiquetaCorta } from '../../core/catalogo';
+import { Evidencia } from '../../core/modelos';
+import { enfocarTitulo } from '../../core/foco';
+import { verificarUrl } from '../../core/progreso';
+import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../../dialogos/dialogos';
 
 @Component({
   imports: [FechaPipe, FormsModule, RouterLink, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatTooltipModule, TranslocoPipe],

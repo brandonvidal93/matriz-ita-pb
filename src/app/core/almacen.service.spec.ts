@@ -18,7 +18,9 @@ describe('AlmacenService', () => {
 
   function preparar(rol: Rol = 'editor') {
     TestBed.configureTestingModule({ providers: [provideHttpClient(), provideHttpClientTesting()] });
-    TestBed.inject(AuthService).usuario.set({ id: 1, usuario: 'u', nombre: 'U', rol, activo: true, debeCambiarClave: false });
+    TestBed.inject(AuthService).usuario.set({
+      id: 1, usuario: 'u', nombre: 'U', rol, activo: true, debeCambiarClave: false, formatos: { ita: rol === 'lector' ? 'ver' : 'editar' },
+    });
     almacen = TestBed.inject(AlmacenService);
     http = TestBed.inject(HttpTestingController);
     reg = registroDePrueba({ evidencias: [{ id: 'e1', titulo: 'Acta', url: 'https://pb.edu.co/acta' }] });
@@ -38,7 +40,7 @@ describe('AlmacenService', () => {
   it('soloLectura depende del rol', () => {
     preparar('lector');
     expect(almacen.soloLectura()).toBe(true);
-    TestBed.inject(AuthService).usuario.update((u) => ({ ...u!, rol: 'editor' }));
+    TestBed.inject(AuthService).usuario.update((u) => ({ ...u!, formatos: { ita: 'editar' } }));
     expect(almacen.soloLectura()).toBe(false);
   });
 

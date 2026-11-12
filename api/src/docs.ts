@@ -1,10 +1,10 @@
 import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';
 import { COOKIE_SESION } from './auth';
+import { CambioClave, CambioUsuario, Credenciales, NuevoUsuario } from './esquemas';
 import {
-  CambioClave, CambioEvidencia, CambioRegistro, CambioRespuestas, CambioUsuario, Credenciales, EvidenciaEntrada, Filas,
-  NuevoRegistro, NuevoUsuario, Respaldo,
-} from './esquemas';
+  CambioEvidencia, CambioRegistro, CambioRespuestas, EvidenciaEntrada, Filas, NuevoRegistro, Respaldo,
+} from './formatos/ita/esquemas';
 
 /** Documentación OpenAPI solo para desarrollo (ITA_DOCS=true). Las rutas siguen validando con zod. */
 
