@@ -21,7 +21,7 @@ export interface ResultadoImportacion {
   itemsLeidos: number;
 }
 
-function escaparXml(t: string): string {
+export function escaparXml(t: string): string {
   return t
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '')
     .replace(/&/g, '&amp;')
@@ -34,8 +34,35 @@ function colANum(col: string): number {
   return [...col].reduce((n, ch) => n * 26 + ch.charCodeAt(0) - 64, 0);
 }
 
-function celdaTexto(ref: string, estilo: string, texto: string): string {
-  return `<c r="${ref}"${estilo} t="inlineStr"><is><t xml:space="preserve">${escaparXml(texto.slice(0, 32000))}</t></is></c>`;
+/** Valor de una celda: texto, número (también fechas como serial de Excel) o casilla de verificación. */
+export type ValorCelda = string | number | boolean;
+
+function celda(ref: string, estilo: string, v: ValorCelda): string {
+  if (typeof v === 'number') return `<c r="${ref}"${estilo}><v>${v}</v></c>`;
+  if (typeof v === 'boolean') return `<c r="${ref}"${estilo} t="b"><v>${+v}</v></c>`;
+  return `<c r="${ref}"${estilo} t="inlineStr"><is><t xml:space="preserve">${escaparXml(v.slice(0, 32000))}</t></is></c>`;
+}
+
+/** Reemplaza (o inserta en orden) las celdas indicadas dentro de una fila de la hoja, conservando su estilo. */
+export function escribirFila(hoja: string, fila: number, valores: Record<string, ValorCelda>): string {
+  const reFila = new RegExp(`<row r="${fila}"([^>]*?)(?:/>|>([\\s\\S]*?)</row>)`);
+  const m = hoja.match(reFila);
+  if (!m) throw new Error(`La plantilla no tiene la fila ${fila}`);
+  const atributos = m[1];
+  const celdas: { col: string; xml: string }[] = [];
+  for (const c of (m[2] ?? '').matchAll(/<c r="([A-Z]+)\d+"[^>]*?(?:\/>|>[\s\S]*?<\/c>)/g))
+    celdas.push({ col: c[1], xml: c[0] });
+  for (const [col, v] of Object.entries(valores)) {
+    const ref = `${col}${fila}`;
+    const i = celdas.findIndex((c) => c.col === col);
+    const estilo = i >= 0 ? (celdas[i].xml.match(/\ss="\d+"/)?.[0] ?? '') : '';
+    const xml = celda(ref, estilo, v);
+    if (i >= 0) celdas[i].xml = xml;
+    else celdas.push({ col, xml });
+  }
+  celdas.sort((a, b) => colANum(a.col) - colANum(b.col));
+  const nuevaFila = `<row r="${fila}"${atributos.replace(/\s*spans="[^"]*"/, '')}>${celdas.map((c) => c.xml).join('')}</row>`;
+  return hoja.replace(m[0], nuevaFila);
 }
 
 /** Excel suele crear vínculos con texto pegado ("https://x/%20;%20Ubicado…"): se deja solo la URL. */
@@ -92,7 +119,7 @@ export class XlsxService {
       const texto = textoObservacion(r, reg);
       if (texto) valores[observacion] = texto;
       if (!Object.keys(valores).length) continue;
-      hoja = this.escribirFila(hoja, it.fila, valores);
+      hoja = escribirFila(hoja, it.fila, valores);
       const primera = r.evidencias.map((id) => reg.evidencias.find((e) => e.id === id)).find((e) => !!e);
       if (primera) enlaces.push({ ref: `${observacion}${it.fila}`, url: primera.url });
     }
@@ -120,28 +147,6 @@ export class XlsxService {
       compression: 'DEFLATE',
       mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     });
-  }
-
-  /** Reemplaza (o inserta en orden) las celdas indicadas dentro de una fila. */
-  private escribirFila(hoja: string, fila: number, valores: Record<string, string>): string {
-    const reFila = new RegExp(`<row r="${fila}"([^>]*?)(?:/>|>([\\s\\S]*?)</row>)`);
-    const m = hoja.match(reFila);
-    if (!m) throw new Error(`La plantilla no tiene la fila ${fila}`);
-    const atributos = m[1];
-    const celdas: { col: string; xml: string }[] = [];
-    for (const c of (m[2] ?? '').matchAll(/<c r="([A-Z]+)\d+"[^>]*?(?:\/>|>[\s\S]*?<\/c>)/g))
-      celdas.push({ col: c[1], xml: c[0] });
-    for (const [col, texto] of Object.entries(valores)) {
-      const ref = `${col}${fila}`;
-      const i = celdas.findIndex((c) => c.col === col);
-      const estilo = i >= 0 ? (celdas[i].xml.match(/\ss="\d+"/)?.[0] ?? '') : '';
-      const xml = celdaTexto(ref, estilo, texto);
-      if (i >= 0) celdas[i].xml = xml;
-      else celdas.push({ col, xml });
-    }
-    celdas.sort((a, b) => colANum(a.col) - colANum(b.col));
-    const nuevaFila = `<row r="${fila}"${atributos.replace(/\s*spans="[^"]*"/, '')}>${celdas.map((c) => c.xml).join('')}</row>`;
-    return hoja.replace(m[0], nuevaFila);
   }
 
   /** Lee una matriz ya diligenciada (de un año anterior) como punto de partida. */

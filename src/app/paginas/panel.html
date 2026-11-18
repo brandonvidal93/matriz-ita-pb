@@ -1,0 +1,21 @@
+<div class="max-w-[1100px] mx-auto px-4 py-6">
+  <h1 class="text-2xl font-semibold m-0">{{ 'panel.titulo' | transloco }}</h1>
+  <p class="texto-suave mt-1">{{ 'panel.descripcion' | transloco }}</p>
+
+  @if (formatos().length) {
+    <ul class="list-none m-0 p-0 grid gap-4 grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))]">
+      @for (f of formatos(); track f.id) {
+        <li class="tarjeta p-4 flex gap-3 items-start">
+          <mat-icon class="shrink-0 text-[var(--pb-azul)]" aria-hidden="true">{{ f.icono }}</mat-icon>
+          <div class="min-w-0">
+            <h2 class="text-lg font-semibold m-0"><a [routerLink]="f.ruta">{{ 'formatos.' + f.id + '.nombre' | transloco }}</a></h2>
+            <p class="texto-suave m-0 mt-1">{{ 'formatos.' + f.id + '.descripcion' | transloco }}</p>
+            <p class="text-sm m-0 mt-2">{{ (f.edita ? 'panel.permisoEditar' : 'panel.permisoVer') | transloco }}</p>
+          </div>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="tarjeta p-4">{{ 'panel.sinFormatos' | transloco }}</p>
+  }
+</div>

@@ -40,7 +40,7 @@
                 @if (abierta() === e.id) {
                   <ul class="text-sm mt-2 mb-0 pl-5">
                     @for (f of usos; track f) {
-                      <li><a [routerLink]="['/r', reg.id]" [queryParams]="{ fila: f }" lang="es">{{ corta(f) }}</a></li>
+                      <li><a [routerLink]="['/ita/r', reg.id]" [queryParams]="{ fila: f }" lang="es">{{ corta(f) }}</a></li>
                     }
                   </ul>
                 }

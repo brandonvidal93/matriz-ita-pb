@@ -1,0 +1,73 @@
+@if (svc.activa(); as ev) {
+  @let ro = svc.soloLectura();
+  <h1 class="text-2xl font-semibold m-0">{{ 'acc.hallazgos.titulo' | transloco }}</h1>
+  <p class="texto-suave mt-1">{{ 'acc.hallazgos.descripcion' | transloco }}</p>
+  <details class="tarjeta p-4 mb-4">
+    <summary>{{ 'acc.hallazgos.severidades' | transloco }}</summary>
+    <ul class="m-0 mt-2 pl-5 text-sm grid gap-1">
+      @for (s of severidades; track s) { <li><strong>{{ 'acc.op.severidad.' + s | transloco }}:</strong> {{ 'acc.hallazgos.severidad.' + s | transloco }}</li> }
+    </ul>
+  </details>
+
+  @if (!ev.hallazgos.length) { <p class="tarjeta p-4">{{ 'acc.hallazgos.vacio' | transloco }}</p> }
+
+  <ol class="list-none m-0 p-0 grid gap-3">
+    @for (h of ev.hallazgos; track h.id; let n = $index) {
+      <li>
+        <fieldset class="tarjeta p-4 m-0 min-w-0 grid gap-x-4 md:grid-cols-2">
+          <legend class="px-1 font-semibold">{{ 'acc.hallazgos.numero' | transloco: { n: n + 1 } }}</legend>
+          <mat-form-field class="md:col-span-2">
+            <mat-label>{{ 'acc.campo.criterio' | transloco }}</mat-label>
+            <mat-select [disabled]="ro" [ngModel]="h.criterio" (ngModelChange)="cambiar(h.id, 'criterio', $event, false)">
+              <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
+              @for (c of criterios; track c.sc) { <mat-option [value]="c.sc"><span lang="es">{{ c.sc }} · {{ c.criterio }} ({{ c.nivel }})</span></mat-option> }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{ 'acc.campo.hallazgo' | transloco }}</mat-label>
+            <textarea matInput [id]="'h-' + h.id + '-texto'" cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="h.hallazgo" (ngModelChange)="cambiar(h.id, 'hallazgo', $event)"></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{ 'acc.campo.accion' | transloco }}</mat-label>
+            <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="h.accion" (ngModelChange)="cambiar(h.id, 'accion', $event)"></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{ 'acc.campo.severidad' | transloco }}</mat-label>
+            <mat-select [disabled]="ro" [ngModel]="h.severidad" (ngModelChange)="cambiar(h.id, 'severidad', $event, false)">
+              <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
+              @for (o of severidades; track o) { <mat-option [value]="o">{{ 'acc.op.severidad.' + o | transloco }}</mat-option> }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{ 'acc.campo.estadoHallazgo' | transloco }}</mat-label>
+            <mat-select [disabled]="ro" [ngModel]="h.estado" (ngModelChange)="cambiar(h.id, 'estado', $event, false)">
+              <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
+              @for (o of estados; track o) { <mat-option [value]="o">{{ 'acc.op.estadoHallazgo.' + o | transloco }}</mat-option> }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{ 'acc.campo.responsable' | transloco }}</mat-label>
+            <input matInput [readonly]="ro" [ngModel]="h.responsable" (ngModelChange)="cambiar(h.id, 'responsable', $event)" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{ 'acc.campo.fechaCompromiso' | transloco }}</mat-label>
+            <input matInput type="date" [readonly]="ro" [ngModel]="h.fecha" (ngModelChange)="cambiar(h.id, 'fecha', $event)" />
+          </mat-form-field>
+          @if (!ro) {
+            <div class="md:col-span-2">
+              <button mat-button (click)="eliminar(h.id)"><mat-icon>delete</mat-icon>{{ 'acc.hallazgos.eliminar' | transloco: { n: n + 1 } }}</button>
+            </div>
+          }
+        </fieldset>
+      </li>
+    }
+  </ol>
+
+  @if (!ro) {
+    @if (ev.hallazgos.length < max) {
+      <button mat-flat-button class="mt-4" (click)="agregar()"><mat-icon>add</mat-icon>{{ 'acc.hallazgos.agregar' | transloco }}</button>
+    } @else {
+      <p class="mt-4">{{ 'acc.hallazgos.limite' | transloco: { n: max } }}</p>
+    }
+  }
+}

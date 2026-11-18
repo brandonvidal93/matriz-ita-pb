@@ -1,0 +1,3 @@
+<button mat-icon-button type="button" [attr.aria-label]="'clave.mostrar' | transloco" [attr.aria-pressed]="visible()" (click)="alternar()">
+  <mat-icon>{{ visible() ? 'visibility_off' : 'visibility' }}</mat-icon>
+</button>

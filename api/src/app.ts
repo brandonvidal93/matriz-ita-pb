@@ -9,9 +9,10 @@ import type { Config } from './config';
 import type { Db } from './db';
 import { registrarDocs } from './docs';
 import { NoEncontrado } from './errores';
+import { rutasAccesibilidad } from './formatos/accesibilidad/rutas';
 import { rutasAuth } from './rutas/auth';
-import { rutasRegistros } from './rutas/registros';
-import { rutasRespaldo } from './rutas/respaldo';
+import { rutasRegistros } from './formatos/ita/rutas';
+import { rutasRespaldo } from './formatos/ita/respaldo';
 import { rutasUsuarios } from './rutas/usuarios';
 
 export interface Contexto {
@@ -85,6 +86,7 @@ export async function construirApp(ctx: Contexto, opciones: { logger?: boolean }
   await rutasUsuarios(app, ctx);
   await rutasRegistros(app, ctx);
   await rutasRespaldo(app, ctx);
+  await rutasAccesibilidad(app, ctx);
 
   app.setNotFoundHandler((req, reply) => {
     if (req.url.startsWith('/api/')) return reply.code(404).send({ error: 'Ruta no encontrada.' });

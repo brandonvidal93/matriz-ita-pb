@@ -4,12 +4,12 @@ import { TestBed } from '@angular/core/testing';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree, provideRouter } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { AuthService, mensajeError } from './auth.service';
-import { conSesion, interceptorSesion, soloAdmin } from './guardias';
+import { conFormato, conSesion, interceptorSesion, soloAdmin } from './guardias';
 import { Usuario } from './modelos';
 import { problemaClave } from '../paginas/ingresar';
 
 const usuario = (d: Partial<Usuario> = {}): Usuario => ({
-  id: 1, usuario: 'ana', nombre: 'Ana', rol: 'editor', activo: true, debeCambiarClave: false, ...d,
+  id: 1, usuario: 'ana', nombre: 'Ana', rol: 'editor', activo: true, debeCambiarClave: false, formatos: { ita: 'editar' }, ...d,
 });
 
 describe('guardias y sesión', () => {
@@ -57,6 +57,14 @@ describe('guardias y sesión', () => {
     expect(router.serializeUrl(r as UrlTree)).toBe('/');
     auth.usuario.set(usuario({ rol: 'admin' }));
     expect(await correr(soloAdmin)).toBe(true);
+  });
+
+  it('conFormato deja pasar con permiso de consulta y sin acceso vuelve al panel', async () => {
+    const r = await conRespuesta(correr(conFormato('ita')), usuario({ formatos: {} }));
+    expect(router.serializeUrl(r as UrlTree)).toBe('/');
+    auth.usuario.set(usuario({ formatos: { ita: 'ver' } }));
+    expect(await correr(conFormato('ita'))).toBe(true);
+    expect(auth.puede('ita', 'editar')).toBe(false);
   });
 
   it('el interceptor cierra la sesión local cuando el servidor responde 401', async () => {

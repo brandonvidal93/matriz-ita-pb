@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { Usuario } from './modelos';
+import { Formato, Permiso, Usuario } from './modelos';
 
 /** Mensaje legible de un error de la API. */
 export function mensajeError(e: unknown): string {
@@ -22,7 +22,14 @@ export class AuthService {
   readonly verificado = signal(false);
 
   readonly esAdmin = computed(() => this.usuario()?.rol === 'admin');
-  readonly puedeEditar = computed(() => ['admin', 'editor'].includes(this.usuario()?.rol ?? ''));
+  /** Edición de la matriz ITA, el formato que maneja AlmacenService. */
+  readonly puedeEditar = computed(() => this.puede('ita', 'editar'));
+
+  /** Permiso efectivo en un formato, calculado por el servidor (que vuelve a validarlo en cada petición). */
+  puede(formato: Formato, permiso: Permiso): boolean {
+    const p = this.usuario()?.formatos?.[formato];
+    return permiso === 'ver' ? !!p : p === 'editar';
+  }
 
   /** Consulta la sesión actual una sola vez (las siguientes llamadas devuelven el resultado guardado). */
   private consulta: Promise<Usuario | null> | null = null;

@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { FechaPipe } from '../core/idioma';
+import { FechaPipe } from '../../core/idioma';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,15 +9,15 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
-import { AlmacenService } from '../core/almacen.service';
-import { AuthService, mensajeError } from '../core/auth.service';
-import { CATALOGO } from '../core/catalogo';
-import { Registro } from '../core/modelos';
-import { enfocarTitulo } from '../core/foco';
-import { Esqueleto } from '../core/esqueleto';
-import { descargar, nombreArchivo, progreso } from '../core/progreso';
-import { AvisoImportacion, XlsxService } from '../core/xlsx.service';
-import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../dialogos/dialogos';
+import { AlmacenService } from '../../core/almacen.service';
+import { AuthService, mensajeError } from '../../core/auth.service';
+import { CATALOGO } from '../../core/catalogo';
+import { Registro } from '../../core/modelos';
+import { enfocarTitulo } from '../../core/foco';
+import { Esqueleto } from '../../core/esqueleto';
+import { descargar, nombreArchivo, progreso } from '../../core/progreso';
+import { AvisoImportacion, XlsxService } from '../../core/xlsx.service';
+import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../../dialogos/dialogos';
 
 @Component({
   imports: [Esqueleto, FechaPipe, MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule, TranslocoPipe],
@@ -69,7 +69,7 @@ export class RegistrosPage {
 
   abrir(r: Registro, ev?: Event) {
     ev?.preventDefault();
-    this.router.navigate(['/r', r.id]);
+    this.router.navigate(['/ita/r', r.id]);
   }
 
   private async pedirDatos(titulo: string, valor?: Partial<DatosRegistro>, permitirBase = false) {
@@ -87,7 +87,7 @@ export class RegistrosPage {
     if (!d) return;
     try {
       const reg = await this.almacen.crear(datosDe(d), d.baseId ? { baseId: d.baseId } : {});
-      this.router.navigate(['/r', reg.id]);
+      this.router.navigate(['/ita/r', reg.id]);
     } catch (e) {
       this.fallo('registros.error.crear', e);
     }

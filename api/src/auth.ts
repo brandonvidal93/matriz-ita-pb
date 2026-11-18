@@ -2,7 +2,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import type { RowDataPacket } from 'mysql2/promise';
-import type { Rol, Usuario } from '../../src/app/core/modelos';
+import { FORMATOS, type Formato, type Permiso, type Rol, type Usuario } from '../../src/app/core/modelos';
 import type { Config } from './config';
 import type { Conexion } from './db';
 
@@ -25,6 +25,20 @@ export const opcionesCookie = (config: Config) => ({
 
 const hashToken = (token: string) => createHash('sha256').update(token).digest('hex');
 
+/** Columna `formatos` con los permisos asignados; la consulta debe llamar `u` a la tabla usuarios. */
+export const COLUMNA_FORMATOS =
+  '(SELECT JSON_OBJECTAGG(uf.formato, uf.permiso) FROM usuario_formatos uf WHERE uf.usuario_id = u.id) AS formatos';
+
+/** El administrador edita todos los formatos; el lector nunca edita, aunque tenga asignado `editar`. */
+export function permisosEfectivos(rol: Rol, asignados: Record<string, Permiso> | null): Usuario['formatos'] {
+  const r: Usuario['formatos'] = {};
+  for (const f of FORMATOS) {
+    const p = rol === 'admin' ? 'editar' : asignados?.[f];
+    if (p) r[f] = rol === 'lector' ? 'ver' : p;
+  }
+  return r;
+}
+
 export function usuarioDesdeFila(f: RowDataPacket): Usuario {
   return {
     id: f['id'],
@@ -33,12 +47,13 @@ export function usuarioDesdeFila(f: RowDataPacket): Usuario {
     rol: f['rol'],
     activo: !!f['activo'],
     debeCambiarClave: !!f['debe_cambiar_clave'],
+    formatos: permisosEfectivos(f['rol'], f['formatos'] ?? null),
   };
 }
 
 /** Valida usuario y contraseña. Devuelve null si no coinciden o el usuario está inactivo. */
 export async function verificarCredenciales(cx: Conexion, usuario: string, clave: string): Promise<Usuario | null> {
-  const [filas] = await cx.query<RowDataPacket[]>('SELECT * FROM usuarios WHERE usuario = ?', [usuario.trim().toLowerCase()]);
+  const [filas] = await cx.query<RowDataPacket[]>(`SELECT u.*, ${COLUMNA_FORMATOS} FROM usuarios u WHERE usuario = ?`, [usuario.trim().toLowerCase()]);
   const f = filas[0];
   const ok = await bcrypt.compare(clave, f ? f['clave_hash'] : HASH_FALSO);
   if (!f || !ok || !f['activo']) return null;
@@ -61,7 +76,7 @@ export async function crearSesion(cx: Conexion, usuarioId: number, minutos: numb
 export async function usuarioDeSesion(cx: Conexion, token: string, minutos: number): Promise<Usuario | null> {
   const id = hashToken(token);
   const [filas] = await cx.query<RowDataPacket[]>(
-    `SELECT u.* FROM sesiones s JOIN usuarios u ON u.id = s.usuario_id
+    `SELECT u.*, ${COLUMNA_FORMATOS} FROM sesiones s JOIN usuarios u ON u.id = s.usuario_id
      WHERE s.id = ? AND s.expira > ? AND u.activo = 1`,
     [id, new Date()],
   );
@@ -96,4 +111,14 @@ export function requiere(...roles: Rol[]) {
   };
 }
 
-export const EDITORES: Rol[] = ['admin', 'editor'];
+/** preHandler: exige sesión y el permiso indicado en el formato. */
+export function requiereFormato(formato: Formato, permiso: Permiso) {
+  const sesion = requiere();
+  return async (req: FastifyRequest, reply: FastifyReply) => {
+    await sesion(req, reply);
+    if (reply.sent) return;
+    const p = req.usuario!.formatos[formato];
+    if (!p || (permiso === 'editar' && p !== 'editar'))
+      return reply.code(403).send({ error: 'No tienes permiso para esta acción.' });
+  };
+}

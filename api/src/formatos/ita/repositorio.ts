@@ -1,8 +1,8 @@
 import type { RowDataPacket } from 'mysql2/promise';
 import { z } from 'zod';
-import type { Evidencia, Registro, Respuesta } from '../../src/app/core/modelos';
-import { normalizarUrl } from '../../src/app/core/modelos';
-import type { Conexion } from './db';
+import type { Evidencia, Registro, Respuesta } from '../../../../src/app/core/modelos';
+import { normalizarUrl } from '../../../../src/app/core/modelos';
+import type { Conexion } from '../../db';
 import { ContenidoRegistro, VERSION_MATRIZ } from './esquemas';
 
 type Fila = RowDataPacket & Record<string, any>;
@@ -16,7 +16,7 @@ const fecha = (s?: string) => {
 /** Carga registros completos (todos o los ids indicados), del más reciente al más antiguo. */
 export async function cargarRegistros(cx: Conexion, ids?: string[]): Promise<Registro[]> {
   if (ids && !ids.length) return [];
-  const filtro = ids ? 'WHERE id IN (?)' : '';
+  const filtro = ids ? "WHERE formato = 'ita' AND id IN (?)" : "WHERE formato = 'ita'";
   const filtroHijos = ids ? 'WHERE registro_id IN (?)' : '';
   const p = ids ? [ids] : [];
   const [regs] = await cx.query<Fila[]>(`SELECT * FROM registros ${filtro} ORDER BY actualizado DESC`, p);
@@ -150,7 +150,7 @@ export async function tocarRegistro(cx: Conexion, id: string, usuarioId: number)
 
 /** Bloquea el registro (SELECT … FOR UPDATE) y devuelve si existe. */
 export async function bloquearRegistro(cx: Conexion, id: string): Promise<boolean> {
-  const [r] = await cx.query<Fila[]>('SELECT id FROM registros WHERE id = ? FOR UPDATE', [id]);
+  const [r] = await cx.query<Fila[]>("SELECT id FROM registros WHERE id = ? AND formato = 'ita' FOR UPDATE", [id]);
   return r.length > 0;
 }
 

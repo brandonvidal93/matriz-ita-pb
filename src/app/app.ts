@@ -17,6 +17,7 @@ import { enfocarTitulo } from './core/foco';
 import { Esqueleto } from './core/esqueleto';
 import { descargar } from './core/progreso';
 import { CONFIG } from './config';
+import { EvaluacionesService } from './formatos/accesibilidad/evaluaciones.service';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,7 @@ import { CONFIG } from './config';
 })
 export class App {
   protected almacen = inject(AlmacenService);
+  private evaluaciones = inject(EvaluacionesService);
   protected auth = inject(AuthService);
   private snack = inject(MatSnackBar);
   private router = inject(Router);
@@ -45,20 +47,24 @@ export class App {
   dependencia = CONFIG.dependencia;
 
   private url = toSignal(this.router.events.pipe(filter((e) => e instanceof NavigationEnd), map(() => this.router.url)), { initialValue: '' });
-  activo = computed(() => (this.url().startsWith('/r/') ? this.almacen.activo() : null));
+  activo = computed(() => (this.url().startsWith('/ita/r/') ? this.almacen.activo() : null));
 
   claveRol = claveRol;
   /** La página anterior se oculta solo si la navegación (guardias, carga diferida) tarda; así no parpadea. */
   navegandoLento = signal(false);
 
+  /** Estado de guardado del formato que se está viendo. */
+  private escritura = computed(() => (this.url().startsWith('/accesibilidad') ? this.evaluaciones : this.almacen));
+
   textoSync = computed(() => {
     this.idioma.actual(); // recalcula al cambiar de idioma
-    if (this.almacen.soloLectura()) return this.t.translate('app.sync.soloLectura');
-    switch (this.almacen.estadoSync()) {
+    const s = this.escritura();
+    if (s.soloLectura()) return this.t.translate('app.sync.soloLectura');
+    switch (s.estadoSync()) {
       case 'pendiente': return this.t.translate('app.sync.pendiente');
       case 'guardando': return this.t.translate('app.sync.guardando');
-      case 'error': return this.t.translate('app.sync.error', { error: this.almacen.errorSync() ?? '' });
-      default: return this.almacen.ultimoGuardado() ? this.t.translate('app.sync.guardado') : '';
+      case 'error': return this.t.translate('app.sync.error', { error: s.errorSync() ?? '' });
+      default: return s.ultimoGuardado() ? this.t.translate('app.sync.guardado') : '';
     }
   });
 
@@ -82,10 +88,11 @@ export class App {
       untracked(() => this.titulos.updateTitle(this.router.routerState.snapshot));
     });
     // Los errores de guardado también se avisan con un mensaje visible.
-    effect(() => {
-      const e = this.almacen.errorSync();
-      if (e) untracked(() => this.snack.open(this.t.translate('app.avisos.errorGuardado', { error: e }), this.t.translate('comun.cerrar')));
-    });
+    for (const s of [this.almacen, this.evaluaciones])
+      effect(() => {
+        const e = s.errorSync();
+        if (e) untracked(() => this.snack.open(this.t.translate('app.avisos.errorGuardado', { error: e }), this.t.translate('comun.cerrar')));
+      });
   }
 
   async descargarCopia() {
@@ -97,9 +104,10 @@ export class App {
   }
 
   async salir() {
-    if (this.almacen.hayPendientes()) await this.almacen.vaciar();
+    await Promise.all([this.almacen.vaciar(), this.evaluaciones.vaciar()]);
     await this.auth.salir();
     this.almacen.limpiar();
+    this.evaluaciones.limpiar();
     this.router.navigate(['/ingresar']);
   }
 

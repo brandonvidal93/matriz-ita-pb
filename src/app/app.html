@@ -7,9 +7,9 @@
     </a>
     @if (auth.usuario() && activo(); as r) {
       <nav [attr.aria-label]="'app.nav.etiqueta' | transloco" class="flex gap-1 flex-wrap">
-        <a [routerLink]="['/r', r.id]" routerLinkActive="activo" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">{{ 'app.nav.diligenciar' | transloco }}</a>
-        <a [routerLink]="['/r', r.id, 'evidencias']" routerLinkActive="activo" ariaCurrentWhenActive="page">{{ 'app.nav.evidencias' | transloco: { n: r.evidencias.length } }}</a>
-        <a [routerLink]="['/r', r.id, 'resumen']" routerLinkActive="activo" ariaCurrentWhenActive="page">{{ 'app.nav.resumen' | transloco }}</a>
+        <a [routerLink]="['/ita/r', r.id]" routerLinkActive="activo" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">{{ 'app.nav.diligenciar' | transloco }}</a>
+        <a [routerLink]="['/ita/r', r.id, 'evidencias']" routerLinkActive="activo" ariaCurrentWhenActive="page">{{ 'app.nav.evidencias' | transloco: { n: r.evidencias.length } }}</a>
+        <a [routerLink]="['/ita/r', r.id, 'resumen']" routerLinkActive="activo" ariaCurrentWhenActive="page">{{ 'app.nav.resumen' | transloco }}</a>
       </nav>
       <span class="text-sm opacity-90 truncate max-w-[280px]" [title]="r.nombre">· {{ r.nombre }}</span>
     }
@@ -35,7 +35,9 @@
         @if (auth.esAdmin()) {
           <a mat-menu-item routerLink="/usuarios"><mat-icon>group</mat-icon>{{ 'app.menu.usuarios' | transloco }}</a>
         }
-        <button mat-menu-item (click)="descargarCopia()"><mat-icon>download</mat-icon>{{ 'app.menu.descargarRespaldo' | transloco }}</button>
+        @if (auth.puede('ita', 'ver')) {
+          <button mat-menu-item (click)="descargarCopia()"><mat-icon>download</mat-icon>{{ 'app.menu.descargarRespaldo' | transloco }}</button>
+        }
         @if (auth.esAdmin()) {
           <button mat-menu-item (click)="cargar.click()"><mat-icon>upload</mat-icon>{{ 'app.menu.restaurarRespaldo' | transloco }}</button>
         }
