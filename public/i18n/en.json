@@ -66,6 +66,7 @@
     "no-sin-justificacion": "NO without remarks"
   },
   "clave": {
+    "mostrar": "Show password",
     "corta": "Must be at least 10 characters long.",
     "letrasNumeros": "Must combine letters and numbers."
   },

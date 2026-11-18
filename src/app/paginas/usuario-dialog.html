@@ -43,7 +43,8 @@
     </fieldset>
     <mat-form-field subscriptSizing="dynamic">
       <mat-label>{{ (d.usuario ? 'usuarios.dialogo.claveNueva' : 'usuarios.dialogo.claveTemporal') | transloco }}</mat-label>
-      <input matInput name="clave" type="password" autocomplete="new-password" [(ngModel)]="m.clave" [errorStateMatcher]="errClave" [required]="!d.usuario" />
+      <input matInput #c1 name="clave" type="password" autocomplete="new-password" [(ngModel)]="m.clave" [errorStateMatcher]="errClave" [required]="!d.usuario" />
+      <ita-ver-clave matSuffix [campo]="c1" />
       <mat-hint>{{ 'usuarios.dialogo.pista' | transloco }}</mat-hint>
       <mat-error>{{ error() }}</mat-error>
     </mat-form-field>

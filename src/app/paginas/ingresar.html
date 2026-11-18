@@ -12,7 +12,8 @@
         </mat-form-field>
         <mat-form-field subscriptSizing="dynamic">
           <mat-label>{{ 'ingresar.clave' | transloco }}</mat-label>
-          <input matInput name="clave" type="password" autocomplete="current-password" [(ngModel)]="clave" required />
+          <input matInput #c1 name="clave" type="password" autocomplete="current-password" [(ngModel)]="clave" required />
+          <ita-ver-clave matSuffix [campo]="c1" />
           <mat-error>{{ 'comun.campoObligatorio' | transloco }}</mat-error>
         </mat-form-field>
         @if (error()) { <p class="text-sm m-0" style="color: var(--no)" role="alert">{{ error() }}</p> }
@@ -26,18 +27,21 @@
       <form (ngSubmit)="cambiar()" class="grid gap-3">
         <mat-form-field subscriptSizing="dynamic">
           <mat-label>{{ 'ingresar.cambiar.actual' | transloco }}</mat-label>
-          <input matInput name="actual" type="password" autocomplete="current-password" [(ngModel)]="actual" [errorStateMatcher]="errActual" required />
+          <input matInput #c2 name="actual" type="password" autocomplete="current-password" [(ngModel)]="actual" [errorStateMatcher]="errActual" required />
+          <ita-ver-clave matSuffix [campo]="c2" />
           <mat-error>{{ error() }}</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{ 'ingresar.cambiar.nueva' | transloco }}</mat-label>
-          <input matInput name="nueva" type="password" autocomplete="new-password" [(ngModel)]="nueva" [errorStateMatcher]="errNueva" required />
+          <input matInput #c3 name="nueva" type="password" autocomplete="new-password" [(ngModel)]="nueva" [errorStateMatcher]="errNueva" required />
+          <ita-ver-clave matSuffix [campo]="c3" />
           <mat-hint>{{ 'ingresar.cambiar.pista' | transloco }}</mat-hint>
           <mat-error>{{ error() }}</mat-error>
         </mat-form-field>
         <mat-form-field subscriptSizing="dynamic">
           <mat-label>{{ 'ingresar.cambiar.repetir' | transloco }}</mat-label>
-          <input matInput name="nueva2" type="password" autocomplete="new-password" [(ngModel)]="nueva2" [errorStateMatcher]="errRepetir" required />
+          <input matInput #c4 name="nueva2" type="password" autocomplete="new-password" [(ngModel)]="nueva2" [errorStateMatcher]="errRepetir" required />
+          <ita-ver-clave matSuffix [campo]="c4" />
           <mat-error>{{ error() }}</mat-error>
         </mat-form-field>
         @if (error() && !campoError()) { <p class="text-sm m-0" style="color: var(--no)" role="alert">{{ error() }}</p> }

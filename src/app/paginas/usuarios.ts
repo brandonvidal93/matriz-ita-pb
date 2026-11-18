@@ -17,6 +17,7 @@ import { errorSi } from '../core/foco';
 import { Esqueleto } from '../core/esqueleto';
 import { FORMATOS, Permiso, Rol, Usuario, claveRol } from '../core/modelos';
 import { problemaClave } from './ingresar';
+import { VerClave } from '../core/ver-clave';
 
 type UsuarioLista = Usuario & { creado?: string; ultimoIngreso?: string | null };
 
@@ -26,7 +27,7 @@ interface DatosUsuarioDialog {
 }
 
 @Component({
-  imports: [FormsModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, TranslocoPipe],
+  imports: [FormsModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, TranslocoPipe, VerClave],
   templateUrl: './usuario-dialog.html',
 })
 export class UsuarioDialog {

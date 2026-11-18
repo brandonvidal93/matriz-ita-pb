@@ -66,6 +66,7 @@
     "no-sin-justificacion": "NO sin observación"
   },
   "clave": {
+    "mostrar": "Mostrar contraseña",
     "corta": "Debe tener al menos 10 caracteres.",
     "letrasNumeros": "Debe combinar letras y números."
   },

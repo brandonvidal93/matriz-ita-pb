@@ -10,6 +10,7 @@ import { AuthService, mensajeError } from '../core/auth.service';
 import { AlmacenService } from '../core/almacen.service';
 import { enfocarInvalido, errorSi } from '../core/foco';
 import { CONFIG } from '../config';
+import { VerClave } from '../core/ver-clave';
 
 /** Política de contraseñas (la misma que valida el servidor). Devuelve la clave de traducción del problema. */
 export function problemaClave(c: string): string | null {
@@ -19,7 +20,7 @@ export function problemaClave(c: string): string | null {
 }
 
 @Component({
-  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, TranslocoPipe],
+  imports: [FormsModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, TranslocoPipe, VerClave],
   templateUrl: './ingresar.html',
 })
 export class IngresarPage {
