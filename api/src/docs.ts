@@ -5,7 +5,7 @@ import { CambioClave, CambioUsuario, Credenciales, NuevoUsuario } from './esquem
 import {
   CambioEvidencia, CambioRegistro, CambioRespuestas, EvidenciaEntrada, Filas, NuevoRegistro, Respaldo,
 } from './formatos/ita/esquemas';
-import { CambioEvaluacion } from './formatos/accesibilidad/esquemas';
+import { CambioEvaluacion, RespaldoAccesibilidad } from './formatos/accesibilidad/esquemas';
 
 /** Documentación OpenAPI solo para desarrollo (ITA_DOCS=true). Las rutas siguen validando con zod. */
 
@@ -54,6 +54,8 @@ const RUTAS: Record<string, Doc> = {
 
   'GET /api/accesibilidad': { tags: ['accesibilidad'], summary: 'Lista las evaluaciones de accesibilidad' },
   'POST /api/accesibilidad': { tags: ['accesibilidad'], summary: 'Crea una evaluación vacía con el siguiente ticket (editor)' },
+  'GET /api/accesibilidad/respaldo': { tags: ['respaldo'], summary: 'Descarga todas las evaluaciones de accesibilidad en .json' },
+  'POST /api/accesibilidad/respaldo': { tags: ['respaldo'], summary: 'Restaura un respaldo de accesibilidad (admin)', body: RespaldoAccesibilidad },
   'GET /api/accesibilidad/:id': { tags: ['accesibilidad'], summary: 'Evaluación completa', params: conId },
   'PATCH /api/accesibilidad/:id': { tags: ['accesibilidad'], summary: 'Mezcla un cambio parcial (editor)', params: conId, body: CambioEvaluacion },
   'DELETE /api/accesibilidad/:id': { tags: ['accesibilidad'], summary: 'Elimina una evaluación (admin)', params: conId },

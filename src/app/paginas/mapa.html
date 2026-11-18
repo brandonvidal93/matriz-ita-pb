@@ -41,10 +41,9 @@
                     <li>
                       {{ 'acc.ticket' | transloco: { n: e.ticket } }}{{ e.identificacion.requerimiento ? ' · ' + e.identificacion.requerimiento : '' }}
                       <ul class="mt-1 pl-5 grid gap-1">
-                        <li><a [routerLink]="['/accesibilidad/e', e.id]">{{ 'titulos.acc.identificacion' | transloco }}</a></li>
-                        <li><a [routerLink]="['/accesibilidad/e', e.id, 'criterios']">{{ 'titulos.acc.criterios' | transloco }}</a></li>
-                        <li><a [routerLink]="['/accesibilidad/e', e.id, 'hallazgos']">{{ 'titulos.acc.hallazgos' | transloco }}</a></li>
-                        <li><a [routerLink]="['/accesibilidad/e', e.id, 'cierre']">{{ 'titulos.acc.cierre' | transloco }}</a></li>
+                        <li><a [routerLink]="['/accesibilidad/r', e.id]">{{ 'titulos.diligenciar' | transloco }}</a></li>
+                        <li><a [routerLink]="['/accesibilidad/r', e.id, 'evidencias']">{{ 'titulos.evidencias' | transloco }}</a></li>
+                        <li><a [routerLink]="['/accesibilidad/r', e.id, 'resumen']">{{ 'titulos.resumen' | transloco }}</a></li>
                       </ul>
                     </li>
                   }

@@ -16,11 +16,11 @@
               <strong class="text-sm">{{ 'dialogos.asignar.todaSeccion' | transloco }}</strong>
             </mat-checkbox>
           </div>
-          @for (it of s.items; track it.fila) {
+          @for (it of s.items; track it.clave) {
             <div class="px-3 py-1 border-t border-gray-100">
-              <mat-checkbox [checked]="seleccion().has(it.fila)" (change)="alternar(it.fila, $event.checked)">
-                <span class="text-sm" lang="es">{{ corta(it) }}</span>
-                <span class="texto-suave mono"> · {{ 'dialogos.asignar.fila' | transloco: { fila: it.fila } }}</span>
+              <mat-checkbox [checked]="seleccion().has(it.clave)" (change)="alternar(it.clave, $event.checked)">
+                <span class="text-sm" lang="es">{{ it.texto }}</span>
+                <span class="texto-suave mono"> · {{ it.etiqueta }}</span>
               </mat-checkbox>
             </div>
           }

@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>{{ 'respaldo.titulo' | transloco }}</h2>
+<mat-dialog-content>
+  <p class="mt-0">{{ 'respaldo.descripcion' | transloco }}</p>
+  <div class="grid gap-1 mb-3">
+    <span id="respaldo-formato" class="text-sm font-medium">{{ 'respaldo.formato' | transloco }}</span>
+    <mat-radio-group class="grid gap-1" [ngModel]="formato()" (ngModelChange)="elegir($event)" aria-labelledby="respaldo-formato">
+      @for (f of formatos; track f) {
+        <mat-radio-button [value]="f">{{ 'formatos.' + f + '.nombre' | transloco }}</mat-radio-button>
+      }
+    </mat-radio-group>
+  </div>
+  <div class="flex flex-wrap gap-2">
+    <button mat-flat-button disabledInteractive [disabled]="ocupado()" (click)="descargar()"><mat-icon>download</mat-icon>{{ 'app.menu.descargarRespaldo' | transloco }}</button>
+    @if (esAdmin()) {
+      <button mat-stroked-button disabledInteractive [disabled]="ocupado()" (click)="archivo.click()"><mat-icon>upload</mat-icon>{{ 'app.menu.restaurarRespaldo' | transloco }}</button>
+      <input #archivo type="file" accept=".json,application/json" hidden [attr.aria-label]="'app.menu.restaurarRespaldo' | transloco" (change)="restaurar($event)" />
+    }
+  </div>
+  @if (esAdmin()) { <p class="text-sm texto-suave mb-0">{{ 'respaldo.reglas' | transloco }}</p> }
+  <p class="preline mb-0" role="status">{{ ocupado() ? ('comun.cargando' | transloco) : mensaje() }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>{{ 'comun.cerrar' | transloco }}</button>
+</mat-dialog-actions>

@@ -1,6 +1,8 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, Routes } from '@angular/router';
+import { FUENTE_EVIDENCIAS } from '../../core/evidencias';
 import { EvaluacionesService } from './evaluaciones.service';
+import { fuenteAccesibilidad } from './fuente';
 
 /** Carga la versión más reciente de la evaluación (incluye cambios de otras personas). */
 export const activarEvaluacion: CanActivateFn = async (ruta: ActivatedRouteSnapshot) => {
@@ -18,18 +20,21 @@ export const activarEvaluacion: CanActivateFn = async (ruta: ActivatedRouteSnaps
   return router.createUrlTree(['/accesibilidad']);
 };
 
-/** Matriz de evaluación - Nivel de Accesibilidad: `#/accesibilidad` y `#/accesibilidad/e/:id/<hoja>`. */
+/**
+ * Matriz de evaluación - Nivel de Accesibilidad. Mismas páginas que ITA (regla para todos los formatos):
+ * `#/accesibilidad`, `…/r/:id` (diligenciar), `…/r/:id/evidencias` y `…/r/:id/resumen`.
+ */
 export const rutasAccesibilidad: Routes = [
   { path: '', title: 'titulos.acc.lista', loadComponent: () => import('./lista').then((m) => m.ListaAccPage) },
   {
-    path: 'e/:id',
+    path: 'r/:id',
     canActivate: [activarEvaluacion],
-    loadComponent: () => import('./evaluacion').then((m) => m.EvaluacionPage),
+    providers: [{ provide: FUENTE_EVIDENCIAS, useFactory: fuenteAccesibilidad }],
+    data: { miga: '@registro' },
     children: [
-      { path: '', title: 'titulos.acc.identificacion', loadComponent: () => import('./hojas').then((m) => m.IdentificacionPage) },
-      { path: 'criterios', title: 'titulos.acc.criterios', loadComponent: () => import('./criterios').then((m) => m.CriteriosPage) },
-      { path: 'hallazgos', title: 'titulos.acc.hallazgos', loadComponent: () => import('./hojas').then((m) => m.HallazgosPage) },
-      { path: 'cierre', title: 'titulos.acc.cierre', loadComponent: () => import('./hojas').then((m) => m.CierrePage) },
+      { path: '', title: 'titulos.diligenciar', data: { miga: 'titulos.diligenciar' }, loadComponent: () => import('./diligenciar').then((m) => m.DiligenciarAccPage) },
+      { path: 'evidencias', title: 'titulos.evidencias', data: { miga: 'titulos.evidencias' }, loadComponent: () => import('../../paginas/evidencias').then((m) => m.EvidenciasPage) },
+      { path: 'resumen', title: 'titulos.resumen', data: { miga: 'titulos.resumen' }, loadComponent: () => import('./resumen').then((m) => m.ResumenAccPage) },
     ],
   },
 ];

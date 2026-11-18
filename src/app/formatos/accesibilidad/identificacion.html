@@ -1,9 +1,8 @@
 @if (svc.activa(); as ev) {
   @let i = ev.identificacion;
   @let ro = svc.soloLectura();
-  <h1 class="text-2xl font-semibold m-0">{{ 'acc.identificacion.titulo' | transloco }}</h1>
-  <p class="texto-suave mt-1">{{ 'acc.identificacion.descripcion' | transloco }}</p>
-  <section class="tarjeta p-4 grid gap-x-4 md:grid-cols-2" [attr.aria-label]="'acc.identificacion.titulo' | transloco">
+  <p class="texto-suave mt-0">{{ 'acc.identificacion.descripcion' | transloco }}</p>
+  <div class="tarjeta p-4 grid gap-x-4 md:grid-cols-2">
     <p class="m-0 mb-4 md:col-span-2">{{ 'acc.campo.ticket' | transloco }}: <strong>{{ ev.ticket }}</strong> <span class="texto-suave text-sm">({{ 'acc.identificacion.ticketAuto' | transloco }})</span></p>
     <mat-form-field class="md:col-span-2">
       <mat-label>{{ 'acc.campo.requerimiento' | transloco }}</mat-label>
@@ -41,5 +40,5 @@
       <input matInput [readonly]="ro" [ngModel]="i.entorno" (ngModelChange)="cambiar('entorno', $event)" />
       <mat-hint>{{ 'acc.identificacion.entornoAyuda' | transloco }}</mat-hint>
     </mat-form-field>
-  </section>
+  </div>
 }

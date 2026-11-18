@@ -48,6 +48,7 @@
       <mat-hint>{{ 'usuarios.dialogo.pista' | transloco }}</mat-hint>
       <mat-error>{{ error() }}</mat-error>
     </mat-form-field>
+    <button mat-button type="button" class="self-start" (click)="nuevaClave(c1)"><mat-icon>autorenew</mat-icon>{{ 'usuarios.dialogo.generarClave' | transloco }}</button>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="end">

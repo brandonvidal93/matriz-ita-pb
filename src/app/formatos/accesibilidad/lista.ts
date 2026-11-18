@@ -13,7 +13,7 @@ import { Esqueleto } from '../../core/esqueleto';
 import { enfocarTitulo } from '../../core/foco';
 import { FechaPipe } from '../../core/idioma';
 import { descargar } from '../../core/progreso';
-import { ConfirmarDialog } from '../../dialogos/dialogos';
+import { ConfirmarDialog, RespaldoDialog } from '../../dialogos/dialogos';
 import { EvaluacionesService } from './evaluaciones.service';
 import { exportarEvaluacion, nombreArchivoAcc } from './exportar';
 import { CHIP_NIVEL, consolidado } from './catalogo';
@@ -59,7 +59,7 @@ export class ListaAccPage {
   async nueva() {
     try {
       const e = await this.svc.crear();
-      this.router.navigate(['/accesibilidad/e', e.id]);
+      this.router.navigate(['/accesibilidad/r', e.id]);
     } catch (e) {
       this.fallo('acc.lista.errorCrear', e);
     }
@@ -92,5 +92,9 @@ export class ListaAccPage {
     } catch (err) {
       this.fallo('acc.lista.errorEliminar', err);
     }
+  }
+
+  respaldoCompleto() {
+    this.dialog.open(RespaldoDialog, { data: { formato: 'accesibilidad' }, autoFocus: 'first-tabbable' });
   }
 }

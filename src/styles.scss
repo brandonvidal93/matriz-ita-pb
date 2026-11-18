@@ -74,6 +74,36 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
   > span { display: block; height: 100%; background: var(--ok); }
 }
 
+/*
+ * Piezas de diligenciamiento compartidas por todos los formatos (mismo aspecto que la Matriz ITA):
+ * barra lateral de secciones, tarjeta de ítem y barra de acciones sobre la selección.
+ */
+.lateral {
+  max-height: 40vh; overflow: auto;
+  @media (min-width: 1024px) { position: sticky; top: 72px; max-height: calc(100vh - 88px); }
+  button { all: unset; display: block; width: 100%; box-sizing: border-box; cursor: pointer; padding: 8px 10px; border-radius: 8px; }
+  button:hover { background: #eef2f7; }
+  button[aria-current='true'] { background: #dde7f5; font-weight: 600; }
+  button:focus-visible { outline: 3px solid var(--foco); }
+  .grupo { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--texto-suave); margin: 14px 10px 4px; font-weight: 700; }
+}
+
+.tarjeta-item {
+  border-left: 4px solid transparent; transition: border-color .2s;
+  &.SI { border-left-color: var(--ok); }
+  &.NO { border-left-color: var(--no); }
+  &.NA { border-left-color: var(--na); }
+  &.resaltado { box-shadow: 0 0 0 3px var(--pb-amarillo); }
+  details > summary { cursor: pointer; color: var(--texto-suave); font-size: 13px; }
+  .vista { background: #f7f9fc; border: 1px dashed var(--borde); border-radius: 8px; padding: 8px 10px; font-size: 13px; }
+  mat-button-toggle-group { --mat-standard-button-toggle-height: 36px; }
+  .mat-button-toggle-checked.t-SI { background: #e3f4e8; color: var(--ok); }
+  .mat-button-toggle-checked.t-NO { background: #fde7e5; color: var(--no); }
+  .mat-button-toggle-checked.t-NA { background: #eceff1; color: #37474f; }
+}
+
+.barra-acciones { position: sticky; bottom: 12px; z-index: 10; background: var(--pb-azul); color: #fff; --foco: var(--pb-amarillo); }
+
 mat-form-field.sin-pie .mat-mdc-form-field-subscript-wrapper { display: none; }
 
 /* Bloque gris animado de los marcadores de carga (app-esqueleto). */

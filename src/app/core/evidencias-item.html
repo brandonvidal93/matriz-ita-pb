@@ -1,0 +1,26 @@
+<div class="mt-2 flex flex-wrap gap-2 items-center">
+  <div role="group" class="contents" [attr.aria-label]="'item.evidenciasDe' | transloco: { u: ubicacion() }">
+    <mat-chip-set>
+      @for (e of evidencias(); track e.id) {
+        <mat-chip (removed)="quitarEvidencia(e)" [matTooltip]="e.url" [removable]="!soloLectura()">
+          <mat-icon matChipAvatar>link</mat-icon>{{ e.titulo }}
+          @if (!soloLectura()) {
+            <button matChipRemove [attr.aria-label]="'item.quitarEvidencia' | transloco: { titulo: e.titulo }"><mat-icon>cancel</mat-icon></button>
+          }
+        </mat-chip>
+      }
+    </mat-chip-set>
+  </div>
+  @if (!soloLectura()) {
+    <button mat-stroked-button #botonEvidencia [attr.aria-label]="'item.evidenciaDe' | transloco: { u: ubicacion() }" (click)="agregar.emit()"><mat-icon>add_link</mat-icon>{{ 'item.evidencia' | transloco }}</button>
+  }
+  @if (!soloLectura() && !mostrarNota() && !nota()) {
+    <button mat-button [attr.aria-label]="'item.notaInternaDe' | transloco: { u: ubicacion() }" (click)="abrirNota()"><mat-icon>sticky_note_2</mat-icon>{{ 'item.notaInterna' | transloco }}</button>
+  }
+</div>
+@if (mostrarNota() || nota()) {
+  <mat-form-field class="w-full sin-pie mt-2">
+    <mat-label>{{ 'item.notaInternaCampo' | transloco }}<span class="sr-only"> · {{ ubicacion() }}</span></mat-label>
+    <textarea #campoNota matInput rows="1" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="nota()" (ngModelChange)="cambiarNota.emit($event)"></textarea>
+  </mat-form-field>
+}
