@@ -1,0 +1,45 @@
+@if (svc.activa(); as ev) {
+  @let i = ev.identificacion;
+  @let ro = svc.soloLectura();
+  <h1 class="text-2xl font-semibold m-0">{{ 'acc.identificacion.titulo' | transloco }}</h1>
+  <p class="texto-suave mt-1">{{ 'acc.identificacion.descripcion' | transloco }}</p>
+  <section class="tarjeta p-4 grid gap-x-4 md:grid-cols-2" [attr.aria-label]="'acc.identificacion.titulo' | transloco">
+    <p class="m-0 mb-4 md:col-span-2">{{ 'acc.campo.ticket' | transloco }}: <strong>{{ ev.ticket }}</strong> <span class="texto-suave text-sm">({{ 'acc.identificacion.ticketAuto' | transloco }})</span></p>
+    <mat-form-field class="md:col-span-2">
+      <mat-label>{{ 'acc.campo.requerimiento' | transloco }}</mat-label>
+      <input matInput [readonly]="ro" [ngModel]="i.requerimiento" (ngModelChange)="cambiar('requerimiento', $event)" />
+      <mat-hint>{{ 'acc.identificacion.requerimientoAyuda' | transloco }}</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="md:col-span-2">
+      <mat-label>{{ 'acc.campo.url' | transloco }}</mat-label>
+      <input matInput type="url" inputmode="url" [readonly]="ro" [ngModel]="i.url" (ngModelChange)="cambiar('url', $event)" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.ambiente' | transloco }}</mat-label>
+      <mat-select [disabled]="ro" [ngModel]="i.ambiente" (ngModelChange)="cambiar('ambiente', $event, false)">
+        <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
+        @for (o of ambientes; track o) { <mat-option [value]="o">{{ 'acc.op.ambiente.' + o | transloco }}</mat-option> }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.tipo' | transloco }}</mat-label>
+      <mat-select [disabled]="ro" [ngModel]="i.tipo" (ngModelChange)="cambiar('tipo', $event, false)">
+        <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
+        @for (o of tipos; track o) { <mat-option [value]="o">{{ 'acc.op.tipo.' + o | transloco }}</mat-option> }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.responsable' | transloco }}</mat-label>
+      <input matInput [readonly]="ro" [ngModel]="i.responsable" (ngModelChange)="cambiar('responsable', $event)" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.fechaValidacion' | transloco }}</mat-label>
+      <input matInput type="date" [readonly]="ro" [ngModel]="i.fecha" (ngModelChange)="cambiar('fecha', $event)" />
+    </mat-form-field>
+    <mat-form-field class="md:col-span-2">
+      <mat-label>{{ 'acc.campo.entorno' | transloco }}</mat-label>
+      <input matInput [readonly]="ro" [ngModel]="i.entorno" (ngModelChange)="cambiar('entorno', $event)" />
+      <mat-hint>{{ 'acc.identificacion.entornoAyuda' | transloco }}</mat-hint>
+    </mat-form-field>
+  </section>
+}

@@ -10,7 +10,8 @@
 // ITA_REGISTROS (registros de prueba, por defecto 10), ITA_ESCALA (multiplica la carga, por defecto 1)
 // e ITA_PERMITIR_REMOTO=1 para apuntar a un servidor que no sea local.
 //
-// Crea registros con el prefijo "k6-" y los elimina al terminar. Úsalo solo con una base desechable.
+// Crea registros con el prefijo "k6-" y evaluaciones de accesibilidad, y los elimina al terminar.
+// Úsalo solo con una base desechable.
 
 import http from 'k6/http';
 import { check, fail, sleep } from 'k6';
@@ -22,6 +23,8 @@ const FILAS = JSON.parse(open('../../src/app/data/catalogo-ita-2023.json'))
   .items.filter((i) => i.tipo === 'cumplimiento')
   .map((i) => i.fila);
 const ESTADOS = ['SI', 'NO', 'NA', null];
+const FILAS_ACC = JSON.parse(open('../../src/app/data/catalogo-accesibilidad.json')).criterios.map((c) => c.fila);
+const ESTADOS_ACC = ['cumple', 'noCumple', 'noAplica', null];
 
 if (!/^https?:\/\/(localhost|127\.0\.0\.1|host\.docker\.internal)(:\d+)?$/.test(BASE) && __ENV.ITA_PERMITIR_REMOTO !== '1')
   throw new Error(`${BASE} no es local. La prueba crea y borra datos; usa ITA_PERMITIR_REMOTO=1 si de verdad es una base desechable.`);
@@ -82,11 +85,17 @@ export function setup() {
     if (c.status !== 201) fail(`No se pudo crear el registro de prueba (${c.status}): ${c.body}`);
     ids.push(id);
   }
+  const acc = [];
+  for (let i = 0; i <= N_REGISTROS; i++) {
+    const c = http.post(`${BASE}/api/accesibilidad`, '{}', conSesion(cookie));
+    if (c.status !== 201) fail(`No se pudo crear la evaluación de prueba (${c.status}): ${c.body}`);
+    acc.push(c.json('id'));
+  }
 
   const index = http.get(`${BASE}/`).body || '';
   const assets = [...index.matchAll(/(?:src|href)="([^"]+\.(?:js|css))"/g)].map((m) => m[1]);
   // El último registro es el compartido del escenario de contención.
-  return { cookie, propios: ids.slice(0, -1), compartido: ids[ids.length - 1], assets };
+  return { cookie, propios: ids.slice(0, -1), compartido: ids[ids.length - 1], accPropias: acc.slice(0, -1), accCompartida: acc[acc.length - 1], assets };
 }
 
 export function estaticos(d) {
@@ -102,10 +111,17 @@ export function lectura(d) {
   check(l, { 'listado 200': (x) => x.status === 200 });
   const r = http.get(`${BASE}/api/registros/${azar(d.propios)}`, conSesion(d.cookie, { tags: { name: 'GET /api/registros/:id' } }));
   check(r, { 'detalle 200': (x) => x.status === 200 });
+  const la = http.get(`${BASE}/api/accesibilidad`, conSesion(d.cookie, { tags: { name: 'GET /api/accesibilidad' } }));
+  check(la, { 'listado acc 200': (x) => x.status === 200 });
+  const ra = http.get(`${BASE}/api/accesibilidad/${azar(d.accPropias)}`, conSesion(d.cookie, { tags: { name: 'GET /api/accesibilidad/:id' } }));
+  check(ra, { 'detalle acc 200': (x) => x.status === 200 });
   sleep(1);
 }
 
-function guardar(d, id) {
+/** La mitad de los guardados va a la matriz ITA y la otra mitad a la de accesibilidad. */
+function guardar(d, n) {
+  if (Math.random() < 0.5) return guardarAcc(d, n === undefined ? d.accCompartida : d.accPropias[n % d.accPropias.length]);
+  const id = n === undefined ? d.compartido : d.propios[n % d.propios.length];
   const cambios = Math.random() < 0.5 ? { estado: azar(ESTADOS) } : { observacion: `Observación de prueba ${Date.now()}` };
   const r = http.patch(
     `${BASE}/api/registros/${id}/respuestas`,
@@ -115,13 +131,24 @@ function guardar(d, id) {
   check(r, { 'guardado 200': (x) => x.status === 200 });
 }
 
+function guardarAcc(d, id) {
+  const fila = azar(FILAS_ACC);
+  const cambio = Math.random() < 0.5 ? { estado: azar(ESTADOS_ACC) } : { observacion: `Observación de prueba ${Date.now()}` };
+  const r = http.patch(
+    `${BASE}/api/accesibilidad/${id}`,
+    JSON.stringify({ criterios: { [fila]: cambio } }),
+    conSesion(d.cookie, { tags: { name: 'PATCH /api/accesibilidad/:id' } }),
+  );
+  check(r, { 'guardado acc 200': (x) => x.status === 200 });
+}
+
 export function edicion(d) {
-  guardar(d, d.propios[(__VU - 1) % d.propios.length]);
+  guardar(d, __VU - 1);
   sleep(1); // ritmo de una persona: la interfaz agrupa lo que se escribe antes de enviarlo
 }
 
 export function contencion(d) {
-  guardar(d, d.compartido);
+  guardar(d);
 }
 
 export function teardown(d) {
@@ -129,5 +156,9 @@ export function teardown(d) {
     // Sin Content-Type: Fastify rechaza con 400 un cuerpo JSON vacío.
     const r = http.del(`${BASE}/api/registros/${id}`, null, { headers: { Cookie: d.cookie } });
     if (r.status >= 300) console.warn(`No se eliminó ${id} (${r.status}); bórralo a mano.`);
+  }
+  for (const id of [...d.accPropias, d.accCompartida]) {
+    const r = http.del(`${BASE}/api/accesibilidad/${id}`, null, { headers: { Cookie: d.cookie } });
+    if (r.status >= 300) console.warn(`No se eliminó la evaluación ${id} (${r.status}); bórrala a mano.`);
   }
 }

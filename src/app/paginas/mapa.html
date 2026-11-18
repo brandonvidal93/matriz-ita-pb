@@ -31,6 +31,28 @@
             </li>
           </ul>
         }
+        @if (auth.puede('accesibilidad', 'ver')) {
+          <ul class="mt-2 pl-5 grid gap-2">
+            <li>
+              <a routerLink="/accesibilidad">{{ 'formatos.accesibilidad.nombre' | transloco }}: {{ 'titulos.acc.lista' | transloco }}</a>
+              @if (evaluaciones.lista().length) {
+                <ul class="mt-2 pl-5 grid gap-2">
+                  @for (e of evaluaciones.lista(); track e.id) {
+                    <li>
+                      {{ 'acc.ticket' | transloco: { n: e.ticket } }}{{ e.identificacion.requerimiento ? ' · ' + e.identificacion.requerimiento : '' }}
+                      <ul class="mt-1 pl-5 grid gap-1">
+                        <li><a [routerLink]="['/accesibilidad/e', e.id]">{{ 'titulos.acc.identificacion' | transloco }}</a></li>
+                        <li><a [routerLink]="['/accesibilidad/e', e.id, 'criterios']">{{ 'titulos.acc.criterios' | transloco }}</a></li>
+                        <li><a [routerLink]="['/accesibilidad/e', e.id, 'hallazgos']">{{ 'titulos.acc.hallazgos' | transloco }}</a></li>
+                        <li><a [routerLink]="['/accesibilidad/e', e.id, 'cierre']">{{ 'titulos.acc.cierre' | transloco }}</a></li>
+                      </ul>
+                    </li>
+                  }
+                </ul>
+              }
+            </li>
+          </ul>
+        }
       </li>
       @if (auth.esAdmin()) {
         <li><a routerLink="/usuarios">{{ 'titulos.usuarios' | transloco }}</a></li>

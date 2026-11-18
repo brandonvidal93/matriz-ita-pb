@@ -16,6 +16,11 @@ export const routes: Routes = [
         loadComponent: () => import('./paginas/usuarios').then((m) => m.UsuariosPage),
       },
       { path: 'ita', canActivate: [conFormato('ita')], loadChildren: () => import('./formatos/ita/ita.routes').then((m) => m.rutasIta) },
+      {
+        path: 'accesibilidad',
+        canActivate: [conFormato('accesibilidad')],
+        loadChildren: () => import('./formatos/accesibilidad/accesibilidad.routes').then((m) => m.rutasAccesibilidad),
+      },
       // Enlaces guardados de antes de que hubiera varios formatos.
       { path: 'r/:id', redirectTo: 'ita/r/:id' },
       { path: 'r/:id/evidencias', redirectTo: 'ita/r/:id/evidencias' },

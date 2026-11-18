@@ -108,7 +108,7 @@ conBase('autenticación y usuarios (MySQL)', () => {
 
   it('permisos por formato: sin acceso, consulta, edición y el lector nunca edita', async () => {
     const yo = async (c: string) => (await pedir('GET', '/api/auth/yo', c)).json().formatos;
-    expect(await yo(e.cookies.admin)).toEqual({ ita: 'editar' });
+    expect(await yo(e.cookies.admin)).toEqual({ ita: 'editar', accesibilidad: 'editar' });
     expect(await yo(e.cookies.editor)).toEqual({ ita: 'editar' });
     expect(await yo(e.cookies.lector)).toEqual({ ita: 'ver' });
 

@@ -144,6 +144,14 @@ python tools/preparar_plantilla.py <matriz.xlsx>
 
 El script trabaja directamente sobre el XML del .xlsx. Vacía F a I en las filas de ítems y retira las imágenes y los hipervínculos pegados como evidencia. No toca nada más. Si la Procuraduría publica una nueva versión de la matriz, se corre de nuevo con el archivo nuevo y se revisan los cambios del catálogo.
 
+La Matriz de evaluación - Nivel de Accesibilidad tiene su propio script:
+
+```bash
+python tools/preparar_accesibilidad.py tools/origen/matriz-evaluacion-accesibilidad.xlsx
+```
+
+Genera `public/plantilla/matriz-evaluacion-accesibilidad.xlsx` y `src/app/data/catalogo-accesibilidad.json` (78 criterios con su descripción y enlace a la W3C, y las 6 herramientas de la hoja 4). Vacía las celdas que diligencia la aplicación en las hojas 1 a 4 y deja que Excel recalcule el consolidado y los gráficos al abrir el archivo.
+
 ## Estructura
 
 ```

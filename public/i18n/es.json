@@ -342,7 +342,14 @@
     "evidencias": "Evidencias",
     "resumen": "Revisar y exportar",
     "mapa": "Mapa del sitio",
-    "panel": "Inicio"
+    "panel": "Inicio",
+    "acc": {
+      "lista": "Evaluaciones de accesibilidad",
+      "identificacion": "Identificación del requerimiento",
+      "criterios": "Matriz de evaluación",
+      "hallazgos": "Hallazgos y plan de tratamiento",
+      "cierre": "Cierre y aprobaciones"
+    }
   },
   "mapa": {
     "titulo": "Mapa del sitio",
@@ -367,6 +374,172 @@
     "ita": {
       "nombre": "Matriz ITA",
       "descripcion": "Índice de Transparencia y Acceso a la Información (Ley 1712 de 2014), versión 2023."
+    },
+    "accesibilidad": {
+      "nombre": "Matriz de evaluación - Nivel de Accesibilidad",
+      "descripcion": "Evaluación de criterios WCAG, hallazgos, plan de tratamiento y aprobación de publicación."
+    }
+  },
+  "acc": {
+    "ticket": "Ticket {{ n }}",
+    "sinNombre": "Sin nombre de requerimiento",
+    "sinElegir": "Sin elegir",
+    "evaluados": "{{ n }} de {{ total }} criterios evaluados",
+    "exportar": "Exportar .xlsx",
+    "errorExportar": "No se pudo exportar: {{ error }}",
+    "nuevaVentana": "se abre en una pestaña nueva",
+    "nivel": {
+      "etiqueta": "Nivel de accesibilidad",
+      "na": "Sin calcular",
+      "noAccesible": "No accesible",
+      "A": "A",
+      "AA": "AA",
+      "AAA": "AAA"
+    },
+    "nav": {
+      "etiqueta": "Hojas de la evaluación",
+      "identificacion": "1. Identificación",
+      "criterios": "2. Criterios",
+      "hallazgos": "3. Hallazgos ({{ n }})",
+      "cierre": "4. Cierre"
+    },
+    "lista": {
+      "titulo": "Evaluaciones de accesibilidad",
+      "descripcion": "Cada evaluación recibe un número de ticket consecutivo y se exporta a la matriz oficial (.xlsx).",
+      "nueva": "Nueva evaluación",
+      "etiqueta": "Evaluaciones",
+      "vacio": "Aún no hay evaluaciones",
+      "vacioEditor": "Crea una evaluación nueva para empezar a diligenciar la matriz.",
+      "vacioLector": "Cuando se registre una evaluación aparecerá aquí.",
+      "errorCrear": "No se pudo crear la evaluación: {{ error }}",
+      "errorEliminar": "No se pudo eliminar: {{ error }}",
+      "eliminarTitulo": "Eliminar evaluación",
+      "eliminarMensaje": "¿Eliminar la evaluación del ticket {{ n }}? Esta acción no se puede deshacer."
+    },
+    "campo": {
+      "ticket": "Número de ticket / registro",
+      "requerimiento": "Nombre del requerimiento",
+      "url": "URL, página o componente",
+      "ambiente": "Ambiente de prueba",
+      "responsable": "Responsable",
+      "fechaValidacion": "Fecha de validación",
+      "entorno": "Navegador, sistema operativo y dispositivo",
+      "tipo": "Tipo de requerimiento",
+      "criterio": "Criterio relacionado",
+      "hallazgo": "Hallazgo",
+      "severidad": "Severidad",
+      "accion": "Acción requerida",
+      "fechaCompromiso": "Fecha compromiso",
+      "estadoHallazgo": "Estado",
+      "evidencias": "Enlace, ruta o identificación de las evidencias",
+      "automatizadas": "Resultado de pruebas automatizadas",
+      "manuales": "Resultado de pruebas manuales y con tecnología de asistencia",
+      "resultado": "Resultado",
+      "justificacion": "Justificación del resultado final",
+      "decision": "Decisión de publicación",
+      "profesional": "Profesional que realiza la validación técnica",
+      "cargo": "Cargo o rol",
+      "fecha": "Fecha",
+      "editorial": "Validación funcional del responsable editorial (nombre, cargo, fecha y aprobación)"
+    },
+    "identificacion": {
+      "titulo": "Identificación del requerimiento",
+      "descripcion": "Qué se evalúa, dónde y con qué herramientas.",
+      "ticketAuto": "se asigna automáticamente",
+      "requerimientoAyuda": "Tipo de evaluación, por ejemplo: evaluación inicial de accesibilidad web.",
+      "entornoAyuda": "Por ejemplo: Chrome 142, Windows 11, escritorio."
+    },
+    "criterios": {
+      "titulo": "Matriz de evaluación",
+      "descripcion": "Marca el estado de cada criterio de cumplimiento de WCAG. Cuando no aplique, justifícalo en las observaciones.",
+      "consolidado": "Consolidado",
+      "nivel": "Nivel",
+      "nivelN": "Nivel {{ n }}",
+      "total": "Total",
+      "nivelPendiente": "El nivel se calcula cuando todos los criterios estén evaluados.",
+      "filtrar": "Filtrar criterios",
+      "filtro": {
+        "todos": "Todos",
+        "pendientes": "Pendientes",
+        "noCumple": "No cumplen"
+      },
+      "mostrando": "Se muestran {{ n }} criterios",
+      "estadoDe": "Estado del criterio {{ sc }}",
+      "detalle": "Descripción y cómo validar {{ sc }}",
+      "excepcion": "Excepciones:",
+      "metodo": "Método de validación:",
+      "w3c": "Documentación de la W3C sobre {{ sc }}",
+      "observacion": "Observaciones o evidencia",
+      "justificacion": "Justificación (no aplica)",
+      "faltaJustificacion": "Si el criterio no aplica, escribe la justificación."
+    },
+    "hallazgos": {
+      "titulo": "Hallazgos y plan de tratamiento",
+      "descripcion": "Registra cada hallazgo con su severidad, la acción requerida y su seguimiento.",
+      "severidades": "Criterios de severidad",
+      "severidad": {
+        "critica": "impide completamente completar una tarea principal o bloquea la navegación.",
+        "alta": "genera gran dificultad, pero existen alternativas complejas.",
+        "media": "incomodidad visual o de uso que no bloquea la interacción.",
+        "baja": "detalle menor de formato o marcado secundario."
+      },
+      "vacio": "No hay hallazgos registrados.",
+      "numero": "Hallazgo {{ n }}",
+      "agregar": "Agregar hallazgo",
+      "eliminar": "Eliminar hallazgo {{ n }}",
+      "limite": "La plantilla admite como máximo {{ n }} hallazgos."
+    },
+    "cierre": {
+      "titulo": "Cierre, herramientas y aprobaciones",
+      "descripcion": "Herramientas usadas, resultados de las pruebas y decisión final.",
+      "herramientas": "Herramientas utilizadas",
+      "pruebas": "Evidencias y resultados de las pruebas",
+      "resultadoFinal": "Resultado final y aprobaciones"
+    },
+    "op": {
+      "ambiente": {
+        "desarrollo": "Desarrollo",
+        "pruebas": "Pruebas",
+        "produccion": "Producción"
+      },
+      "tipo": {
+        "contenido": "Contenido",
+        "pagina": "Página",
+        "documento": "Documento",
+        "multimedia": "Multimedia",
+        "formulario": "Formulario",
+        "componente": "Componente",
+        "micrositio": "Micrositio",
+        "portal": "Portal"
+      },
+      "estado": {
+        "cumple": "Cumple",
+        "noCumple": "No cumple",
+        "noAplica": "No aplica"
+      },
+      "severidad": {
+        "critica": "Crítica",
+        "alta": "Alta",
+        "media": "Media",
+        "baja": "Baja"
+      },
+      "estadoHallazgo": {
+        "pendiente": "Pendiente",
+        "enProceso": "En proceso",
+        "corregido": "Corregido",
+        "revalidado": "Revalidado"
+      },
+      "resultado": {
+        "cumple": "Cumple",
+        "conObservaciones": "Cumple con observaciones",
+        "requiereAjustes": "Requiere ajustes",
+        "noAplica": "No aplica"
+      },
+      "decision": {
+        "autoriza": "Autoriza",
+        "noAutoriza": "No autoriza hasta corregir",
+        "conPlan": "Autoriza con plan de mejora registrado"
+      }
     }
   }
 }

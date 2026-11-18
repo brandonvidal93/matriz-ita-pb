@@ -342,7 +342,14 @@
     "evidencias": "Evidence",
     "resumen": "Review and export",
     "mapa": "Site map",
-    "panel": "Home"
+    "panel": "Home",
+    "acc": {
+      "lista": "Accessibility evaluations",
+      "identificacion": "Request identification",
+      "criterios": "Evaluation matrix",
+      "hallazgos": "Findings and remediation plan",
+      "cierre": "Closure and approvals"
+    }
   },
   "mapa": {
     "titulo": "Site map",
@@ -367,6 +374,172 @@
     "ita": {
       "nombre": "ITA Matrix",
       "descripcion": "Transparency and Access to Information Index (Law 1712 of 2014), 2023 version."
+    },
+    "accesibilidad": {
+      "nombre": "Evaluation matrix - Accessibility level",
+      "descripcion": "WCAG criteria evaluation, findings, remediation plan and publication approval."
+    }
+  },
+  "acc": {
+    "ticket": "Ticket {{ n }}",
+    "sinNombre": "Unnamed request",
+    "sinElegir": "Not selected",
+    "evaluados": "{{ n }} of {{ total }} criteria evaluated",
+    "exportar": "Export .xlsx",
+    "errorExportar": "Could not export: {{ error }}",
+    "nuevaVentana": "opens in a new tab",
+    "nivel": {
+      "etiqueta": "Accessibility level",
+      "na": "Not calculated",
+      "noAccesible": "Not accessible",
+      "A": "A",
+      "AA": "AA",
+      "AAA": "AAA"
+    },
+    "nav": {
+      "etiqueta": "Evaluation sheets",
+      "identificacion": "1. Identification",
+      "criterios": "2. Criteria",
+      "hallazgos": "3. Findings ({{ n }})",
+      "cierre": "4. Closure"
+    },
+    "lista": {
+      "titulo": "Accessibility evaluations",
+      "descripcion": "Each evaluation gets a sequential ticket number and is exported to the official matrix (.xlsx).",
+      "nueva": "New evaluation",
+      "etiqueta": "Evaluations",
+      "vacio": "No evaluations yet",
+      "vacioEditor": "Create a new evaluation to start filling in the matrix.",
+      "vacioLector": "Evaluations will appear here once they are created.",
+      "errorCrear": "Could not create the evaluation: {{ error }}",
+      "errorEliminar": "Could not delete: {{ error }}",
+      "eliminarTitulo": "Delete evaluation",
+      "eliminarMensaje": "Delete the evaluation for ticket {{ n }}? This cannot be undone."
+    },
+    "campo": {
+      "ticket": "Ticket / record number",
+      "requerimiento": "Request name",
+      "url": "URL, page or component",
+      "ambiente": "Test environment",
+      "responsable": "Person responsible",
+      "fechaValidacion": "Validation date",
+      "entorno": "Browser, operating system and device",
+      "tipo": "Request type",
+      "criterio": "Related criterion",
+      "hallazgo": "Finding",
+      "severidad": "Severity",
+      "accion": "Required action",
+      "fechaCompromiso": "Due date",
+      "estadoHallazgo": "Status",
+      "evidencias": "Link, path or identification of the evidence",
+      "automatizadas": "Automated test results",
+      "manuales": "Manual and assistive technology test results",
+      "resultado": "Result",
+      "justificacion": "Justification of the final result",
+      "decision": "Publication decision",
+      "profesional": "Professional performing the technical validation",
+      "cargo": "Position or role",
+      "fecha": "Date",
+      "editorial": "Functional validation by the editorial owner (name, position, date and approval)"
+    },
+    "identificacion": {
+      "titulo": "Request identification",
+      "descripcion": "What is evaluated, where and with which tools.",
+      "ticketAuto": "assigned automatically",
+      "requerimientoAyuda": "Type of evaluation, for example: initial web accessibility evaluation.",
+      "entornoAyuda": "For example: Chrome 142, Windows 11, desktop."
+    },
+    "criterios": {
+      "titulo": "Evaluation matrix",
+      "descripcion": "Set the status of each WCAG success criterion. When one does not apply, justify it in the notes.",
+      "consolidado": "Summary",
+      "nivel": "Level",
+      "nivelN": "Level {{ n }}",
+      "total": "Total",
+      "nivelPendiente": "The level is calculated once every criterion has been evaluated.",
+      "filtrar": "Filter criteria",
+      "filtro": {
+        "todos": "All",
+        "pendientes": "Pending",
+        "noCumple": "Not met"
+      },
+      "mostrando": "Showing {{ n }} criteria",
+      "estadoDe": "Status of criterion {{ sc }}",
+      "detalle": "Description and how to validate {{ sc }}",
+      "excepcion": "Exceptions:",
+      "metodo": "Validation method:",
+      "w3c": "W3C documentation for {{ sc }}",
+      "observacion": "Notes or evidence",
+      "justificacion": "Justification (not applicable)",
+      "faltaJustificacion": "If the criterion does not apply, write the justification."
+    },
+    "hallazgos": {
+      "titulo": "Findings and remediation plan",
+      "descripcion": "Record each finding with its severity, the required action and its follow-up.",
+      "severidades": "Severity criteria",
+      "severidad": {
+        "critica": "completely prevents finishing a main task or blocks navigation.",
+        "alta": "causes great difficulty, but complex workarounds exist.",
+        "media": "visual or usability inconvenience that does not block interaction.",
+        "baja": "minor formatting or secondary markup detail."
+      },
+      "vacio": "No findings recorded.",
+      "numero": "Finding {{ n }}",
+      "agregar": "Add finding",
+      "eliminar": "Delete finding {{ n }}",
+      "limite": "The template allows at most {{ n }} findings."
+    },
+    "cierre": {
+      "titulo": "Closure, tools and approvals",
+      "descripcion": "Tools used, test results and final decision.",
+      "herramientas": "Tools used",
+      "pruebas": "Evidence and test results",
+      "resultadoFinal": "Final result and approvals"
+    },
+    "op": {
+      "ambiente": {
+        "desarrollo": "Development",
+        "pruebas": "Testing",
+        "produccion": "Production"
+      },
+      "tipo": {
+        "contenido": "Content",
+        "pagina": "Page",
+        "documento": "Document",
+        "multimedia": "Multimedia",
+        "formulario": "Form",
+        "componente": "Component",
+        "micrositio": "Microsite",
+        "portal": "Portal"
+      },
+      "estado": {
+        "cumple": "Met",
+        "noCumple": "Not met",
+        "noAplica": "Not applicable"
+      },
+      "severidad": {
+        "critica": "Critical",
+        "alta": "High",
+        "media": "Medium",
+        "baja": "Low"
+      },
+      "estadoHallazgo": {
+        "pendiente": "Pending",
+        "enProceso": "In progress",
+        "corregido": "Fixed",
+        "revalidado": "Revalidated"
+      },
+      "resultado": {
+        "cumple": "Meets",
+        "conObservaciones": "Meets with observations",
+        "requiereAjustes": "Requires adjustments",
+        "noAplica": "Not applicable"
+      },
+      "decision": {
+        "autoriza": "Authorizes",
+        "noAutoriza": "Does not authorize until fixed",
+        "conPlan": "Authorizes with a registered improvement plan"
+      }
     }
   }
 }

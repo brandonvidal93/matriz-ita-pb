@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { AvisoSesionDialog } from '../dialogos/aviso-sesion';
+import { EvaluacionesService } from '../formatos/accesibilidad/evaluaciones.service';
 import { AlmacenService } from './almacen.service';
 import { AuthService } from './auth.service';
 
@@ -22,6 +23,7 @@ export class SesionService {
   private dialog = inject(MatDialog);
   private auth = inject(AuthService);
   private almacen = inject(AlmacenService);
+  private evaluaciones = inject(EvaluacionesService);
   private router = inject(Router);
 
   private vence = 0;
@@ -100,9 +102,10 @@ export class SesionService {
   }
 
   private async salir(): Promise<void> {
-    await this.almacen.vaciar();
+    await Promise.all([this.almacen.vaciar(), this.evaluaciones.vaciar()]);
     await this.auth.salir();
     this.almacen.limpiar();
+    this.evaluaciones.limpiar();
     this.detener();
     this.router.navigate(['/ingresar']);
   }
@@ -112,6 +115,7 @@ export class SesionService {
     this.detener();
     this.auth.sesionTerminada();
     this.almacen.limpiar();
+    this.evaluaciones.limpiar();
     this.router.navigate(['/ingresar'], { queryParams: { vencida: 1 } });
   }
 

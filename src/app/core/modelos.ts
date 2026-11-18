@@ -96,7 +96,7 @@ export interface Usuario {
 }
 
 /** Formatos que se diligencian en la aplicación. El id se guarda en `registros.formato`. */
-export const FORMATOS = ['ita'] as const;
+export const FORMATOS = ['ita', 'accesibilidad'] as const;
 export type Formato = (typeof FORMATOS)[number];
 export type Permiso = 'ver' | 'editar';
 

@@ -1,0 +1,69 @@
+@if (svc.activa(); as ev) {
+  @let c = ev.cierre;
+  @let ro = svc.soloLectura();
+  <h1 class="text-2xl font-semibold m-0">{{ 'acc.cierre.titulo' | transloco }}</h1>
+  <p class="texto-suave mt-1">{{ 'acc.cierre.descripcion' | transloco }}</p>
+
+  <fieldset class="tarjeta p-4 m-0 mb-4 min-w-0">
+    <legend class="px-1 font-semibold">{{ 'acc.cierre.herramientas' | transloco }}</legend>
+    <div class="grid sm:grid-cols-2">
+      @for (h of herramientas; track h.fila) {
+        <mat-checkbox [disabled]="ro" [checked]="c.herramientas.includes(h.fila)" (change)="herramienta(h.fila, $event.checked)"><span lang="es">{{ h.nombre }}</span></mat-checkbox>
+      }
+    </div>
+  </fieldset>
+
+  <section class="tarjeta p-4 mb-4 grid" aria-labelledby="t-pruebas">
+    <h2 id="t-pruebas" class="text-lg font-semibold m-0 mb-3">{{ 'acc.cierre.pruebas' | transloco }}</h2>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.evidencias' | transloco }}</mat-label>
+      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="c.evidencias" (ngModelChange)="cambiar('evidencias', $event)"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.automatizadas' | transloco }}</mat-label>
+      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="3" [readonly]="ro" [ngModel]="c.automatizadas" (ngModelChange)="cambiar('automatizadas', $event)"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.manuales' | transloco }}</mat-label>
+      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="3" [readonly]="ro" [ngModel]="c.manuales" (ngModelChange)="cambiar('manuales', $event)"></textarea>
+    </mat-form-field>
+  </section>
+
+  <section class="tarjeta p-4 grid gap-x-4 md:grid-cols-2" aria-labelledby="t-resultado">
+    <h2 id="t-resultado" class="text-lg font-semibold m-0 mb-3 md:col-span-2">{{ 'acc.cierre.resultadoFinal' | transloco }}</h2>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.resultado' | transloco }}</mat-label>
+      <mat-select [disabled]="ro" [ngModel]="c.resultado" (ngModelChange)="cambiar('resultado', $event, false)">
+        <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
+        @for (o of resultados; track o) { <mat-option [value]="o">{{ 'acc.op.resultado.' + o | transloco }}</mat-option> }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.decision' | transloco }}</mat-label>
+      <mat-select [disabled]="ro" [ngModel]="c.decision" (ngModelChange)="cambiar('decision', $event, false)">
+        <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
+        @for (o of decisiones; track o) { <mat-option [value]="o">{{ 'acc.op.decision.' + o | transloco }}</mat-option> }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="md:col-span-2">
+      <mat-label>{{ 'acc.campo.justificacion' | transloco }}</mat-label>
+      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="c.justificacion" (ngModelChange)="cambiar('justificacion', $event)"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.profesional' | transloco }}</mat-label>
+      <input matInput [readonly]="ro" [ngModel]="c.profesional" (ngModelChange)="cambiar('profesional', $event)" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.cargo' | transloco }}</mat-label>
+      <input matInput [readonly]="ro" [ngModel]="c.cargo" (ngModelChange)="cambiar('cargo', $event)" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>{{ 'acc.campo.fecha' | transloco }}</mat-label>
+      <input matInput type="date" [readonly]="ro" [ngModel]="c.fecha" (ngModelChange)="cambiar('fecha', $event)" />
+    </mat-form-field>
+    <mat-form-field class="md:col-span-2">
+      <mat-label>{{ 'acc.campo.editorial' | transloco }}</mat-label>
+      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="c.editorial" (ngModelChange)="cambiar('editorial', $event)"></textarea>
+    </mat-form-field>
+  </section>
+}

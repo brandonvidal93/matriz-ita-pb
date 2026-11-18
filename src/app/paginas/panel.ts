@@ -8,6 +8,7 @@ import { FORMATOS, Formato } from '../core/modelos';
 /** Ruta e ícono de cada formato; el nombre y la descripción están en `formatos.<id>` de public/i18n. */
 export const FORMATOS_UI: Record<Formato, { ruta: string; icono: string }> = {
   ita: { ruta: '/ita', icono: 'fact_check' },
+  accesibilidad: { ruta: '/accesibilidad', icono: 'accessibility_new' },
 };
 
 /** Página de inicio: los formatos a los que tiene acceso el usuario. */
