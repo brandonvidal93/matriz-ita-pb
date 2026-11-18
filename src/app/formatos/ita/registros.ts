@@ -17,7 +17,7 @@ import { enfocarTitulo } from '../../core/foco';
 import { Esqueleto } from '../../core/esqueleto';
 import { descargar, nombreArchivo, progreso } from '../../core/progreso';
 import { AvisoImportacion, XlsxService } from '../../core/xlsx.service';
-import { ConfirmarDialog, DatosRegistro, RegistroDialog } from '../../dialogos/dialogos';
+import { ConfirmarDialog, DatosRegistro, RegistroDialog, RespaldoDialog } from '../../dialogos/dialogos';
 
 @Component({
   imports: [Esqueleto, FechaPipe, MatButtonModule, MatIconModule, MatMenuModule, MatProgressBarModule, TranslocoPipe],
@@ -138,23 +138,8 @@ export class RegistrosPage {
     descargar(new Blob([JSON.stringify(r, null, 1)], { type: 'application/json' }), nombreArchivo(r, 'json'));
   }
 
-  async restaurar(ev: Event) {
-    const input = ev.target as HTMLInputElement;
-    const f = input.files?.[0];
-    input.value = '';
-    if (!f) return;
-    try {
-      const r = await this.almacen.restaurar(await f.text());
-      const partes = [
-        r.creados.length
-          ? this.t.translate('registros.restaurado', { nombres: r.creados.map((x) => x.nombre).join(', ') })
-          : this.t.translate('registros.ningunoCreado'),
-        ...r.omitidos.map((x) => this.t.translate('registros.omitido', { nombre: x.nombre, motivo: x.motivo })),
-      ];
-      this.snack.open(partes.join(' '), this.t.translate('comun.cerrar'));
-    } catch (e) {
-      this.fallo('registros.error.restaurar', e);
-    }
+  respaldoCompleto() {
+    this.dialog.open(RespaldoDialog, { data: { formato: 'ita' }, autoFocus: 'first-tabbable' });
   }
 
   async importarXlsx(ev: Event) {

@@ -17,7 +17,8 @@
       "usuarios": "Users",
       "descargarRespaldo": "Download full backup (.json)",
       "restaurarRespaldo": "Restore or migrate backup (.json)…",
-      "salir": "Sign out"
+      "salir": "Sign out",
+      "respaldo": "Backup and restore (.json)…"
     },
     "sync": {
       "soloLectura": "Read only",
@@ -29,10 +30,9 @@
     "avisos": {
       "errorGuardado": "The change was not saved: {{ error }}. The server version was reloaded.",
       "errorDescarga": "Could not download: {{ error }}",
-      "cargados": "{{ n }} record(s) loaded.",
-      "omitidos": "{{ n }} were already loaded.",
       "errorCarga": "Could not load: {{ error }}"
-    }
+    },
+    "miga": "Breadcrumb"
   },
   "comun": {
     "cerrar": "Close",
@@ -93,7 +93,6 @@
     "titulo": "Fill-in records",
     "descripcion": "Each record is a snapshot of the ITA Matrix ({{ version }}, {{ total }} items): the annual report to the Procuraduría or an internal follow-up.",
     "importarXlsx": "Import .xlsx matrix",
-    "restaurarRespaldo": "Restore backup",
     "nuevo": "New record",
     "resultadoImportacion": "Import result",
     "cerrarAviso": "Dismiss notice",
@@ -135,11 +134,9 @@
       "crear": "Could not create the record: {{ error }}",
       "crearCorte": "Could not create the snapshot: {{ error }}",
       "eliminar": "Could not delete: {{ error }}",
-      "restaurar": "Could not restore: {{ error }}",
       "importar": "Could not import: {{ error }}"
     },
     "restaurado": "Restored: {{ nombres }}.",
-    "ningunoCreado": "No record was created.",
     "omitido": "“{{ nombre }}”: {{ motivo }}.",
     "leidos": "Read {{ items }} filled-in items and {{ evidencias }} unique evidence items (URLs).",
     "abrirNombre": "Open {{ nombre }}"
@@ -177,14 +174,15 @@
     "valor": "Value to report",
     "justificacionNa": "Legal justification for N/A",
     "observacion": "Remarks / justification",
-    "evidenciasDe": "Evidence for item in row {{ fila }}",
+    "evidenciasDe": "Evidence · {{ u }}",
     "quitarEvidencia": "Remove evidence {{ titulo }}",
     "evidencia": "Evidence",
     "notaInterna": "Internal note",
     "notaInternaCampo": "Internal note (not exported)",
     "vistaColumna": "How it will look in column I",
-    "evidenciaDe": "Evidence, item in row {{ fila }}",
-    "notaInternaDe": "Internal note, item in row {{ fila }}"
+    "evidenciaDe": "Evidence · {{ u }}",
+    "notaInternaDe": "Internal note · {{ u }}",
+    "ubicacion": "item in row {{ fila }}"
   },
   "evidencias": {
     "titulo": "Evidence library",
@@ -283,7 +281,8 @@
       "errorNombre": "Enter the name.",
       "formatos": "Form access",
       "formatosAdmin": "Administrators have access to all forms.",
-      "formatosLector": "Readers can only view."
+      "formatosLector": "Readers can only view.",
+      "generarClave": "Generate random password"
     },
     "permiso": {
       "ninguno": "No access",
@@ -344,11 +343,7 @@
     "mapa": "Site map",
     "panel": "Home",
     "acc": {
-      "lista": "Accessibility evaluations",
-      "identificacion": "Request identification",
-      "criterios": "Evaluation matrix",
-      "hallazgos": "Findings and remediation plan",
-      "cierre": "Closure and approvals"
+      "lista": "Accessibility evaluations"
     }
   },
   "mapa": {
@@ -396,13 +391,6 @@
       "AA": "AA",
       "AAA": "AAA"
     },
-    "nav": {
-      "etiqueta": "Evaluation sheets",
-      "identificacion": "1. Identification",
-      "criterios": "2. Criteria",
-      "hallazgos": "3. Findings ({{ n }})",
-      "cierre": "4. Closure"
-    },
     "lista": {
       "titulo": "Accessibility evaluations",
       "descripcion": "Each evaluation gets a sequential ticket number and is exported to the official matrix (.xlsx).",
@@ -443,39 +431,34 @@
       "editorial": "Functional validation by the editorial owner (name, position, date and approval)"
     },
     "identificacion": {
-      "titulo": "Request identification",
       "descripcion": "What is evaluated, where and with which tools.",
       "ticketAuto": "assigned automatically",
       "requerimientoAyuda": "Type of evaluation, for example: initial web accessibility evaluation.",
       "entornoAyuda": "For example: Chrome 142, Windows 11, desktop."
     },
     "criterios": {
-      "titulo": "Evaluation matrix",
-      "descripcion": "Set the status of each WCAG success criterion. When one does not apply, justify it in the notes.",
       "consolidado": "Summary",
       "nivel": "Level",
       "nivelN": "Level {{ n }}",
       "total": "Total",
       "nivelPendiente": "The level is calculated once every criterion has been evaluated.",
       "filtrar": "Filter criteria",
-      "filtro": {
-        "todos": "All",
-        "pendientes": "Pending",
-        "noCumple": "Not met"
-      },
-      "mostrando": "Showing {{ n }} criteria",
       "estadoDe": "Status of criterion {{ sc }}",
       "detalle": "Description and how to validate {{ sc }}",
       "excepcion": "Exceptions:",
       "metodo": "Validation method:",
-      "w3c": "W3C documentation for {{ sc }}",
       "observacion": "Notes or evidence",
       "justificacion": "Justification (not applicable)",
-      "faltaJustificacion": "If the criterion does not apply, write the justification."
+      "seleccionar": "Select criterion {{ sc }}",
+      "ubicacion": "criterion {{ sc }}",
+      "vistaColumna": "How it will look in column J",
+      "anuncio": "{{ n }} criteria shown",
+      "buscar": "Search all criteria",
+      "sinCriterios": "No criteria match this filter in the section.",
+      "w3c": "W3C documentation for {{ sc }}"
     },
     "hallazgos": {
-      "titulo": "Findings and remediation plan",
-      "descripcion": "Record each finding with its severity, the required action and its follow-up.",
+      "descripcion": "Each criterion marked \"Not met\" generates a finding. Complete the treatment plan: required action, severity, status, owner and due date.",
       "severidades": "Severity criteria",
       "severidad": {
         "critica": "completely prevents finishing a main task or blocks navigation.",
@@ -483,14 +466,15 @@
         "media": "visual or usability inconvenience that does not block interaction.",
         "baja": "minor formatting or secondary markup detail."
       },
-      "vacio": "No findings recorded.",
+      "vacio": "No findings: they appear here when a criterion is marked \"Not met\".",
       "numero": "Finding {{ n }}",
-      "agregar": "Add finding",
-      "eliminar": "Delete finding {{ n }}",
-      "limite": "The template allows at most {{ n }} findings."
+      "limite": "There are {{ n }} findings and the template allows {{ max }}: the first {{ max }} are exported in matrix order.",
+      "vistaColumna": "How it will look in column C",
+      "verCriterio": "View criterion {{ sc }}",
+      "ayudaTexto": "Prefilled with the criterion observation; you can adjust it.",
+      "sugerida": "Suggested by level {{ n }}; change it based on the real impact."
     },
     "cierre": {
-      "titulo": "Closure, tools and approvals",
       "descripcion": "Tools used, test results and final decision.",
       "herramientas": "Tools used",
       "pruebas": "Evidence and test results",
@@ -540,6 +524,39 @@
         "noAutoriza": "Does not authorize until fixed",
         "conPlan": "Authorizes with a registered improvement plan"
       }
+    },
+    "secciones": "Evaluation sections",
+    "seccion": {
+      "identificacion": "Request identification",
+      "criterios": "Evaluation matrix",
+      "hallazgos": "Findings and remediation plan",
+      "cierre": "Closure, tools and approvals"
+    },
+    "problema": {
+      "sin-estado": "Not evaluated",
+      "sin-soporte": "Met without evidence or notes",
+      "na-sin-justificacion": "Not applicable without justification",
+      "no-sin-observacion": "Not met without notes"
+    },
+    "resumen": {
+      "porRevisar": "Criteria to review",
+      "exportarDescripcion": "Fills in the accessibility matrix template: identification, status and notes for each criterion (with its evidence in column J), findings and closure. The summary and charts are recalculated when the file is opened.",
+      "formato": "Evidence in the file:",
+      "aviso": "{{ n }} criteria are not evaluated or have incomplete support. You can export anyway, but you should review them.",
+      "avance": "Progress by principle",
+      "principio": "Principle",
+      "criterios": "Criteria",
+      "pendientes": "Criteria to review ({{ n }})",
+      "verMas": "Show more criteria to review",
+      "sinPlan": "{{ n }} findings without a complete treatment plan (action, owner, date and status)."
     }
+  },
+  "respaldo": {
+    "titulo": "Backup and restore",
+    "descripcion": "Download all the records of a format as a .json file, or restore them from a backup.",
+    "formato": "Format",
+    "descargado": "Backup downloaded.",
+    "ningunoCreado": "No record was created.",
+    "reglas": "Restoring never overwrites: what was already loaded is skipped and what changed is created as a copy."
   }
 }

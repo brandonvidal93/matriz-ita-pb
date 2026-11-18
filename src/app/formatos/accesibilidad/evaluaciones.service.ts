@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { ESPERA_TEXTO_MS, EstadoSync } from '../../core/almacen.service';
+import { ESPERA_TEXTO_MS, EstadoSync, ResultadoRestauracion } from '../../core/almacen.service';
 import { AuthService, mensajeError } from '../../core/auth.service';
-import { CambioEvaluacion, Evaluacion, aplicarCambio } from './modelo';
+import { Evidencia, normalizarUrl, nuevoId } from '../../core/modelos';
+import { CambioEvaluacion, Destinos, Evaluacion, aplicarCambio } from './modelo';
 
 const API = '/api/accesibilidad';
 
@@ -105,6 +106,59 @@ export class EvaluacionesService {
     };
     this.textos.set(clave, { timer: setTimeout(ejecutar, ESPERA_TEXTO_MS), enviar: ejecutar });
     if (!this.enCurso) this.estadoSync.set('pendiente');
+  }
+
+  // ---------- evidencias (mismo comportamiento que AlmacenService) ----------
+  /** Agrega una evidencia a la biblioteca; si la URL ya existe, devuelve la existente. */
+  agregarEvidencia(datos: Omit<Evidencia, 'id'>): Evidencia {
+    const url = normalizarUrl(datos.url);
+    const existente = this.activa()?.evidencias.find((e) => normalizarUrl(e.url) === url);
+    if (existente) return existente;
+    const ev: Evidencia = { ...datos, url, id: nuevoId() };
+    const { id, ...resto } = ev;
+    this.cambiar({ evidencias: { [id]: resto } });
+    return ev;
+  }
+
+  editarEvidencia(evId: string, cambios: Partial<Evidencia>): void {
+    const c: Record<string, unknown> = {};
+    if (cambios.titulo !== undefined) c['titulo'] = cambios.titulo;
+    if (cambios.url !== undefined) c['url'] = normalizarUrl(cambios.url);
+    if ('descripcion' in cambios) c['descripcion'] = cambios.descripcion ?? null;
+    if ('verificacion' in cambios) c['verificacion'] = cambios.verificacion ?? null;
+    this.cambiar({ evidencias: { [evId]: c } });
+  }
+
+  eliminarEvidencia(evId: string): void {
+    this.cambiar({ evidencias: { [evId]: null } });
+  }
+
+  asignarEvidencia(d: Destinos): void {
+    if (d.criterios?.length || d.hallazgos?.length) this.cambiar({ asignar: d });
+  }
+
+  quitarEvidencia(d: Destinos): void {
+    if (d.criterios?.length || d.hallazgos?.length) this.cambiar({ quitar: d });
+  }
+
+  // ---------- respaldos (mismo comportamiento que AlmacenService) ----------
+  async respaldoCompleto(): Promise<Blob> {
+    await this.vaciar();
+    const datos = await firstValueFrom(this.http.get(`${API}/respaldo`));
+    return new Blob([JSON.stringify(datos, null, 1)], { type: 'application/json' });
+  }
+
+  /** Restaura un respaldo (solo administradores). */
+  async restaurar(texto: string): Promise<ResultadoRestauracion> {
+    let datos: unknown;
+    try {
+      datos = JSON.parse(texto);
+    } catch {
+      throw new Error('El archivo no es un JSON válido.');
+    }
+    const r = await firstValueFrom(this.http.post<ResultadoRestauracion>(`${API}/respaldo`, datos));
+    await this.cargar();
+    return r;
   }
 
   /** Envía los textos en espera y aguarda a que la cola termine. */

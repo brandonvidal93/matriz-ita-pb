@@ -1,6 +1,8 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router, Routes } from '@angular/router';
 import { AlmacenService } from '../../core/almacen.service';
+import { FUENTE_EVIDENCIAS } from '../../core/evidencias';
+import { fuenteIta } from './fuente';
 
 /** Carga la versión más reciente del registro (incluye cambios de otras personas). */
 export const activarRegistro: CanActivateFn = async (ruta: ActivatedRouteSnapshot) => {
@@ -24,10 +26,12 @@ export const rutasIta: Routes = [
   {
     path: 'r/:id',
     canActivate: [activarRegistro],
+    providers: [{ provide: FUENTE_EVIDENCIAS, useFactory: fuenteIta }],
+    data: { miga: '@registro' },
     children: [
-      { path: '', title: 'titulos.diligenciar', loadComponent: () => import('./diligenciar').then((m) => m.DiligenciarPage) },
-      { path: 'evidencias', title: 'titulos.evidencias', loadComponent: () => import('./evidencias').then((m) => m.EvidenciasPage) },
-      { path: 'resumen', title: 'titulos.resumen', loadComponent: () => import('./resumen').then((m) => m.ResumenPage) },
+      { path: '', title: 'titulos.diligenciar', data: { miga: 'titulos.diligenciar' }, loadComponent: () => import('./diligenciar').then((m) => m.DiligenciarPage) },
+      { path: 'evidencias', title: 'titulos.evidencias', data: { miga: 'titulos.evidencias' }, loadComponent: () => import('../../paginas/evidencias').then((m) => m.EvidenciasPage) },
+      { path: 'resumen', title: 'titulos.resumen', data: { miga: 'titulos.resumen' }, loadComponent: () => import('./resumen').then((m) => m.ResumenPage) },
     ],
   },
 ];

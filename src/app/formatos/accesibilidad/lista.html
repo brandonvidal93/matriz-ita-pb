@@ -4,6 +4,7 @@
       <h1 class="text-2xl font-semibold m-0">{{ 'acc.lista.titulo' | transloco }}</h1>
       <p class="texto-suave m-0 mt-1">{{ 'acc.lista.descripcion' | transloco }}</p>
     </div>
+    <button mat-stroked-button (click)="respaldoCompleto()"><mat-icon>settings_backup_restore</mat-icon>{{ 'app.menu.respaldo' | transloco }}</button>
     @if (!svc.soloLectura()) {
       <button mat-flat-button (click)="nueva()"><mat-icon>add</mat-icon>{{ 'acc.lista.nueva' | transloco }}</button>
     }
@@ -33,7 +34,7 @@
         <div class="flex-1 min-w-[min(100%,260px)] [overflow-wrap:anywhere]">
           <div class="flex items-center gap-2 flex-wrap">
             <h2 class="text-lg font-semibold m-0">
-              <a [routerLink]="['/accesibilidad/e', e.id]">{{ 'acc.ticket' | transloco: { n: e.ticket } }} · {{ nombre }}</a>
+              <a class="no-underline text-inherit hover:underline" [routerLink]="['/accesibilidad/r', e.id]">{{ 'acc.ticket' | transloco: { n: e.ticket } }} · {{ nombre }}</a>
             </h2>
             <span class="chip-estado" [class]="chip[c.nivel]">{{ 'acc.nivel.etiqueta' | transloco }}: {{ 'acc.nivel.' + c.nivel | transloco }}</span>
           </div>
@@ -51,6 +52,7 @@
             <span class="chip-estado NA">{{ 'acc.op.estado.noAplica' | transloco }} {{ c.noAplica }}</span>
           </div>
         </div>
+        <a mat-flat-button [routerLink]="['/accesibilidad/r', e.id]" [attr.aria-label]="'registros.abrirNombre' | transloco: { nombre: ('acc.ticket' | transloco: { n: e.ticket }) }">{{ 'registros.abrir' | transloco }}</a>
         <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'comun.masAcciones' | transloco: { nombre: ('acc.ticket' | transloco: { n: e.ticket }) }"><mat-icon>more_vert</mat-icon></button>
         <mat-menu #m="matMenu">
           <button mat-menu-item (click)="exportar(e)"><mat-icon>download</mat-icon>{{ 'acc.exportar' | transloco }}</button>

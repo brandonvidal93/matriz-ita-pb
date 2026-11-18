@@ -17,7 +17,8 @@
       "usuarios": "Usuarios",
       "descargarRespaldo": "Descargar respaldo completo (.json)",
       "restaurarRespaldo": "Restaurar o migrar respaldo (.json)…",
-      "salir": "Salir"
+      "salir": "Salir",
+      "respaldo": "Respaldo y restauración (.json)…"
     },
     "sync": {
       "soloLectura": "Solo lectura",
@@ -29,10 +30,9 @@
     "avisos": {
       "errorGuardado": "No se guardó el cambio: {{ error }}. Se recargó la versión del servidor.",
       "errorDescarga": "No se pudo descargar: {{ error }}",
-      "cargados": "Se cargaron {{ n }} registro(s).",
-      "omitidos": "{{ n }} ya estaban cargados.",
       "errorCarga": "No se pudo cargar: {{ error }}"
-    }
+    },
+    "miga": "Ruta de navegación"
   },
   "comun": {
     "cerrar": "Cerrar",
@@ -93,7 +93,6 @@
     "titulo": "Registros de diligenciamiento",
     "descripcion": "Cada registro es un corte de la Matriz ITA ({{ version }}, {{ total }} ítems): el reporte anual a la Procuraduría o un seguimiento interno.",
     "importarXlsx": "Importar matriz .xlsx",
-    "restaurarRespaldo": "Restaurar respaldo",
     "nuevo": "Nuevo registro",
     "resultadoImportacion": "Resultado de la importación",
     "cerrarAviso": "Cerrar aviso",
@@ -135,11 +134,9 @@
       "crear": "No se pudo crear el registro: {{ error }}",
       "crearCorte": "No se pudo crear el corte: {{ error }}",
       "eliminar": "No se pudo eliminar: {{ error }}",
-      "restaurar": "No se pudo restaurar: {{ error }}",
       "importar": "No se pudo importar: {{ error }}"
     },
     "restaurado": "Restaurado: {{ nombres }}.",
-    "ningunoCreado": "No se creó ningún registro.",
     "omitido": "“{{ nombre }}”: {{ motivo }}.",
     "leidos": "Se leyeron {{ items }} ítems diligenciados y {{ evidencias }} evidencias únicas (URLs).",
     "abrirNombre": "Abrir {{ nombre }}"
@@ -177,14 +174,15 @@
     "valor": "Valor a reportar",
     "justificacionNa": "Justificación jurídica del N/A",
     "observacion": "Observación / justificación",
-    "evidenciasDe": "Evidencias del ítem fila {{ fila }}",
+    "evidenciasDe": "Evidencias · {{ u }}",
     "quitarEvidencia": "Quitar evidencia {{ titulo }}",
     "evidencia": "Evidencia",
     "notaInterna": "Nota interna",
     "notaInternaCampo": "Nota interna (no se exporta)",
     "vistaColumna": "Así quedará en la columna I",
-    "evidenciaDe": "Evidencia, ítem fila {{ fila }}",
-    "notaInternaDe": "Nota interna, ítem fila {{ fila }}"
+    "evidenciaDe": "Evidencia · {{ u }}",
+    "notaInternaDe": "Nota interna · {{ u }}",
+    "ubicacion": "ítem fila {{ fila }}"
   },
   "evidencias": {
     "titulo": "Biblioteca de evidencias",
@@ -283,7 +281,8 @@
       "errorNombre": "Escribe el nombre.",
       "formatos": "Acceso a formatos",
       "formatosAdmin": "El administrador accede a todos los formatos.",
-      "formatosLector": "El lector solo puede consultar."
+      "formatosLector": "El lector solo puede consultar.",
+      "generarClave": "Generar contraseña aleatoria"
     },
     "permiso": {
       "ninguno": "Sin acceso",
@@ -344,11 +343,7 @@
     "mapa": "Mapa del sitio",
     "panel": "Inicio",
     "acc": {
-      "lista": "Evaluaciones de accesibilidad",
-      "identificacion": "Identificación del requerimiento",
-      "criterios": "Matriz de evaluación",
-      "hallazgos": "Hallazgos y plan de tratamiento",
-      "cierre": "Cierre y aprobaciones"
+      "lista": "Evaluaciones de accesibilidad"
     }
   },
   "mapa": {
@@ -396,13 +391,6 @@
       "AA": "AA",
       "AAA": "AAA"
     },
-    "nav": {
-      "etiqueta": "Hojas de la evaluación",
-      "identificacion": "1. Identificación",
-      "criterios": "2. Criterios",
-      "hallazgos": "3. Hallazgos ({{ n }})",
-      "cierre": "4. Cierre"
-    },
     "lista": {
       "titulo": "Evaluaciones de accesibilidad",
       "descripcion": "Cada evaluación recibe un número de ticket consecutivo y se exporta a la matriz oficial (.xlsx).",
@@ -443,39 +431,34 @@
       "editorial": "Validación funcional del responsable editorial (nombre, cargo, fecha y aprobación)"
     },
     "identificacion": {
-      "titulo": "Identificación del requerimiento",
       "descripcion": "Qué se evalúa, dónde y con qué herramientas.",
       "ticketAuto": "se asigna automáticamente",
       "requerimientoAyuda": "Tipo de evaluación, por ejemplo: evaluación inicial de accesibilidad web.",
       "entornoAyuda": "Por ejemplo: Chrome 142, Windows 11, escritorio."
     },
     "criterios": {
-      "titulo": "Matriz de evaluación",
-      "descripcion": "Marca el estado de cada criterio de cumplimiento de WCAG. Cuando no aplique, justifícalo en las observaciones.",
       "consolidado": "Consolidado",
       "nivel": "Nivel",
       "nivelN": "Nivel {{ n }}",
       "total": "Total",
       "nivelPendiente": "El nivel se calcula cuando todos los criterios estén evaluados.",
       "filtrar": "Filtrar criterios",
-      "filtro": {
-        "todos": "Todos",
-        "pendientes": "Pendientes",
-        "noCumple": "No cumplen"
-      },
-      "mostrando": "Se muestran {{ n }} criterios",
       "estadoDe": "Estado del criterio {{ sc }}",
       "detalle": "Descripción y cómo validar {{ sc }}",
       "excepcion": "Excepciones:",
       "metodo": "Método de validación:",
-      "w3c": "Documentación de la W3C sobre {{ sc }}",
       "observacion": "Observaciones o evidencia",
       "justificacion": "Justificación (no aplica)",
-      "faltaJustificacion": "Si el criterio no aplica, escribe la justificación."
+      "seleccionar": "Seleccionar criterio {{ sc }}",
+      "ubicacion": "criterio {{ sc }}",
+      "vistaColumna": "Así quedará en la columna J",
+      "anuncio": "{{ n }} criterios visibles",
+      "buscar": "Buscar en todos los criterios",
+      "sinCriterios": "No hay criterios con este filtro en la sección.",
+      "w3c": "Documentación de la W3C sobre {{ sc }}"
     },
     "hallazgos": {
-      "titulo": "Hallazgos y plan de tratamiento",
-      "descripcion": "Registra cada hallazgo con su severidad, la acción requerida y su seguimiento.",
+      "descripcion": "Cada criterio en \"No cumple\" genera su hallazgo. Completa el plan de tratamiento: acción requerida, severidad, estado, responsable y fecha de compromiso.",
       "severidades": "Criterios de severidad",
       "severidad": {
         "critica": "impide completamente completar una tarea principal o bloquea la navegación.",
@@ -483,14 +466,15 @@
         "media": "incomodidad visual o de uso que no bloquea la interacción.",
         "baja": "detalle menor de formato o marcado secundario."
       },
-      "vacio": "No hay hallazgos registrados.",
+      "vacio": "No hay hallazgos: aparecen aquí cuando un criterio queda en \"No cumple\".",
       "numero": "Hallazgo {{ n }}",
-      "agregar": "Agregar hallazgo",
-      "eliminar": "Eliminar hallazgo {{ n }}",
-      "limite": "La plantilla admite como máximo {{ n }} hallazgos."
+      "limite": "Hay {{ n }} hallazgos y la plantilla admite {{ max }}: se exportan los primeros {{ max }} en el orden de la matriz.",
+      "vistaColumna": "Así quedará en la columna C",
+      "verCriterio": "Ver el criterio {{ sc }}",
+      "ayudaTexto": "Precargado con la observación del criterio; puedes ajustarlo.",
+      "sugerida": "Sugerida por el nivel {{ n }}; cámbiala según el impacto real."
     },
     "cierre": {
-      "titulo": "Cierre, herramientas y aprobaciones",
       "descripcion": "Herramientas usadas, resultados de las pruebas y decisión final.",
       "herramientas": "Herramientas utilizadas",
       "pruebas": "Evidencias y resultados de las pruebas",
@@ -540,6 +524,39 @@
         "noAutoriza": "No autoriza hasta corregir",
         "conPlan": "Autoriza con plan de mejora registrado"
       }
+    },
+    "secciones": "Secciones de la evaluación",
+    "seccion": {
+      "identificacion": "Identificación del requerimiento",
+      "criterios": "Matriz de evaluación",
+      "hallazgos": "Hallazgos y plan de tratamiento",
+      "cierre": "Cierre, herramientas y aprobaciones"
+    },
+    "problema": {
+      "sin-estado": "Sin evaluar",
+      "sin-soporte": "Cumple sin evidencia ni observación",
+      "na-sin-justificacion": "No aplica sin justificación",
+      "no-sin-observacion": "No cumple sin observación"
+    },
+    "resumen": {
+      "porRevisar": "Criterios por revisar",
+      "exportarDescripcion": "Se llena la plantilla de la matriz de accesibilidad: identificación, estado y observaciones de cada criterio (con sus evidencias en la columna J), hallazgos y cierre. El consolidado y los gráficos se recalculan al abrir el archivo.",
+      "formato": "Evidencias en el archivo:",
+      "aviso": "Hay {{ n }} criterios sin evaluar o con soporte incompleto. Puedes exportar igual, pero conviene revisarlos.",
+      "avance": "Avance por principio",
+      "principio": "Principio",
+      "criterios": "Criterios",
+      "pendientes": "Criterios por revisar ({{ n }})",
+      "verMas": "Ver más criterios por revisar",
+      "sinPlan": "{{ n }} hallazgos sin plan de tratamiento completo (acción, responsable, fecha y estado)."
     }
+  },
+  "respaldo": {
+    "titulo": "Respaldo y restauración",
+    "descripcion": "Descarga todos los registros de un formato en un archivo .json, o restáuralos desde un respaldo.",
+    "formato": "Formato",
+    "descargado": "Respaldo descargado.",
+    "ningunoCreado": "No se creó ningún registro.",
+    "reglas": "Al restaurar nunca se sobrescribe: lo que ya estaba cargado se omite y lo que cambió se crea como copia."
   }
 }

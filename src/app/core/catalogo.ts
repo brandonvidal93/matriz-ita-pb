@@ -33,8 +33,14 @@ export function etiquetaCorta(it: ItemCatalogo, max = 90): string {
   return t.length > max ? t.slice(0, max - 1) + '…' : t;
 }
 
-/** Texto final que se escribirá en la columna I del archivo oficial. */
-export function textoObservacion(r: Respuesta | undefined, reg: Registro): string {
+/**
+ * Texto final de la celda de observaciones: la observación y, debajo, sus evidencias.
+ * Lo usan todos los formatos (columna I en ITA, J y C en accesibilidad).
+ */
+export function textoObservacion(
+  r: Pick<Respuesta, 'observacion' | 'evidencias'> | undefined,
+  reg: Pick<Registro, 'evidencias' | 'formatoEvidencias'>,
+): string {
   if (!r) return '';
   const partes: string[] = [];
   if (r.observacion?.trim()) partes.push(r.observacion.trim());

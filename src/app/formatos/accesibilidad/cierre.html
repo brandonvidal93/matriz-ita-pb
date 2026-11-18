@@ -1,8 +1,7 @@
 @if (svc.activa(); as ev) {
   @let c = ev.cierre;
   @let ro = svc.soloLectura();
-  <h1 class="text-2xl font-semibold m-0">{{ 'acc.cierre.titulo' | transloco }}</h1>
-  <p class="texto-suave mt-1">{{ 'acc.cierre.descripcion' | transloco }}</p>
+  <p class="texto-suave mt-0">{{ 'acc.cierre.descripcion' | transloco }}</p>
 
   <fieldset class="tarjeta p-4 m-0 mb-4 min-w-0">
     <legend class="px-1 font-semibold">{{ 'acc.cierre.herramientas' | transloco }}</legend>

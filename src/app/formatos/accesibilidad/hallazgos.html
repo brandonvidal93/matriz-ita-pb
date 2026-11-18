@@ -1,7 +1,6 @@
 @if (svc.activa(); as ev) {
   @let ro = svc.soloLectura();
-  <h1 class="text-2xl font-semibold m-0">{{ 'acc.hallazgos.titulo' | transloco }}</h1>
-  <p class="texto-suave mt-1">{{ 'acc.hallazgos.descripcion' | transloco }}</p>
+  <p class="texto-suave mt-0">{{ 'acc.hallazgos.descripcion' | transloco }}</p>
   <details class="tarjeta p-4 mb-4">
     <summary>{{ 'acc.hallazgos.severidades' | transloco }}</summary>
     <ul class="m-0 mt-2 pl-5 text-sm grid gap-1">
@@ -9,34 +8,41 @@
     </ul>
   </details>
 
-  @if (!ev.hallazgos.length) { <p class="tarjeta p-4">{{ 'acc.hallazgos.vacio' | transloco }}</p> }
+  @let hs = lista();
+  @if (!hs.length) { <p class="tarjeta p-4">{{ 'acc.hallazgos.vacio' | transloco }}</p> }
+  @if (hs.length > max) {
+    <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal mb-3">
+      <mat-icon class="!w-5 !h-5 !text-xl" aria-hidden="true">warning</mat-icon>{{ 'acc.hallazgos.limite' | transloco: { n: hs.length, max } }}
+    </p>
+  }
 
   <ol class="list-none m-0 p-0 grid gap-3">
-    @for (h of ev.hallazgos; track h.id; let n = $index) {
+    @for (h of hs; track h.id; let n = $index) {
       <li>
-        <fieldset class="tarjeta p-4 m-0 min-w-0 grid gap-x-4 md:grid-cols-2">
-          <legend class="px-1 font-semibold">{{ 'acc.hallazgos.numero' | transloco: { n: n + 1 } }}</legend>
-          <mat-form-field class="md:col-span-2">
-            <mat-label>{{ 'acc.campo.criterio' | transloco }}</mat-label>
-            <mat-select [disabled]="ro" [ngModel]="h.criterio" (ngModelChange)="cambiar(h.id, 'criterio', $event, false)">
-              <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
-              @for (c of criterios; track c.sc) { <mat-option [value]="c.sc"><span lang="es">{{ c.sc }} · {{ c.criterio }} ({{ c.nivel }})</span></mat-option> }
-            </mat-select>
-          </mat-form-field>
+        <article class="tarjeta tarjeta-item p-4" [id]="'hallazgo-' + h.id" [class.resaltado]="resaltado() === h.id" [attr.aria-labelledby]="'ht-' + h.id">
+        <h2 class="text-[15px] font-medium m-0" tabindex="-1" [id]="'ht-' + h.id">
+          {{ 'acc.hallazgos.numero' | transloco: { n: n + 1 } }} · <span lang="es">{{ h.cat.sc }} {{ h.cat.criterio }}</span>
+          <span class="chip-estado ml-1">{{ 'acc.criterios.nivelN' | transloco: { n: h.cat.nivel } }}</span>
+        </h2>
+        <p class="text-sm mt-1 mb-3">
+          <a [routerLink]="['/accesibilidad/r', ev.id]" [queryParams]="{ fila: h.fila }">{{ 'acc.hallazgos.verCriterio' | transloco: { sc: h.cat.sc } }}</a>
+        </p>
+        <div class="grid gap-x-4 md:grid-cols-2">
           <mat-form-field>
             <mat-label>{{ 'acc.campo.hallazgo' | transloco }}</mat-label>
-            <textarea matInput [id]="'h-' + h.id + '-texto'" cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="h.hallazgo" (ngModelChange)="cambiar(h.id, 'hallazgo', $event)"></textarea>
+            <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="h.hallazgo" (ngModelChange)="cambiar(h.id, 'hallazgo', $event)"></textarea>
+            <mat-hint>{{ 'acc.hallazgos.ayudaTexto' | transloco }}</mat-hint>
           </mat-form-field>
           <mat-form-field>
             <mat-label>{{ 'acc.campo.accion' | transloco }}</mat-label>
-            <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="h.accion" (ngModelChange)="cambiar(h.id, 'accion', $event)"></textarea>
+            <textarea matInput [id]="'h-' + h.id + '-accion'" cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="h.accion" (ngModelChange)="cambiar(h.id, 'accion', $event)"></textarea>
           </mat-form-field>
           <mat-form-field>
             <mat-label>{{ 'acc.campo.severidad' | transloco }}</mat-label>
             <mat-select [disabled]="ro" [ngModel]="h.severidad" (ngModelChange)="cambiar(h.id, 'severidad', $event, false)">
-              <mat-option value="">{{ 'acc.sinElegir' | transloco }}</mat-option>
               @for (o of severidades; track o) { <mat-option [value]="o">{{ 'acc.op.severidad.' + o | transloco }}</mat-option> }
             </mat-select>
+            @if (h.sugerida) { <mat-hint>{{ 'acc.hallazgos.sugerida' | transloco: { n: h.cat.nivel } }}</mat-hint> }
           </mat-form-field>
           <mat-form-field>
             <mat-label>{{ 'acc.campo.estadoHallazgo' | transloco }}</mat-label>
@@ -53,21 +59,24 @@
             <mat-label>{{ 'acc.campo.fechaCompromiso' | transloco }}</mat-label>
             <input matInput type="date" [readonly]="ro" [ngModel]="h.fecha" (ngModelChange)="cambiar(h.id, 'fecha', $event)" />
           </mat-form-field>
-          @if (!ro) {
-            <div class="md:col-span-2">
-              <button mat-button (click)="eliminar(h.id)"><mat-icon>delete</mat-icon>{{ 'acc.hallazgos.eliminar' | transloco: { n: n + 1 } }}</button>
-            </div>
-          }
-        </fieldset>
+        </div>
+        <div class="grid gap-3 md:grid-cols-[1fr_minmax(260px,38%)]">
+          <app-evidencias-item
+            [evidencias]="evidencias(h)"
+            [nota]="h.notaInterna"
+            [ubicacion]="'acc.hallazgos.numero' | transloco: { n: n + 1 }"
+            [soloLectura]="ro"
+            (agregar)="elegirEvidencia(h)"
+            (quitar)="quitarEvidencia(h, $event)"
+            (cambiarNota)="cambiar(h.id, 'notaInterna', $event)" />
+          <div>
+            <div class="text-xs font-semibold texto-suave mb-1">{{ 'acc.hallazgos.vistaColumna' | transloco }}</div>
+            <div class="vista preline break-words">{{ vista(h) || '—' }}</div>
+          </div>
+        </div>
+        </article>
       </li>
     }
   </ol>
 
-  @if (!ro) {
-    @if (ev.hallazgos.length < max) {
-      <button mat-flat-button class="mt-4" (click)="agregar()"><mat-icon>add</mat-icon>{{ 'acc.hallazgos.agregar' | transloco }}</button>
-    } @else {
-      <p class="mt-4">{{ 'acc.hallazgos.limite' | transloco: { n: max } }}</p>
-    }
-  }
 }

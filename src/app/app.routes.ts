@@ -8,17 +8,19 @@ export const routes: Routes = [
     canActivate: [conSesion],
     children: [
       { path: '', title: 'titulos.panel', loadComponent: () => import('./paginas/panel').then((m) => m.PanelPage) },
-      { path: 'mapa', title: 'titulos.mapa', loadComponent: () => import('./paginas/mapa').then((m) => m.MapaPage) },
+      { path: 'mapa', title: 'titulos.mapa', data: { miga: 'titulos.mapa' }, loadComponent: () => import('./paginas/mapa').then((m) => m.MapaPage) },
       {
         path: 'usuarios',
         canActivate: [soloAdmin],
         title: 'titulos.usuarios',
+        data: { miga: 'titulos.usuarios' },
         loadComponent: () => import('./paginas/usuarios').then((m) => m.UsuariosPage),
       },
-      { path: 'ita', canActivate: [conFormato('ita')], loadChildren: () => import('./formatos/ita/ita.routes').then((m) => m.rutasIta) },
+      { path: 'ita', canActivate: [conFormato('ita')], data: { miga: 'formatos.ita.nombre' }, loadChildren: () => import('./formatos/ita/ita.routes').then((m) => m.rutasIta) },
       {
         path: 'accesibilidad',
         canActivate: [conFormato('accesibilidad')],
+        data: { miga: 'formatos.accesibilidad.nombre' },
         loadChildren: () => import('./formatos/accesibilidad/accesibilidad.routes').then((m) => m.rutasAccesibilidad),
       },
       // Enlaces guardados de antes de que hubiera varios formatos.

@@ -1,0 +1,49 @@
+@let r = resp();
+<article class="tarjeta tarjeta-item p-4" [class]="r.estado ? clase[r.estado] : ''" [class.resaltado]="resaltado()" [attr.aria-labelledby]="'cr-' + item().fila">
+  <div class="flex gap-3 items-start flex-wrap">
+    @if (!soloLectura()) {
+    <mat-checkbox class="-mt-2 -ml-2" [checked]="seleccionado()" (change)="alternarSeleccion.emit($event.checked)"><span class="sr-only">{{ 'acc.criterios.seleccionar' | transloco: { sc: item().sc } }}</span></mat-checkbox>
+    }
+    <div class="flex-1 min-w-[180px] [overflow-wrap:anywhere]">
+      <div lang="es" class="text-xs uppercase tracking-wide texto-suave font-semibold">{{ item().directriz }}</div>
+      <h2 lang="es" tabindex="-1" [id]="'cr-' + item().fila" class="text-[15px] font-medium leading-snug m-0 mt-1">{{ item().sc }} {{ item().criterio }} <span class="chip-estado NA">{{ 'acc.criterios.nivelN' | transloco: { n: item().nivel } }}</span></h2>
+      <details class="mt-1">
+        <summary>{{ 'acc.criterios.detalle' | transloco: { sc: item().sc } }}</summary>
+        <div lang="es" class="text-sm">
+          <p class="my-2">{{ item().mintic }}</p>
+          <p class="preline my-2">{{ item().descripcion }}</p>
+          @if (item().excepcion) { <p class="preline my-2"><strong>{{ 'acc.criterios.excepcion' | transloco }}</strong> {{ item().excepcion }}</p> }
+          <p class="preline my-2"><strong>{{ 'acc.criterios.metodo' | transloco }}</strong> {{ item().metodo }}</p>
+        </div>
+        <a [href]="item().enlace" target="_blank" rel="noopener" class="text-xs">{{ 'acc.criterios.w3c' | transloco: { sc: item().sc } }}<span class="sr-only"> ({{ 'acc.nuevaVentana' | transloco }})</span></a>
+      </details>
+    </div>
+    <mat-button-toggle-group [value]="r.estado" [disabled]="soloLectura()" (change)="estado($event.value)" [attr.aria-label]="'acc.criterios.estadoDe' | transloco: { sc: item().sc }">
+      @for (e of estados; track e) { <mat-button-toggle [value]="e" [class]="'t-' + clase[e]">{{ 'acc.op.estado.' + e | transloco }}</mat-button-toggle> }
+    </mat-button-toggle-group>
+  </div>
+
+  <div class="mt-3 grid gap-3 md:grid-cols-[1fr_minmax(260px,38%)]">
+    <div>
+      <mat-form-field class="w-full sin-pie">
+        <mat-label>{{ (r.estado === 'noAplica' ? 'acc.criterios.justificacion' : 'acc.criterios.observacion') | transloco }}<span class="sr-only"> · {{ item().sc }}</span></mat-label>
+        <textarea matInput rows="2" cdkTextareaAutosize [readonly]="soloLectura()" [ngModel]="r.observacion" (ngModelChange)="texto($event)"></textarea>
+      </mat-form-field>
+      <app-evidencias-item
+        [evidencias]="evidencias()"
+        [nota]="r.notaInterna"
+        [ubicacion]="'acc.criterios.ubicacion' | transloco: { sc: item().sc }"
+        [soloLectura]="soloLectura()"
+        (agregar)="agregarEvidencia.emit()"
+        (quitar)="quitar($event)"
+        (cambiarNota)="nota($event)" />
+    </div>
+    <div>
+      <div class="text-xs font-semibold texto-suave mb-1">{{ 'acc.criterios.vistaColumna' | transloco }}</div>
+      <div class="vista preline break-words">{{ vista() || '—' }}</div>
+      @for (p of probs(); track p) {
+        <div class="chip-estado pendiente mt-2"><mat-icon class="!w-4 !h-4 !text-base" aria-hidden="true">warning</mat-icon>{{ 'acc.problema.' + p | transloco }}</div>
+      }
+    </div>
+  </div>
+</article>

@@ -1,6 +1,7 @@
 import JSZip from 'jszip';
+import { textoObservacion } from '../../core/catalogo';
 import { ValorCelda, escribirFila } from '../../core/xlsx.service';
-import { CATALOGO_ACC, PLANTILLA_ACC_URL } from './catalogo';
+import { CATALOGO_ACC, PLANTILLA_ACC_URL, hallazgosGenerados } from './catalogo';
 import { Evaluacion, Lista, OPCIONES } from './modelo';
 
 type Celdas = Record<number, Record<string, ValorCelda>>;
@@ -23,17 +24,19 @@ function celdas(ev: Evaluacion): Record<string, Celdas> {
   const hoja2: Celdas = {};
   for (const it of CATALOGO_ACC.criterios) {
     const r = ev.criterios[it.fila];
-    if (r) hoja2[it.fila] = { H: op('estado', r.estado), J: r.observacion };
+    if (r) hoja2[it.fila] = { H: op('estado', r.estado), J: textoObservacion(r, ev) };
   }
   const hoja3: Celdas = {};
-  ev.hallazgos.forEach((h, n) => {
+  // La plantilla tiene maxHallazgos filas; Revisar y exportar avisa si hay más.
+  hallazgosGenerados(ev).slice(0, CATALOGO_ACC.maxHallazgos).forEach((h, n) => {
     hoja3[5 + n] = {
-      B: h.criterio, C: h.hallazgo, D: op('severidad', h.severidad), E: h.accion,
+      B: h.criterio, C: textoObservacion({ observacion: h.hallazgo, evidencias: h.evidencias }, ev), D: op('severidad', h.severidad), E: h.accion,
       F: h.responsable, G: h.fecha && fechaTexto(h.fecha), H: op('estadoHallazgo', h.estado),
     };
   });
   const hoja4: Celdas = {
-    12: { A: c.evidencias }, 15: { A: c.automatizadas }, 18: { A: c.manuales },
+    // El texto de la hoja 4 y, debajo, todas las evidencias de la evaluación.
+    12: { A: textoObservacion({ observacion: c.evidencias, evidencias: ev.evidencias.map((e) => e.id) }, ev) }, 15: { A: c.automatizadas }, 18: { A: c.manuales },
     21: { B: op('resultado', c.resultado) }, 22: { B: c.justificacion }, 23: { B: op('decision', c.decision) },
     24: { B: c.profesional }, 25: { B: c.cargo }, 26: { B: serialExcel(c.fecha) }, 27: { B: c.editorial },
   };

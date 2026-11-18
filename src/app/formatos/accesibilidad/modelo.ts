@@ -2,6 +2,7 @@
  * Modelo de la Matriz de evaluación - Nivel de Accesibilidad. Lo comparten la interfaz y la API.
  * No importa el catálogo (catalogo.ts) para que el servicio, que se carga al inicio, no lo arrastre.
  */
+import type { Evidencia } from '../../core/modelos';
 
 export type Nivel = 'A' | 'AA' | 'AAA';
 
@@ -51,16 +52,25 @@ export interface Identificacion {
   tipo: Opcion<'tipo'> | '';
 }
 
-export interface Criterio {
+/** Evidencias y nota interna de un criterio o un hallazgo, igual que en los ítems de ITA. */
+interface ConEvidencias {
+  /** Ids de la biblioteca de evidencias de la evaluación, en el orden en que se listan. */
+  evidencias: string[];
+  /** Nota de trabajo; NO se exporta. */
+  notaInterna: string;
+}
+
+export interface Criterio extends ConEvidencias {
   estado: Opcion<'estado'> | null;
   observacion: string;
 }
 
-export interface Hallazgo {
+export interface Hallazgo extends ConEvidencias {
   id: string;
   /** Código del criterio (p. ej. SC1.1.1) o vacío. */
   criterio: string;
-  hallazgo: string;
+  /** null: aún sin texto propio, se usa la observación del criterio. */
+  hallazgo: string | null;
   severidad: Opcion<'severidad'> | '';
   accion: string;
   responsable: string;
@@ -88,6 +98,10 @@ export interface Contenido {
   criterios: Record<number, Criterio>;
   hallazgos: Hallazgo[];
   cierre: Cierre;
+  /** Biblioteca de evidencias: una URL puede respaldar varios criterios y hallazgos. */
+  evidencias: Evidencia[];
+  /** Cómo se escriben las evidencias en el .xlsx. */
+  formatoEvidencias: 'url' | 'titulo-url';
 }
 
 export interface Evaluacion extends Contenido {
@@ -98,17 +112,33 @@ export interface Evaluacion extends Contenido {
   actualizado: string;
 }
 
-/** Cambio parcial. En `hallazgos`, un id nuevo agrega el hallazgo al final y `null` lo elimina. */
+/** Criterios (por fila) y hallazgos (por id) a los que se asigna o quita una evidencia. */
+export interface Destinos {
+  evidencia: string;
+  criterios?: number[];
+  hallazgos?: string[];
+}
+
+type Editable<T extends ConEvidencias> = Partial<Omit<T, 'evidencias' | 'id'>>;
+
+/**
+ * Cambio parcial. En `hallazgos` y `evidencias`, un id nuevo agrega el elemento al final y `null`
+ * lo elimina (al eliminar una evidencia también se quita de donde estaba asignada).
+ */
 export interface CambioEvaluacion {
   identificacion?: Partial<Identificacion>;
   cierre?: Partial<Cierre>;
-  criterios?: Record<number, Partial<Criterio>>;
-  hallazgos?: Record<string, Partial<Omit<Hallazgo, 'id'>> | null>;
+  criterios?: Record<number, Editable<Criterio>>;
+  hallazgos?: Record<string, Editable<Hallazgo> | null>;
+  evidencias?: Record<string, Partial<Omit<Evidencia, 'id'>> | null>;
+  asignar?: Destinos;
+  quitar?: Destinos;
+  formatoEvidencias?: Contenido['formatoEvidencias'];
 }
 
-export const criterioVacio = (): Criterio => ({ estado: null, observacion: '' });
+export const criterioVacio = (): Criterio => ({ estado: null, observacion: '', evidencias: [], notaInterna: '' });
 export const hallazgoVacio = (id: string): Hallazgo => ({
-  id, criterio: '', hallazgo: '', severidad: '', accion: '', responsable: '', fecha: '', estado: '',
+  id, criterio: '', hallazgo: null, severidad: '', accion: '', responsable: '', fecha: '', estado: '', evidencias: [], notaInterna: '',
 });
 
 export function contenidoVacio(): Contenido {
@@ -120,24 +150,71 @@ export function contenidoVacio(): Contenido {
       herramientas: [], evidencias: '', automatizadas: '', manuales: '', resultado: '', justificacion: '',
       decision: '', profesional: '', cargo: '', fecha: '', editorial: '',
     },
+    evidencias: [],
+    formatoEvidencias: 'url',
+  };
+}
+
+/** Completa con valores vacíos un contenido guardado antes de que existieran algunos campos. */
+export function completar<T extends Contenido>(c: T): T {
+  const v = contenidoVacio();
+  return {
+    ...v,
+    ...c,
+    identificacion: { ...v.identificacion, ...c.identificacion },
+    cierre: { ...v.cierre, ...c.cierre },
+    criterios: Object.fromEntries(Object.entries(c.criterios ?? {}).map(([f, x]) => [f, { ...criterioVacio(), ...x }])),
+    hallazgos: (c.hallazgos ?? []).map((h) => ({ ...hallazgoVacio(h.id), ...h })),
   };
 }
 
 /** Aplica un cambio sin modificar el original. La API y la interfaz usan la misma función. */
 export function aplicarCambio<T extends Contenido>(c: T, d: CambioEvaluacion): T {
+  let evidencias = c.evidencias;
+  const borradas = new Set<string>();
+  for (const [id, e] of Object.entries(d.evidencias ?? {})) {
+    if (e === null) (evidencias = evidencias.filter((x) => x.id !== id)), borradas.add(id);
+    else if (evidencias.some((x) => x.id === id)) evidencias = evidencias.map((x) => (x.id === id ? { ...x, ...e } : x));
+    else evidencias = [...evidencias, { titulo: '', url: '', ...e, id }];
+  }
+  const existe = new Set(evidencias.map((e) => e.id));
+  /** Ajusta la lista de evidencias de un criterio o hallazgo según asignar, quitar y las borradas. */
+  const ids = (actuales: string[], tipo: 'criterios' | 'hallazgos', clave: number | string) => {
+    const en = (x?: Destinos) => !!x && existe.has(x.evidencia) && (x[tipo] as (number | string)[] | undefined)?.includes(clave);
+    let r = actuales.filter((x) => !borradas.has(x) && !(en(d.quitar) && x === d.quitar!.evidencia));
+    if (en(d.asignar) && !r.includes(d.asignar!.evidencia)) r = [...r, d.asignar!.evidencia];
+    return r;
+  };
+
   const criterios = { ...c.criterios };
   for (const [f, x] of Object.entries(d.criterios ?? {})) criterios[+f] = { ...(criterios[+f] ?? criterioVacio()), ...x };
+  for (const f of d.asignar?.criterios ?? []) criterios[f] ??= criterioVacio();
+  for (const [f, x] of Object.entries(criterios)) {
+    const nuevas = ids(x.evidencias, 'criterios', +f);
+    if (nuevas.join() !== x.evidencias.join()) criterios[+f] = { ...x, evidencias: nuevas };
+  }
+
   let hallazgos = c.hallazgos;
   for (const [id, h] of Object.entries(d.hallazgos ?? {})) {
     if (h === null) hallazgos = hallazgos.filter((x) => x.id !== id);
     else if (hallazgos.some((x) => x.id === id)) hallazgos = hallazgos.map((x) => (x.id === id ? { ...x, ...h } : x));
     else hallazgos = [...hallazgos, { ...hallazgoVacio(id), ...h }];
   }
+  // El hallazgo de un criterio se guarda la primera vez que se le asigna algo (la API valida los ids).
+  if (d.asignar && existe.has(d.asignar.evidencia))
+    for (const id of d.asignar.hallazgos ?? []) if (!hallazgos.some((x) => x.id === id)) hallazgos = [...hallazgos, hallazgoVacio(id)];
+  hallazgos = hallazgos.map((h) => {
+    const nuevas = ids(h.evidencias, 'hallazgos', h.id);
+    return nuevas.join() === h.evidencias.join() ? h : { ...h, evidencias: nuevas };
+  });
+
   return {
     ...c,
     identificacion: { ...c.identificacion, ...d.identificacion },
     cierre: { ...c.cierre, ...d.cierre },
     criterios,
     hallazgos,
+    evidencias,
+    formatoEvidencias: d.formatoEvidencias ?? c.formatoEvidencias,
   };
 }

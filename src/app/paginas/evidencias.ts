@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { FechaPipe } from '../../core/idioma';
+import { FechaPipe } from '../core/idioma';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,13 +12,13 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
-import { AlmacenService } from '../../core/almacen.service';
-import { ITEM_POR_FILA, etiquetaCorta } from '../../core/catalogo';
-import { Evidencia } from '../../core/modelos';
-import { enfocarTitulo } from '../../core/foco';
-import { verificarUrl } from '../../core/progreso';
-import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../../dialogos/dialogos';
+import { FUENTE_EVIDENCIAS } from '../core/evidencias';
+import { Evidencia } from '../core/modelos';
+import { enfocarTitulo } from '../core/foco';
+import { verificarUrl } from '../core/progreso';
+import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dialogos';
 
+/** Biblioteca de evidencias del registro activo. Sirve a todos los formatos a través de FUENTE_EVIDENCIAS. */
 @Component({
   imports: [FechaPipe, FormsModule, RouterLink, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatProgressBarModule, MatTooltipModule, TranslocoPipe],
   styles: `
@@ -30,39 +30,34 @@ import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../../dialogos/
   templateUrl: './evidencias.html',
 })
 export class EvidenciasPage {
-  protected almacen = inject(AlmacenService);
+  protected f = inject(FUENTE_EVIDENCIAS);
   private dialog = inject(MatDialog);
   private t = inject(TranslocoService);
   q = signal('');
   abierta = signal<string | null>(null);
   verificando = signal(false);
   avance = signal(0);
-  corta = (f: number) => {
-    const it = ITEM_POR_FILA.get(f);
-    return it ? `${it.nivel1 ? it.nivel1.slice(0, 40) + ' › ' : ''}${etiquetaCorta(it, 110)}` : this.t.translate('evidencias.fila', { fila: f });
-  };
-
   lista = computed(() => {
     const t = this.q().toLowerCase().trim();
-    const evs = this.almacen.activo()?.evidencias ?? [];
+    const evs = this.f.evidencias();
     return t ? evs.filter((e) => `${e.titulo} ${e.url} ${e.descripcion ?? ''}`.toLowerCase().includes(t)) : evs;
   });
 
   async nueva() {
     const d = await firstValueFrom(this.dialog.open(EvidenciaDialog, { data: {} }).afterClosed());
     if (d) {
-      const ev = this.almacen.agregarEvidencia(d);
-      this.asignar(ev, this.almacen.usos(ev.id));
+      const ev = this.f.agregar(d);
+      this.asignar(ev, this.f.usos(ev.id));
     }
   }
 
   async editar(e: Evidencia) {
     const d = await firstValueFrom(this.dialog.open(EvidenciaDialog, { data: { evidencia: e } }).afterClosed());
-    if (d) this.almacen.editarEvidencia(e.id, { titulo: d.titulo, url: d.url, descripcion: d.descripcion, verificacion: d.url !== e.url ? undefined : e.verificacion });
+    if (d) this.f.editar(e.id, { titulo: d.titulo, url: d.url, descripcion: d.descripcion, verificacion: d.url !== e.url ? undefined : e.verificacion });
   }
 
-  asignar(e: Evidencia, usos: number[]) {
-    this.dialog.open(AsignarDialog, { data: { evidencia: e, usos }, maxWidth: '95vw' });
+  asignar(e: Evidencia, usos: string[]) {
+    this.dialog.open(AsignarDialog, { data: { evidencia: e, usos, fuente: this.f }, maxWidth: '95vw' });
   }
 
   async eliminar(e: Evidencia, n: number) {
@@ -78,19 +73,19 @@ export class EvidenciasPage {
         .afterClosed(),
     );
     if (ok) {
-      this.almacen.eliminarEvidencia(e.id);
+      this.f.eliminar(e.id);
       enfocarTitulo(); // El menú desde el que se eliminó ya no existe.
     }
   }
 
   async verificar(e: Evidencia) {
     const estado = await verificarUrl(e.url);
-    this.almacen.editarEvidencia(e.id, { verificacion: { fecha: new Date().toISOString(), estado } });
+    this.f.editar(e.id, { verificacion: { fecha: new Date().toISOString(), estado } });
   }
 
   async verificarTodas() {
     if (this.verificando()) return;
-    const evs = this.almacen.activo()?.evidencias ?? [];
+    const evs = this.f.evidencias();
     this.verificando.set(true);
     let hechas = 0;
     const cola = [...evs];

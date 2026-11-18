@@ -15,6 +15,7 @@ import { SECCIONES, Seccion, problemas } from '../../core/catalogo';
 import { EstadoCumplimiento, ItemCatalogo } from '../../core/modelos';
 import { IDIOMA_PREDETERMINADO, IdiomaService } from '../../core/idioma';
 import { enfocarTitulo } from '../../core/foco';
+import { FUENTE_EVIDENCIAS } from '../../core/evidencias';
 import { progreso } from '../../core/progreso';
 import { ElegirEvidenciaDialog, TextoMasivoDialog } from '../../dialogos/dialogos';
 import { ItemCard } from './item-card';
@@ -23,16 +24,6 @@ type Filtro = 'todos' | 'pendientes' | 'problemas';
 
 @Component({
   imports: [FormsModule, MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, ItemCard, TranslocoPipe],
-  styles: `
-    .lateral { max-height: 40vh; overflow: auto; }
-    @media (min-width: 1024px) { .lateral { position: sticky; top: 72px; max-height: calc(100vh - 88px); } }
-    .lateral button { all: unset; display: block; width: 100%; box-sizing: border-box; cursor: pointer; padding: 8px 10px; border-radius: 8px; }
-    .lateral button:hover { background: #eef2f7; }
-    .lateral button[aria-current='true'] { background: #dde7f5; font-weight: 600; }
-    .lateral button:focus-visible { outline: 3px solid var(--foco); }
-    .grupo { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--texto-suave); margin: 14px 10px 4px; font-weight: 700; }
-    .acciones { position: sticky; bottom: 12px; z-index: 10; background: var(--pb-azul); color: #fff; --foco: var(--pb-amarillo); }
-  `,
   templateUrl: './diligenciar.html',
 })
 export class DiligenciarPage {
@@ -45,6 +36,7 @@ export class DiligenciarPage {
   /** El catálogo oficial siempre está en español. */
   idiomaCatalogo = IDIOMA_PREDETERMINADO;
   private dialog = inject(MatDialog);
+  private fuente = inject(FUENTE_EVIDENCIAS);
   private router = inject(Router);
   private injector = inject(Injector);
   private botonSeleccionar = viewChild('botonSeleccionar', { read: ElementRef });
@@ -136,7 +128,7 @@ export class DiligenciarPage {
   }
 
   agregarEvidencia(filas: number[]) {
-    this.dialog.open(ElegirEvidenciaDialog, { data: { filas } });
+    this.dialog.open(ElegirEvidenciaDialog, { data: { claves: filas.map(String), fuente: this.fuente } });
   }
 
   async observacionMasiva() {

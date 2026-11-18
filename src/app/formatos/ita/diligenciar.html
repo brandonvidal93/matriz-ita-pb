@@ -59,7 +59,7 @@
       </div>
 
       @if (seleccion().size && !almacen.soloLectura()) {
-        <div class="acciones mt-4 rounded-xl shadow-lg px-4 py-2 flex items-center gap-2 flex-wrap" role="region" [attr.aria-label]="'diligenciar.accionesSeleccion' | transloco">
+        <div class="barra-acciones mt-4 rounded-xl shadow-lg px-4 py-2 flex items-center gap-2 flex-wrap" role="region" [attr.aria-label]="'diligenciar.accionesSeleccion' | transloco">
           <strong class="mr-2">{{ 'diligenciar.seleccionados' | transloco: { n: seleccion().size } }}</strong>
           <button mat-button class="!text-white" (click)="marcar('SI')">{{ 'diligenciar.marcarSi' | transloco }}</button>
           <button mat-button class="!text-white" (click)="marcar('NO')">{{ 'estado.NO' | transloco }}</button>

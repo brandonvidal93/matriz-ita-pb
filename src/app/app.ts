@@ -10,18 +10,20 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { AlmacenService } from './core/almacen.service';
-import { AuthService, mensajeError } from './core/auth.service';
-import { claveRol } from './core/modelos';
+import { AuthService } from './core/auth.service';
+import { FORMATOS, claveRol } from './core/modelos';
 import { IdiomaService } from './core/idioma';
 import { enfocarTitulo } from './core/foco';
 import { Esqueleto } from './core/esqueleto';
-import { descargar } from './core/progreso';
+import { MigaPan } from './core/miga';
+import { MatDialog } from '@angular/material/dialog';
+import { RespaldoDialog } from './dialogos/dialogos';
 import { CONFIG } from './config';
 import { EvaluacionesService } from './formatos/accesibilidad/evaluaciones.service';
 
 @Component({
   selector: 'app-root',
-  imports: [Esqueleto, RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatMenuModule, MatSnackBarModule, MatTooltipModule, TranslocoPipe, UpperCasePipe],
+  imports: [Esqueleto, MigaPan, RouterOutlet, RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatMenuModule, MatSnackBarModule, MatTooltipModule, TranslocoPipe, UpperCasePipe],
   styles: `
     header { background: var(--pb-azul); color: #fff; --foco: var(--pb-amarillo); }
     .marca { border-left: 4px solid var(--pb-amarillo); padding-left: 12px; color: #fff; text-decoration: none; }
@@ -35,9 +37,10 @@ import { EvaluacionesService } from './formatos/accesibilidad/evaluaciones.servi
 })
 export class App {
   protected almacen = inject(AlmacenService);
-  private evaluaciones = inject(EvaluacionesService);
+  protected evaluaciones = inject(EvaluacionesService);
   protected auth = inject(AuthService);
   private snack = inject(MatSnackBar);
+  private dialog = inject(MatDialog);
   private router = inject(Router);
   private injector = inject(Injector);
   private titulos = inject(TitleStrategy);
@@ -47,7 +50,27 @@ export class App {
   dependencia = CONFIG.dependencia;
 
   private url = toSignal(this.router.events.pipe(filter((e) => e instanceof NavigationEnd), map(() => this.router.url)), { initialValue: '' });
-  activo = computed(() => (this.url().startsWith('/ita/r/') ? this.almacen.activo() : null));
+  /**
+   * Menú del registro abierto. Todos los formatos tienen las mismas tres páginas:
+   * `#/<formato>/r/:id` (diligenciar), `…/evidencias` y `…/resumen`.
+   */
+  activo = computed(() => {
+    const m = this.menuRegistro();
+    return m && { ...m, evidenciasRuta: [...m.base, 'evidencias'], resumenRuta: [...m.base, 'resumen'] };
+  });
+  private menuRegistro = computed(() => {
+    const u = this.url();
+    if (u.startsWith('/ita/r/')) {
+      const r = this.almacen.activo();
+      return r && { base: ['/ita/r', r.id], nombre: r.nombre, evidencias: r.evidencias.length };
+    }
+    if (u.startsWith('/accesibilidad/r/')) {
+      const e = this.evaluaciones.activa();
+      const nombre = this.t.translate('acc.ticket', { n: e?.ticket });
+      return e && { base: ['/accesibilidad/r', e.id], nombre: e.identificacion.requerimiento ? `${nombre} · ${e.identificacion.requerimiento}` : nombre, evidencias: e.evidencias.length };
+    }
+    return null;
+  });
 
   claveRol = claveRol;
   /** La página anterior se oculta solo si la navegación (guardias, carga diferida) tarda; así no parpadea. */
@@ -95,13 +118,12 @@ export class App {
       });
   }
 
-  async descargarCopia() {
-    try {
-      descargar(await this.almacen.respaldoCompleto(), `matriz-ita-datos_${new Date().toISOString().slice(0, 10)}.json`);
-    } catch (e) {
-      this.snack.open(this.t.translate('app.avisos.errorDescarga', { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
-    }
+  /** Abre el respaldo con el formato en el que está el usuario (en la vista general, el primero que puede ver). */
+  respaldo() {
+    const formato = FORMATOS.find((f) => this.url().startsWith(`/${f}`));
+    this.dialog.open(RespaldoDialog, { data: { formato }, autoFocus: 'first-tabbable' });
   }
+  protected puedeRespaldo = computed(() => FORMATOS.some((f) => this.auth.puede(f, 'ver')));
 
   async salir() {
     await Promise.all([this.almacen.vaciar(), this.evaluaciones.vaciar()]);
@@ -109,20 +131,6 @@ export class App {
     this.almacen.limpiar();
     this.evaluaciones.limpiar();
     this.router.navigate(['/ingresar']);
-  }
-
-  async cargarCopia(ev: Event) {
-    const input = ev.target as HTMLInputElement;
-    const f = input.files?.[0];
-    input.value = '';
-    if (!f) return;
-    try {
-      const r = await this.almacen.restaurar(await f.text());
-      const omitidos = r.omitidos.length ? ' ' + this.t.translate('app.avisos.omitidos', { n: r.omitidos.length }) : '';
-      this.snack.open(this.t.translate('app.avisos.cargados', { n: r.creados.length }) + omitidos, this.t.translate('comun.cerrar'));
-    } catch (e) {
-      this.snack.open(this.t.translate('app.avisos.errorCarga', { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
-    }
   }
 
   saltar(ev: Event) {

@@ -26,8 +26,24 @@ interface DatosUsuarioDialog {
   usuario?: UsuarioLista;
 }
 
+/** Sin caracteres que se confunden al dictarlos o copiarlos a mano (0/O, 1/l/I). */
+const ALFABETO = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+
+/** Contraseña temporal aleatoria de letras y números (cumple problemaClave). */
+export function generarClave(largo = 12): string {
+  const limite = 256 - (256 % ALFABETO.length); // descarta bytes que sesgarían la distribución
+  for (;;) {
+    let c = '';
+    while (c.length < largo) {
+      const [b] = crypto.getRandomValues(new Uint8Array(1));
+      if (b! < limite) c += ALFABETO[b! % ALFABETO.length];
+    }
+    if (!problemaClave(c)) return c;
+  }
+}
+
 @Component({
-  imports: [FormsModule, MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, TranslocoPipe, VerClave],
+  imports: [FormsModule, MatButtonModule, MatDialogModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, TranslocoPipe, VerClave],
   templateUrl: './usuario-dialog.html',
 })
 export class UsuarioDialog {
@@ -39,7 +55,8 @@ export class UsuarioDialog {
     usuario: '',
     nombre: this.d.usuario?.nombre ?? '',
     rol: (this.d.usuario?.rol ?? 'editor') as Rol,
-    clave: '',
+    // Al crear, se propone una contraseña temporal aleatoria.
+    clave: this.d.usuario ? '' : generarClave(),
     // '' es «sin acceso» en el select.
     formatos: Object.fromEntries(FORMATOS.map((f) => [f, this.d.usuario?.formatos[f] ?? ''])) as Record<string, Permiso | ''>,
   };
@@ -53,6 +70,12 @@ export class UsuarioDialog {
     this.error.set(this.t.translate(clave));
     this.campoError.set(campo);
     document.querySelector<HTMLElement>(`mat-dialog-container input[name=${campo}]`)?.focus();
+  }
+
+  nuevaClave(campo: HTMLInputElement) {
+    this.m.clave = generarClave();
+    this.campoError.set(null);
+    campo.focus();
   }
 
   guardar() {
