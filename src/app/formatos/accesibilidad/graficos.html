@@ -1,0 +1,41 @@
+@let k = c();
+<p class="texto-suave text-sm mt-0 mb-3">{{ 'acc.graficos.descripcion' | transloco }}</p>
+<div class="grid gap-4 grid-cols-1 xl:grid-cols-2">
+  <section class="tarjeta p-4 xl:col-span-2" aria-labelledby="g-nivel">
+    <h2 id="g-nivel" class="text-lg font-semibold m-0 mb-3">{{ 'acc.graficos.porNivel' | transloco }}</h2>
+    <div class="grid gap-4 grid-cols-1 md:grid-cols-3">
+      @for (n of niveles; track n) {
+        <div>
+          <h3 class="text-sm font-semibold m-0 mb-2">{{ 'acc.criterios.nivelN' | transloco: { n } }} <span class="font-normal texto-suave">· {{ 'acc.graficos.deTotal' | transloco: { n: k.porNivel[n].total } }}</span></h3>
+          <ul class="list-none p-0 m-0 grid gap-1">
+            @for (e of estados; track e) {
+              <li class="grid grid-cols-[6.5rem_minmax(0,1fr)_2rem] items-center gap-2 text-sm">
+                <span>{{ 'acc.op.estado.' + e | transloco }}</span>
+                <span aria-hidden="true"><span class="barra block" [style.width.%]="maximo() ? (k.porNivel[n][e] / maximo()) * 100 : 0" [style.background]="'var(--' + (e === 'cumple' ? 'ok' : e === 'noCumple' ? 'no' : 'na') + ')'"></span></span>
+                <span class="text-right font-semibold">{{ k.porNivel[n][e] }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </section>
+
+  @for (g of [{ id: 'g-cum', titulo: 'acc.graficos.cumplimiento', d: cumplimiento(), vacio: 'acc.graficos.sinCumple' }, { id: 'g-fal', titulo: 'acc.graficos.fallos', d: fallos(), vacio: 'acc.graficos.sinFallos' }]; track g.id) {
+    <section class="tarjeta p-4" [attr.aria-labelledby]="g.id">
+      <h2 [id]="g.id" class="text-lg font-semibold m-0 mb-3">{{ g.titulo | transloco }}</h2>
+      <div class="flex flex-wrap items-center gap-6">
+        <div class="dona" [style.background]="g.d.fondo" aria-hidden="true"></div>
+        @if (g.d.total) {
+          <ul class="list-none p-0 m-0 grid gap-2 text-sm">
+            @for (p of g.d.partes; track p.n) {
+              <li class="flex items-center gap-2"><span class="muestra" [style.background]="color[p.n]" aria-hidden="true"></span>{{ 'acc.criterios.nivelN' | transloco: { n: p.n } }}: <strong>{{ p.v }}</strong> ({{ p.pct }})</li>
+            }
+          </ul>
+        } @else {
+          <p class="texto-suave text-sm m-0">{{ g.vacio | transloco }}</p>
+        }
+      </div>
+    </section>
+  }
+</div>

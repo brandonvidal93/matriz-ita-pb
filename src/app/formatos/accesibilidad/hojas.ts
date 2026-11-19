@@ -13,12 +13,13 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { textoObservacion } from '../../core/catalogo';
 import { FUENTE_EVIDENCIAS } from '../../core/evidencias';
 import { EvidenciasItem } from '../../core/evidencias-item';
+import { IdiomaService } from '../../core/idioma';
 import { Evidencia } from '../../core/modelos';
 import { ElegirEvidenciaDialog } from '../../dialogos/dialogos';
 import { EvaluacionesService } from './evaluaciones.service';
-import { CATALOGO_ACC, HallazgoGenerado, hallazgosGenerados } from './catalogo';
+import { CATALOGO_ACC, HallazgoGenerado, consolidado, hallazgosGenerados } from './catalogo';
 import { claveHallazgo } from './fuente';
-import { Cierre, Hallazgo, Identificacion, codigos } from './modelo';
+import { Cierre, Hallazgo, Identificacion, Nivel, codigos } from './modelo';
 
 const BASE = [FormsModule, TextFieldModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, TranslocoPipe];
 
@@ -88,5 +89,48 @@ export class SeccionCierre {
   herramienta(fila: number, usada: boolean) {
     const actuales = this.svc.activa()?.cierre.herramientas ?? [];
     this.cambiar('herramientas', usada ? [...new Set([...actuales, fila])] : actuales.filter((f) => f !== fila), false);
+  }
+}
+
+// ---------------------------------------------------------------- Gráficos (hojas 5 a 7 del .xlsx)
+const NIVELES: Nivel[] = ['A', 'AA', 'AAA'];
+/** Azules del .xlsx, oscurecidos para tener 3:1 sobre blanco. */
+const COLOR_NIVEL: Record<Nivel, string> = { A: '#4f81bd', AA: '#2e5a8a', AAA: '#1b3550' };
+
+@Component({
+  selector: 'app-acc-graficos',
+  imports: [TranslocoPipe],
+  styles: `
+    .barra { height: 14px; border-radius: 4px; min-width: 2px; }
+    .dona { width: 160px; height: 160px; border-radius: 50%; flex: none;
+      mask: radial-gradient(circle, transparent 46%, #000 47%); -webkit-mask: radial-gradient(circle, transparent 46%, #000 47%); }
+    .muestra { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+  `,
+  templateUrl: './graficos.html',
+})
+export class SeccionGraficos {
+  protected svc = inject(EvaluacionesService);
+  private idioma = inject(IdiomaService);
+  niveles = NIVELES;
+  color = COLOR_NIVEL;
+  estados = ['cumple', 'noCumple', 'noAplica'] as const;
+  c = computed(() => consolidado(this.svc.activa()!));
+  /** Escala común de las barras: el nivel con más criterios. */
+  maximo = computed(() => Math.max(...NIVELES.map((n) => this.c().porNivel[n].total)));
+  cumplimiento = computed(() => this.dona('cumple'));
+  fallos = computed(() => this.dona('noCumple'));
+
+  /** Reparto entre niveles de un estado, como las donas del .xlsx: valor, porcentaje y degradado cónico. */
+  private dona(estado: 'cumple' | 'noCumple') {
+    const total = this.c()[estado];
+    const fmt = new Intl.NumberFormat(this.idioma.locale(), { style: 'percent', maximumFractionDigits: 1 });
+    let acumulado = 0;
+    const partes = NIVELES.map((n) => {
+      const v = this.c().porNivel[n][estado];
+      const desde = acumulado;
+      acumulado += total ? (v / total) * 100 : 0;
+      return { n, v, pct: fmt.format(total ? v / total : 0), tramo: `${COLOR_NIVEL[n]} ${desde}% ${acumulado}%` };
+    });
+    return { total, partes, fondo: total ? `conic-gradient(${partes.map((p) => p.tramo).join(', ')})` : '#e6e9ee' };
   }
 }

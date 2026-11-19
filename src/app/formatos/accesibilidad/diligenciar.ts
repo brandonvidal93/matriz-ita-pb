@@ -17,7 +17,7 @@ import { CATALOGO_ACC, PRINCIPIOS, consolidado, hallazgosGenerados, planCompleto
 import { CriterioCard } from './criterio-card';
 import { EvaluacionesService } from './evaluaciones.service';
 import { claveCriterio } from './fuente';
-import { SeccionCierre, SeccionHallazgos, SeccionIdentificacion } from './hojas';
+import { SeccionCierre, SeccionGraficos, SeccionHallazgos, SeccionIdentificacion } from './hojas';
 import { Criterio, CriterioCatalogo, Evaluacion } from './modelo';
 
 type Filtro = 'todos' | 'pendientes' | 'problemas';
@@ -39,7 +39,7 @@ interface Seccion {
  */
 @Component({
   imports: [FormsModule, MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatInputModule, TranslocoPipe,
-    CriterioCard, SeccionIdentificacion, SeccionHallazgos, SeccionCierre],
+    CriterioCard, SeccionIdentificacion, SeccionHallazgos, SeccionCierre, SeccionGraficos],
   templateUrl: './diligenciar.html',
 })
 export class DiligenciarAccPage {
@@ -66,6 +66,7 @@ export class DiligenciarAccPage {
       ...PRINCIPIOS.map((p) => ({ clave: p.clave, grupo: criterios, titulo: p.titulo, oficial: true, criterios: p.criterios })),
       { clave: 'hallazgos', grupo: '', titulo: this.t.translate('acc.seccion.hallazgos'), oficial: false, criterios: [] },
       { clave: 'cierre', grupo: '', titulo: this.t.translate('acc.seccion.cierre'), oficial: false, criterios: [] },
+      { clave: 'graficos', grupo: '', titulo: this.t.translate('acc.seccion.graficos'), oficial: false, criterios: [] },
     ];
   });
 
@@ -88,8 +89,8 @@ export class DiligenciarAccPage {
 
   private avance(s: Seccion, ev: Evaluacion): { hechos: number; total: number; porcentaje: number } {
     const p = (hechos: number, total: number) => ({ hechos, total, porcentaje: total ? Math.round((hechos / total) * 100) : 0 });
-    if (s.criterios.length) {
-      const c = consolidado(ev, s.criterios);
+    if (s.criterios.length || s.clave === 'graficos') {
+      const c = s.criterios.length ? consolidado(ev, s.criterios) : consolidado(ev);
       return p(c.evaluados, c.total);
     }
     if (s.clave === 'hallazgos') {

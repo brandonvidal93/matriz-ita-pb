@@ -530,7 +530,8 @@
       "identificacion": "Identificación del requerimiento",
       "criterios": "Matriz de evaluación",
       "hallazgos": "Hallazgos y plan de tratamiento",
-      "cierre": "Cierre, herramientas y aprobaciones"
+      "cierre": "Cierre, herramientas y aprobaciones",
+      "graficos": "Gráficos"
     },
     "problema": {
       "sin-estado": "Sin evaluar",
@@ -549,6 +550,15 @@
       "pendientes": "Criterios por revisar ({{ n }})",
       "verMas": "Ver más criterios por revisar",
       "sinPlan": "{{ n }} hallazgos sin plan de tratamiento completo (acción, responsable, fecha y estado)."
+    },
+    "graficos": {
+      "descripcion": "Los mismos gráficos del .xlsx exportado. Se actualizan a medida que se evalúan los criterios.",
+      "porNivel": "Cumplimiento por nivel",
+      "deTotal": "{{ n }} criterios",
+      "cumplimiento": "Porcentaje de cumplimiento",
+      "fallos": "Porcentaje de fallos",
+      "sinCumple": "Aún no hay criterios en Cumple.",
+      "sinFallos": "Aún no hay criterios en No cumple."
     }
   },
   "respaldo": {

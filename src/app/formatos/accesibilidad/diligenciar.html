@@ -40,6 +40,7 @@
           @case ('identificacion') { <app-acc-identificacion /> }
           @case ('hallazgos') { <app-acc-hallazgos [resaltado]="hallazgoResaltado()" /> }
           @case ('cierre') { <app-acc-cierre /> }
+          @case ('graficos') { <app-acc-graficos /> }
         }
       } @else {
         @if (idioma.actual() !== idiomaCatalogo) {

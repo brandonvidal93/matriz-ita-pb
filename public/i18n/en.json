@@ -530,7 +530,8 @@
       "identificacion": "Request identification",
       "criterios": "Evaluation matrix",
       "hallazgos": "Findings and remediation plan",
-      "cierre": "Closure, tools and approvals"
+      "cierre": "Closure, tools and approvals",
+      "graficos": "Charts"
     },
     "problema": {
       "sin-estado": "Not evaluated",
@@ -549,6 +550,15 @@
       "pendientes": "Criteria to review ({{ n }})",
       "verMas": "Show more criteria to review",
       "sinPlan": "{{ n }} findings without a complete treatment plan (action, owner, date and status)."
+    },
+    "graficos": {
+      "descripcion": "The same charts as the exported .xlsx. They update as criteria are evaluated.",
+      "porNivel": "Compliance by level",
+      "deTotal": "{{ n }} criteria",
+      "cumplimiento": "Compliance percentage",
+      "fallos": "Failure percentage",
+      "sinCumple": "No criteria marked Met yet.",
+      "sinFallos": "No criteria marked Not met yet."
     }
   },
   "respaldo": {
