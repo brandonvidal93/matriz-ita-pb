@@ -76,18 +76,20 @@
             <span class="chip-estado NA">{{ 'estado.NA' | transloco }} {{ p.na }}</span>
           </div>
         </div>
-        <button mat-flat-button [attr.aria-label]="'registros.abrirNombre' | transloco: { nombre: r.nombre }" (click)="abrir(r)">{{ 'registros.abrir' | transloco }}</button>
-        <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'comun.masAcciones' | transloco: { nombre: r.nombre }"><mat-icon>more_vert</mat-icon></button>
-        <mat-menu #m="matMenu">
-          @if (!almacen.soloLectura()) {
-            <button mat-menu-item (click)="editar(r)"><mat-icon>edit</mat-icon>{{ 'registros.menu.editar' | transloco }}</button>
-            <button mat-menu-item (click)="duplicar(r)"><mat-icon>content_copy</mat-icon>{{ 'registros.menu.duplicar' | transloco }}</button>
-          }
-          <button mat-menu-item (click)="respaldo(r)"><mat-icon>download</mat-icon>{{ 'registros.menu.respaldo' | transloco }}</button>
-          @if (auth.esAdmin()) {
-            <button mat-menu-item (click)="eliminar(r)"><mat-icon>delete</mat-icon>{{ 'comun.eliminar' | transloco }}</button>
-          }
-        </mat-menu>
+        <div class="flex items-center gap-1 ml-auto">
+          <button mat-flat-button [attr.aria-label]="'registros.abrirNombre' | transloco: { nombre: r.nombre }" (click)="abrir(r)">{{ 'registros.abrir' | transloco }}</button>
+          <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'comun.masAcciones' | transloco: { nombre: r.nombre }"><mat-icon>more_vert</mat-icon></button>
+          <mat-menu #m="matMenu">
+            @if (!almacen.soloLectura()) {
+              <button mat-menu-item (click)="editar(r)"><mat-icon>edit</mat-icon>{{ 'registros.menu.editar' | transloco }}</button>
+              <button mat-menu-item (click)="duplicar(r)"><mat-icon>content_copy</mat-icon>{{ 'registros.menu.duplicar' | transloco }}</button>
+            }
+            <button mat-menu-item (click)="respaldo(r)"><mat-icon>download</mat-icon>{{ 'registros.menu.respaldo' | transloco }}</button>
+            @if (auth.esAdmin()) {
+              <button mat-menu-item (click)="eliminar(r)"><mat-icon>delete</mat-icon>{{ 'comun.eliminar' | transloco }}</button>
+            }
+          </mat-menu>
+        </div>
       </li>
     }
   </ul>

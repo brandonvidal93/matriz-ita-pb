@@ -1,6 +1,6 @@
 @if (svc.activa(); as ev) {
   <div class="max-w-[1400px] mx-auto px-4 py-4 grid gap-4 grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)]">
-    <nav class="lateral tarjeta p-2 min-w-0" [attr.aria-label]="'acc.secciones' | transloco">
+    <app-lateral [etiqueta]="'acc.secciones' | transloco" [actual]="seccionActual().titulo" [oficial]="seccionActual().oficial">
       @for (s of seccionesConAvance(); track s.clave; let i = $index) {
         @if (s.grupo && s.grupo !== seccionesConAvance()[i - 1]?.grupo) { <h2 class="grupo">{{ s.grupo }}</h2> }
         <button [attr.aria-current]="s.clave === seccionActual().clave && !busqueda()" (click)="irA(s)">
@@ -11,7 +11,7 @@
           </span>
         </button>
       }
-    </nav>
+    </app-lateral>
 
     <section aria-labelledby="t-seccion" class="min-w-0">
       @if (deCriterios()) {

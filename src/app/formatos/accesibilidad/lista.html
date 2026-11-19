@@ -52,14 +52,16 @@
             <span class="chip-estado NA">{{ 'acc.op.estado.noAplica' | transloco }} {{ c.noAplica }}</span>
           </div>
         </div>
-        <a mat-flat-button [routerLink]="['/accesibilidad/r', e.id]" [attr.aria-label]="'registros.abrirNombre' | transloco: { nombre: ('acc.ticket' | transloco: { n: e.ticket }) }">{{ 'registros.abrir' | transloco }}</a>
-        <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'comun.masAcciones' | transloco: { nombre: ('acc.ticket' | transloco: { n: e.ticket }) }"><mat-icon>more_vert</mat-icon></button>
-        <mat-menu #m="matMenu">
-          <button mat-menu-item (click)="exportar(e)"><mat-icon>download</mat-icon>{{ 'acc.exportar' | transloco }}</button>
-          @if (auth.esAdmin()) {
-            <button mat-menu-item (click)="eliminar(e)"><mat-icon>delete</mat-icon>{{ 'comun.eliminar' | transloco }}</button>
-          }
-        </mat-menu>
+        <div class="flex items-center gap-1 ml-auto">
+          <a mat-flat-button [routerLink]="['/accesibilidad/r', e.id]" [attr.aria-label]="'registros.abrirNombre' | transloco: { nombre: ('acc.ticket' | transloco: { n: e.ticket }) }">{{ 'registros.abrir' | transloco }}</a>
+          <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'comun.masAcciones' | transloco: { nombre: ('acc.ticket' | transloco: { n: e.ticket }) }"><mat-icon>more_vert</mat-icon></button>
+          <mat-menu #m="matMenu">
+            <button mat-menu-item (click)="exportar(e)"><mat-icon>download</mat-icon>{{ 'acc.exportar' | transloco }}</button>
+            @if (auth.esAdmin()) {
+              <button mat-menu-item (click)="eliminar(e)"><mat-icon>delete</mat-icon>{{ 'comun.eliminar' | transloco }}</button>
+            }
+          </mat-menu>
+        </div>
       </li>
     }
   </ul>

@@ -164,7 +164,11 @@
     "asignarEvidencia": "Asignar evidencia",
     "observacion": "Observación",
     "cerrarSeleccion": "Cerrar selección",
-    "anuncio": "{{ n }} ítems visibles"
+    "anuncio": "{{ n }} ítems visibles",
+    "lateral": {
+      "abrir": "Secciones",
+      "cerrar": "Cerrar secciones"
+    }
   },
   "item": {
     "seleccionar": "Seleccionar ítem fila {{ fila }}",
@@ -411,7 +415,7 @@
       "ambiente": "Ambiente de prueba",
       "responsable": "Responsable",
       "fechaValidacion": "Fecha de validación",
-      "entorno": "Navegador, sistema operativo y dispositivo",
+      "entorno": "Entorno de navegación",
       "tipo": "Tipo de requerimiento",
       "criterio": "Criterio relacionado",
       "hallazgo": "Hallazgo",
@@ -419,22 +423,22 @@
       "accion": "Acción requerida",
       "fechaCompromiso": "Fecha compromiso",
       "estadoHallazgo": "Estado",
-      "evidencias": "Enlace, ruta o identificación de las evidencias",
-      "automatizadas": "Resultado de pruebas automatizadas",
-      "manuales": "Resultado de pruebas manuales y con tecnología de asistencia",
+      "evidencias": "Evidencias",
+      "automatizadas": "Pruebas automatizadas",
+      "manuales": "Pruebas manuales",
       "resultado": "Resultado",
-      "justificacion": "Justificación del resultado final",
+      "justificacion": "Justificación",
       "decision": "Decisión de publicación",
-      "profesional": "Profesional que realiza la validación técnica",
+      "profesional": "Validación técnica",
       "cargo": "Cargo o rol",
       "fecha": "Fecha",
-      "editorial": "Validación funcional del responsable editorial (nombre, cargo, fecha y aprobación)"
+      "editorial": "Validación editorial"
     },
     "identificacion": {
       "descripcion": "Qué se evalúa, dónde y con qué herramientas.",
       "ticketAuto": "se asigna automáticamente",
       "requerimientoAyuda": "Tipo de evaluación, por ejemplo: evaluación inicial de accesibilidad web.",
-      "entornoAyuda": "Por ejemplo: Chrome 142, Windows 11, escritorio."
+      "entornoAyuda": "Navegador, sistema operativo y dispositivo. Por ejemplo: Chrome 142, Windows 11, escritorio."
     },
     "criterios": {
       "consolidado": "Consolidado",
@@ -478,7 +482,15 @@
       "descripcion": "Herramientas usadas, resultados de las pruebas y decisión final.",
       "herramientas": "Herramientas utilizadas",
       "pruebas": "Evidencias y resultados de las pruebas",
-      "resultadoFinal": "Resultado final y aprobaciones"
+      "resultadoFinal": "Resultado final y aprobaciones",
+      "ayuda": {
+        "evidencias": "Enlace, ruta o identificación de las evidencias.",
+        "automatizadas": "Resultado de las pruebas automatizadas.",
+        "manuales": "Resultado de las pruebas manuales y con tecnología de asistencia.",
+        "justificacion": "Justificación del resultado final.",
+        "profesional": "Profesional que realiza la validación técnica.",
+        "editorial": "Validación funcional del responsable editorial: nombre, cargo, fecha y aprobación."
+      }
     },
     "op": {
       "ambiente": {

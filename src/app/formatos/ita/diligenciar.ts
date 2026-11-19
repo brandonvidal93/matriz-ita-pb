@@ -15,6 +15,7 @@ import { SECCIONES, Seccion, problemas } from '../../core/catalogo';
 import { EstadoCumplimiento, ItemCatalogo } from '../../core/modelos';
 import { IDIOMA_PREDETERMINADO, IdiomaService } from '../../core/idioma';
 import { enfocarTitulo } from '../../core/foco';
+import { Lateral } from '../../core/lateral';
 import { FUENTE_EVIDENCIAS } from '../../core/evidencias';
 import { progreso } from '../../core/progreso';
 import { ElegirEvidenciaDialog, TextoMasivoDialog } from '../../dialogos/dialogos';
@@ -23,7 +24,7 @@ import { ItemCard } from './item-card';
 type Filtro = 'todos' | 'pendientes' | 'problemas';
 
 @Component({
-  imports: [FormsModule, MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, ItemCard, TranslocoPipe],
+  imports: [FormsModule, Lateral, MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, ItemCard, TranslocoPipe],
   templateUrl: './diligenciar.html',
 })
 export class DiligenciarPage {

@@ -164,7 +164,11 @@
     "asignarEvidencia": "Assign evidence",
     "observacion": "Remarks",
     "cerrarSeleccion": "Close selection",
-    "anuncio": "{{ n }} items shown"
+    "anuncio": "{{ n }} items shown",
+    "lateral": {
+      "abrir": "Sections",
+      "cerrar": "Close sections"
+    }
   },
   "item": {
     "seleccionar": "Select item in row {{ fila }}",
@@ -411,7 +415,7 @@
       "ambiente": "Test environment",
       "responsable": "Person responsible",
       "fechaValidacion": "Validation date",
-      "entorno": "Browser, operating system and device",
+      "entorno": "Browsing environment",
       "tipo": "Request type",
       "criterio": "Related criterion",
       "hallazgo": "Finding",
@@ -419,22 +423,22 @@
       "accion": "Required action",
       "fechaCompromiso": "Due date",
       "estadoHallazgo": "Status",
-      "evidencias": "Link, path or identification of the evidence",
-      "automatizadas": "Automated test results",
-      "manuales": "Manual and assistive technology test results",
+      "evidencias": "Evidence",
+      "automatizadas": "Automated tests",
+      "manuales": "Manual tests",
       "resultado": "Result",
-      "justificacion": "Justification of the final result",
+      "justificacion": "Justification",
       "decision": "Publication decision",
-      "profesional": "Professional performing the technical validation",
+      "profesional": "Technical validation",
       "cargo": "Position or role",
       "fecha": "Date",
-      "editorial": "Functional validation by the editorial owner (name, position, date and approval)"
+      "editorial": "Editorial validation"
     },
     "identificacion": {
       "descripcion": "What is evaluated, where and with which tools.",
       "ticketAuto": "assigned automatically",
       "requerimientoAyuda": "Type of evaluation, for example: initial web accessibility evaluation.",
-      "entornoAyuda": "For example: Chrome 142, Windows 11, desktop."
+      "entornoAyuda": "Browser, operating system and device. For example: Chrome 142, Windows 11, desktop."
     },
     "criterios": {
       "consolidado": "Summary",
@@ -478,7 +482,15 @@
       "descripcion": "Tools used, test results and final decision.",
       "herramientas": "Tools used",
       "pruebas": "Evidence and test results",
-      "resultadoFinal": "Final result and approvals"
+      "resultadoFinal": "Final result and approvals",
+      "ayuda": {
+        "evidencias": "Link, path or identification of the evidence.",
+        "automatizadas": "Automated test results.",
+        "manuales": "Manual and assistive technology test results.",
+        "justificacion": "Justification of the final result.",
+        "profesional": "Professional performing the technical validation.",
+        "editorial": "Functional validation by the editorial owner: name, position, date and approval."
+      }
     },
     "op": {
       "ambiente": {

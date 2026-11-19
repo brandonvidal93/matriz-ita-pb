@@ -35,7 +35,7 @@
       <mat-label>{{ 'acc.campo.fechaValidacion' | transloco }}</mat-label>
       <input matInput type="date" [readonly]="ro" [ngModel]="i.fecha" (ngModelChange)="cambiar('fecha', $event)" />
     </mat-form-field>
-    <mat-form-field class="md:col-span-2">
+    <mat-form-field class="md:col-span-2" subscriptSizing="dynamic">
       <mat-label>{{ 'acc.campo.entorno' | transloco }}</mat-label>
       <input matInput [readonly]="ro" [ngModel]="i.entorno" (ngModelChange)="cambiar('entorno', $event)" />
       <mat-hint>{{ 'acc.identificacion.entornoAyuda' | transloco }}</mat-hint>

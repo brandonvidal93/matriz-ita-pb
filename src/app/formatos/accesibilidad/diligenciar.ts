@@ -11,6 +11,7 @@ import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
 import { FUENTE_EVIDENCIAS } from '../../core/evidencias';
 import { enfocarTitulo } from '../../core/foco';
+import { Lateral } from '../../core/lateral';
 import { IDIOMA_PREDETERMINADO, IdiomaService } from '../../core/idioma';
 import { ElegirEvidenciaDialog, TextoMasivoDialog } from '../../dialogos/dialogos';
 import { CATALOGO_ACC, PRINCIPIOS, consolidado, hallazgosGenerados, planCompleto, problemasCriterio } from './catalogo';
@@ -38,7 +39,7 @@ interface Seccion {
  * barra lateral con secciones y avance, búsqueda, filtros, selección y acciones masivas.
  */
 @Component({
-  imports: [FormsModule, MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatInputModule, TranslocoPipe,
+  imports: [FormsModule, Lateral, MatButtonModule, MatButtonToggleModule, MatFormFieldModule, MatIconModule, MatInputModule, TranslocoPipe,
     CriterioCard, SeccionIdentificacion, SeccionHallazgos, SeccionCierre, SeccionGraficos],
   templateUrl: './diligenciar.html',
 })

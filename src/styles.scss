@@ -78,9 +78,21 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
  * Piezas de diligenciamiento compartidas por todos los formatos (mismo aspecto que la Matriz ITA):
  * barra lateral de secciones, tarjeta de ítem y barra de acciones sobre la selección.
  */
+/* Panel de app-lateral: columna fija en pantallas anchas; en angostas, panel modal que se abre con un botón. */
+.lateral-panel {
+  @media (min-width: 1024px) { position: sticky; top: 72px; }
+  @media (max-width: 1023.98px) {
+    display: none;
+    &.abierta {
+      display: block; position: fixed; inset: 0 auto 0 0; z-index: 30; overflow: auto;
+      width: min(340px, 90vw); padding: 8px; background: var(--fondo); box-shadow: 0 0 24px rgb(0 0 0 / .3);
+    }
+  }
+}
+.lateral-fondo { position: fixed; inset: 0; z-index: 29; background: rgb(0 0 0 / .4); }
+
 .lateral {
-  max-height: 40vh; overflow: auto;
-  @media (min-width: 1024px) { position: sticky; top: 72px; max-height: calc(100vh - 88px); }
+  @media (min-width: 1024px) { max-height: calc(100vh - 88px); overflow: auto; }
   button { all: unset; display: block; width: 100%; box-sizing: border-box; cursor: pointer; padding: 8px 10px; border-radius: 8px; }
   button:hover { background: #eef2f7; }
   button[aria-current='true'] { background: #dde7f5; font-weight: 600; }
@@ -96,7 +108,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
   &.resaltado { box-shadow: 0 0 0 3px var(--pb-amarillo); }
   details > summary { cursor: pointer; color: var(--texto-suave); font-size: 13px; }
   .vista { background: #f7f9fc; border: 1px dashed var(--borde); border-radius: 8px; padding: 8px 10px; font-size: 13px; }
-  mat-button-toggle-group { --mat-standard-button-toggle-height: 36px; }
+  mat-button-toggle-group { --mat-standard-button-toggle-height: 36px; max-width: 100%; }
+  /* A 320 px los tres estados no caben con el relleno normal. */
+  @media (max-width: 479.98px) { .mat-button-toggle-label-content { padding: 0 6px; } }
   .mat-button-toggle-checked.t-SI { background: #e3f4e8; color: var(--ok); }
   .mat-button-toggle-checked.t-NO { background: #fde7e5; color: var(--no); }
   .mat-button-toggle-checked.t-NA { background: #eceff1; color: #37474f; }
@@ -114,3 +128,8 @@ mat-form-field.sin-pie .mat-mdc-form-field-subscript-wrapper { display: none; }
 }
 @keyframes brillo { to { background-position: -200% 0; } }
 @media (prefers-reduced-motion: reduce) { .esqueleto { animation: none; } }
+
+/* Fichas de evidencia: un título largo se parte en varias líneas en vez de cortarse (1.4.10). */
+app-evidencias-item .mat-mdc-standard-chip { height: auto; min-height: 32px; }
+app-evidencias-item .mdc-evolution-chip__cell--primary, app-evidencias-item .mdc-evolution-chip__action--primary { overflow: visible; min-width: 0; }
+app-evidencias-item .mdc-evolution-chip__text-label { white-space: normal; overflow-wrap: anywhere; padding-block: 4px; }

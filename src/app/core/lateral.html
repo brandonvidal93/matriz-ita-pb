@@ -1,0 +1,11 @@
+<button mat-stroked-button #boton class="lg:!hidden w-full !justify-start !h-auto !min-h-10 !py-2 !text-left" [attr.aria-expanded]="abierto()" (click)="abrir()">
+  <mat-icon>menu</mat-icon>
+  <span>{{ 'diligenciar.lateral.abrir' | transloco }}@if (actual()) {: <span [attr.lang]="oficial() ? 'es' : null">{{ actual() }}</span>}</span>
+</button>
+@if (abierto()) { <div class="lateral-fondo lg:hidden" aria-hidden="true" (click)="cerrar()"></div> }
+<div #panel class="lateral-panel" [class.abierta]="abierto()" [cdkTrapFocus]="abierto()" [attr.role]="abierto() ? 'dialog' : null" [attr.aria-modal]="abierto() || null" [attr.aria-label]="abierto() ? etiqueta() : null" (keydown.escape)="cerrar()" (click)="alClic($event)">
+  <div class="lg:hidden flex justify-end">
+    <button mat-icon-button [attr.aria-label]="'diligenciar.lateral.cerrar' | transloco" (click)="cerrar()"><mat-icon>close</mat-icon></button>
+  </div>
+  <nav class="lateral tarjeta p-2 min-w-0" [attr.aria-label]="etiqueta()"><ng-content /></nav>
+</div>

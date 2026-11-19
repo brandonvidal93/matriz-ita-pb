@@ -14,17 +14,20 @@
 
   <section class="tarjeta p-4 mb-4 grid" aria-labelledby="t-pruebas">
     <h2 id="t-pruebas" class="text-lg font-semibold m-0 mb-3">{{ 'acc.cierre.pruebas' | transloco }}</h2>
-    <mat-form-field>
+    <mat-form-field subscriptSizing="dynamic" class="mb-3">
       <mat-label>{{ 'acc.campo.evidencias' | transloco }}</mat-label>
       <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="c.evidencias" (ngModelChange)="cambiar('evidencias', $event)"></textarea>
+      <mat-hint>{{ 'acc.cierre.ayuda.evidencias' | transloco }}</mat-hint>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field subscriptSizing="dynamic" class="mb-3">
       <mat-label>{{ 'acc.campo.automatizadas' | transloco }}</mat-label>
       <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="3" [readonly]="ro" [ngModel]="c.automatizadas" (ngModelChange)="cambiar('automatizadas', $event)"></textarea>
+      <mat-hint>{{ 'acc.cierre.ayuda.automatizadas' | transloco }}</mat-hint>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field subscriptSizing="dynamic" class="mb-3">
       <mat-label>{{ 'acc.campo.manuales' | transloco }}</mat-label>
       <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="3" [readonly]="ro" [ngModel]="c.manuales" (ngModelChange)="cambiar('manuales', $event)"></textarea>
+      <mat-hint>{{ 'acc.cierre.ayuda.manuales' | transloco }}</mat-hint>
     </mat-form-field>
   </section>
 
@@ -44,13 +47,15 @@
         @for (o of decisiones; track o) { <mat-option [value]="o">{{ 'acc.op.decision.' + o | transloco }}</mat-option> }
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="md:col-span-2">
+    <mat-form-field subscriptSizing="dynamic" class="md:col-span-2 mb-3">
       <mat-label>{{ 'acc.campo.justificacion' | transloco }}</mat-label>
       <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="c.justificacion" (ngModelChange)="cambiar('justificacion', $event)"></textarea>
+      <mat-hint>{{ 'acc.cierre.ayuda.justificacion' | transloco }}</mat-hint>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field subscriptSizing="dynamic" class="mb-3">
       <mat-label>{{ 'acc.campo.profesional' | transloco }}</mat-label>
       <input matInput [readonly]="ro" [ngModel]="c.profesional" (ngModelChange)="cambiar('profesional', $event)" />
+      <mat-hint>{{ 'acc.cierre.ayuda.profesional' | transloco }}</mat-hint>
     </mat-form-field>
     <mat-form-field>
       <mat-label>{{ 'acc.campo.cargo' | transloco }}</mat-label>
@@ -60,9 +65,10 @@
       <mat-label>{{ 'acc.campo.fecha' | transloco }}</mat-label>
       <input matInput type="date" [readonly]="ro" [ngModel]="c.fecha" (ngModelChange)="cambiar('fecha', $event)" />
     </mat-form-field>
-    <mat-form-field class="md:col-span-2">
+    <mat-form-field subscriptSizing="dynamic" class="md:col-span-2 mb-3">
       <mat-label>{{ 'acc.campo.editorial' | transloco }}</mat-label>
       <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" [readonly]="ro" [ngModel]="c.editorial" (ngModelChange)="cambiar('editorial', $event)"></textarea>
+      <mat-hint>{{ 'acc.cierre.ayuda.editorial' | transloco }}</mat-hint>
     </mat-form-field>
   </section>
 }
