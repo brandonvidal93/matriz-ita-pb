@@ -80,7 +80,7 @@ mat-icon { flex-shrink: 0; }
 /* Aviso en bloque (uno por línea, nunca pegados). El ícono queda alineado con la primera línea del texto. */
 .aviso {
   display: flex; align-items: flex-start; gap: 8px; width: fit-content; max-width: 100%;
-  margin: 0; padding: 8px 12px; border-radius: 8px; font-size: 14px; line-height: 20px;
+  padding: 8px 12px; border-radius: 8px; font-size: 14px; line-height: 20px;
   background: #fff4d6; color: #7a5a00;
   mat-icon { width: 20px; height: 20px; font-size: 20px; }
 }
