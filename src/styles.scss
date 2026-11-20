@@ -77,12 +77,17 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 /* En un contenedor flex el ícono se encogía (y se cortaba) cuando el texto de al lado ocupa varias líneas. */
 mat-icon { flex-shrink: 0; }
 
-/* Aviso en bloque (uno por línea, nunca pegados). El ícono queda alineado con la primera línea del texto. */
+/*
+ * Aviso en bloque (uno por línea). El ícono queda alineado con la primera línea del texto.
+ * En la capa components para que margin: 0 (sin preflight, un <p> trae 1em) ceda ante mb-*; el espacio lo da el gap del contenedor.
+ */
+@layer components {
 .aviso {
   display: flex; align-items: flex-start; gap: 8px; width: fit-content; max-width: 100%;
-  padding: 8px 12px; border-radius: 8px; font-size: 14px; line-height: 20px;
+  margin: 0; padding: 8px 12px; border-radius: 8px; font-size: 14px; line-height: 20px;
   background: #fff4d6; color: #7a5a00;
   mat-icon { width: 20px; height: 20px; font-size: 20px; }
+}
 }
 
 /*

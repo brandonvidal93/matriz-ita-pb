@@ -1,3 +1,5 @@
+/* Orden de capas: lo de components (styles.scss) cede ante las utilidades, que pueden ajustarlo (mb-4, etc.). */
+@layer theme, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 /* Sin preflight de Tailwind para no interferir con Angular Material. */

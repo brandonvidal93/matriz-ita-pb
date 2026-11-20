@@ -100,7 +100,7 @@ Cada formato cambia la funcionalidad, pero la interfaz es la de la Matriz ITA: m
 
 - Angular 22 con componentes standalone, signals y sin zone.js. Rutas con carga diferida en `app.routes.ts`.
 - Cada template va en su propio `.html` junto al componente (`templateUrl`); los estilos, que son pocos, van en línea en `styles`. `dialogos/dialogos.ts` agrupa varios diálogos, cada uno con su `.html`.
-- Tailwind CSS 4 convive con Angular Material; las clases propias compartidas están en `src/styles.scss`.
+- Tailwind CSS 4 convive con Angular Material; las clases propias compartidas están en `src/styles.scss`. No hay preflight (un `<p>` conserva su margen de 1em), y las reglas de `styles.scss` sin capa le ganan a cualquier utilidad: una clase propia que fije margen o relleno va en `@layer components` (el orden está en `src/tailwind.css`) para que `mb-*`, `p-*`, etc. puedan ajustarla.
 - Toda página nueva va en `paginas/mapa.html` (mapa del sitio, exigido por el Anexo 1), y su título en `app.routes.ts` es una clave `titulos.*` que traduce `TituloTraducido`.
 - **Espaciado de formularios:** los campos van en un contenedor `grid` o `flex flex-col` con `gap-4` (16 px) como mínimo entre ellos, también entre columnas, y sin `mb-*` sueltos en cada campo. `mat-form-field` usa por defecto `subscriptSizing: 'dynamic'` (`app.config.ts`): la ayuda (`mat-hint`) y el error ocupan su alto real, así que sin ese `gap` quedan pegados o debajo de la etiqueta del campo siguiente. `sin-pie` oculta la ayuda y el error, por lo que solo sirve en campos que no tienen ninguno de los dos, como las búsquedas.
 - **Revisión visual (obligatoria al tocar la interfaz):** a 360 px y a 1280 px, en un navegador real, comprobar:
