@@ -19,6 +19,7 @@ import { MigaPan } from './core/miga';
 import { MatDialog } from '@angular/material/dialog';
 import { RespaldoDialog } from './dialogos/dialogos';
 import { CONFIG } from './config';
+import { AVISO_ERROR } from './core/avisos';
 import { EvaluacionesService } from './formatos/accesibilidad/evaluaciones.service';
 
 @Component({
@@ -30,7 +31,18 @@ import { EvaluacionesService } from './formatos/accesibilidad/evaluaciones.servi
     nav a { color: #dfe7f3; text-decoration: none; padding: 8px 12px; border-radius: 8px; font-weight: 500; }
     nav a:hover { background: rgb(255 255 255 / .08); }
     nav a.activo { background: rgb(255 255 255 / .16); color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
-    .sync { font-size: 12px; color: #dfe7f3; }
+    /* Indicador flotante: no recibe clics (pointer-events) y es pequeño, así que nunca tapa por completo un control (2.4.11). */
+    .sync {
+      position: fixed; right: 16px; bottom: 16px; z-index: 30; pointer-events: none;
+      display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px;
+      background: var(--pb-azul); color: #fff; font-size: 13px; box-shadow: 0 2px 8px rgb(0 0 0 / .25);
+    }
+    /* Vacío, sin display:none: una región oculta deja de anunciarse en algunos lectores. */
+    .sync.vacio { padding: 0; box-shadow: none; }
+    .sync mat-icon { font-size: 20px; width: 20px; height: 20px; }
+    .sync mat-icon.error { color: #ffb4ab; }
+    /* El error completo va en el aviso rojo; aquí se corta para no crecer sobre el contenido. */
+    .texto-sync { max-width: 22em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     footer { border-top: 1px solid var(--borde); margin-top: 24px; }
   `,
   templateUrl: './app.html',
@@ -91,6 +103,13 @@ export class App {
     }
   });
 
+  /** Ícono del estado de guardado; acompaña al texto, que en móvil queda solo para lectores de pantalla. */
+  iconoSync = computed(() => {
+    const s = this.escritura();
+    if (s.soloLectura()) return 'visibility';
+    return { pendiente: 'pending', guardando: 'sync', error: 'cloud_off', guardado: 'cloud_done' }[s.estadoSync()];
+  });
+
   constructor() {
     effect((alLimpiar) => {
       if (!this.router.currentNavigation()) return this.navegandoLento.set(false);
@@ -114,7 +133,7 @@ export class App {
     for (const s of [this.almacen, this.evaluaciones])
       effect(() => {
         const e = s.errorSync();
-        if (e) untracked(() => this.snack.open(this.t.translate('app.avisos.errorGuardado', { error: e }), this.t.translate('comun.cerrar')));
+        if (e) untracked(() => this.snack.open(this.t.translate('app.avisos.errorGuardado', { error: e }), this.t.translate('comun.cerrar'), AVISO_ERROR));
       });
   }
 

@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AVISO_ERROR } from '../../core/avisos';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { AlmacenService } from '../../core/almacen.service';
 import { SECCIONES, claveProblema, etiquetaCorta, problemas } from '../../core/catalogo';
@@ -51,7 +52,7 @@ export class ResumenPage {
       const nombre = nombreArchivo(reg, 'xlsx');
       descargar(blob, nombre);
     } catch (e: any) {
-      this.snack.open(this.t.translate('resumen.exportar.error', { error: e?.message ?? e }), this.t.translate('comun.cerrar'));
+      this.snack.open(this.t.translate('resumen.exportar.error', { error: e?.message ?? e }), this.t.translate('comun.cerrar'), AVISO_ERROR);
     } finally {
       this.exportando.set(false);
     }

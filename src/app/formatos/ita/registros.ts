@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AVISO_ERROR } from '../../core/avisos';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
 import { AlmacenService } from '../../core/almacen.service';
@@ -59,7 +60,7 @@ export class RegistrosPage {
 
   /** `clave` es una de `registros.error.*`. */
   private fallo(clave: string, e: unknown) {
-    this.snack.open(this.t.translate(clave, { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
+    this.snack.open(this.t.translate(clave, { error: mensajeError(e) }), this.t.translate('comun.cerrar'), AVISO_ERROR);
   }
 
   cerrarAdvertencias() {

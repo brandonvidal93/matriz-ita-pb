@@ -26,6 +26,15 @@ import { AsignarDialog, ConfirmarDialog, EvidenciaDialog } from '../dialogos/dia
     th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; color: var(--texto-suave); padding: 10px 12px; border-bottom: 1px solid var(--borde); background: #f7f9fc; }
     td { padding: 10px 12px; border-bottom: 1px solid #edf0f4; vertical-align: top; }
     tr.abierta td { background: #fbfcfe; }
+    /* En móvil cada fila es una tarjeta: evidencia arriba, ítems y verificación al lado, acciones abajo (1.4.10) */
+    @media (max-width: 639.98px) {
+      thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+      tbody tr { display: grid; grid-template-columns: auto 1fr; border-bottom: 1px solid #edf0f4; }
+      td { border-bottom: 0; padding: 6px 12px; }
+      td:first-child, td:last-child, td[colspan] { grid-column: 1 / -1; }
+      td:first-child { padding-top: 12px; }
+      td:last-child { padding-bottom: 12px; }
+    }
   `,
   templateUrl: './evidencias.html',
 })

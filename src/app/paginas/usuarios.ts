@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AVISO_ERROR, AVISO_OK } from '../core/avisos';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
 import { AuthService, mensajeError } from '../core/auth.service';
@@ -133,7 +134,7 @@ export class UsuariosPage {
     if (!m) return;
     try {
       await firstValueFrom(this.http.post('/api/usuarios', { ...m, usuario: m.usuario.trim() }));
-      this.snack.open(this.t.translate('usuarios.creado'), this.t.translate('comun.cerrar'));
+      this.snack.open(this.t.translate('usuarios.creado'), this.t.translate('comun.cerrar'), AVISO_OK);
       await this.cargar();
     } catch (e) {
       this.aviso(e);
@@ -149,7 +150,7 @@ export class UsuariosPage {
   async cambiar(u: UsuarioLista, cambios: object) {
     try {
       await firstValueFrom(this.http.patch(`/api/usuarios/${u.id}`, cambios));
-      this.snack.open(this.t.translate('usuarios.actualizado'), this.t.translate('comun.cerrar'));
+      this.snack.open(this.t.translate('usuarios.actualizado'), this.t.translate('comun.cerrar'), AVISO_OK);
       await this.cargar();
     } catch (e) {
       this.aviso(e);
@@ -157,6 +158,6 @@ export class UsuariosPage {
   }
 
   private aviso(e: unknown) {
-    this.snack.open(mensajeError(e), this.t.translate('comun.cerrar'));
+    this.snack.open(mensajeError(e), this.t.translate('comun.cerrar'), AVISO_ERROR);
   }
 }

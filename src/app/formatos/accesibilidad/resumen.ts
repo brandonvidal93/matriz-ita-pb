@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AVISO_ERROR } from '../../core/avisos';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { mensajeError } from '../../core/auth.service';
 import { descargar } from '../../core/progreso';
@@ -61,7 +62,7 @@ export class ResumenAccPage {
       const ev = this.svc.activa()!;
       descargar(await exportarEvaluacion(ev), nombreArchivoAcc(ev));
     } catch (e) {
-      this.snack.open(this.t.translate('resumen.exportar.error', { error: mensajeError(e) }), this.t.translate('comun.cerrar'));
+      this.snack.open(this.t.translate('resumen.exportar.error', { error: mensajeError(e) }), this.t.translate('comun.cerrar'), AVISO_ERROR);
     } finally {
       this.exportando.set(false);
     }

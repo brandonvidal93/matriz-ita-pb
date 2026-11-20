@@ -29,6 +29,8 @@ html {
 *, *::before, *::after { box-sizing: border-box; }
 
 html, body { height: 100%; }
+/* Reserva el espacio de la barra de desplazamiento: si no, el ancho cambia entre páginas cortas y largas y el encabezado salta de línea. */
+html { scrollbar-gutter: stable; }
 body {
   margin: 0;
   background: var(--fondo);
@@ -41,6 +43,13 @@ a { color: #0b57d0; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
 /* Sobre fondos oscuros el foco azul no se vería. */
 .saltar, .mat-mdc-snack-bar-container { --foco: var(--pb-amarillo); }
+/* Avisos (core/avisos.ts): texto blanco sobre rojo o verde, más de 4.5:1; el foco blanco también se distingue. */
+.aviso-error, .aviso-ok {
+  --mat-snack-bar-supporting-text-color: #fff; --mat-snack-bar-button-color: #fff; --foco: #fff;
+  .mat-mdc-snack-bar-action { text-decoration: underline; }
+}
+.aviso-error { --mat-snack-bar-container-color: var(--no); }
+.aviso-ok { --mat-snack-bar-container-color: var(--ok); }
 /* Foco puesto por código en títulos: no es un control que se opere. */
 [tabindex='-1']:focus { outline: none; }
 
