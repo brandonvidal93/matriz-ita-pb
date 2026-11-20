@@ -8,7 +8,7 @@
   </div>
   @if (!usuarios()) { <app-esqueleto [filas]="4" /> } @else {
   <div class="tarjeta overflow-x-auto relative">
-    <table>
+    <table class="tabla-apilada">
       <thead>
         <tr><th scope="col">{{ 'usuarios.col.nombre' | transloco }}</th><th scope="col">{{ 'usuarios.col.usuario' | transloco }}</th><th scope="col">{{ 'usuarios.col.rol' | transloco }}</th><th scope="col">{{ 'usuarios.col.formatos' | transloco }}</th><th scope="col">{{ 'usuarios.col.ultimoIngreso' | transloco }}</th><th scope="col"><span class="sr-only">{{ 'usuarios.col.acciones' | transloco }}</span></th></tr>
       </thead>
@@ -20,16 +20,16 @@
               @if (!u.activo) { <span class="chip-estado NA ml-2">{{ 'usuarios.inactivo' | transloco }}</span> }
               @if (u.activo && u.debeCambiarClave) { <span class="chip-estado pendiente ml-2">{{ 'usuarios.claveTemporal' | transloco }}</span> }
             </td>
-            <td class="mono">{{ u.usuario }}</td>
-            <td>{{ claveRol(u.rol) | transloco }}</td>
-            <td class="text-sm">
+            <td class="mono" [attr.data-etiqueta]="'usuarios.col.usuario' | transloco">{{ u.usuario }}</td>
+            <td [attr.data-etiqueta]="'usuarios.col.rol' | transloco">{{ claveRol(u.rol) | transloco }}</td>
+            <td class="text-sm" [attr.data-etiqueta]="'usuarios.col.formatos' | transloco">
               @for (f of formatos; track f) {
                 @if (u.formatos[f]; as p) { <div>{{ 'formatos.' + f + '.nombre' | transloco }}: {{ 'usuarios.permiso.' + p | transloco }}</div> }
               }
               @if (!tieneFormatos(u)) { {{ 'usuarios.permiso.ninguno' | transloco }} }
             </td>
-            <td class="text-sm">{{ u.ultimoIngreso ? (u.ultimoIngreso | fecha: 'd MMM y, h:mm a') : '—' }}</td>
-            <td class="text-right whitespace-nowrap">
+            <td class="text-sm" [attr.data-etiqueta]="'usuarios.col.ultimoIngreso' | transloco">{{ u.ultimoIngreso ? (u.ultimoIngreso | fecha: 'd MMM y, h:mm a') : '—' }}</td>
+            <td class="text-right whitespace-nowrap completa">
               <button mat-icon-button [matMenuTriggerFor]="m" [attr.aria-label]="'usuarios.acciones' | transloco: { nombre: u.nombre }"><mat-icon>more_vert</mat-icon></button>
               <mat-menu #m="matMenu">
                 <button mat-menu-item (click)="editar(u)"><mat-icon>edit</mat-icon>{{ 'usuarios.editar' | transloco }}</button>

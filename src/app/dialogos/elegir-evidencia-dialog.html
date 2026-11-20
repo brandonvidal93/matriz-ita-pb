@@ -1,8 +1,8 @@
 <h2 mat-dialog-title>{{ d.claves.length > 1 ? ('dialogos.elegir.tituloVarios' | transloco: { n: d.claves.length }) : ('dialogos.elegir.titulo' | transloco) }}</h2>
 <mat-dialog-content>
-  <div class="w-[512px] max-w-full pt-2">
+  <div class="w-[512px] max-w-full pt-2 grid gap-4">
     <!-- Etiqueta corta: Material no parte la etiqueta en líneas y desbordaría en pantallas angostas. -->
-    <mat-form-field class="w-full" subscriptSizing="dynamic">
+    <mat-form-field class="w-full">
       <mat-label>{{ 'evidencias.buscar' | transloco }}</mat-label>
       <mat-hint>{{ 'dialogos.elegir.buscar' | transloco }}</mat-hint>
       <input matInput [(ngModel)]="q" [matAutocomplete]="auto" cdkFocusInitial />
@@ -23,7 +23,7 @@
         <input matInput [(ngModel)]="titulo" />
       </mat-form-field>
     }
-    <p class="texto-suave text-sm">{{ 'dialogos.elegir.biblioteca' | transloco: { n: total() } }}</p>
+    <p class="texto-suave text-sm m-0">{{ 'dialogos.elegir.biblioteca' | transloco: { n: total() } }}</p>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

@@ -3,14 +3,14 @@
     <div class="text-xs texto-suave">{{ institucion }} · {{ dependencia }}</div>
     @if (!cambiando()) {
       <h1 id="t-ingreso" class="text-2xl font-semibold mt-1 mb-4">{{ 'ingresar.titulo' | transloco }}</h1>
-      @if (vencida()) { <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal" role="status">{{ 'ingresar.sesionVencida' | transloco }}</p> }
-      <form (ngSubmit)="ingresar()" class="grid gap-3">
-        <mat-form-field subscriptSizing="dynamic">
+      @if (vencida()) { <p class="aviso mb-4" role="status">{{ 'ingresar.sesionVencida' | transloco }}</p> }
+      <form (ngSubmit)="ingresar()" class="grid gap-4">
+        <mat-form-field>
           <mat-label>{{ 'ingresar.usuario' | transloco }}</mat-label>
           <input matInput name="usuario" autocomplete="username" [(ngModel)]="usuario" required autofocus />
           <mat-error>{{ 'comun.campoObligatorio' | transloco }}</mat-error>
         </mat-form-field>
-        <mat-form-field subscriptSizing="dynamic">
+        <mat-form-field>
           <mat-label>{{ 'ingresar.clave' | transloco }}</mat-label>
           <input matInput #c1 name="clave" type="password" autocomplete="current-password" [(ngModel)]="clave" required />
           <ita-ver-clave matSuffix [campo]="c1" />
@@ -24,8 +24,8 @@
       <p class="texto-suave text-sm mt-0 mb-4">
         {{ 'ingresar.cambiar.explicacion' | transloco: { nombre: auth.usuario()?.nombre } }}
       </p>
-      <form (ngSubmit)="cambiar()" class="grid gap-3">
-        <mat-form-field subscriptSizing="dynamic">
+      <form (ngSubmit)="cambiar()" class="grid gap-4">
+        <mat-form-field>
           <mat-label>{{ 'ingresar.cambiar.actual' | transloco }}</mat-label>
           <input matInput #c2 name="actual" type="password" autocomplete="current-password" [(ngModel)]="actual" [errorStateMatcher]="errActual" required />
           <ita-ver-clave matSuffix [campo]="c2" />
@@ -38,7 +38,7 @@
           <mat-hint>{{ 'ingresar.cambiar.pista' | transloco }}</mat-hint>
           <mat-error>{{ error() }}</mat-error>
         </mat-form-field>
-        <mat-form-field subscriptSizing="dynamic">
+        <mat-form-field>
           <mat-label>{{ 'ingresar.cambiar.repetir' | transloco }}</mat-label>
           <input matInput #c4 name="nueva2" type="password" autocomplete="new-password" [(ngModel)]="nueva2" [errorStateMatcher]="errRepetir" required />
           <ita-ver-clave matSuffix [campo]="c4" />

@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AFechaPipe, iso } from '../../core/fechas';
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { textoObservacion } from '../../core/catalogo';
@@ -21,7 +23,7 @@ import { CATALOGO_ACC, HallazgoGenerado, consolidado, hallazgosGenerados } from 
 import { claveHallazgo } from './fuente';
 import { Cierre, Hallazgo, Identificacion, Nivel, codigos } from './modelo';
 
-const BASE = [FormsModule, TextFieldModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, TranslocoPipe];
+const BASE = [FormsModule, TextFieldModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatDatepickerModule, AFechaPipe, TranslocoPipe];
 
 // Secciones de la página Diligenciar que no son criterios. El título (h1) lo pone la página.
 
@@ -29,6 +31,7 @@ const BASE = [FormsModule, TextFieldModule, MatButtonModule, MatFormFieldModule,
 @Component({ selector: 'app-acc-identificacion', imports: BASE, templateUrl: './identificacion.html' })
 export class SeccionIdentificacion {
   protected svc = inject(EvaluacionesService);
+  protected iso = iso;
   ambientes = codigos('ambiente');
   tipos = codigos('tipo');
 
@@ -49,6 +52,7 @@ export class SeccionHallazgos {
   /** Hallazgo enlazado desde otra página (?hallazgo=…). */
   resaltado = input<string | null>(null);
   protected svc = inject(EvaluacionesService);
+  protected iso = iso;
   private dialog = inject(MatDialog);
   private fuente = inject(FUENTE_EVIDENCIAS);
   max = CATALOGO_ACC.maxHallazgos;
@@ -78,6 +82,7 @@ export class SeccionHallazgos {
 @Component({ selector: 'app-acc-cierre', imports: [...BASE, MatCheckboxModule], templateUrl: './cierre.html' })
 export class SeccionCierre {
   protected svc = inject(EvaluacionesService);
+  protected iso = iso;
   herramientas = CATALOGO_ACC.herramientas;
   resultados = codigos('resultado');
   decisiones = codigos('decision');

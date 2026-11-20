@@ -2,8 +2,8 @@
   @let i = ev.identificacion;
   @let ro = svc.soloLectura();
   <p class="texto-suave mt-0">{{ 'acc.identificacion.descripcion' | transloco }}</p>
-  <div class="tarjeta p-4 grid gap-x-4 md:grid-cols-2">
-    <p class="m-0 mb-4 md:col-span-2">{{ 'acc.campo.ticket' | transloco }}: <strong>{{ ev.ticket }}</strong> <span class="texto-suave text-sm">({{ 'acc.identificacion.ticketAuto' | transloco }})</span></p>
+  <div class="tarjeta p-4 grid gap-4 md:grid-cols-2">
+    <p class="m-0 md:col-span-2">{{ 'acc.campo.ticket' | transloco }}: <strong>{{ ev.ticket }}</strong> <span class="texto-suave text-sm">({{ 'acc.identificacion.ticketAuto' | transloco }})</span></p>
     <mat-form-field class="md:col-span-2">
       <mat-label>{{ 'acc.campo.requerimiento' | transloco }}</mat-label>
       <input matInput [readonly]="ro" [ngModel]="i.requerimiento" (ngModelChange)="cambiar('requerimiento', $event)" />
@@ -33,9 +33,13 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>{{ 'acc.campo.fechaValidacion' | transloco }}</mat-label>
-      <input matInput type="date" [readonly]="ro" [ngModel]="i.fecha" (ngModelChange)="cambiar('fecha', $event)" />
+      <input matInput [matDatepicker]="calFecha" [readonly]="ro" [ngModel]="i.fecha | aFecha" (ngModelChange)="cambiar('fecha', iso($event), false)" />
+      <mat-hint>{{ 'comun.formatoFecha' | transloco }}</mat-hint>
+      <mat-error>{{ 'comun.fechaInvalida' | transloco }}</mat-error>
+      <mat-datepicker-toggle matIconSuffix [for]="calFecha" [disabled]="ro" />
+      <mat-datepicker #calFecha />
     </mat-form-field>
-    <mat-form-field class="md:col-span-2" subscriptSizing="dynamic">
+    <mat-form-field class="md:col-span-2">
       <mat-label>{{ 'acc.campo.entorno' | transloco }}</mat-label>
       <input matInput [readonly]="ro" [ngModel]="i.entorno" (ngModelChange)="cambiar('entorno', $event)" />
       <mat-hint>{{ 'acc.identificacion.entornoAyuda' | transloco }}</mat-hint>

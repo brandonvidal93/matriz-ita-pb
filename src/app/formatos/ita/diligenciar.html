@@ -19,7 +19,7 @@
         <h1 id="t-seccion" class="text-xl font-semibold m-0 flex-1 min-w-[240px]">
           @if (busqueda()) { {{ 'diligenciar.resultados' | transloco: { q: busqueda() } }} } @else { <span lang="es">{{ seccionActual().titulo }}</span> }
         </h1>
-        <mat-form-field class="sin-pie w-full sm:w-[280px]" subscriptSizing="dynamic">
+        <mat-form-field class="sin-pie w-full sm:w-[280px]">
           <mat-icon matPrefix>search</mat-icon>
           <mat-label>{{ 'diligenciar.buscar' | transloco }}</mat-label>
           <input matInput [ngModel]="busqueda()" (ngModelChange)="busqueda.set($event)" />

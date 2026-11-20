@@ -74,6 +74,32 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
   &.pendiente { background: #fff4d6; color: #7a5a00; }
 }
 
+/* En un contenedor flex el ícono se encogía (y se cortaba) cuando el texto de al lado ocupa varias líneas. */
+mat-icon { flex-shrink: 0; }
+
+/* Aviso en bloque (uno por línea, nunca pegados). El ícono queda alineado con la primera línea del texto. */
+.aviso {
+  display: flex; align-items: flex-start; gap: 8px; width: fit-content; max-width: 100%;
+  margin: 0; padding: 8px 12px; border-radius: 8px; font-size: 14px; line-height: 20px;
+  background: #fff4d6; color: #7a5a00;
+  mat-icon { width: 20px; height: 20px; font-size: 20px; }
+}
+
+/*
+ * Tabla que en móvil se apila: cada fila es una tarjeta y cada celda muestra su encabezado (data-etiqueta),
+ * para no desplazar en horizontal (1.4.10). La primera celda y las .completa ocupan todo el ancho.
+ */
+@media (max-width: 639.98px) {
+  table.tabla-apilada {
+    thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    tr { display: grid; grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr)); gap: 8px 12px; padding: 12px; border-bottom: 1px solid #edf0f4; }
+    th, td { border: 0 !important; padding: 0 !important; text-align: left !important; }
+    tr > :first-child, .completa { grid-column: 1 / -1; }
+    td.completa.text-right { justify-self: end; }
+    [data-etiqueta]::before { content: attr(data-etiqueta); display: block; font-size: 12px; font-weight: 400; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .03em; }
+  }
+}
+
 .texto-suave { color: var(--texto-suave); }
 .preline { white-space: pre-line; }
 .mono { font-family: ui-monospace, Consolas, monospace; font-size: 12px; }

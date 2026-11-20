@@ -22,6 +22,8 @@ import { Nivel } from './modelo';
     table { width: 100%; border-collapse: collapse; font-size: 14px; }
     th, td { padding: 8px 10px; border-bottom: 1px solid #edf0f4; text-align: left; }
     th { font-size: 12px; color: var(--texto-suave); text-transform: uppercase; }
+    /* El encabezado de una columna numérica se alinea con sus cifras. */
+    th.text-right { text-align: right; }
     td.n { text-align: right; font-variant-numeric: tabular-nums; }
   `,
   templateUrl: './resumen.html',

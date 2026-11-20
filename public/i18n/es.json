@@ -47,7 +47,9 @@
     "masAcciones": "Más acciones para {{ nombre }}",
     "textoOficial": "Texto oficial de la matriz, en español",
     "campoObligatorio": "Este campo es obligatorio.",
-    "cargando": "Cargando…"
+    "cargando": "Cargando…",
+    "formatoFecha": "Formato DD/MM/AAAA",
+    "fechaInvalida": "Escriba una fecha válida con el formato DD/MM/AAAA, por ejemplo 20/11/2026."
   },
   "estado": {
     "SI": "SI",
@@ -580,5 +582,18 @@
     "descargado": "Respaldo descargado.",
     "ningunoCreado": "No se creó ningún registro.",
     "reglas": "Al restaurar nunca se sobrescribe: lo que ya estaba cargado se omite y lo que cambió se crea como copia."
+  },
+  "calendario": {
+    "calendarLabel": "Calendario",
+    "openCalendarLabel": "Abrir calendario",
+    "closeCalendarLabel": "Cerrar calendario",
+    "prevMonthLabel": "Mes anterior",
+    "nextMonthLabel": "Mes siguiente",
+    "prevYearLabel": "Año anterior",
+    "nextYearLabel": "Año siguiente",
+    "prevMultiYearLabel": "24 años anteriores",
+    "nextMultiYearLabel": "24 años siguientes",
+    "switchToMonthViewLabel": "Elegir fecha",
+    "switchToMultiYearViewLabel": "Elegir mes y año"
   }
 }

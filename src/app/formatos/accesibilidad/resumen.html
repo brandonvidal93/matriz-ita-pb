@@ -16,59 +16,61 @@
       <h2 id="t-exp" class="text-lg font-semibold m-0 mb-1">{{ 'resumen.exportar.titulo' | transloco }}</h2>
       <p class="texto-suave text-sm mt-0">{{ 'acc.resumen.exportarDescripcion' | transloco }}</p>
       <div class="flex flex-wrap gap-6 items-center my-3">
-        <mat-radio-group [ngModel]="ev.formatoEvidencias" [disabled]="svc.soloLectura()" (ngModelChange)="formato($event)" [attr.aria-label]="'resumen.exportar.formatoEtiqueta' | transloco">
+        <mat-radio-group class="flex flex-wrap items-center gap-x-2" [ngModel]="ev.formatoEvidencias" [disabled]="svc.soloLectura()" (ngModelChange)="formato($event)" [attr.aria-label]="'resumen.exportar.formatoEtiqueta' | transloco">
           <span class="text-sm mr-2">{{ 'acc.resumen.formato' | transloco }}</span>
           <mat-radio-button value="url">{{ 'resumen.exportar.soloUrl' | transloco }}</mat-radio-button>
           <mat-radio-button value="titulo-url">{{ 'resumen.exportar.tituloUrl' | transloco }}</mat-radio-button>
         </mat-radio-group>
       </div>
+      <div class="grid gap-2 mb-4">
       @if (p.conProblemas || p.evaluados < p.total) {
-        <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal">
-          <mat-icon class="!w-5 !h-5 !text-xl" aria-hidden="true">warning</mat-icon>
-          {{ 'acc.resumen.aviso' | transloco: { n: p.total - p.evaluados + p.conProblemas } }}
+        <p class="aviso">
+          <mat-icon aria-hidden="true">warning</mat-icon><span>
+          {{ 'acc.resumen.aviso' | transloco: { n: p.total - p.evaluados + p.conProblemas } }}</span>
         </p>
       }
       @let hz = hallazgos();
       @if (hz.sinPlan) {
-        <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal">
-          <mat-icon class="!w-5 !h-5 !text-xl" aria-hidden="true">warning</mat-icon>
-          <a [routerLink]="['/accesibilidad/r', ev.id]" [queryParams]="{ seccion: 'hallazgos' }">{{ 'acc.resumen.sinPlan' | transloco: { n: hz.sinPlan } }}</a>
+        <p class="aviso">
+          <mat-icon aria-hidden="true">warning</mat-icon><span>
+          <a [routerLink]="['/accesibilidad/r', ev.id]" [queryParams]="{ seccion: 'hallazgos' }">{{ 'acc.resumen.sinPlan' | transloco: { n: hz.sinPlan } }}</a></span>
         </p>
       }
       @if (hz.total > maxHallazgos) {
-        <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal">
-          <mat-icon class="!w-5 !h-5 !text-xl" aria-hidden="true">warning</mat-icon>
-          {{ 'acc.hallazgos.limite' | transloco: { n: hz.total, max: maxHallazgos } }}
+        <p class="aviso">
+          <mat-icon aria-hidden="true">warning</mat-icon><span>
+          {{ 'acc.hallazgos.limite' | transloco: { n: hz.total, max: maxHallazgos } }}</span>
         </p>
       }
+      </div>
       <button mat-flat-button disabledInteractive (click)="exportar()" [disabled]="exportando()">
         <mat-icon>download</mat-icon>{{ (exportando() ? 'resumen.exportar.generando' : 'resumen.exportar.descargar') | transloco }}
       </button>
     </section>
 
-    <section class="tarjeta p-4 overflow-x-auto" aria-labelledby="t-niv">
+    <section class="tarjeta p-4" aria-labelledby="t-niv">
       <h2 id="t-niv" class="text-lg font-semibold m-0 mb-2">{{ 'acc.criterios.consolidado' | transloco }}</h2>
-      <table>
+      <table class="tabla-apilada">
         <thead><tr><th scope="col">{{ 'acc.criterios.nivel' | transloco }}</th><th scope="col" class="text-right">{{ 'acc.op.estado.cumple' | transloco }}</th><th scope="col" class="text-right">{{ 'acc.op.estado.noCumple' | transloco }}</th><th scope="col" class="text-right">{{ 'acc.op.estado.noAplica' | transloco }}</th><th scope="col" class="text-right">{{ 'acc.criterios.total' | transloco }}</th></tr></thead>
         <tbody>
           @for (n of niveles; track n) {
-            <tr><th scope="row">{{ 'acc.criterios.nivelN' | transloco: { n } }}</th><td class="n">{{ p.porNivel[n].cumple }}</td><td class="n">{{ p.porNivel[n].noCumple }}</td><td class="n">{{ p.porNivel[n].noAplica }}</td><td class="n">{{ p.porNivel[n].total }}</td></tr>
+            <tr><th scope="row">{{ 'acc.criterios.nivelN' | transloco: { n } }}</th><td class="n" [attr.data-etiqueta]="'acc.op.estado.cumple' | transloco">{{ p.porNivel[n].cumple }}</td><td class="n" [attr.data-etiqueta]="'acc.op.estado.noCumple' | transloco">{{ p.porNivel[n].noCumple }}</td><td class="n" [attr.data-etiqueta]="'acc.op.estado.noAplica' | transloco">{{ p.porNivel[n].noAplica }}</td><td class="n" [attr.data-etiqueta]="'acc.criterios.total' | transloco">{{ p.porNivel[n].total }}</td></tr>
           }
         </tbody>
       </table>
       @if (p.nivel === 'na') { <p class="text-sm texto-suave mb-0">{{ 'acc.criterios.nivelPendiente' | transloco }}</p> }
     </section>
 
-    <section class="tarjeta p-4 overflow-x-auto" aria-labelledby="t-sec">
+    <section class="tarjeta p-4" aria-labelledby="t-sec">
       <h2 id="t-sec" class="text-lg font-semibold m-0 mb-2">{{ 'acc.resumen.avance' | transloco }}</h2>
-      <table>
+      <table class="tabla-apilada">
         <thead><tr><th scope="col">{{ 'acc.resumen.principio' | transloco }}</th><th scope="col" class="text-right">{{ 'acc.resumen.criterios' | transloco }}</th><th scope="col" class="text-right">{{ 'acc.op.estado.cumple' | transloco }}</th><th scope="col" class="text-right">{{ 'acc.op.estado.noCumple' | transloco }}</th><th scope="col" class="text-right">{{ 'acc.op.estado.noAplica' | transloco }}</th><th scope="col" class="text-right">{{ 'resumen.col.porRevisar' | transloco }}</th><th scope="col">{{ 'resumen.col.avance' | transloco }}</th></tr></thead>
         <tbody>
           @for (s of porPrincipio(); track s.clave) {
             <tr>
               <td><a [routerLink]="['/accesibilidad/r', ev.id]" [queryParams]="{ seccion: s.clave }" lang="es">{{ s.titulo }}</a></td>
-              <td class="n">{{ s.c.total }}</td><td class="n">{{ s.c.cumple }}</td><td class="n">{{ s.c.noCumple }}</td><td class="n">{{ s.c.noAplica }}</td><td class="n">{{ s.c.conProblemas }}</td>
-              <td class="min-w-[140px]"><div class="flex items-center gap-2"><div class="barra-progreso flex-1"><span [style.width.%]="s.c.porcentaje"></span></div><span class="n">{{ s.c.porcentaje }}%</span></div></td>
+              <td class="n" [attr.data-etiqueta]="'acc.resumen.criterios' | transloco">{{ s.c.total }}</td><td class="n" [attr.data-etiqueta]="'acc.op.estado.cumple' | transloco">{{ s.c.cumple }}</td><td class="n" [attr.data-etiqueta]="'acc.op.estado.noCumple' | transloco">{{ s.c.noCumple }}</td><td class="n" [attr.data-etiqueta]="'acc.op.estado.noAplica' | transloco">{{ s.c.noAplica }}</td><td class="n" [attr.data-etiqueta]="'resumen.col.porRevisar' | transloco">{{ s.c.conProblemas }}</td>
+              <td class="min-w-[140px] completa" [attr.data-etiqueta]="'resumen.col.avance' | transloco"><div class="flex items-center gap-2"><div class="barra-progreso flex-1"><span [style.width.%]="s.c.porcentaje"></span></div><span class="n">{{ s.c.porcentaje }}%</span></div></td>
             </tr>
           }
         </tbody>

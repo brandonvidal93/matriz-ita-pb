@@ -17,16 +17,15 @@
         {{ 'resumen.exportar.descripcion' | transloco }}
       </p>
       <div class="flex flex-wrap gap-6 items-center my-3">
-        <mat-radio-group [ngModel]="reg.formatoEvidencias" [disabled]="almacen.soloLectura()" (ngModelChange)="almacen.renombrar(reg.id, { formatoEvidencias: $event })" [attr.aria-label]="'resumen.exportar.formatoEtiqueta' | transloco">
+        <mat-radio-group class="flex flex-wrap items-center gap-x-2" [ngModel]="reg.formatoEvidencias" [disabled]="almacen.soloLectura()" (ngModelChange)="almacen.renombrar(reg.id, { formatoEvidencias: $event })" [attr.aria-label]="'resumen.exportar.formatoEtiqueta' | transloco">
           <span class="text-sm mr-2">{{ 'resumen.exportar.formato' | transloco }}</span>
           <mat-radio-button value="url">{{ 'resumen.exportar.soloUrl' | transloco }}</mat-radio-button>
           <mat-radio-button value="titulo-url">{{ 'resumen.exportar.tituloUrl' | transloco }}</mat-radio-button>
         </mat-radio-group>
       </div>
       @if (p.conProblemas) {
-        <p class="chip-estado pendiente !rounded-lg !py-2 !px-3 !font-normal">
-          <mat-icon class="!w-5 !h-5 !text-xl">warning</mat-icon>
-          {{ 'resumen.exportar.aviso' | transloco: { n: p.conProblemas } }}
+        <p class="aviso mb-4">
+          <mat-icon aria-hidden="true">warning</mat-icon><span>{{ 'resumen.exportar.aviso' | transloco: { n: p.conProblemas } }}</span>
         </p>
       }
       <button mat-flat-button disabledInteractive (click)="exportar()" [disabled]="exportando()">
@@ -34,16 +33,16 @@
       </button>
     </section>
 
-    <section class="tarjeta p-4 overflow-x-auto" aria-labelledby="t-sec">
+    <section class="tarjeta p-4" aria-labelledby="t-sec">
       <h2 id="t-sec" class="text-lg font-semibold m-0 mb-2">{{ 'resumen.avance' | transloco }}</h2>
-      <table>
+      <table class="tabla-apilada">
         <thead><tr><th scope="col">{{ 'resumen.col.seccion' | transloco }}</th><th scope="col" class="text-right">{{ 'resumen.col.items' | transloco }}</th><th scope="col" class="text-right">{{ 'estado.SI' | transloco }}</th><th scope="col" class="text-right">{{ 'estado.NO' | transloco }}</th><th scope="col" class="text-right">{{ 'estado.NA' | transloco }}</th><th scope="col" class="text-right">{{ 'resumen.col.porRevisar' | transloco }}</th><th scope="col">{{ 'resumen.col.avance' | transloco }}</th></tr></thead>
         <tbody>
           @for (s of porSeccion(); track s.clave) {
             <tr>
               <td><a [routerLink]="['/ita/r', reg.id]" [queryParams]="{ seccion: s.clave }" lang="es">{{ s.titulo }}</a></td>
-              <td class="n">{{ s.p.total }}</td><td class="n">{{ s.p.si }}</td><td class="n">{{ s.p.no }}</td><td class="n">{{ s.p.na }}</td><td class="n">{{ s.p.conProblemas }}</td>
-              <td class="min-w-[140px]"><div class="flex items-center gap-2"><div class="barra-progreso flex-1"><span [style.width.%]="s.p.porcentaje"></span></div><span class="n">{{ s.p.porcentaje }}%</span></div></td>
+              <td class="n" [attr.data-etiqueta]="'resumen.col.items' | transloco">{{ s.p.total }}</td><td class="n" [attr.data-etiqueta]="'estado.SI' | transloco">{{ s.p.si }}</td><td class="n" [attr.data-etiqueta]="'estado.NO' | transloco">{{ s.p.no }}</td><td class="n" [attr.data-etiqueta]="'estado.NA' | transloco">{{ s.p.na }}</td><td class="n" [attr.data-etiqueta]="'resumen.col.porRevisar' | transloco">{{ s.p.conProblemas }}</td>
+              <td class="min-w-[140px] completa" [attr.data-etiqueta]="'resumen.col.avance' | transloco"><div class="flex items-center gap-2"><div class="barra-progreso flex-1"><span [style.width.%]="s.p.porcentaje"></span></div><span class="n">{{ s.p.porcentaje }}%</span></div></td>
             </tr>
           }
         </tbody>

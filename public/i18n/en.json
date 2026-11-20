@@ -47,7 +47,9 @@
     "masAcciones": "More actions for {{ nombre }}",
     "textoOficial": "Official matrix text, in Spanish",
     "campoObligatorio": "This field is required.",
-    "cargando": "Loading…"
+    "cargando": "Loading…",
+    "formatoFecha": "Format DD/MM/YYYY",
+    "fechaInvalida": "Enter a valid date in DD/MM/YYYY format, for example 20/11/2026."
   },
   "estado": {
     "SI": "YES",
@@ -580,5 +582,18 @@
     "descargado": "Backup downloaded.",
     "ningunoCreado": "No record was created.",
     "reglas": "Restoring never overwrites: what was already loaded is skipped and what changed is created as a copy."
+  },
+  "calendario": {
+    "calendarLabel": "Calendar",
+    "openCalendarLabel": "Open calendar",
+    "closeCalendarLabel": "Close calendar",
+    "prevMonthLabel": "Previous month",
+    "nextMonthLabel": "Next month",
+    "prevYearLabel": "Previous year",
+    "nextYearLabel": "Next year",
+    "prevMultiYearLabel": "Previous 24 years",
+    "nextMultiYearLabel": "Next 24 years",
+    "switchToMonthViewLabel": "Choose date",
+    "switchToMultiYearViewLabel": "Choose month and year"
   }
 }
