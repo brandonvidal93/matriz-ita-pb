@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quién puede hacer qué</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=Noto+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #f5f7fa;   /* white-smoke */
+      --color-ink:     #1b1f24;   /* jet-black */
+      --color-muted:   #4a5565;   /* blue-slate */
+      --color-accent:  #0b2d5b;   /* burnt-tangerine */
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', 'Noto Serif', 'Noto Serif KR', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    .frame { max-width: 1200px; width: 100%; }
+    /* The SVG holds its readable width (min-width == the viewBox width, so the
+       type ramp is never silently scaled down). This wrapper lets a narrow
+       screen scroll the diagram instead of the whole page. */
+    .diagram-container { width: 100%; overflow-x: auto; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+    }
+
+    svg { width: 100%; min-width: 920px; display: block; }
+    /* Paper has no scrollbar, so the local scroller would clip instead of
+       scroll. Let the diagram scale down to the sheet: smaller but whole
+       beats sharp but cut off. Must come after the svg rule above - a media
+       query adds no specificity, so a later plain rule would win. */
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Matriz de permisos · Por formato</p>
+    <h1>Quién puede hacer qué</h1>
+
+        <div class="diagram-container">
+      <svg viewBox="0 0 920 556" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="matriz-permisos-title matriz-permisos-desc">
+        <title id="matriz-permisos-title">Quién puede hacer qué</title>
+        <desc id="matriz-permisos-desc">El administrador puede todo; con permiso de editar se crea y modifica, con solo consulta se ve y exporta, y sin asignación no hay acceso al formato.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4a5565"/></marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#0b2d5b"/></marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#0b57d0"/></marker>
+
+          <!-- OPTIONAL: dot-pattern background. Uncomment the <pattern> and the second <rect> below if you want the dotted paper look. -->
+          <!--
+          <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.9" fill="rgba(45,49,66,0.10)"/>
+          </pattern>
+          -->
+        </defs>
+
+        <rect width="100%" height="100%" fill="#f5f7fa"/>
+        <!-- <rect width="100%" height="100%" fill="url(#dots)" opacity="0.55"/> -->
+
+        <g transform="translate(0,-48)">
+        <rect x="12" y="72" width="208" height="52" rx="6" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="116" y="96" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >Acción</text>
+        <text x="116" y="112" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >según el acceso</text>
+        <rect x="232" y="72" width="148" height="52" rx="6" fill="#0b2d5b" stroke="none" stroke-width="1" />
+        <text x="306" y="92" fill="#ffffff" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >Administrador</text>
+        <text x="306" y="108" fill="#ffffff" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >rol admin</text>
+        <rect x="396" y="72" width="148" height="52" rx="6" fill="#0b2d5b" stroke="none" stroke-width="1" />
+        <text x="470" y="92" fill="#ffffff" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >Con «editar»</text>
+        <text x="470" y="108" fill="#ffffff" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >rol editor</text>
+        <rect x="560" y="72" width="148" height="52" rx="6" fill="#0b2d5b" stroke="none" stroke-width="1" />
+        <text x="634" y="92" fill="#ffffff" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >Solo consulta</text>
+        <text x="634" y="108" fill="#ffffff" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >«ver» o rol lector</text>
+        <rect x="724" y="72" width="148" height="52" rx="6" fill="#0b2d5b" stroke="none" stroke-width="1" />
+        <text x="798" y="92" fill="#ffffff" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >Sin asignación</text>
+        <text x="798" y="108" fill="#ffffff" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >editor o lector</text>
+        <rect x="12" y="140" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="162" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Ver registros del formato</text>
+        <rect x="232" y="140" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="162" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="140" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="162" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="560" y="140" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="634" y="162" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="724" y="140" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="162" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="12" y="180" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="202" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Exportar .xlsx</text>
+        <rect x="232" y="180" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="202" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="180" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="202" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="560" y="180" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="634" y="202" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="724" y="180" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="202" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="12" y="220" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="242" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Descargar respaldo .json</text>
+        <rect x="232" y="220" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="242" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="220" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="242" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="560" y="220" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="634" y="242" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="724" y="220" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="242" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="12" y="260" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="282" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Crear y editar</text>
+        <rect x="232" y="260" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="282" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="260" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="282" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="560" y="260" width="148" height="36" rx="4" fill="#ffffff" stroke="#0b2d5b" stroke-width="2" />
+        <text x="634" y="278" fill="#0b2d5b" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">No</text>
+        <text x="634" y="290" fill="#0b2d5b" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >el lector nunca edita</text>
+        <rect x="724" y="260" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="282" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="12" y="300" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="322" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Eliminar registros</text>
+        <rect x="232" y="300" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="322" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="300" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="322" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="560" y="300" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="634" y="322" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="724" y="300" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="322" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="12" y="340" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="362" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Restaurar respaldo</text>
+        <rect x="232" y="340" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="362" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="340" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="362" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="560" y="340" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="634" y="362" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="724" y="340" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="362" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="12" y="380" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="402" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Ver historial por API</text>
+        <text x="210" y="402" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >solo ITA</text>
+        <rect x="232" y="380" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="402" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="380" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="402" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="560" y="380" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="634" y="402" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="724" y="380" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="402" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="12" y="420" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="442" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Gestionar usuarios</text>
+        <rect x="232" y="420" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="442" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="420" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="442" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="560" y="420" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="634" y="442" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="724" y="420" width="148" height="36" rx="4" fill="#f5f7fa" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="442" fill="#5a6472" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" >No</text>
+        <rect x="12" y="460" width="208" height="36" rx="4" fill="#ffffff" stroke="rgba(27,31,36,0.12)" stroke-width="1" />
+        <text x="24" y="482" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >Cambiar su contraseña</text>
+        <rect x="232" y="460" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="306" y="482" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="396" y="460" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="470" y="482" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="560" y="460" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="634" y="482" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <rect x="724" y="460" width="148" height="36" rx="4" fill="rgba(11,45,91,0.10)" stroke="rgba(27,31,36,0.18)" stroke-width="0.8" />
+        <text x="798" y="482" fill="#1b1f24" font-size="10" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Sí</text>
+        <text x="24" y="520" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >«ver» y «editar» se asignan por formato (ITA y Accesibilidad). El lector queda en solo consulta aunque tenga «editar».</text><text x="24" y="534" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >Con contraseña temporal solo se permiten las rutas de autenticación hasta cambiarla.</text>
+        <line x1="24" y1="556" x2="896" y2="556" stroke="rgba(27,31,36,0.12)" stroke-width="1"/><text x="24" y="584" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.1em">LEYENDA</text><rect x="108" y="575" width="16" height="12" rx="2" fill="rgba(11,45,91,0.10)" stroke="#5a6472" stroke-width="1" /><text x="136" y="584" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >PERMITIDO</text><rect x="217" y="575" width="16" height="12" rx="2" fill="#f5f7fa" stroke="#5a6472" stroke-width="1" /><text x="245" y="584" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >NO PERMITIDO</text><rect x="341" y="575" width="16" height="12" rx="2" fill="#ffffff" stroke="#0b2d5b" stroke-width="1" /><text x="369" y="584" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >REGLA CLAVE</text>
+        </g>
+
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitectura de matriz-ita-pb</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=Noto+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #f5f7fa;   /* white-smoke */
+      --color-ink:     #1b1f24;   /* jet-black */
+      --color-muted:   #4a5565;   /* blue-slate */
+      --color-accent:  #0b2d5b;   /* burnt-tangerine */
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', 'Noto Serif', 'Noto Serif KR', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    .frame { max-width: 1200px; width: 100%; }
+    /* The SVG holds its readable width (min-width == the viewBox width, so the
+       type ramp is never silently scaled down). This wrapper lets a narrow
+       screen scroll the diagram instead of the whole page. */
+    .diagram-container { width: 100%; overflow-x: auto; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+    }
+
+    svg { width: 100%; min-width: 960px; display: block; }
+    /* Paper has no scrollbar, so the local scroller would clip instead of
+       scroll. Let the diagram scale down to the sheet: smaller but whole
+       beats sharp but cut off. Must come after the svg rule above - a media
+       query adds no specificity, so a later plain rule would win. */
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Arquitectura · Gestor de formatos</p>
+    <h1>Arquitectura de matriz-ita-pb</h1>
+
+    <!-- Replace arquitectura with a unique slug for this diagram before export. -->
+    <div class="diagram-container">
+      <svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="arquitectura-title arquitectura-desc">
+        <title id="arquitectura-title">Arquitectura de matriz-ita-pb</title>
+        <desc id="arquitectura-desc">La interfaz Angular guarda cambios a través de sus servicios de estado en la API Fastify, que persiste en MySQL; el mismo proceso Node sirve el build y las plantillas con las que el navegador genera el .xlsx.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4a5565"/></marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#0b2d5b"/></marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#0b57d0"/></marker>
+
+          <!-- OPTIONAL: dot-pattern background. Uncomment the <pattern> and the second <rect> below if you want the dotted paper look. -->
+          <!--
+          <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.9" fill="rgba(45,49,66,0.10)"/>
+          </pattern>
+          -->
+        </defs>
+
+        <rect width="100%" height="100%" fill="#f5f7fa"/>
+        <!-- <rect width="100%" height="100%" fill="url(#dots)" opacity="0.55"/> -->
+
+        <rect x="24" y="40" width="232" height="400" rx="8" fill="rgba(11,45,91,0.03)" stroke="rgba(11,45,91,0.25)" stroke-width="0.8"/><rect x="32" y="44" width="64" height="12" rx="2" fill="#f5f7fa"/><text x="64" y="53" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.14em">NAVEGADOR</text>
+        <rect x="376" y="184" width="232" height="256" rx="8" fill="rgba(11,45,91,0.03)" stroke="rgba(11,45,91,0.25)" stroke-width="0.8"/><rect x="384" y="188" width="84" height="12" rx="2" fill="#f5f7fa"/><text x="426" y="197" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.14em">PROCESO NODE</text>
+        <line x1="140" y1="152" x2="140" y2="216" stroke="#4a5565" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <line x1="140" y1="288" x2="140" y2="352" stroke="#4a5565" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <line x1="392" y1="116" x2="240" y2="116" stroke="#4a5565" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="4,3"/>
+        <line x1="492" y1="152" x2="492" y2="216" stroke="#4a5565" stroke-width="1.2" marker-end="url(#arrow)" stroke-dasharray="4,3"/>
+        <line x1="240" y1="252" x2="392" y2="252" stroke="#0b57d0" stroke-width="1.2" marker-end="url(#arrow-link)"/>
+        <line x1="592" y1="252" x2="736" y2="252" stroke="#4a5565" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <line x1="392" y1="388" x2="240" y2="388" stroke="#0b57d0" stroke-width="1.2" marker-end="url(#arrow-link)"/>
+        <rect x="150" y="178" width="60" height="12" rx="2" fill="#f5f7fa"/><text x="180" y="187" fill="#5a6472" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">ACCIONES</text>
+        <rect x="160" y="314" width="40" height="12" rx="2" fill="#f5f7fa"/><text x="180" y="323" fill="#5a6472" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">DATOS</text>
+        <rect x="290" y="98" width="52" height="12" rx="2" fill="#f5f7fa"/><text x="316" y="107" fill="#5a6472" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">IMPORTA</text>
+        <rect x="502" y="164" width="52" height="12" rx="2" fill="#f5f7fa"/><text x="528" y="173" fill="#5a6472" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">IMPORTA</text>
+        <rect x="278" y="234" width="76" height="12" rx="2" fill="#f5f7fa"/><text x="316" y="243" fill="#0b57d0" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">/API · JSON</text>
+        <rect x="658" y="234" width="28" height="12" rx="2" fill="#f5f7fa"/><text x="672" y="243" fill="#5a6472" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">SQL</text>
+        <rect x="284" y="370" width="64" height="12" rx="2" fill="#f5f7fa"/><text x="316" y="379" fill="#0b57d0" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">PLANTILLA</text>
+        <rect x="40" y="80" width="200" height="72" rx="6" fill="#f5f7fa"/><rect x="40" y="80" width="200" height="72" rx="6" fill="#ffffff" stroke="#1b1f24" stroke-width="1"/><rect x="48" y="86" width="20" height="12" rx="2" fill="none" stroke="#4a5565" stroke-width="0.8"/><text x="58" y="95" fill="#4a5565" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em">UI</text><text x="140" y="116" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Interfaz Angular</text><text x="140" y="131" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >Panel, ITA, Accesibilidad</text>
+        <rect x="40" y="216" width="200" height="72" rx="6" fill="#f5f7fa"/><rect x="40" y="216" width="200" height="72" rx="6" fill="#ffffff" stroke="#1b1f24" stroke-width="1"/><rect x="48" y="222" width="44" height="12" rx="2" fill="none" stroke="#4a5565" stroke-width="0.8"/><text x="70" y="231" fill="#4a5565" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em">ESTADO</text><text x="140" y="252" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Servicios de estado</text><text x="140" y="267" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >AlmacenService (ITA)</text><text x="140" y="279" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >EvaluacionesService (Acc.)</text>
+        <rect x="40" y="352" width="200" height="72" rx="6" fill="#f5f7fa"/><rect x="40" y="352" width="200" height="72" rx="6" fill="#ffffff" stroke="#1b1f24" stroke-width="1"/><rect x="48" y="358" width="44" height="12" rx="2" fill="none" stroke="#4a5565" stroke-width="0.8"/><text x="70" y="367" fill="#4a5565" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em">EXPORT</text><text x="140" y="388" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Exportación .xlsx</text><text x="140" y="403" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >JSZip sobre la plantilla</text>
+        <rect x="392" y="80" width="200" height="72" rx="6" fill="#f5f7fa"/><rect x="392" y="80" width="200" height="72" rx="6" fill="#f5f7fa" stroke="#5a6472" stroke-width="1" stroke-dasharray="4,3"/><rect x="400" y="86" width="38" height="12" rx="2" fill="none" stroke="#4a5565" stroke-width="0.8"/><text x="419" y="95" fill="#4a5565" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em">BUILD</text><text x="492" y="116" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Código compartido</text><text x="492" y="131" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >modelos.ts, catálogo ITA</text>
+        <rect x="392" y="216" width="200" height="72" rx="6" fill="#f5f7fa"/><rect x="392" y="216" width="200" height="72" rx="6" fill="#0b2d5b" stroke="#0b2d5b" stroke-width="1"/><rect x="400" y="222" width="26" height="12" rx="2" fill="none" stroke="#f2b705" stroke-width="0.8"/><text x="413" y="231" fill="#f2b705" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em">API</text><text x="492" y="252" fill="#ffffff" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">API Fastify</text><text x="492" y="267" fill="#dbe4f0" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >sesión, permisos, zod</text>
+        <rect x="392" y="352" width="200" height="72" rx="6" fill="#f5f7fa"/><rect x="392" y="352" width="200" height="72" rx="6" fill="#ffffff" stroke="#1b1f24" stroke-width="1"/><rect x="400" y="358" width="26" height="12" rx="2" fill="none" stroke="#4a5565" stroke-width="0.8"/><text x="413" y="367" fill="#4a5565" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em">WEB</text><text x="492" y="388" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">Archivos estáticos</text><text x="492" y="403" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >build Angular y plantillas</text>
+        <rect x="736" y="216" width="184" height="72" rx="6" fill="#f5f7fa"/><rect x="736" y="216" width="184" height="72" rx="6" fill="#e9edf3" stroke="#4a5565" stroke-width="1"/><rect x="744" y="222" width="20" height="12" rx="2" fill="none" stroke="#4a5565" stroke-width="0.8"/><text x="754" y="231" fill="#4a5565" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em">DB</text><text x="828" y="252" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="middle" font-weight="600">MySQL 8.4</text><text x="828" y="267" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >datos, sesiones</text><text x="828" y="279" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >y auditoría</text>
+        <line x1="24" y1="464" x2="936" y2="464" stroke="rgba(11,45,91,0.20)" stroke-width="0.8"/><text x="24" y="492" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.1em">LEYENDA</text><rect x="104" y="483" width="16" height="12" rx="2" fill="#0b2d5b"/><text x="128" y="492" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.1em">NÚCLEO</text><line x1="208" y1="489" x2="232" y2="489" stroke="#0b57d0" stroke-width="1.2"/><text x="240" y="492" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.1em">HTTP</text><line x1="296" y1="489" x2="320" y2="489" stroke="#4a5565" stroke-width="1.2"/><text x="328" y="492" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.1em">LLAMADA O DATOS</text><line x1="448" y1="489" x2="472" y2="489" stroke="#4a5565" stroke-width="1.2" stroke-dasharray="4,3"/><text x="480" y="492" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.1em">IMPORTACIÓN AL COMPILAR</text>
+
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

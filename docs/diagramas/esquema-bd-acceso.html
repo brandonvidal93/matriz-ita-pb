@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios, accesibilidad y auditoría</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=Noto+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #f5f7fa;   /* white-smoke */
+      --color-ink:     #1b1f24;   /* jet-black */
+      --color-muted:   #4a5565;   /* blue-slate */
+      --color-accent:  #0b2d5b;   /* burnt-tangerine */
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', 'Noto Serif', 'Noto Serif KR', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    .frame { max-width: 1200px; width: 100%; }
+    /* The SVG holds its readable width (min-width == the viewBox width, so the
+       type ramp is never silently scaled down). This wrapper lets a narrow
+       screen scroll the diagram instead of the whole page. */
+    .diagram-container { width: 100%; overflow-x: auto; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+    }
+
+    svg { width: 100%; min-width: 968px; display: block; }
+    /* Paper has no scrollbar, so the local scroller would clip instead of
+       scroll. Let the diagram scale down to the sheet: smaller but whole
+       beats sharp but cut off. Must come after the svg rule above - a media
+       query adds no specificity, so a later plain rule would win. */
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Esquema de base de datos · 2 de 2</p>
+    <h1>Usuarios, accesibilidad y auditoría</h1>
+
+        <div class="diagram-container">
+      <svg viewBox="0 0 968 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="esquema-bd-acceso-title esquema-bd-acceso-desc">
+        <title id="esquema-bd-acceso-title">Usuarios, accesibilidad y auditoría</title>
+        <desc id="esquema-bd-acceso-desc">Sesiones y permisos dependen del usuario y se borran con él; las evaluaciones conservan su contenido sin autor y la auditoría no tiene claves foráneas.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4a5565"/></marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#0b2d5b"/></marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#0b57d0"/></marker>
+
+          <!-- OPTIONAL: dot-pattern background. Uncomment the <pattern> and the second <rect> below if you want the dotted paper look. -->
+          <!--
+          <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.9" fill="rgba(45,49,66,0.10)"/>
+          </pattern>
+          -->
+        </defs>
+
+        <rect width="100%" height="100%" fill="#f5f7fa"/>
+        <!-- <rect width="100%" height="100%" fill="url(#dots)" opacity="0.55"/> -->
+
+        <path d="M 256,108 H 304 Q 312,108 312,116 V 132 Q 312,140 320,140 H 368" fill="none" stroke="#0b2d5b" stroke-width="2" marker-end="url(#arrow-accent)"/>
+        <path d="M 256,284 H 304 Q 312,284 312,276 V 164 Q 312,156 320,156 H 368" fill="none" stroke="#4a5565" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <path d="M 712,204 H 676 Q 668,204 668,196 V 148 Q 668,140 660,140 H 600" fill="none" stroke="#4a5565" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <path d="M 712,228 H 648 Q 640,228 640,220 V 164 Q 640,156 632,156 H 600" fill="none" stroke="#4a5565" stroke-width="1.2" marker-end="url(#arrow)"/>
+        <rect x="256" y="122" width="48" height="12" rx="2" fill="#f5f7fa" stroke="none" stroke-width="1" /><text x="280" y="131" fill="#0b2d5b" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.04em">CASCADE</text>
+        <rect x="256" y="210" width="48" height="12" rx="2" fill="#f5f7fa" stroke="none" stroke-width="1" /><text x="280" y="219" fill="#5a6472" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.04em">CASCADE</text>
+        <rect x="608" y="122" width="52" height="12" rx="2" fill="#f5f7fa" stroke="none" stroke-width="1" /><text x="634" y="131" fill="#5a6472" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.04em">SET NULL</text>
+        <rect x="650" y="236" width="52" height="12" rx="2" fill="#f5f7fa" stroke="none" stroke-width="1" /><text x="676" y="245" fill="#5a6472" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.04em">SET NULL</text>
+        <rect x="24" y="40" width="232" height="128" rx="6" fill="#f5f7fa" stroke="none" stroke-width="1" /><rect x="24" y="40" width="232" height="128" rx="6" fill="#ffffff" stroke="#4a5565" stroke-width="1" /><text x="36" y="60" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="start" font-weight="600">sesiones</text><rect x="208" y="50" width="40" height="12" rx="2" fill="none" stroke="#5a6472" stroke-width="0.8" /><text x="228" y="59" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >TABLA</text><line x1="24" y1="72" x2="256" y2="72" stroke="#4a5565" stroke-width="0.8"/><text x="36" y="88" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >id</text><text x="246" y="88" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >char(64)</text><text x="166" y="87" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">PK</text><rect x="25" y="96" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="36" y="112" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >usuario_id</text><text x="246" y="112" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >int</text><text x="166" y="111" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">FK</text><text x="36" y="136" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >creada</text><text x="246" y="136" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >datetime</text><rect x="25" y="144" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="36" y="160" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >expira</text><text x="246" y="160" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >datetime</text>
+        <rect x="24" y="240" width="232" height="104" rx="6" fill="#f5f7fa" stroke="none" stroke-width="1" /><rect x="24" y="240" width="232" height="104" rx="6" fill="#ffffff" stroke="#4a5565" stroke-width="1" /><text x="36" y="260" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="start" font-weight="600">usuario_formatos</text><rect x="208" y="250" width="40" height="12" rx="2" fill="none" stroke="#5a6472" stroke-width="0.8" /><text x="228" y="259" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >TABLA</text><line x1="24" y1="272" x2="256" y2="272" stroke="#4a5565" stroke-width="0.8"/><text x="36" y="288" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >usuario_id</text><text x="246" y="288" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >int</text><text x="166" y="287" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">PK FK</text><rect x="25" y="296" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="36" y="312" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >formato</text><text x="246" y="312" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >varchar(30)</text><text x="166" y="311" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">PK</text><text x="36" y="336" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >permiso</text><text x="246" y="336" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >enum</text>
+        <rect x="368" y="104" width="232" height="248" rx="6" fill="#f5f7fa" stroke="none" stroke-width="1" /><rect x="368" y="104" width="232" height="248" rx="6" fill="#ffffff" stroke="#4a5565" stroke-width="1" /><rect x="369" y="105" width="230" height="31" rx="5" fill="rgba(11,45,91,0.10)" stroke="none" stroke-width="1" /><text x="380" y="124" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="start" font-weight="600">usuarios</text><rect x="552" y="114" width="40" height="12" rx="2" fill="none" stroke="#5a6472" stroke-width="0.8" /><text x="572" y="123" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >TABLA</text><line x1="368" y1="136" x2="600" y2="136" stroke="#4a5565" stroke-width="0.8"/><text x="380" y="152" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >id</text><text x="590" y="152" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >int</text><text x="510" y="151" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">PK</text><rect x="369" y="160" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="380" y="176" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >usuario</text><text x="590" y="176" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >varchar(60)</text><text x="510" y="175" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">UQ</text><text x="380" y="200" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >nombre</text><text x="590" y="200" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >varchar(120)</text><rect x="369" y="208" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="380" y="224" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >rol</text><text x="590" y="224" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >enum</text><text x="380" y="248" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >clave_hash</text><text x="590" y="248" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >varchar(100)</text><rect x="369" y="256" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="380" y="272" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >activo</text><text x="590" y="272" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >tinyint</text><text x="380" y="296" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >debe_cambiar_clave</text><text x="590" y="296" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >tinyint</text><rect x="369" y="304" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="380" y="320" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >ultimo_ingreso</text><text x="590" y="320" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >datetime</text><text x="380" y="344" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >+ 2: creado, actualizado</text>
+        <rect x="712" y="40" width="232" height="200" rx="6" fill="#f5f7fa" stroke="none" stroke-width="1" /><rect x="712" y="40" width="232" height="200" rx="6" fill="#ffffff" stroke="#4a5565" stroke-width="1" /><text x="724" y="60" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="start" font-weight="600">evaluaciones_accesib.</text><rect x="896" y="50" width="40" height="12" rx="2" fill="none" stroke="#5a6472" stroke-width="0.8" /><text x="916" y="59" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >TABLA</text><line x1="712" y1="72" x2="944" y2="72" stroke="#4a5565" stroke-width="0.8"/><text x="724" y="88" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >id</text><text x="934" y="88" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >varchar(36)</text><text x="854" y="87" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">PK</text><rect x="713" y="96" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="724" y="112" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >ticket</text><text x="934" y="112" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >int</text><text x="854" y="111" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">UQ</text><text x="724" y="136" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >contenido</text><text x="934" y="136" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >json</text><rect x="713" y="144" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="724" y="160" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >creado</text><text x="934" y="160" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >datetime</text><text x="724" y="184" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >actualizado</text><text x="934" y="184" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >datetime</text><rect x="713" y="192" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="724" y="208" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >creado_por</text><text x="934" y="208" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >int</text><text x="854" y="207" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">FK</text><text x="724" y="232" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >actualizado_por</text><text x="934" y="232" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >int</text><text x="854" y="231" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">FK</text>
+        <rect x="712" y="296" width="232" height="200" rx="6" fill="#f5f7fa" stroke="none" stroke-width="1" /><rect x="712" y="296" width="232" height="200" rx="6" fill="#ffffff" stroke="#4a5565" stroke-width="1" /><text x="724" y="316" fill="#1b1f24" font-size="12" font-family="'Geist', system-ui, sans-serif" text-anchor="start" font-weight="600">auditoria</text><rect x="896" y="306" width="40" height="12" rx="2" fill="none" stroke="#5a6472" stroke-width="0.8" /><text x="916" y="315" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="middle" >TABLA</text><line x1="712" y1="328" x2="944" y2="328" stroke="#4a5565" stroke-width="0.8"/><text x="724" y="344" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >id</text><text x="934" y="344" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >bigint</text><text x="854" y="343" fill="#5a6472" font-size="7" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" font-weight="600">PK</text><rect x="713" y="352" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="724" y="368" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >fecha</text><text x="934" y="368" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >datetime</text><text x="724" y="392" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >usuario_id</text><text x="934" y="392" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >int</text><rect x="713" y="400" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="724" y="416" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >usuario</text><text x="934" y="416" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >varchar(60)</text><text x="724" y="440" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >registro_id</text><text x="934" y="440" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >varchar(36)</text><rect x="713" y="448" width="230" height="24" rx="0" fill="rgba(27,31,36,0.03)" stroke="none" stroke-width="1" /><text x="724" y="464" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >accion</text><text x="934" y="464" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >varchar(60)</text><text x="724" y="488" fill="#1b1f24" font-size="11" font-family="'Geist', system-ui, sans-serif" text-anchor="start" >detalle</text><text x="934" y="488" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end" >json</text>
+        <text x="24" y="516" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >Nombre completo de la tabla abreviada: evaluaciones_accesibilidad. No se dibuja la tabla técnica migraciones.</text><text x="24" y="530" fill="#4a5565" font-size="9" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >auditoria no tiene claves foráneas: el historial se conserva aunque se borre el registro o el usuario.</text>
+        <line x1="24" y1="552" x2="944" y2="552" stroke="rgba(27,31,36,0.12)" stroke-width="1"/><text x="24" y="580" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.1em">LEYENDA</text><line x1="104" y1="577" x2="128" y2="577" stroke="#0b2d5b" stroke-width="2"/><text x="136" y="580" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >BORRADO EN CASCADA PRINCIPAL</text><line x1="308" y1="577" x2="332" y2="577" stroke="#4a5565" stroke-width="1.2"/><text x="340" y="580" fill="#4a5565" font-size="8" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="start" >OTRAS CLAVES FORÁNEAS</text>
+
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
